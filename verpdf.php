@@ -35,11 +35,12 @@ if ($nu=="dato2") {
 	$pdf->setPrintFooter(false);
 	$pdf->SetMargins(5, false, 5, false);
 	$pdf->SetAutoPageBreak(true, 10);
-	$pdf->SetFont('Times', '', 9);
+    $pdf->SetFont('Times', '', 9);
+    $pdf->MultiCell(false, false, false, 0, 'J', false, 1, '', '', true, 0, false, true, 0, 'M', false);
     $pdf->addPage();
         
 /******** GENERAR RESULTADO EN tablaUno *****/
-$tablaUno = '<table >';
+$tablaUno = '';
             foreach($descripcion as $desc) {
                     $tablaUno .= '<tr>';
                     $tablaUno .= '<td style="width:30px" class="bordeizq centrar">'. $desc['item'] . '</td>';
@@ -50,7 +51,7 @@ $tablaUno = '<table >';
                     $tablaUno .= '<td style="width:67px" class="borderecho centrar"><p>'. $desc['criterorigen']  . '</p></td>';
                     $tablaUno .= '</tr>';
             }
-$tablaUno .='</table>';
+//$tablaUno .='</table>';
 
     $content = ''; 
      $content .= '
@@ -127,6 +128,7 @@ $tablaUno .='</table>';
             <!-- tablaUno INSERTADA -->';            
                 $content .= $tablaUno;
                 $content .= '<!-- OBSERVACIONES -->
+                <tr><td colspan="8" style="" class="bordeizq borderecho"><p></p></td></tr>                
             <tr><td colspan="8" style="" class="borde"><p>10. Observaciones<br> '. $datos["Observaciones"]. ' </p></td>
             </tr>
             <tr>
