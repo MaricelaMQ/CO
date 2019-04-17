@@ -36,21 +36,21 @@ if ($nu=="dato2") {
 	$pdf->SetMargins(5, false, 5, false);
 	$pdf->SetAutoPageBreak(true, 10);
 	$pdf->SetFont('Times', '', 9);
-	$pdf->addPage();
-
-/******** GENERAR RESULTADO EN TABLA *****/
-$tabla = '<table>';
+    $pdf->addPage();
+        
+/******** GENERAR RESULTADO EN tablaUno *****/
+$tablaUno = '<table >';
             foreach($descripcion as $desc) {
-                    $tabla .= '<tr>';
-                    $tabla .= '<td style="width:30px" class="bordeizq centrar">'. $desc['item'] . '</td>';
-                    $tabla .= '<td colspan="3" style="width:260px"><p>'. $desc['descmercancia']  . '</p></td>';
-                    $tabla .= '<td style="width:82px" class="centrar"><p>'. $desc['clasiarancelaria']  . '</p></td>';
-                    $tabla .= '<td style="width:65px" class="centrar"><p>'. $desc['nofactura']  . '</p></td>';
-                    $tabla .= '<td style="width:75px" class="centrar"><p>'. $desc['valorfactura']  . '</p></td>';
-                    $tabla .= '<td style="width:67px" class="borderecho centrar"><p>'. $desc['criterorigen']  . '</p></td>';
-                    $tabla .= '</tr>';
+                    $tablaUno .= '<tr>';
+                    $tablaUno .= '<td style="width:30px" class="bordeizq centrar">'. $desc['item'] . '</td>';
+                    $tablaUno .= '<td colspan="3" style="width:260px; "><p>'. $desc['descmercancia']  . '</p></td>';
+                    $tablaUno .= '<td style="width:82px; " class="centrar"><p>'. $desc['clasiarancelaria']  . '</p></td>';
+                    $tablaUno .= '<td style="width:65px" class="centrar"><p>'. $desc['nofactura']  . '</p></td>';
+                    $tablaUno .= '<td style="width:75px" class="centrar"><p>'. $desc['valorfactura']  . '</p></td>';
+                    $tablaUno .= '<td style="width:67px" class="borderecho centrar"><p>'. $desc['criterorigen']  . '</p></td>';
+                    $tablaUno .= '</tr>';
             }
-$tabla .='</table>';
+$tablaUno .='</table>';
 
     $content = ''; 
      $content .= '
@@ -60,8 +60,8 @@ $tabla .='</table>';
      <link rel="stylesheet" href="css/materialize.min.css" /> 
     <style>
         .centrar {
-            text-align: center;            
-            vertical-align:middle!important;            
+            text-align: center;
+            vertical-align:middle!important;
         }        
 
         .borde {
@@ -124,19 +124,8 @@ $tabla .='</table>';
                     
             </tr>
             <!-- DETALLE Mercancias -->
-            <!-- UNO -->';
-            // $content .= '<table>';
-            //  foreach($descripcion as $desc) {
-            //             $content .= '<tr>';
-            //             $content .= '<td" class="bordeizq centrar">'. $desc['item'] . '</td>';
-            //             $content .= '<td colspan="3"><p>'. $desc['descmercancia']  . '</p></td>';
-            //             $content .= '<td class="centrar"><p>'. $desc['clasiarancelaria']  . '</p></td>';
-            //             $content .= '<td class="centrar"><p>'. $desc['nofactura']  . '</p></td>';
-            //             $content .= '<td class="centrar"><p>'. $desc['valorfactura']  . '</p></td>';
-            //             $content .= '<td class="borderecho centrar"><p>'. $desc['criterorigen']  . '</p></td>';
-            //             $content .= '</tr>';
-            //     }
-                $content .= $tabla;
+            <!-- tablaUno INSERTADA -->';            
+                $content .= $tablaUno;
                 $content .= '<!-- OBSERVACIONES -->
             <tr><td colspan="8" style="" class="borde"><p>10. Observaciones<br> '. $datos["Observaciones"]. ' </p></td>
             </tr>
