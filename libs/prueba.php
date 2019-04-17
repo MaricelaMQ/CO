@@ -1,7 +1,7 @@
 <?php
 include "conecta.php";
 /*****CONSULTA DETALLE CERTIFICADO */
-//$id=4;
+//$id=2;
 $stmt = $conn->prepare("SELECT * FROM detallecertificado WHERE id=?");
 $stmt->execute([$id]);
 $datos = $stmt->fetch();
@@ -11,9 +11,32 @@ $querydescmerca = $conn->prepare("SELECT item, descmercancia, clasiarancelaria, 
 $querydescmerca->execute([$id]);
 $descripcion = $querydescmerca->fetchAll();
 //var_dump($desc);
-// foreach($desc as $valor) {
-//     echo $valor['item'] . ' - ' . $valor['descmercancia'].'<br/>';    
-//     }
+        // 
+            $contenido = '';     
+            $contenido .= '<table>';
+            $contenido .= '<thead class="thead-dark"><tr>';
+            $contenido .= '<td style="text-align: center">Numero Certificado</td>';
+            $contenido .= '<td style="text-align: center">Operación</td>';
+            $contenido .= '<td style="text-align: center">Formato</td>';
+            $contenido .= '<td style="text-align: center">Fecha</td>';
+            $contenido .= '<td></td>';
+            $contenido .= '</tr></thead>';             
+            $contenido .= '<tbody>';
+            
+            foreach($descripcion as $desc) {
+                    $contenido .= '<tr>';
+                    $contenido .= '<td>'. $desc['item'] . '</td>';
+                    $contenido .= '<td>'. $desc['descmercancia']  . '</td>';
+                    $contenido .= '<td>'. $desc['clasiarancelaria']  . '</td>';
+                    $contenido .= '<td>'. $desc['nofactura']  . '</td>';
+                    $contenido .= '<td>'. $desc['valorfactura']  . '</td>';
+                    $contenido .= '<td>'. $desc['criterorigen']  . '</td>';
+                    $contenido .= '</tr>';
+            }
+            $contenido .='</tbody></table>';
+            echo $contenido;
+        //     echo $valor['item'] . ' - ' . $valor['descmercancia'].'<br/>';
+        //     }
 // foreach ($respuesta as $row ) {
 //     $descripcion["data"][] = $row;
 // }
