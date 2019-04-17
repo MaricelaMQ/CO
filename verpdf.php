@@ -39,7 +39,7 @@ if ($nu=="dato2") {
 	$pdf->addPage();
 
 /******** GENERAR RESULTADO EN TABLA *****/
-$tabla = '<table height="800">';
+$tabla = '<table>';
             foreach($descripcion as $desc) {
                     $tabla .= '<tr>';
                     $tabla .= '<td style="width:30px" class="bordeizq centrar">'. $desc['item'] . '</td>';
@@ -51,7 +51,6 @@ $tabla = '<table height="800">';
                     $tabla .= '</tr>';
             }
 $tabla .='</table>';
-
 
     $content = ''; 
      $content .= '
@@ -75,9 +74,10 @@ $tabla .='</table>';
 
         .bordeizq{            
             border-left:1px dotted black!important;
-        }
+        }       
             
     </style>
+    
     </head>
     <body>
     <div class="centrar"><strong>Anexo A<br>Certificado de Origen</strong></div>
