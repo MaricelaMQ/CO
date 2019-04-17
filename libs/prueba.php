@@ -1,7 +1,7 @@
 <?php
 include "conecta.php";
 /*****CONSULTA DETALLE CERTIFICADO */
-//$id=2;
+//$id=4;
 $stmt = $conn->prepare("SELECT * FROM detallecertificado WHERE id=?");
 $stmt->execute([$id]);
 $datos = $stmt->fetch();
@@ -12,29 +12,30 @@ $querydescmerca->execute([$id]);
 $descripcion = $querydescmerca->fetchAll();
 //var_dump($desc);
         // 
-            $contenido = '';     
-            $contenido .= '<table>';
-            $contenido .= '<thead class="thead-dark"><tr>';
-            $contenido .= '<td style="text-align: center">Numero Certificado</td>';
-            $contenido .= '<td style="text-align: center">Operación</td>';
-            $contenido .= '<td style="text-align: center">Formato</td>';
-            $contenido .= '<td style="text-align: center">Fecha</td>';
-            $contenido .= '<td></td>';
-            $contenido .= '</tr></thead>';             
-            $contenido .= '<tbody>';
-            
-            foreach($descripcion as $desc) {
-                    $contenido .= '<tr>';
-                    $contenido .= '<td>'. $desc['item'] . '</td>';
-                    $contenido .= '<td>'. $desc['descmercancia']  . '</td>';
-                    $contenido .= '<td>'. $desc['clasiarancelaria']  . '</td>';
-                    $contenido .= '<td>'. $desc['nofactura']  . '</td>';
-                    $contenido .= '<td>'. $desc['valorfactura']  . '</td>';
-                    $contenido .= '<td>'. $desc['criterorigen']  . '</td>';
-                    $contenido .= '</tr>';
-            }
-            $contenido .='</tbody></table>';
-            echo $contenido;
+                    // $content = '';     
+                    // $content .= '<table>';
+                    // $content .= '<thead class="thead-dark"><tr>';
+                    // $content .= '<td style="text-align: center">Numero Certificado</td>';
+                    // $content .= '<td style="text-align: center">Operación</td>';
+                    // $content .= '<td style="text-align: center">Formato</td>';
+                    // $content .= '<td style="text-align: center">Fecha</td>';
+                    // $content .= '<td></td>';
+                    // $content .= '</tr></thead>';             
+                    // $content .= '<tbody>';
+            //         $tabla = '<table>';
+            // foreach($descripcion as $desc) {
+            //         $tabla .= '<tr>';
+            //         $tabla .= '<td style="width:30px" class="bordeizq centrar">'. $desc['item'] . '</td>';
+            //         $tabla .= '<td colspan="3" style="width:260px"><p>'. $desc['descmercancia']  . '</p></td>';
+            //         $tabla .= '<td style="width:82px" class="centrar"><p>'. $desc['clasiarancelaria']  . '</p></td>';
+            //         $tabla .= '<td style="width:65px" class="centrar"><p>'. $desc['nofactura']  . '</p></td>';
+            //         $tabla .= '<td style="width:75px" class="centrar"><p>'. $desc['valorfactura']  . '</p></td>';
+            //         $tabla .= '<td style="width:67px" class="borderecho centrar"><p>'. $desc['criterorigen']  . '</p></td>';
+            //         $tabla .= '</tr>';
+            // }
+            // $tabla .='</table>';
+            //$content = $tabla;
+            //echo $content;
         //     echo $valor['item'] . ' - ' . $valor['descmercancia'].'<br/>';
         //     }
 // foreach ($respuesta as $row ) {

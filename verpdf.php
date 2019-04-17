@@ -2,7 +2,7 @@
 ob_start();
 include "libs/conecta.php";
 $id= $_GET["p"];
-include "libs/prueba.php";
+include "libs/consulta.php";
 //var_dump($datos);
 //$id= "2";
 /*****CONSULTA DETALLE CERTIFICADO */
@@ -37,6 +37,21 @@ if ($nu=="dato2") {
 	$pdf->SetAutoPageBreak(true, 10);
 	$pdf->SetFont('Times', '', 9);
 	$pdf->addPage();
+
+/******** GENERAR RESULTADO EN TABLA *****/
+$tabla = '<table height="800">';
+            foreach($descripcion as $desc) {
+                    $tabla .= '<tr>';
+                    $tabla .= '<td style="width:30px" class="bordeizq centrar">'. $desc['item'] . '</td>';
+                    $tabla .= '<td colspan="3" style="width:260px"><p>'. $desc['descmercancia']  . '</p></td>';
+                    $tabla .= '<td style="width:82px" class="centrar"><p>'. $desc['clasiarancelaria']  . '</p></td>';
+                    $tabla .= '<td style="width:65px" class="centrar"><p>'. $desc['nofactura']  . '</p></td>';
+                    $tabla .= '<td style="width:75px" class="centrar"><p>'. $desc['valorfactura']  . '</p></td>';
+                    $tabla .= '<td style="width:67px" class="borderecho centrar"><p>'. $desc['criterorigen']  . '</p></td>';
+                    $tabla .= '</tr>';
+            }
+$tabla .='</table>';
+
 
     $content = ''; 
      $content .= '
@@ -109,73 +124,20 @@ if ($nu=="dato2") {
                     
             </tr>
             <!-- DETALLE Mercancias -->
-            <!-- UNO -->
-            <tr style="">
-                <td style="width:30px;" class="bordeizq centrar">1</td>
-                <td colspan="3" style="width:260px" class=""><p>MEDICAMENTOS QUE CONTENGAN HORMONAS
-                CORTICOSTEROIDES, SUS DERIVADOS O ANALOGOS
-                ESTRUCTURALES, PARA USO HUMANO LOS DEMAS. BETADUO
-                1ML INY CJAX1 JER PRELL CIAL COS
-                
-                </p></td>
-                <td style="width:82px;"class="centrar"><p>654568</p></td>
-                <td style="width:65px;"class="centrar"><p>88944</p></td>
-                <td style="width:75px;"class="centrar"><p>123.456.789</p></td>
-                <td style="width:67px;" class="borderecho centrar"><p>A</p></td>
-            </tr>
-            <!--DOS-->
-            <tr style="height:540px">
-                <td style="width:30px;" class="bordeizq centrar">2</td>
-                <td colspan="3" style="width:260px" class=""><p>MEDICAMENTOS QUE CONTENGAN HORMONAS
-                CORTICOSTEROIDES, SUS DERIVADOS O ANALOGOS
-                ESTRUCTURALES, PARA USO HUMANO LOS DEMAS. BETADUO
-                1ML INY CJAX1 JER PRELL CIAL COS
-                </p>
-                </td>
-                <td style="width:82px;"class="centrar"><p>654568</p></td>
-                <td style="width:65px;"class="centrar"><p>654987</p></td>
-                <td style="width:75px;"class="centrar"><p>98.653.255</p></td>
-                <td style="width:67px;" class="centrar borderecho"><p>B</p></td>
-            </tr>
-            <!-- TRES -->
-            <tr style="height:540px">
-                <td style="width:30px;" class="bordeizq centrar">3</td>
-                <td colspan="3" style="width:260px" class=""><p>MEDICAMENTOS QUE CONTENGAN HORMONAS
-                CORTICOSTEROIDES, SUS DERIVADOS O ANALOGOS
-                ESTRUCTURALES, PARA USO HUMANO LOS DEMAS. BETADUO
-                1ML INY CJAX1 JER PRELL CIAL COS
-                
-                </p></td>
-                <td style="width:82px;"class="centrar"><p>654568</p></td>
-                <td style="width:65px;"class="centrar"><p>88944</p></td>
-                <td style="width:75px;"class="centrar"><p>123.456.789</p></td>
-                <td style="width:67px;" class="borderecho centrar"><p>A</p></td>
-            </tr>
-            <!-- CUATRO -->
-            <tr style="height:50%">
-                <td style="width:30px; " class="bordeizq centrar">4</td>
-                <td colspan="3" style="width:260px" class=""><p>MEDICAMENTOS QUE CONTENGAN HORMONAS
-                CORTICOSTEROIDES, SUS DERIVADOS O ANALOGOS
-                ESTRUCTURALES, PARA USO HUMANO LOS DEMAS. BETADUO
-                1ML INY CJAX1 JER PRELL CIAL COS</p></td>
-                <td style="width:82px;"class="centrar"><p>654568</p></td>
-                <td style="width:65px;"class="centrar"><p>88944</p></td>
-                <td style="width:75px;"class="centrar"><p>123.456.789</p></td>
-                <td style="width:67px;" class="borderecho centrar"><p>A</p></td>
-            </tr>
-            <!-- CINCO -->
-            <tr style="height:50%">
-                <td style="width:30px; " class="bordeizq centrar">5</td>
-                <td colspan="3" style="width:260px" class=""><p>MEDICAMENTOS QUE CONTENGAN HORMONAS
-                CORTICOSTEROIDES, SUS DERIVADOS O ANALOGOS
-                ESTRUCTURALES, PARA USO HUMANO LOS DEMAS. BETADUO
-                1ML INY CJAX1 JER PRELL CIAL COS</p></td>
-                <td style="width:82px;"class="centrar"><p>654568</p></td>
-                <td style="width:65px;"class="centrar"><p>88944</p></td>
-                <td style="width:75px;"class="centrar"><p>123.456.789</p></td>
-                <td style="width:67px;" class="borderecho centrar"><p>A</p></td>
-            </tr>
-            <!-- OBSERVACIONES -->
+            <!-- UNO -->';
+            // $content .= '<table>';
+            //  foreach($descripcion as $desc) {
+            //             $content .= '<tr>';
+            //             $content .= '<td" class="bordeizq centrar">'. $desc['item'] . '</td>';
+            //             $content .= '<td colspan="3"><p>'. $desc['descmercancia']  . '</p></td>';
+            //             $content .= '<td class="centrar"><p>'. $desc['clasiarancelaria']  . '</p></td>';
+            //             $content .= '<td class="centrar"><p>'. $desc['nofactura']  . '</p></td>';
+            //             $content .= '<td class="centrar"><p>'. $desc['valorfactura']  . '</p></td>';
+            //             $content .= '<td class="borderecho centrar"><p>'. $desc['criterorigen']  . '</p></td>';
+            //             $content .= '</tr>';
+            //     }
+                $content .= $tabla;
+                $content .= '<!-- OBSERVACIONES -->
             <tr><td colspan="8" style="" class="borde"><p>10. Observaciones<br> '. $datos["Observaciones"]. ' </p></td>
             </tr>
             <tr>
