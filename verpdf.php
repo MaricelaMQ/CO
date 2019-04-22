@@ -36,7 +36,8 @@ if ($nu=="dato2") {
 	$pdf->SetMargins(5, false, 5, false);
 	$pdf->SetAutoPageBreak(true, 10);
     $pdf->SetFont('Times', '', 9);
-    $pdf->MultiCell(false, false, false, 0, 'J', false, 1, '', '', true, 0, false, true, 0, 'M', false);
+    $pdf->SetFillColor(255, 235, 235);
+    //$pdf->MultiCell(false, false, false, 0, 'J', false, 1, '', '', true, 0, false, true, 0, 'M', false);    
     $pdf->addPage();
         
 /******** GENERAR RESULTADO EN tablaUno *****/
@@ -44,8 +45,8 @@ $tablaUno = '';
             foreach($descripcion as $desc) {
                     $tablaUno .= '<tr>';
                     $tablaUno .= '<td style="width:30px" class="bordeizq centrar">'. $desc['item'] . '</td>';
-                    $tablaUno .= '<td colspan="3" style="width:260px; "><p>'. $desc['descmercancia']  . '</p></td>';
-                    $tablaUno .= '<td style="width:82px; " class="centrar"><p>'. $desc['clasiarancelaria']  . '</p></td>';
+                    $tablaUno .= '<td colspan="3" style="width:260px; vertical-align: middle;"><p>'. $desc['descmercancia']  . '</p></td>';
+                    $tablaUno .= '<td style="width:82px; "class="centrar"><p>'. $desc['clasiarancelaria']  . '</p></td>';
                     $tablaUno .= '<td style="width:65px" class="centrar"><p>'. $desc['nofactura']  . '</p></td>';
                     $tablaUno .= '<td style="width:75px" class="centrar"><p>'. $desc['valorfactura']  . '</p></td>';
                     $tablaUno .= '<td style="width:67px" class="borderecho centrar"><p>'. $desc['criterorigen']  . '</p></td>';

@@ -1,5 +1,5 @@
 
-$(document).ready(function () {        
+$(document).ready(function () {
     $("#btenviarform").click(function () {
         detallemerca();
         //datos();
@@ -13,7 +13,7 @@ $(document).ready(function () {
     $(document).on('click', '.borrar', function () {
         $(this).closest('tr').remove();
     });
-//********* AGREGAR **/
+//********* AGREGAR DESCRIPCION**/
     $("#agregar").click(function () {
 
         var descripcion = $("#descmercancia").val();
@@ -46,12 +46,56 @@ $(document).ready(function () {
         $("#valorfactura").val("");
         $("#criterorigen").val("");
     }
+    duplicarcert();
 //  listar();
 //  guardar();
 //  console.log(datos());
+    
 });
 
+function duplicarcert() {
+    
+    if (id>0){
+        
+        $("#nombreexp").val(detCertificado.NombreExp);
+        
+        
+        var direccionexp = $("#direccionexp").val();
+        var telefonoexp = $("#telefonoexp").val();
+        var faxexp = $("#faxexp").val();
+        var correoexp = $("#correoexp").val();
+        var numregfiscalexp = $("#numregfiscalexp").val();
+    
+        var nombrepro = $("#nombrepro").val();
+        var direccionpro = $("#direccionpro").val();
+        var telefonopro = $("#telefonopro").val();
+        var faxpro = $("#faxpro").val();
+        var correopro = $("#correopro").val();
+        var numregfiscalpro = $("#numregfiscalpro").val();
+    
+        var nombreimp = $("#nombreimp").val();
+        var direccionimp = $("#direccionimp").val();
+        var telefonoimp = $("#telefonoimp").val();
+        var faximp = $("#faximp").val();
+        var correoimp = $("#correoimp").val();
+        var numregfiscalimp = $("#numregfiscalimp").val();
+        
+        // DATOS TABLA DESCRIPCION MERCANCIAS
+        var observaciones = $("#observaciones").val();    
+        var lugarexp = $("#lugarexp").val();
+        var fechaexp = $("#fechaexp").val();
+        var lugarautocompe = $("#lugarautocompe").val();
+        var fechaautocompe = $("#fechaautocompe").val();
+        var direccionautocompe = $("#direccionautocompe").val();
+        var telefonoautocompe = $("#telefonoautocompe").val();
+        var faxautocompe = $("#faxautocompe").val();
+        var correoautocompe = $("#correoautocompe").val();
+    }
+    //console.log(detCertificado.DireccionExp)    
+}
+
 function detallemerca(){
+    // alert('mensaje de muestra ');
     detmercancia = [];
         $('#descripcionmercancia tr').each(function () {
             var descripcion = $(this).find('td').eq(0).html();
@@ -62,7 +106,7 @@ function detallemerca(){
             var valor = {
                 descripcion, clasiarancelaria, nofactura, valorfactura, criterorigen};
             detmercancia.push(valor);
-            //alert('mensaje de muestra ' + nombrexp)
+            
             //console.log(detmercancia);
         });
         var valores = {"tabladesc": detmercancia};
@@ -143,7 +187,7 @@ function guardar() {
              console.log( info );// Info: respuesta del servidor
             if ( info ==1 ){
                 alert('Se ha guardado certificado con exito');
-                location.href ="principal.html";
+                location.href ="principal.php";
             }else{
                 alert('error al guardar');    
             }
@@ -153,6 +197,7 @@ function guardar() {
             alert('error al guardar');
         });
 }
+
 
 function __ajax(url, data) {
     var ajax = $.ajax({

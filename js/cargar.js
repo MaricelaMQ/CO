@@ -22,6 +22,7 @@ function listar() {
             html+= '<td style="text-align: center"> Formato</td>';
             html+= '<td style="text-align: center">Fecha</td>';
             html+= '<td></td>';
+            html+= '<td></td>';
             html+= '</tr></thead>';
              console.log(valores);
              html+= '<tbody><tr>';
@@ -32,10 +33,11 @@ function listar() {
                 html+= '<td>' + valores.data[i].Regional + '</td>';
                 html+= '<td>' + valores.data[i].Fecha + '</td>';
                 html+= '<td><a href="verpdf.php?p='+ valores.data[i].id +'" target="_blank">Ver Pdf</a></td>';
+                html+= '<td><a href="costarica.php?p='+ valores.data[i].id +'" target="_blank">Duplicar</a></td>';
                 html+= '</tr>';
             }
             html+= '</tbody>';
-            html+='</table>';
+            html+= '</table>';
             }
             $("#resultado").html(html);
         });

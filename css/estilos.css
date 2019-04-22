@@ -11,10 +11,10 @@
 select {
   height: 30px!important;
   width: 20px!important;  
+  
 }
 
-.cuadro{
-  
+.cuadro{  
   margin: 20px !important;  
   border-width: 1px;  /*0px0px01px:;  */
   border-radius: 5px;
@@ -59,8 +59,6 @@ th{
   text-align: center!important;  
 }
 
-
-
 .observaciones{
   border:1px solid #73d9f0!important;
   border-radius: 5px;  
@@ -85,7 +83,7 @@ th{
   padding: auto!important;
   margin: 0 auto!important;
   text-transform: full-width!important;
-   width: 180px;
+  width: 180px;
   
 }
 .borde{

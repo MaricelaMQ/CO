@@ -2,9 +2,15 @@
 include "conecta.php";
 /*****CONSULTA DETALLE CERTIFICADO */
 //$id=4;
-$stmt = $conn->prepare("SELECT * FROM detallecertificado WHERE id=?");
-$stmt->execute([$id]);
-$datos = $stmt->fetch();
+if(isset($id)){
+        $stmt = $conn->prepare("SELECT * FROM detallecertificado WHERE id=?");
+        $stmt->execute([$id]);
+        $datos = $stmt->fetch();
+}else{
+        $datos='';
+}
+
+
 //var_dump($datos);
 /*****CONSULTA DESCRIPCION MERCANCIAS */
 $querydescmerca = $conn->prepare("SELECT item, descmercancia, clasiarancelaria, nofactura, valorfactura, criterorigen FROM descripcionmercancias WHERE id_certificados=?");
