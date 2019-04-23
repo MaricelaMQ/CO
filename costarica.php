@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="">                
                     <label for="">DO:</label>
-                    <input id="operacion" type="text" value="" required>
+                    <input id="operacion" type="text" value=""  maxlength="20" required>
                 </div>
             </div>
             <!-- SECCION EXPORTADOR -->
@@ -189,7 +189,7 @@
                                 <tr>
                                     <td class="descripcion">
                                         <textarea id="descmercancia"
-                                            maxlength="160">El abajo firmante declara bajo juramento que la información consignada en este certificado de origen es correcta verdadera que las mercancías fueron producidas</textarea>
+                                            maxlength="160"></textarea>
                                     </td>
                                     <td class="center valorfactura"><input id="clasiarancelaria" type=""
                                             class="valorfactura" maxlength="6" value="" />
@@ -242,8 +242,7 @@
             <div class="row ">
                 <div class="col l12  m12 s12 cuadro ">
                     <div class="input-field">
-
-                        <textarea id="observaciones" type="" class="materialize-textarea" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ratione voluptatum facilis expedita nam, officiis reprehenderit tempore laborum natus quos praesentium voluptatem enim nesciunt </textarea>
+                        <textarea id="observaciones" type="" class="materialize-textarea" > </textarea>
                         <label for="">10. Observaciones</label>
                     </div>
                 </div>

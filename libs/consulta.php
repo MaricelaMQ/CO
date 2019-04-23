@@ -9,8 +9,6 @@ if(isset($id)){
 }else{
         $datos='';
 }
-
-
 //var_dump($datos);
 /*****CONSULTA DESCRIPCION MERCANCIAS */
 $querydescmerca = $conn->prepare("SELECT item, descmercancia, clasiarancelaria, nofactura, valorfactura, criterorigen FROM descripcionmercancias WHERE id_certificados=?");
@@ -72,5 +70,5 @@ $descripcion = $querydescmerca->fetchAll();
 // // Mensaje de éxito en la inserción
 // echo "Se han creado las entradas exitosamente";
 // // Cerrar conexiones
- //$conn = null;
+ $conn = null;
 ?>

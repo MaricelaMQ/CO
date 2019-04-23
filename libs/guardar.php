@@ -39,7 +39,6 @@ $stmt->bindParam(26, $certificado->{"data"}[0]->{"lugarautocompe"});
 $stmt->bindParam(27, $certificado->{"data"}[0]->{"fechaautocompe"});
 $respuesta = $stmt->execute();
 
-
 $insCert = $conn->prepare("INSERT INTO certificados (Operacion, Regional, fecha) VALUES (?, ?, ?)");
 $fecha = date("Y-m-d");
 //$num = str_pad($n, 4, '0', STR_PAD_LEFT);
