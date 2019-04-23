@@ -20,15 +20,14 @@
     <link rel="stylesheet" href="css/materialize.min.css" />
     <script src="js/vendor/jquery.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/validaform.js"></script>
     
     <script type="text/javascript">
-            var id = <?php echo $id;?>;            
+            var id = <?php echo $id;?>;
             if (id!=0) {
                 var detCertificado = <?php echo json_encode($datos);?>;
-            }            
+            }
     </script>
-    
-
 </head>
 
 <body>
@@ -38,17 +37,16 @@
             <div class="col l12 m12 s12 light-blue lighten-1 center titulo">Certificado de Origen</div>
         </div>
         <!-- ****************** -->
-        <form>
+        <!-- <form> -->
         <div>
             <!-- FORMULARIO -->
             <div class="row">
-                <div class="">
+                <div class="">                
                     <label for="">DO:</label>
-                    <input id="operacion" type="text" value="" required>                    
-                    </div>
+                    <input id="operacion" type="text" value="" required>
+                </div>
             </div>
             <!-- SECCION EXPORTADOR -->
-            
             <div class="row ">
                 <div class=" col l6 s12 cuadro ">
                     <div class="row">
@@ -347,7 +345,7 @@
                 </div>
             </div>
         </div>
-    </form>
+    <!-- </form> -->
     <div id="resultado"></div>
     <script src="js/materialize.min.js"></script>
 </body>

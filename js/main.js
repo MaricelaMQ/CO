@@ -1,13 +1,18 @@
-
 $(document).ready(function () {
+
     $("#btenviarform").click(function () {
         detallemerca();
         //datos();
         // console.log(detmercancia);
     });
 //********* GUARDAR **/
-    $('#btguardar').click(function () {
-        guardar();
+    $('#btguardar').click(function () {        
+        validaform();
+        // console.log("guardar "+ valida)
+        // if(valida==true){
+        //     alert("formulario valido");
+        // //    guardar();
+        // }        
     });
 //********* BORRAR **/    
     $(document).on('click', '.borrar', function () {
@@ -46,10 +51,12 @@ $(document).ready(function () {
         $("#valorfactura").val("");
         $("#criterorigen").val("");
     }
+    
     duplicarcert();
+//  datos();
 //  listar();
 //  guardar();
-//  console.log(datos());
+  //console.log(datos());
     
 });
 
@@ -174,7 +181,7 @@ function guardar() {
     var url = "libs/guardar.php";
     var descmerca = JSON.stringify(detallemerca())
     var json = JSON.stringify(datos()); // convierte objeto a cadena JSON lo que devuelve funcion datos()
-    console.log('funcion guardar'+ descmerca);
+    //console.log('funcion guardar'+ descmerca);
     __ajax(url, {"guardar": json, "items":descmerca}) //  , "desc": descmerca
         .done(function ( info ){
              console.log( info );// Info: respuesta del servidor
@@ -182,7 +189,7 @@ function guardar() {
                 alert('Se ha guardado certificado con exito');
                 location.href ="principal.php";
             }else{
-                alert('error al guardar');    
+                alert('Error al guardar registro');
             }
         })
 
