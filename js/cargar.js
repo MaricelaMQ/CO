@@ -3,14 +3,14 @@
     // });
 
 $(document).ready(function () {
-listar();
+    listar();
 });
 
 function listar() {
     var url = "libs/listar.php";
     __ajax(url, "")
         .done(function (info) {
-             console.log('INFO '+ info); //info información obtenida en formato JSON
+             //console.log('INFO '+ info); //info información obtenida en formato JSON
             if(info=='N'){
                 html='<strong>No hay información</strong>'
             }else{
@@ -24,7 +24,7 @@ function listar() {
             html+= '<td></td>';
             html+= '<td></td>';
             html+= '</tr></thead>';
-             console.log(valores);
+             //console.log(valores);
              html+= '<tbody><tr>';
             for (var i in valores.data) {
                 //console.log(valores.data[i].NumeroCertificado);
@@ -41,4 +41,13 @@ function listar() {
             }
             $("#resultado").html(html);
         });
+}
+
+function __ajax(url, data) {
+    var ajax = $.ajax({
+        "method": "POST",
+        "url": url,
+        "data": data
+    })
+    return ajax;
 }

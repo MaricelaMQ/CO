@@ -52,6 +52,13 @@ $tablaUno = '';
                     $tablaUno .= '<td style="width:67px" class="borderecho centrar"><p>'. $desc['criterorigen']  . '</p></td>';
                     $tablaUno .= '</tr>';
             }
+setlocale(LC_TIME, 'es_ES', 'esp_esp'); 
+
+$fechaexp = strftime("%d de %B de %Y", strtotime($datos["FechaExp"]));
+$FechaAutoCompe = strftime("%d de %B de %Y", strtotime($datos["FechaAutoCompe"]));
+ 
+//echo $fechaexp; 
+
 //$tablaUno .='</table>';
 
     $content = ''; 
@@ -146,7 +153,7 @@ $tablaUno = '';
                 <p class="centrar"><u>   COSTA RICA   </u><br/>
                 (pais de importación)</p>
                 <p>Lugar y fecha, firma del exportador</p>
-                <p> '. $datos["LugarExp"]. ', '. $datos["FechaExp"]. '  </p>
+                <p> '. $datos["LugarExp"]. ', '. $fechaexp . '  </p>
                 
             </td>
             <!-- SECCION DOCE -->
@@ -154,7 +161,7 @@ $tablaUno = '';
             <p>Sobre la base del control efectuado, se certifica por este medio que la información aquí señalada es correcta y que las mercancías descritas cumplen con las disposiciones del Tratado de Libre Comercio entre la República de Colombia y la República de Costa Rica.</p>
             <p></p>
             <p>Lugar y fecha, nombre y firma del funcionario y sello de la autoridad competente:</p>
-            <p>'. $datos["LugarAutoCompe"]. ', '. $datos["FechaAutoCompe"]. '  </p>
+            <p>'. $datos["LugarAutoCompe"]. ', '. $FechaAutoCompe . '  </p> 
             <p></p>
             <p>Dirección:  '. $datos["DireccionAutoCompe"]. '</p>
             <p>Teléfono:   '. $datos["TelefonoAutoCompe"]. ' Fax:  '. $datos["FaxAutoCompe"]. '</p>

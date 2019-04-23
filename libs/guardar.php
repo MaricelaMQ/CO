@@ -1,7 +1,7 @@
 <?php
 include "conecta.php";
 $respuesta= false;
-$certificado = json_decode( $_POST["guardar"]);  // decodificar cadena JSON en cadena de objetos (array)
+$certificado =  ( $_POST["guardar"]);  // decodificar cadena JSON en cadena de objetos (array)
 $descmerca = json_decode( $_POST["items"]);  // decodificar cadena JSON en cadena de objetos (array)
 // var_dump($descmerca);
 // var_dump($descmerca->{"tabladesc"}[1]->{"descripcion"});

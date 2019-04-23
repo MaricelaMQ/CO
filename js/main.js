@@ -53,43 +53,36 @@ $(document).ready(function () {
     
 });
 
-function duplicarcert() {
-    
+function duplicarcert(){
     if (id>0){
-        
         $("#nombreexp").val(detCertificado.NombreExp);
-        
-        
-        var direccionexp = $("#direccionexp").val();
-        var telefonoexp = $("#telefonoexp").val();
-        var faxexp = $("#faxexp").val();
-        var correoexp = $("#correoexp").val();
-        var numregfiscalexp = $("#numregfiscalexp").val();
-    
-        var nombrepro = $("#nombrepro").val();
-        var direccionpro = $("#direccionpro").val();
-        var telefonopro = $("#telefonopro").val();
-        var faxpro = $("#faxpro").val();
-        var correopro = $("#correopro").val();
-        var numregfiscalpro = $("#numregfiscalpro").val();
-    
-        var nombreimp = $("#nombreimp").val();
-        var direccionimp = $("#direccionimp").val();
-        var telefonoimp = $("#telefonoimp").val();
-        var faximp = $("#faximp").val();
-        var correoimp = $("#correoimp").val();
-        var numregfiscalimp = $("#numregfiscalimp").val();
-        
-        // DATOS TABLA DESCRIPCION MERCANCIAS
-        var observaciones = $("#observaciones").val();    
-        var lugarexp = $("#lugarexp").val();
-        var fechaexp = $("#fechaexp").val();
-        var lugarautocompe = $("#lugarautocompe").val();
-        var fechaautocompe = $("#fechaautocompe").val();
-        var direccionautocompe = $("#direccionautocompe").val();
-        var telefonoautocompe = $("#telefonoautocompe").val();
-        var faxautocompe = $("#faxautocompe").val();
-        var correoautocompe = $("#correoautocompe").val();
+        $("#direccionexp").val(detCertificado.DireccionExp);
+        $("#telefonoexp").val(detCertificado.TelefonoExp);
+        $("#faxexp").val(detCertificado.FaxExp);
+        $("#correoexp").val(detCertificado.CorreoExp);
+        $("#numregfiscalexp").val(detCertificado.NumRegFiscalExp);
+        $("#nombrepro").val(detCertificado.NombrePro);
+        $("#direccionpro").val(detCertificado.DireccionPro);
+        $("#telefonopro").val(detCertificado.TelefonoPro);
+        $("#faxpro").val(detCertificado.FaxPro);
+        $("#correopro").val(detCertificado.CorreoPro);
+        $("#numregfiscalpro").val(detCertificado.NumRegFiscalPro);
+        $("#nombreimp").val(detCertificado.NombreImp);
+        $("#direccionimp").val(detCertificado.DireccionImp);
+        $("#telefonoimp").val(detCertificado.TelefonoImp);
+        $("#faximp").val(detCertificado.FaxImp);
+        $("#correoimp").val(detCertificado.CorreoImp);
+        $("#numregfiscalimp").val(detCertificado.NumRegFiscalImp);
+//DATOS TABLA DESCRIPCION MERCANCIAS
+        $("#observaciones").val(detCertificado.Observaciones);
+        $("#lugarexp").val(detCertificado.LugarExp);
+        $("#fechaexp").val(detCertificado.FechaExp);
+        $("#lugarautocompe").val(detCertificado.LugarAutoCompe);
+        $("#fechaautocompe").val(detCertificado.FechaAutoCompe);
+        $("#direccionautocompe").val(detCertificado.DireccionAutoCompe);
+        $("#telefonoautocompe").val(detCertificado.TelefonoAutoCompe);
+        $("#faxautocompe").val(detCertificado.FaxAutoCompe);
+        $("#correoautocompe").val(detCertificado.CorreoAutoCompe);
     }
     //console.log(detCertificado.DireccionExp)    
 }
