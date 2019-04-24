@@ -10,7 +10,7 @@ if(isset($id)){
         $datos='';
 }
 //var_dump($datos);
-/*****CONSULTA DESCRIPCION MERCANCIAS */
+/*****CONSULTA DESCRIPCION MERCANCIAS FORMAT(valorfactura, 2) as */
 $querydescmerca = $conn->prepare("SELECT item, descmercancia, clasiarancelaria, nofactura, valorfactura, criterorigen FROM descripcionmercancias WHERE id_certificados=?");
 $querydescmerca->execute([$id]);
 $descripcion = $querydescmerca->fetchAll();

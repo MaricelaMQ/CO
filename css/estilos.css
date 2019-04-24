@@ -9,8 +9,9 @@
   font-size: 25px;    
 }
 select {
-  height: 30px!important;
-  width: 20px!important;  
+  display: inline!important;
+  /* height: 30px!important; */
+  width: 50px!important; 
   
 }
 

@@ -205,7 +205,8 @@
                                             <option value="B">B</option>
                                             <option value="C">C</option>
                                         </select>
-                                        <!-- <input id="criterorigen" class="item" type="" maxlength="1" value="A" /> -->
+                                        
+                                        <!-- <input id="ccriterorigen" class="item" type="" maxlength="1" value="A" /> -->
                                     </td>                                    
                                     <td>
                                         <div href="#" id="agregar" class="btn waves-effect waves-light">Agregar<i

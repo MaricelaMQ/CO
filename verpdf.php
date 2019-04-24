@@ -57,7 +57,7 @@ $conteo = 0;
                     $tablaUno .= '<td colspan="3" style="width:260px; vertical-align: middle;"><p>'. $desc['descmercancia'] . '</p></td>';                                  
                     $tablaUno .= '<td style="width:82px; "class="centrar"><p>'. $desc['clasiarancelaria'] . '</p></td>';
                     $tablaUno .= '<td style="width:65px" class="centrar"><p>'. $desc['nofactura']  . '</p></td>';
-                    $tablaUno .= '<td style="width:75px" class="centrar"><p>'. $desc['valorfactura']  . '</p></td>';
+                    $tablaUno .= '<td style="width:75px" class="derecha"><p>'. number_format($desc['valorfactura'], 2, '.', ',')  . '</p></td>';
                     $tablaUno .= '<td style="width:67px" class="borderecho centrar"><p>'. $desc['criterorigen']  . '</p></td>';
                     $tablaUno .= '</tr>';
                 }else{
@@ -66,7 +66,7 @@ $conteo = 0;
                     $tablaDos .= '<td colspan="3" style="width:260px; vertical-align: middle;"><p>'. $desc['descmercancia']  . '</p></td>';
                     $tablaDos .= '<td style="width:82px; "class="centrar"><p>'. $desc['clasiarancelaria']  . '</p></td>';
                     $tablaDos .= '<td style="width:65px" class="centrar"><p>'. $desc['nofactura']  . '</p></td>';
-                    $tablaDos .= '<td style="width:75px" class="centrar"><p>'. $desc['valorfactura']  . '</p></td>';
+                    $tablaDos .= '<td style="width:75px" class="derecha"><p>'. number_format($desc['valorfactura'], 2, '.', ',')  . '</p></td>';
                     $tablaDos .= '<td style="width:67px" class="borderecho centrar"><p>'. $desc['criterorigen']  . '</p></td>';
                     $tablaDos .= '</tr>';
                 }                    
@@ -92,7 +92,11 @@ $FechaAutoCompe = strftime("%d de %B de %Y", strtotime($datos["FechaAutoCompe"])
         .centrar {
             text-align: center;
             vertical-align:middle!important;
-        }        
+        }
+        .derecha {
+            text-align: right;
+            vertical-align:middle!important;
+        }
 
         .borde {
             border:1px dotted black!important;            
@@ -206,7 +210,12 @@ $paginaDos .= '
    .centrar {
        text-align: center;
        vertical-align:middle!important;
-   }        
+   }
+   .derecha {
+    text-align: right;
+    vertical-align:middle!important;
+}
+
 
    .borde {
        border:1px dotted black!important;            
