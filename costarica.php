@@ -37,7 +37,7 @@
             <div class="col l12 m12 s12 light-blue lighten-1 center titulo">Certificado de Origen</div>
         </div>
         <!-- ****************** -->
-        <!-- <form> -->
+        <form>
         <div>
             <!-- FORMULARIO -->
             <div class="row">
@@ -345,7 +345,7 @@
                 </div>
             </div>
         </div>
-    <!-- </form> -->
+    </form>
     <div id="resultado"></div>
     <script src="js/materialize.min.js"></script>
 </body>

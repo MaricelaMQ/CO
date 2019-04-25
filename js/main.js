@@ -2,25 +2,18 @@ $(document).ready(function () {
 
     $("#btenviarform").click(function () {
         detallemerca();
-        //datos();
-        // console.log(detmercancia);
+        //datos();     // console.log(detmercancia);
     });
 //********* GUARDAR **/
     $('#btguardar').click(function () {        
-        validaform();
-        // console.log("guardar "+ valida)
-        // if(valida==true){
-        //     alert("formulario valido");
-        // //    guardar();
-        // }        
+        validaform();       
     });
-//********* BORRAR **/    
+//********* BORRAR **/
     $(document).on('click', '.borrar', function () {
         $(this).closest('tr').remove();
     });
 //********* AGREGAR DESCRIPCION**/
     $("#agregar").click(function () {
-
         var descripcion = $("#descmercancia").val();
         var clasiarancelaria = $("#clasiarancelaria").val();
         var nofactura = $("#nofactura").val();
@@ -28,6 +21,8 @@ $(document).ready(function () {
         var criterorigen = $("#criterorigen").val();
 
         //var filas = $("#descripcionmercancia tbody tr").length;
+        if ( descripcion =='' || clasiarancelaria=='' || nofactura=='' || valorfactura==''){
+            alert("Hace faltan ingresar información")}else{
         //console.log('total filas ' + filas);
         var nuevaFila = "<tr>";
         //agregar fila nueva
@@ -37,10 +32,11 @@ $(document).ready(function () {
         nuevaFila += "<td class='center valorfactura'>" + nofactura + "</td>";
         nuevaFila += "<td class='center valorfactura'>" + valorfactura + "</td>";
         nuevaFila += "<td class='center valorfactura'>" + criterorigen + "</td>";
-        nuevaFila += "<td><button class='borrar btn red'>Borrar<i class='material-icons left'>delete</i></button></td>";
+        nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button></td>";
         nuevaFila += "</tr>";
         $("#descripcionmercancia").append(nuevaFila);
         //limpiar();
+            }
         $("#descmercancia").focus();
     });
 //********* LIMPIAR TABLA  DESCRICIÓN MERCANCIAS**/
@@ -53,11 +49,8 @@ $(document).ready(function () {
     }
     
     duplicarcert();
-//  datos();
-//  listar();
-//  guardar();
-  //console.log(datos());
-    
+
+//  datos();//  listar();//  guardar(); //console.log(datos());    
 });
 
 function duplicarcert(){
@@ -197,7 +190,6 @@ function guardar() {
             alert('error al guardar');
         });
 }
-
 
 function __ajax(url, data) {
     var ajax = $.ajax({

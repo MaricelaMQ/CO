@@ -9,7 +9,7 @@
   font-size: 25px;    
 }
 select {
-  display: inline!important;
+  display: inline-block!important;
   /* height: 30px!important; */
   width: 50px!important; 
   
@@ -28,9 +28,9 @@ select {
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2), 0 3px 8px 0 rgba(0,0,0,0.19);
   
 }
-.borrar{
-  margin-left: 15px!important;
-  /* width: 80px!important; */
+.btn .borrar{
+  /* margin-left: 15px!important; */
+  width: 10px!important;
 }
 .colder{
   padding-top: 100px !important;  
