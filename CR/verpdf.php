@@ -27,7 +27,7 @@ $nu="dato1";
 if ($nu=="dato2") {
     echo "Error No existen datos ";
 } else {
-    require_once('tcpdf/tcpdf.php');
+    require_once('../tcpdf/tcpdf.php');
     $pdf = new TCPDF('P', 'mm', 'LETTER', true, 'UTF-8', false);
     $pdf->SetCreator(PDF_CREATOR);
 	$pdf->SetAuthor('Adia SAS');
@@ -261,14 +261,14 @@ $paginaDos .= '
        <!-- DETALLE Mercancias -->
        <!-- tablaDOS INSERTADA -->
        <tr>
-           <td  colspan="12" class="bordeizq borderecho" height="220px">';
+           <td  colspan="12" class="bordeizq borderecho" height="300px">';
            $paginaDos .= $tablaDos;
            $paginaDos .= '
            </td>
        </tr>
            <!-- OBSERVACIONES DOS-->           
        <tr>
-            <td colspan="12" style="" class="borde"><p>10. Observaciones<br></p></td>
+            <td colspan="12" style="" class="borde"><p>10. Observaciones<br><br></p></td>
        </tr>
        <!-- SECCION ONCE -->
        <tr>       

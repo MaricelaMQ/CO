@@ -43,5 +43,6 @@ include "conecta.php";
 //         die('Error');
 //     }
 // mysqli_free_result($resp);
-// mysqli_close($conn);
+ //mysqli_close($conn);
+ $conn = null;
 ?>
