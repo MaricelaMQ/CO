@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="css/materialize.min.css" />
-    <link rel="stylesheet" href="css/estilos.css">
-    <script src="js/vendor/jquery.js"></script>
+    <link rel="stylesheet" href="../css/materialize.min.css" />
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="icon" href="../assets/logo.ico">
+    <script src="../js/vendor/jquery.js"></script>
     <!-- <script src="js/main.js"></script> -->
-    <script src="js/cargar.js"></script>
+    <script src="../js/cargar.js"></script>
     <script></script>
     <title>Principal</title>
     
@@ -22,7 +23,7 @@
     <div id="contenedor">
     <div class="row">
                 <div class="l12 m12 s12">
-                        <a href="index.html" class="btn waves-effect waves-light pink darken-1" >
+                        <a href="../index.html" class="btn waves-effect waves-light pink darken-1" >
                         INICIO<i class="material-icons left ">home</i>
                         </a>
                         <a href="principal.php" class="btn waves-effect waves-light pink darken-1" >
@@ -39,6 +40,6 @@
     </div>
     <div id="footer" class="cuadrado"></div>
 </body>
-<script src="js/materialize.min.js"></script>
+<script src="../js/materialize.min.js"></script>
 
 </html>

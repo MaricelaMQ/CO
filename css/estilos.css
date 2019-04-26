@@ -1,7 +1,20 @@
 #contenedor{
   width: 80%;
   margin: 15px auto;
-  
+  animation-name: contenedor-animacion;
+  animation-duration: 1s;
+}
+
+@keyframes contenedor-animacion {
+0% {
+  margin-top:100%;
+}
+60% {
+  margin-top:-1%;
+}
+100% {
+  margin-top: 0%;
+}
 }
 
 .titulo{
@@ -11,8 +24,7 @@
 select {
   display: inline-block!important;
   /* height: 30px!important; */
-  width: 50px!important; 
-  
+  width: 50px!important;  
 }
 
 .cuadro{  
@@ -92,8 +104,11 @@ th{
 }
 
  .cuadrado{
+  position:fixed;
+  width:100%;   
   background-color:rgb(224, 144, 144);
   height: 10px;
+  z-index: 100;
 }
 /*input:not([type]){} */
 
@@ -103,6 +118,11 @@ th{
    bottom:0px;   
    width:100%;   
    z-index: 999;
+}
+
+.fechams{
+height: 25px!important;
+width: 130px!important;
 }
 
 

@@ -13,21 +13,23 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Certificado Origen Costa Rica</title>
+    <title>CO - Costa Rica</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="css/materialize.min.css" />
-    <link rel="stylesheet" href="css/Estilos.css" />
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/validaform.js"></script>
+    <link rel="stylesheet" href="../css/materialize.min.css" />
+    <link rel="stylesheet" href="../css/Estilos.css" />
+    <link rel="icon" href="../assets/logo.ico">
     
+    <script src="../js/vendor/jquery.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/validaform.js"></script>    
     <script type="text/javascript">
             var id = <?php echo $id;?>;
             if (id!=0) {
                 var detCertificado = <?php echo json_encode($datos);?>;
             }
     </script>
+
 </head>
 
 <body>
@@ -38,7 +40,7 @@
     <div id="contenedor">    
             <div class="row">
                 <div class="l12 m12 s12">
-                        <a href="index.html" class="btn waves-effect waves-light pink darken-1" >
+                        <a href="../index.html" class="btn waves-effect waves-light pink darken-1" >
                         INICIO<i class=" material-icons left ">home</i>
                         </a>
                         <a href="principal.php" class="btn waves-effect waves-light pink darken-1" >
@@ -56,7 +58,7 @@
             <div class="row">
                 <div class="">                
                     <label for="">DO:</label>
-                    <input id="operacion" type="text" value=""  width="50px" maxlength="20" required >
+                    <input id="operacion" type="" value=""  style="width=:50px;" maxlength="20" required >
                 </div>
             </div>
             <!-- SECCION EXPORTADOR -->
@@ -349,7 +351,7 @@
             </div>
             <div class="row">
                 <div class="col l12 center seccionboton">
-                    <a href="index.html" class="btn waves-effect waves-light" >Volver
+                    <a href="../index.html" class="btn waves-effect waves-light" >Volver
                         <i class="material-icons right">arrow_back</i>
                     </a>
                     <button class="btn waves-effect orange" type="submit" id="btguardar">Guardar
@@ -361,6 +363,6 @@
     </form>
     <div id="resultado"></div>
     <div id="footer" class="cuadrado"></div>
-    <script src="js/materialize.min.js"></script>
+    <script src="../js/materialize.min.js"></script>
 </body>
 </html>
