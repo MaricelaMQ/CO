@@ -76,17 +76,14 @@ setlocale(LC_TIME, 'es_ES', 'esp_esp');
 
 $fechaexp = strftime("%d de %B de %Y", strtotime($datos["FechaExp"]));
 $FechaAutoCompe = strftime("%d de %B de %Y", strtotime($datos["FechaAutoCompe"]));
- 
-//echo $fechaexp; 
 
-//$tablaUno .='</table>';
 
     $content = ''; 
      $content .= '
      <html>
      <head>
      <link rel="stylesheet" href="css/Estilos.css" />
-     
+     <link rel="icon" href="../assets/logo.ico">     
     <style>
         .centrar {
             text-align: center;
@@ -158,7 +155,7 @@ $FechaAutoCompe = strftime("%d de %B de %Y", strtotime($datos["FechaAutoCompe"])
             <!-- DETALLE Mercancias -->
             <!-- tablaUno INSERTADA --> 
             <tr>
-                <td  colspan="12" class="bordeizq borderecho" height="220px">';
+                <td  colspan="12" class="bordeizq borderecho" height="210px">';
                 $content .= $tablaUno;
                 $content .= '
                 </td>

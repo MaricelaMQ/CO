@@ -27,11 +27,25 @@ select {
   width: 50px!important;  
 }
 
-.cuadro{  
+.cajas{
+  margin-top: 12px;
+  padding: 15px;
+  border-width: 1px;  /*0px0px01px:;  */
+  border-radius: 5px;
+  border-color: #1987a0;
+  border-style: solid;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2), 0 3px 8px 0 rgba(0,0,0,0.19); 
+}
+
+.cuadro{
   margin: 20px !important;  
   border-width: 1px;  /*0px0px01px:;  */
   border-radius: 5px;
-  border-color: #73d9f0;
+  border-color: #1987a0;
   border-style: solid;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -124,6 +138,7 @@ th{
 height: 25px!important;
 width: 130px!important;
 }
+
 
 
 /*********************************/
