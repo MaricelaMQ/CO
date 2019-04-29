@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CO - EEUU</title>
+    <title>CO - Triangulo Norte</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/materialize.min.css" />
@@ -51,7 +51,7 @@
         </div>
         <div class="row">
             <div class="col l12 m12 s12  brown darken-1 center titulo">
-                Certificado de Origen EEUU
+                Certificado de Origen Triangulo Norte
             </div>
         </div>
         <!-- ****************** -->

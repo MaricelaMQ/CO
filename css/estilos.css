@@ -79,7 +79,7 @@ th{
 }
 
 .descripcion {
-  width: 550px!important;
+  width: 400px!important;
 }
 
 #tblresultado {
@@ -96,7 +96,7 @@ th{
 }
 
 .secc11  {
-   height: 420px!important; 
+   height: 404px!important; 
    /* height: 100%!important;  */
 }
 .seccionboton{
@@ -140,7 +140,13 @@ th{
 height: 25px!important;
 width: 130px!important;
 }
+/* .bortabla, th, td{
+  border: 1px solid black!important;
+} */
 
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date]{
+  margin: 0px!important;
+}
 
 
 /*********************************/
