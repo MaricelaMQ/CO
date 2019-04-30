@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CO - Triangulo Norte</title>
+    <title>CO - Canada</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/materialize.min.css" />
@@ -50,8 +50,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col l12 m12 s12 deep-purple lighten-1 center titulo">
-                Certificado de Origen Triangulo Norte
+            <div class="col l12 m12 s12 pink darken-2 center titulo">
+                Certificado de Origen Canada
             </div>
         </div>
         <!-- ****************** -->
@@ -67,43 +67,51 @@
                 <!-- SECCION 1 EXPORTADOR -->
                 <div class="row ">
                     <section>
-                        <div class=" col l6 s12 cajas" style="height:166px;">
+                        <div class=" col l6 s12 cajas ">
                             <div class="row">
                                 <div class="input-field">
                                     <input id="nombreexp" class="validate" type="text" value="" required>
-                                    <label for="">1. Nombre del Exportador</label>
+                                    <label for="">1. Razón social exportador</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field">
+                                    <input id="direccionexp" class="validate" type="text" value="" required>
+                                    <label for="">Dirección</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col l6 s12">
+                                    <input id="telefonoexp" type="text" class="validate" value="" required>
+                                    <label for="">Teléfono</label>
+                                </div>
+                                <div class="input-field col l6 s12">
+                                    <input id="faxexp" type="text" class="validate" value="" required>
+                                    <label for="">Fax:</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col l6 s12">
-                                    <input id="direccionexp" type="text" class="validate" value="" required>
-                                    <label for="">Dirección</label>
-                                </div>
-                                <div class="input-field col l6 s12">
-                                    <input id="numregfiscalexp" type="text" class="validate" value="" required>
-                                    <label for="">Número de Registro Fiscal:</label>
+                                    <input id="correoexp" type="text" class="validate" value="" required>
+                                    <label for="">Correo electrónico:</label>
                                 </div>
                             </div>
                         </div>
                     </section>
                     <!-- SECCION 2 PERIODO CUBIERTO -->
                     <section>
-                        <div class="col l6 s12 cajas">
+                        <div class="col l6 s12 cajas" style="height:281px;">
                             <div class="row">
                                 <div class="input-field s12">
                                     <p>2. Periodo que cubre</p>
                                     <p>Desde:
                                         <input id="fechadesde" class="fechams" type="date" value="" required>
-                                    Hasta:
+                                    </p>
+                                    <p>Hasta:
                                         <input id="fechahasta" class="fechams" type="date" value="" required>
                                     </p>
 
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col l6 s12">
-                                    <input id="numfacturacomercial" type="text" class="validate" value="" required>
-                                    <label for="">Número de Factura Comercial</label>
                                 </div>
                             </div>
                         </div>
@@ -116,17 +124,29 @@
                             <div class="row">
                                 <div class="input-field">
                                     <input id="nombrepro" type="text" class="validate" value="" required>
-                                    <label for="">3. Nombre del Productor</label>
+                                    <label for="">3. Razon social del Productor</label>
                                 </div>
-                            </div>                            
+                            </div>
                             <div class="row">
-                                <div class="input-field col l6 s6">
+                                <div class="input-field">
                                     <input id="direccionpro" type="text" class="validate" value="" required>
                                     <label for="">Dirección</label>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="input-field col l6 s6">
-                                    <input id="numregfiscalpro" type="text" class="validate" value="" required>
-                                    <label for="">Número de Registro Fiscal:</label>
+                                    <input id="telefonopro" type="text" class="validate" value="" required>
+                                    <label for="">Teléfono</label>
+                                </div>
+                                <div class="input-field col l6 s6">
+                                    <input id="faxpro" type="text" class="validate" value="" required>
+                                    <label for="">Fax:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col l6 s6">
+                                    <input id="correopro" type="text" class="validate" value="" required>
+                                    <label for="">Correo electrónico:</label>
                                 </div>
                             </div>
                         </div>
@@ -138,17 +158,29 @@
                             <section>
                                 <div class="input-field">
                                     <input id="nombreimp" type="text" class="validate" value="" required>
-                                    <label for="">4. Nombre del Importador</label>
+                                    <label for="">4. Razón social del Importador</label>
                                 </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col l6 s6">
+                            <div class="input-field">
                                 <input id="direccionimp" type="text" class="validate" value="" required>
                                 <label for="">Dirección</label>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="input-field col l6 s6">
-                                <input id="numregfiscalimp" type="text" class="validate" value="" required>
-                                <label for="">Número de Registro Fiscal:</label>
+                                <input id="telefonoimp" type="text" class="validate" value="" required>
+                                <label for="">Teléfono</label>
+                            </div>
+                            <div class="input-field col l6 s6">
+                                <input id="faximp" type="text" class="validate" value="" required>
+                                <label for="">Fax:</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col l6 s6">
+                                <input id="correoimp" type="text" class="validate" value="" required>
+                                <label for="">Correo electrónico:</label>
                             </div>
                         </div>
                     </div>
@@ -159,14 +191,14 @@
                         <!-- SECCION 5 DESCRIPCION MERCANCIAS -->
                         <section>
                             <div class="row">
-                                <table class="center responsive-table bortabla">
+                                <table class="center responsive-table">
                                     <thead>
                                         <tr>
                                             <th class="descripcion">5. Descripción de las mercancias</th>
                                             <th class="valorfactura">6. Clasificación Arancelaria</th>
                                             <th class="valorfactura">7. Criterio preferencial</th>
-                                            <th class="valorfactura">8. Otros Criterios</th>
-                                            <th class="valorfactura">9. Productor</th>
+                                            <th class="valorfactura">8. Productor</th>
+                                            <th class="valorfactura">9. Prueba de Valor</th>
                                             <th class="valorfactura">10. País de origen</th>
                                         </tr>
                                     </thead>
@@ -175,16 +207,19 @@
                                             <td class="descripcion">
                                                 <textarea id="descmercancia" maxlength="160"></textarea>
                                             </td>
-                                            <td class="center valorfactura"><input id="clasiarancelaria" type=""
-                                                    class="valorfactura" maxlength="6" value="" />
+                                            <td class="center valorfactura">
+                                                <input id="clasiarancelaria" type="" class="valorfactura" maxlength="6"
+                                                    value="" />
                                             </td>
-                                            <td class="center valorfactura"><input id="critpreferencial" type=""
-                                                    class="valorfactura" maxlength="10" value="" />
+                                            <td class="center valorfactura">
+                                                <input id="critpreferencial" type="" class="valorfactura" maxlength="10"
+                                                    value="" />
                                             </td>
-                                            <td class="center valorfactura"><input id="otroscriterios" type=""
+                                            <td class="center valorfactura"><input id="productor" type=""
                                                     class="valorfactura" value="" /></td>
-                                            <td class="center"><input id="productor" type="" class="valorfactura"
+                                            <td class="center"><input id="pruebadevalor" type="" class="valorfactura"
                                                     value="" /></td>
+
                                             <td class="center">
                                                 <input id="paisdeorigen" disabled class="valorfactura" type=""
                                                     maxlength="1" value="PAIS ORIGEN" />
@@ -195,7 +230,7 @@
                                                 </select> -->
                                             </td>
                                             <td>
-                                                <div href="#" id="agregar" class="waves-effect waves-light btn">Agregar<i
+                                                <div href="#" id="agregar" class="btn waves-effect waves-light"><i
                                                         class="material-icons left">add</i></div>
                                             </td>
                                         </tr>
@@ -239,12 +274,18 @@
                         <div class="row">
                             <div class="input-field col l4 m12 s12">
                                 <input id="nombreautoriza" class="validate" type="text" value="" required>
-                                <label for="">Nombre persona que autoriza</label>
+                                <label for="">Nombre persona que autoriza:</label>
+                            </div>
+                            <div class="input-field col l4 m12 s4">
+                                <input id="empresaautoriza" type="text" class="validate" value="" required>
+                                <label for="">Empresa:</label>
                             </div>
                             <div class="input-field col l4 m12 s4">
                                 <input id="cargopersonautoriza" type="text" class="validate" value="" required>
                                 <label for="">Cargo</label>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="input-field col l2 m12 s2">
                                 <input id="telpersonautoriza" type="text" class="validate" value="" required>
                                 <label for="">Telefono</label>
@@ -253,9 +294,13 @@
                                 <input id="faxpersonautoriza" type="text" class="validate" value="" required>
                                 <label for="">Fax:</label>
                             </div>
+                            <div class="input-field col l2 s2">
+                                <input id="correopersonautoriza" type="text" class="validate" value="" required>
+                                <label for="">Correo electrónico:</label>
+                            </div>
                         </div>
                     </div>
-                </div>                
+                </div>
                 <!-- SECCION FINAL - BUTTONS -->
                 <section>
                     <div class="row">

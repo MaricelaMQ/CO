@@ -56,24 +56,25 @@
             <div>
                 <!-- FORMULARIO -->
                 <section>
-                    <div class="cajas">
-                        <div class="row">
-                            <div class="">
-                                <label for="">DO:</label>
-                                <input id="operacion" type="" value="" style="width=:50px;" maxlength="20" required>
+                    <div class="row">
+                        <div class="col l12 cajas">
+                            <div class="row"><p>                                
+                                    <label for="">DO:</label>
+                                    <input id="operacion" type="" value="" style="width=:50px;" maxlength="20" required>
+                            </p>
                             </div>
-                        </div>
-                        <div class="row">
-                            País Exportador: <input id="paisexp" disabled value="PAIS EXPORTADOR" type=""> País
-                            importador:
-                            <input id="paisexp" value="" type="">
+                            <div class="row">
+                                País Exportador: <input id="paisexp" disabled value="PAIS EXPORTADOR" type=""> País
+                                importador:
+                                <input id="paisexp" value="" type="">
+                            </div>
                         </div>
                     </div>
                 </section>
                 <!-- TABLA DENOMINACION DE LAS MERCANCIAS -->
                 <section>
-                    <div class="cajas">
-                        <div class="row">
+                    <div class="row">
+                        <div class="col l12 cajas">
                             <table class="center">
                                 <thead>
                                     <tr>
@@ -110,19 +111,19 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="row">
-                            <table id="descripcionmercancia" class="highlight responsive-table striped bordered">
-                                <tbody>
-                                </tbody>
-                            </table>
+                            <div class="row">
+                                <table id="descripcionmercancia" class="highlight responsive-table striped bordered">
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </section>
                 <!-- DECLARACION DE ORIGEN -->
                 <section>
-                    <div class="cajas">
-                        <div class="row">
+                    <div class="row">
+                        <div class="col l12 cajas">
                             <p class="center"> <b>DECLARACION DE ORIGEN</b></p>
                             <p class="">DECLARAMOS que las mercancias indicadas en el presente formulario,
                                 correspondientes
@@ -134,13 +135,14 @@
                                 <input id="acuerdo" disabled type="" class="valorfactura" value="(ACE-72)" /> de
                                 conformidad
                                 con el siguiente desglose.</p>
+                                <br>
                         </div>
                     </div>
                 </section>
                 <!-- NORMAS -->
                 <section>
-                    <div class="cajas">
-                        <div class="row">
+                    <div class="row">
+                        <div class="col l12 m12 s12 cajas">
                             <table id="normas" class="center">
                                 <thead>
                                     <tr>
@@ -154,73 +156,76 @@
                 </section>
                 <!-- EXPORTADOR PRODUCTOR -->
                 <section>
-                    <div class="cajas">
-                        <div class="row">
+                    <div class="row">
+                        <div class="col l12 cajas">
                             <p><b>EXPORTADOR O PRODUCTOR</b></p>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col l4">
-                                <input id="razonsocialexpopro" class="validate" type="text" value="" required>
-                                <label for="">Razón social</label>
-                            </div>
-                            <div class="input-field col l4">
-                                <input id="direccionexpopro" class="validate" type="text" value="" required>
-                                <label for="">Dirección</label>
-                            </div>
-                            <div class=" input-field col l4">
-                                <span>Fecha   </span>
-                                <input id="fechaexpopro" style="width: 130px!important;" type="date" required>
+                            <div class="row">
+                                <div class="input-field col l4">
+                                    <input id="razonsocialexpopro" class="validate" type="text" value="" required>
+                                    <label for="">Razón social</label>
+                                </div>
+                                <div class="input-field col l4">
+                                    <input id="direccionexpopro" class="validate" type="text" value="" required>
+                                    <label for="">Dirección</label>
+                                </div>
+                                <div class=" input-field col l4">
+                                    <span>Fecha   </span>
+                                    <input id="fechaexpopro" style="width: 130px!important;" type="date" required>
 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
                 <!-- IMPORTADOR -->
                 <section>
-                    <div class="cajas">
-                        <div class="row">
+                    <div class="row">
+                        <div class="col l12 cajas">
                             <p><b>IMPORTADOR</b></p>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col l6 m4 s12">
-                                <input id="razonsocialimp" class="validate" type="text" value="" required>
-                                <label for="">Razón social</label>
-                            </div>
-                            <div class="input-field col l6 m4 s12">
-                                <input id="direccionimp" class="validate" type="text" value="" required>
-                                <label for="">Dirección</label>
+                            <div class="row">
+                                <div class="input-field col l6 m4 s12">
+                                    <input id="razonsocialimp" class="validate" type="text" value="" required>
+                                    <label for="">Razón social</label>
+                                </div>
+                                <div class="input-field col l6 m4 s12">
+                                    <input id="direccionimp" class="validate" type="text" value="" required>
+                                    <label for="">Dirección</label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
                 <!-- TRANSPORTE/ EMBARQUE -->
                 <section>
-                    <div class="cajas">
-                        <div class="row">
-                            <div class="input-field col l6 m4 s12">
-                                <input id="mediotransporte" class="validate" type="text" value="" required>
-                                <label for="">Medio de transporte</label>
-                            </div>
-                            <div class="input-field col l6 m4 s12">
-                                <input id="puertoembarque" class="validate" type="text" value="" required>
-                                <label for="">Puerto o lugar de embarque</label>
+                    <div class="row">
+                        <div class="col l12 cajas">
+                            <div class="row"><p>
+                                
+                                    <div class="input-field col l6 m4 s12">
+                                        <input id="mediotransporte" class="validate" type="text" value="" required>
+                                        <label for="">Medio de transporte</label>
+                                    </div>
+                                    <div class="input-field col l6 m4 s12">
+                                        <input id="puertoembarque" class="validate" type="text" value="" required>
+                                        <label for="">Puerto o lugar de embarque</label>
+                                    </div>
+                            </p>
                             </div>
                         </div>
                     </div>
                 </section>
                 <!-- OBSERVACIONES -->
                 <section>
-                    <div class="cajas">
-                        <div class="row">
-                            <div class="input-field col l12 m12 s12">
+                    <div class="row">
+                        <div class="cajas col l12 m12 s12">
+                            <div class="input-field ">
                                 <textarea id="observaciones" type="" class="materialize-textarea"> </textarea>
                                 <label for="">Observaciones</label>
                             </div>
                         </div>
                     </div>
                 </section>
-                <!-- ######################################################################################################## -->
-                <div class="row"></div>
+                <!-- ######################################################################################################## -->       
                 <div class="row">
                     <div class="col l12 center seccionboton">
                         <a href="../index.html" class="btn waves-effect waves-light">Volver
