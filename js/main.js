@@ -1,45 +1,23 @@
 $(document).ready(function () {
+        duplicarcert(id);         //  datos();//  listar();//  guardar(); //console.log(datos());
 
     $("#btenviarform").click(function () {
-        detallemerca();
-        //datos();     // console.log(detmercancia);
+        detallemerca();        //datos();     // console.log(detmercancia);
     });
 //********* GUARDAR **/
     $('#btguardar').click(function () {        
         validaform();       
     });
-//********* BORRAR **/
+//********* BORRAR ITEM DESCRIPCION MERCANCIAS **/
     $(document).on('click', '.borrar', function () {
         $(this).closest('tr').remove();
     });
-//********* AGREGAR DESCRIPCION**/
+//********* AGREGAR ITEM DESCRIPCION MERCANCIAS**/
     $("#agregar").click(function () {
-        var descripcion = $("#descmercancia").val();
-        var clasiarancelaria = $("#clasiarancelaria").val();
-        var nofactura = $("#nofactura").val();
-        var valorfactura = $("#valorfactura").val();
-        var criterorigen = $("#criterorigen").val();
-
-        //var filas = $("#descripcionmercancia tbody tr").length;
-        if ( descripcion =='' || clasiarancelaria=='' || nofactura=='' || valorfactura==''){
-            alert("Hace faltan ingresar información")}else{
-        //console.log('total filas ' + filas);
-        var nuevaFila = "<tr>";
-        //agregar fila nueva
-        // nuevaFila += "<td>" + (filas + 1) + "</td>";//
-        nuevaFila += "<td class='descripcion'>" + descripcion + "</td>";
-        nuevaFila += "<td class='center valorfactura'>" + clasiarancelaria + "</td>";
-        nuevaFila += "<td class='center valorfactura'>" + nofactura + "</td>";
-        nuevaFila += "<td class='center valorfactura'>" + valorfactura + "</td>";
-        nuevaFila += "<td class='center valorfactura'>" + criterorigen + "</td>";
-        nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button></td>";
-        nuevaFila += "</tr>";
-        $("#descripcionmercancia").append(nuevaFila);
-        //limpiar();
-            }
-        $("#descmercancia").focus();
+        agregardescripcion(0);
+        
     });
-//********* LIMPIAR TABLA  DESCRICIÓN MERCANCIAS**/
+//********* LIMPIAR TABLA  DESCRIPCIÓN MERCANCIAS**/
     function limpiar() {
         $("#descmercancia").val("");
         $("#clasiarancelaria").val("")
@@ -47,13 +25,54 @@ $(document).ready(function () {
         $("#valorfactura").val("");
         $("#criterorigen").val("");
     }
-    
-    duplicarcert();
-
-//  datos();//  listar();//  guardar(); //console.log(datos());    
 });
+/* ######################################################### FUNCTIONS  #########################################################*/
 
-function duplicarcert(){
+function agregardescripcion(a) {
+    //console.log("valor a: " + a);        
+        //var filas = $("#descripcionmercancia tbody tr").length;
+                if (a == 0){
+                    var descripcion = $("#descmercancia").val();
+                    var clasiarancelaria = $("#clasiarancelaria").val();
+                    var nofactura = $("#nofactura").val();
+                    var valorfactura = $("#valorfactura").val();
+                    var criterorigen = $("#criterorigen").val();
+                    if ( descripcion =='' || clasiarancelaria=='' || nofactura=='' || valorfactura==''){
+                        alert("Hace faltan ingresar información")}
+                        else{
+                            var nuevaFila = "<tr>"; //console.log('total filas ' + filas);        // nuevaFila += "<td>" + (filas + 1) + "</td>";//        
+                            nuevaFila += "<td class=''>" + a + "</td>";
+                            nuevaFila += "<td class='descripcion'>" + descripcion + "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + clasiarancelaria + "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + nofactura + "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + valorfactura + "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + criterorigen + "</td>";
+                            nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button></td>";
+                            nuevaFila += "</tr>";
+                            $("#descripcionmercancia").append(nuevaFila);
+                            $("#descmercancia").focus();        //limpiar();
+                }                        
+            }else{
+                //console.log(detMercancias);
+                $.each(detMercancias, function(i, item) {
+                    //console.log(item["valorfactura"]);
+                    var nuevaFila = "<tr>";
+                    nuevaFila += "<td class=''>" + a + "</td>";
+                            nuevaFila += "<td class='descripcion'>" + item["descmercancia"] + "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + item["clasiarancelaria"] +  "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + item["nofactura"] +  "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + item["valorfactura"] + "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + item["criterorigen"] + "</td>";
+                            nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button></td>";
+                            nuevaFila += "</tr>";
+                            $("#descripcionmercancia").append(nuevaFila);
+                });
+            }
+        
+    
+}
+
+function duplicarcert(id){
     if (id>0){
         $("#nombreexp").val(detCertificado.NombreExp);
         $("#direccionexp").val(detCertificado.DireccionExp);
@@ -73,7 +92,6 @@ function duplicarcert(){
         $("#faximp").val(detCertificado.FaxImp);
         $("#correoimp").val(detCertificado.CorreoImp);
         $("#numregfiscalimp").val(detCertificado.NumRegFiscalImp);
-//DATOS TABLA DESCRIPCION MERCANCIAS
         $("#observaciones").val(detCertificado.Observaciones);
         $("#lugarexp").val(detCertificado.LugarExp);
         $("#fechaexp").val(detCertificado.FechaExp);
@@ -83,19 +101,20 @@ function duplicarcert(){
         $("#telefonoautocompe").val(detCertificado.TelefonoAutoCompe);
         $("#faxautocompe").val(detCertificado.FaxAutoCompe);
         $("#correoautocompe").val(detCertificado.CorreoAutoCompe);
-    }
-    //console.log(detCertificado.DireccionExp)    
+        agregardescripcion(1);
+        
+    }    
 }
 
 function detallemerca(){
-    // alert('mensaje de muestra ');
+    alert('mensaje de muestra ');
     detmercancia = [];
         $('#descripcionmercancia tr').each(function () {
-            var descripcion = $(this).find('td').eq(0).html();
-            var clasiarancelaria = $(this).find('td').eq(1).html();
-            var nofactura = $(this).find('td').eq(2).html();
-            var valorfactura = $(this).find('td').eq(3).html();
-            var criterorigen = $(this).find('td').eq(4).html();
+            var descripcion = $(this).find('td').eq(1).html();
+            var clasiarancelaria = $(this).find('td').eq(2).html();
+            var nofactura = $(this).find('td').eq(3).html();
+            var valorfactura = $(this).find('td').eq(4).html();
+            var criterorigen = $(this).find('td').eq(5).html();
             var valor = {
                 descripcion, clasiarancelaria, nofactura, valorfactura, criterorigen};
             detmercancia.push(valor);
@@ -109,8 +128,8 @@ function detallemerca(){
 function datos(){
     var datos = [];
     var operacion = $("#operacion").val();
-    var nombreexp = $("#nombreexp").val();    
-    var direccionexp = $("#direccionexp").val();
+    var nombreexp = $("#nombreexp").val().toUpperCase();
+    var direccionexp = $("#direccionexp").val().toUpperCase();
     var telefonoexp = $("#telefonoexp").val();
     var faxexp = $("#faxexp").val();
     var correoexp = $("#correoexp").val();
@@ -174,10 +193,11 @@ function guardar() {
     var url = "libs/guardar.php";
     var descmerca = JSON.stringify(detallemerca())
     var json = JSON.stringify(datos()); // convierte objeto a cadena JSON lo que devuelve funcion datos()
-    //console.log('funcion guardar'+ descmerca);
+    console.log('funcion guardar'+ descmerca);
     __ajax(url, {"guardar": json, "items":descmerca}) //  , "desc": descmerca
         .done(function ( info ){
              console.log( info );// Info: respuesta del servidor
+
             if ( info ==1 ){
                 alert('Se ha guardado certificado con exito');
                 location.href ="principal.php";

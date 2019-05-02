@@ -5,7 +5,8 @@
 //          var_dump($id);
     }else{
           $id=0;
-          $datos=0;          
+          $datos=0;
+          $descripcion =0;
     }
 ?>
 <!DOCTYPE html>
@@ -25,8 +26,10 @@
     <script src="../js/validaform.js"></script>    
     <script type="text/javascript">
             var id = <?php echo $id;?>;
+            //console.log("valor id: "+ id);
             if (id!=0) {
-                var detCertificado = <?php echo json_encode($datos);?>;
+                var detCertificado = <?php echo json_encode($datos);?>;                
+                var detMercancias = <?php echo json_encode($descripcion);?>;
             }
     </script>
 
@@ -52,7 +55,7 @@
             <div class="col l12 m12 s12 light-blue lighten-1 center titulo">Certificado de Origen COSTA RICA</div>
         </div>
         <!-- ****************** -->
-        <form>
+        <!-- <form> -->
         <div>
             <!-- FORMULARIO -->
             <div class="row">
@@ -66,7 +69,7 @@
                 <div class=" col l6 s12 cuadro ">
                     <div class="row">
                         <div class="input-field">                            
-                            <input id="nombreexp" class="validate" type="text" value="" required>
+                            <input id="nombreexp" class="validate" type="text" value=""  required>
                             <label for="">1. Nombre del Exportador</label>
                         </div>
                     </div>
@@ -360,7 +363,7 @@
                 </div>
             </div>
         </div>
-    </form>
+    <!-- </form> -->
     <div id="resultado"></div>
     <div id="footer" class="cuadrado"></div>
     <script src="../js/materialize.min.js"></script>

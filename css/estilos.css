@@ -1,3 +1,7 @@
+.oculto{
+  display:none;
+}
+
 #contenedor{
   width: 80%;
   margin: 15px auto;
@@ -81,6 +85,7 @@ th{
 
 .descripcion {
   width: 400px!important;
+  text-align: left!important;
 }
 
 #tblresultado {
@@ -145,8 +150,21 @@ width: 130px!important;
   border: 1px solid black!important;
 } */
 
-input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date]{
+input:not([type]), input[type=text], input[type=email], input[type=url], input[type=time], input[type=date], textarea{
   margin: 0px!important;
+  text-transform: uppercase;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+  text-transform: none;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  text-transform: none;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  text-transform: none;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  text-transform: none;
 }
 
 

@@ -47,7 +47,7 @@ $tablaUno = '<table>';
 $tablaDos = '<table>';
 $merca = $datos["NombreExp"];
 $conteo = 0;
-            foreach($descripcion as $desc) {                
+            foreach($descripcion as $desc) {
                 $conteo += strlen($desc['descmercancia']);
                 if ($conteo<=630){                    
                     $tablaUno .= '<tr>';
@@ -62,7 +62,7 @@ $conteo = 0;
                 }else{
                     $tablaDos .= '<tr>';
                     $tablaDos .= '<td style="width:30px" class="centrar">'. $desc['item'] . '</td>';
-                    $tablaDos .= '<td colspan="3" style="width:260px; vertical-align: middle;"><p>'. $desc['descmercancia']  . '</p></td>';
+                    $tablaDos .= '<td colspan="3" style="width:260px; vertical-align: middle;"><p>'. strtoupper($desc['descmercancia'])  . '</p></td>';
                     $tablaDos .= '<td style="width:82px; "class="centrar"><p>'. $desc['clasiarancelaria']  . '</p></td>';
                     $tablaDos .= '<td style="width:65px" class="centrar"><p>'. $desc['nofactura']  . '</p></td>';
                     $tablaDos .= '<td style="width:75px" class="derecha"><p>'. number_format($desc['valorfactura'], 2, '.', ',')  . '</p></td>';
