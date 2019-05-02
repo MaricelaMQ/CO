@@ -1,10 +1,11 @@
 <?php
 include "conecta.php";
-    $sql = 'select * from certificados';
+    $sql = 'select * from vista_certificados';
     // $nume = $conn->query("select max(id) from  certificados")->fetchColumn();
     // echo $nume;
     //$resp = $conn->query($sql, PDO::FETCH_ASSOC);
-    $resp = $conn->query("select id, Operacion, Regional, Fecha from  certificados")->fetchColumn();
+    $resp = $conn->query("select id, Operacion, Regional, Fecha from certificados")->fetchColumn();
+    //$resp = $conn->query("select id, Operacion, Regional, Fecha from  certificados")->fetchColumn();
   
     if ($resp <1){
             echo "N";

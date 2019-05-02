@@ -17,10 +17,11 @@ function listar() {
             var valores = JSON.parse(info); //codifica cadena a objeto
             html='<table id="tblresultado" class="table table-striped table-hover">';
             html+= '<thead class="thead-dark"><tr>';            
-            html+= '<td style="text-align: center">Numero Certificado</td>';
-            html+= '<td style="text-align: center">Operación</td>';
-            html+= '<td style="text-align: center"> Formato</td>';
-            html+= '<td style="text-align: center">Fecha</td>';
+            // html+= '<td style="text-align: center">Numero Certificado</td>';
+            html+= '<td style="text-align: center">OPERACION</td>';
+            html+= '<td style="text-align: center">FORMATO</td>';
+            html+= '<td style="text-align: center">FECHA</td>';
+            html+= '<td style="text-align: center">EXPORTADOR</td>';
             html+= '<td></td>';
             html+= '<td></td>';
             html+= '</tr></thead>';
@@ -28,10 +29,11 @@ function listar() {
              html+= '<tbody><tr>';
             for (var i in valores.data) {
                 //console.log(valores.data[i].NumeroCertificado);
-                html+= '<td>'+ valores.data[i].id + '</td>';
-                html+= '<td>' + valores.data[i].Operacion + '</td>';
-                html+= '<td>' + valores.data[i].Regional + '</td>';
-                html+= '<td>' + valores.data[i].Fecha + '</td>';
+                //html+= '<td>'+ valores.data[i].id + '</td>';
+                html+= '<td>' + valores.data[i].operacion + '</td>';
+                html+= '<td>' + valores.data[i].regional + '</td>';
+                html+= '<td>' + valores.data[i].fecha + '</td>';
+                html+= '<td style="text-align: left!important;">' + valores.data[i].nombreexp + '</td>';
                 html+= '<td><a href="verpdf.php?p='+ valores.data[i].id +'" target="_blank">Ver Pdf</a></td>';
                 html+= '<td><a href="costarica.php?p='+ valores.data[i].id +'" target="_blank">Duplicar</a></td>';
                 html+= '</tr>';
