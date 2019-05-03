@@ -60,9 +60,10 @@ select {
   -o-border-radius: 5px;
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2), 0 3px 8px 0 rgba(0,0,0,0.19);  
 }
-.btn .borrar{
-  /* margin-left: 15px!important; */
-  width: 10px!important;
+.btn, .borrar{ 
+  /* width:10px!important;  */
+  padding: 0px 1rem!important;
+  text-transform: none!important;
 }
 .colder{
   padding-top: 100px !important;  

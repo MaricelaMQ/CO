@@ -11,6 +11,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="ES">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,37 +21,38 @@
     <link rel="stylesheet" href="../css/materialize.min.css" />
     <link rel="stylesheet" href="../css/Estilos.css" />
     <link rel="icon" href="../assets/logo.ico">
-    
+
     <script src="../js/vendor/jquery.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/validaform.js"></script>    
+    <script src="../js/validaform.js"></script>
     <script type="text/javascript">
-            var id = <?php echo $id;?>;
-            //console.log("valor id: "+ id);
-            if (id!=0) {
-                var detCertificado = <?php echo json_encode($datos);?>;                
-                var detMercancias = <?php echo json_encode($descripcion);?>;
-            }
+    var id = <?php echo $id;?>;
+    var idUpdate = [];
+    //console.log("valor id: "+ id);
+    if (id != 0) {
+        var detCertificado = <?php echo json_encode($datos);?>;
+        var detMercancias = <?php echo json_encode($descripcion);?>;
+    }
     </script>
 
 </head>
 
 <body>
-<div class="row">
+    <div class="row">
         <div class="col l12 cuadrado">
         </div>
     </div>
-    <div id="contenedor">    
-            <div class="row">
-                <div class="l12 m12 s12">
-                        <a href="../index.html" class="btn waves-effect waves-light pink darken-1" >
-                        INICIO<i class=" material-icons left ">home</i>
-                        </a>
-                        <a href="principal.php" class="btn waves-effect waves-light pink darken-1" >
-                        Lista Certificados<i class=" material-icons left ">format_indent_increase</i>
-                        </a>
-                </div>
-            </div>            
+    <div id="contenedor">
+        <div class="row">
+            <div class="l12 m12 s12">
+                <a href="../index.html" class="btn waves-effect waves-light pink darken-1">
+                    INICIO<i class=" material-icons left ">home</i>
+                </a>
+                <a href="principal.php" class="btn waves-effect waves-light pink darken-1">
+                    Lista Certificados<i class=" material-icons left ">format_indent_increase</i>
+                </a>
+            </div>
+        </div>
         <div class="row">
             <div class="col l12 m12 s12 light-blue lighten-1 center titulo">Certificado de Origen COSTA RICA</div>
         </div>
@@ -59,17 +61,17 @@
         <div>
             <!-- FORMULARIO -->
             <div class="row">
-                <div class="">                
+                <div class="">
                     <label for="">DO:</label>
-                    <input id="operacion" type="" value=""  style="width=:50px;" maxlength="20" required >
+                    <input id="operacion" type="" value="" style="width=:50px;" maxlength="20" required>
                 </div>
             </div>
             <!-- SECCION EXPORTADOR -->
             <div class="row ">
                 <div class=" col l6 s12 cuadro ">
                     <div class="row">
-                        <div class="input-field">                            
-                            <input id="nombreexp" class="validate" type="text" value=""  required>
+                        <div class="input-field">
+                            <input id="nombreexp" class="validate" type="text" value="" required>
                             <label for="">1. Nombre del Exportador</label>
                         </div>
                     </div>
@@ -206,29 +208,34 @@
                             <tbody>
                                 <tr>
                                     <td class="descripcion">
-                                        <textarea id="descmercancia"
-                                            maxlength="160"></textarea>
+                                        <textarea id="descmercancia" maxlength="160"></textarea>
                                     </td>
                                     <td class="center valorfactura"><input id="clasiarancelaria" type=""
                                             class="valorfactura" maxlength="6" value="" />
                                     </td>
                                     <td class="center valorfactura"><input id="nofactura" type="" class="valorfactura"
                                             maxlength="10" value="" />
-                                    </td>                                    
-                                        <td class="center valorfactura"><input id="valorfactura" type=""
-                                                class="valorfactura" value="" /></td>
+                                    </td>
+                                    <td class="center valorfactura"><input id="valorfactura" type=""
+                                            class="valorfactura" value="" /></td>
                                     <td class="center">
                                         <select id="criterorigen" name="" class="validate">
                                             <option value="A" selected>A</option>
                                             <option value="B">B</option>
                                             <option value="C">C</option>
                                         </select>
-                                        
+
                                         <!-- <input id="ccriterorigen" class="item" type="" maxlength="1" value="A" /> -->
-                                    </td>                                    
+                                    </td>
                                     <td>
-                                        <div href="#" id="agregar" class="btn waves-effect waves-light">Agregar<i
-                                                class="material-icons left">add</i></div></td>
+                                        <div title="Agregar nuevo item" href="#" id="agregar"
+                                            class="btn waves-effect waves-light"><i class="material-icons">add</i></div>
+                                        <div title="Aceptar cambios"href="#" id="modificar" class=" oculto btn blue waves-effect waves-light">
+                                            <i class="material-icons">check</i></div>
+                                        <div title="Cancelar" href="#" id="cancelar"
+                                            class=" oculto btn orange waves-effect waves-light"><i
+                                                class="material-icons">cancel</i></div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -261,7 +268,7 @@
             <div class="row ">
                 <div class="col l12  m12 s12 cuadro ">
                     <div class="input-field">
-                        <textarea id="observaciones" type="" class="materialize-textarea" > </textarea>
+                        <textarea id="observaciones" type="" class="materialize-textarea"> </textarea>
                         <label for="">10. Observaciones</label>
                     </div>
                 </div>
@@ -327,7 +334,8 @@
                         <div class="row ">
                             <div class="">
                                 <label for="">Dirección</label>
-                                <input id="direccionautocompe" type="" class="validate" style="width:415px" value="" required>
+                                <input id="direccionautocompe" type="" class="validate" style="width:415px" value=""
+                                    required>
                             </div>
                         </div>
 
@@ -354,7 +362,7 @@
             </div>
             <div class="row">
                 <div class="col l12 center seccionboton">
-                    <a href="../index.html" class="btn waves-effect waves-light" >Volver
+                    <a href="../index.html" class="btn waves-effect waves-light">Volver
                         <i class="material-icons right">arrow_back</i>
                     </a>
                     <button class="btn waves-effect orange" type="submit" id="btguardar">Guardar
@@ -363,9 +371,10 @@
                 </div>
             </div>
         </div>
-    <!-- </form> -->
-    <div id="resultado"></div>
-    <div id="footer" class="cuadrado"></div>
-    <script src="../js/materialize.min.js"></script>
+        <!-- </form> -->
+        <div id="resultado"></div>
+        <div id="footer" class="cuadrado"></div>
+        <script src="../js/materialize.min.js"></script>
 </body>
+
 </html>

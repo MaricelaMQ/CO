@@ -1,52 +1,29 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
+     <link rel="stylesheet" href="../css/estilos.css">
 
-    <script src="js/vendor/jquery.js"></script>
-    <script type="text/javascript">
-        <link rel="stylesheet" href="css/Estilos.css" />
-        $(document).ready(function () {
-            $(document).on('click', '.borrar', function () {
-                $(this).closest('tr').remove();
-            });
+    <script src="../js/vendor/jquery.js"></script>
+<script type="text/javascript">
+    function modificando(numero){
+	 $("#variableModificando").val(numero);
+	
+	tabla = document.getElementById("IDTABLA");
+        fila = 1;
+console.log("fila: "+ fila);
 
-            $("#agregar").click(function () {
+        for (var i = 0; i < 3; i++) {
+console.log("for: "+ fila);
+            tabla.rows[numero].cells[0].innerHTML = $("#COL1").val();
+            tabla.rows[numero].cells[1].innerHTML = $("#COL2").val();
+            tabla.rows[numero].cells[2].innerHTML = $("#COL3").val();
+			
 
-                var descripcion = $("#descmercancia").val();
-                var clasiarancelaria = $("#clasiarancelaria").val();
-                var nofactura = $("#nofactura").val();
-                var valorfactura = $("#valorfactura").val();
-                var criterorigen = $("#criterorigen").val();
-
-                var filas = $("#descripcionmercancia tbody tr").length;
-                console.log('total filas ' + filas);
-
-                var nuevaFila = "<tr>";
-                //agregar fila nueva
-                nuevaFila += "<td>" + (filas + 1) + "</td>";
-                nuevaFila += "<td>" + descripcion + "</td>";
-                nuevaFila += "<td>" + clasiarancelaria + "</td>";
-                nuevaFila += "<td>" + nofactura + "</td>";
-                nuevaFila += "<td>" + valorfactura + "</td>";
-                nuevaFila += "<td>" + criterorigen + "</td>";
-                nuevaFila += "<td><button class='borrar'>Eliminar</button</td>";
-                nuevaFila += "</tr>";
-                $("#descripcionmercancia").append(nuevaFila);
-                limpiar();
-                $("#descmercancia").focus();
-            });
-
-            function limpiar() {
-                $("#descmercancia").val("");
-                $("#clasiarancelaria").val("")
-                $("#nofactura").val("");
-                $("#valorfactura").val("");
-                $("#criterorigen").val("");
-            }
-        });
-    </script>
+        }
+    }	
+</script>
 
     <style>
         td,
@@ -69,75 +46,37 @@
 </head>
 
 <body>
-    <div class="col l4 "><textarea id="descmercancia" type="" class="descmercancia"></textarea></div>
-    <div class="col l2 "><input id="clasiarancelaria" type="" class="" /></div>
-    <div class="col l2 "><input id="nofactura" type="" class="" /></div>
-    <div class="col l1 "><input id="valorfactura" type="" class="valorfactura" /></div>
-    <div class="col l1 center"><input id="criterorigen" type="" class="item" /></div>
-    <div class="col l1 center"><button href="#" id="agregar" class="btagregar btn waves-effect waves-light">Agregar
-            <i class="material-icons right">add</i></button></div>
+<input type="text" id="variableModificando" value="2"><hr>
+<input type="text" id="COL1" value="111">
+<input type="text" id="COL2" value="222">
+<input type="text" id="COL3" value="333">
+<button onclick="modificando(2)">Actualizar</button><hr>
+<table id="IDTABLA">
+    <tr>
+        <th>COL1</th>
+        <th>COL2</th>
+        <th>COL3</th>
+        <th>BOTON</th>
+    </tr>
+    <tr>
+        <td>X1</td>
+        <td>X4</td>
+        <td>X7</td>
+	<td><button onclick="modificando(1)">Actualizar</button></td>
+    </tr>
+    <tr>
+        <td>X2</td>
+        <td>X5</td>
+        <td>X8</td>
+	<td><button onclick="modificando(2)">Actualizar</button></td>
+    </tr>
+    <tr>
+        <td>X3</td>
+        <td>X6</td>
+        <td>X9</td>
+	<td><button onclick="modificando(3)">Actualizar</button></td>
+    </tr>
 
-    <p>
-        <table id="descripcionmercancia" border="1">
-            <thead>
-                <tr>
-                    <th>4. Item</th>
-                    <th>5. Descripción de las mercancias</th>
-                    <th>6. Clasificación Arancelaria</th>
-                    <th>7. No. Factura</th>
-                    <th>8. Valor en Factura</th>
-                    <th>9. Criterio de Origen</th>
-                    <th>Opcion</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </p>
-    <p class="centrar"><strong>
-            Anexo A
-            <br>
-            Certificado de Origen
-        </strong>
-    </p>
-    <table id="pdf" style="width:100%; border-collapse:collapse ;border: 1px dotted rgb(0, 0, 0);">
-        <!-- EXPORTADOR -->
-        <tr>
-            <td colspan="3">1. Nombre y Dirección del Exportador: /
-                <p>Teléfono: Fax:</p>
-                <p>Correo electrónico:</p>
-                <p>Número de Registro Fiscal:</p>
-            </td>
-            <td colspan="3">Certificado N°:
-                <p class="centrar"><strong>CERTIFICADO DE ORIGEN</strong></p>
-                <p class="centrar">Tratado de Libre Comercio entre Colombia y Costa Rica</p>
-
-            </td>
-        </tr>
-        <!-- PRODUCTOR -->
-        <tr>
-            <td colspan="3">1. Nombre y Dirección del Productor:
-                <p>Teléfono: Fax:</p>
-                <p>Correo electrónico:</p>
-                <p>Número de Registro Fiscal:</p>
-            </td>
-            <td colspan="3">1. Nombre y Dirección del Importador:
-                <p>Teléfono: Fax:</p>
-                <p>Correo electrónico:</p>
-                <p>Número de Registro Fiscal:</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <select id="criterorigen" name="select" class="item">
-                        <option value="A" selected>A</option> 
-                        <option value="B" >B</option>
-                        <option value="C">C</option>
-                </select>
-            </td>
-        </tr>
-    </table>
-
-
-</body>
+</table></body>
 
 </html>
