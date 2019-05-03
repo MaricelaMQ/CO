@@ -7,22 +7,21 @@
 
     <script src="../js/vendor/jquery.js"></script>
 <script type="text/javascript">
-    function modificando(numero){
-	 $("#variableModificando").val(numero);
-	
+
+    function modificando(fila){
+	fila = numero;
 	tabla = document.getElementById("IDTABLA");
-        fila = 1;
-console.log("fila: "+ fila);
 
-        for (var i = 0; i < 3; i++) {
-console.log("for: "+ fila);
-            tabla.rows[numero].cells[0].innerHTML = $("#COL1").val();
-            tabla.rows[numero].cells[1].innerHTML = $("#COL2").val();
-            tabla.rows[numero].cells[2].innerHTML = $("#COL3").val();
-			
-
+       for (var i = 0; i < 3; i++) {
+            tabla.rows[fila].cells[0].innerHTML = $("#COL1").val();
+            tabla.rows[fila].cells[1].innerHTML = $("#COL2").val();
+            tabla.rows[fila].cells[2].innerHTML = $("#COL3").val();
         }
-    }	
+    }
+
+function agregar(numero){
+   var fila= $("#variableModificando").val(numero);
+}
 </script>
 
     <style>
@@ -46,11 +45,11 @@ console.log("for: "+ fila);
 </head>
 
 <body>
-<input type="text" id="variableModificando" value="2"><hr>
+<input type="text" id="variableModificando" ><hr>
 <input type="text" id="COL1" value="111">
 <input type="text" id="COL2" value="222">
 <input type="text" id="COL3" value="333">
-<button onclick="modificando(2)">Actualizar</button><hr>
+<button onclick="modificando(fila)">Modificar</button><hr>
 <table id="IDTABLA">
     <tr>
         <th>COL1</th>
@@ -62,19 +61,19 @@ console.log("for: "+ fila);
         <td>X1</td>
         <td>X4</td>
         <td>X7</td>
-	<td><button onclick="modificando(1)">Actualizar</button></td>
+	<td><button onclick="agregar(1)">Actualizar</button></td>
     </tr>
     <tr>
         <td>X2</td>
         <td>X5</td>
         <td>X8</td>
-	<td><button onclick="modificando(2)">Actualizar</button></td>
+	<td><button onclick="agregar(2)">Actualizar</button></td>
     </tr>
     <tr>
         <td>X3</td>
         <td>X6</td>
         <td>X9</td>
-	<td><button onclick="modificando(3)">Actualizar</button></td>
+	<td><button onclick="agregar(3)">Actualizar</button></td>
     </tr>
 
 </table></body>

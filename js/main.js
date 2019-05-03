@@ -24,7 +24,7 @@ $(document).ready(function () {
             console.log("No borrar");
         //}
     });
-/*********** EDITAR ITEMS TABLA DESCRIPCION MERCANCIAS************* */
+/*********** BOTON EDITAR ITEMS TABLA DESCRIPCION MERCANCIAS************* */
     $(document).on('click', '.editar', function () {
         var r = $(this).parents("tr").find('td').eq(0).html();
         console.log(r);
@@ -41,7 +41,7 @@ $(document).ready(function () {
   $("#modificar").click(function () {      //$('.borrar').each
   
             alert("mensaje");
-            
+
     
         claseborrar(0);
     $("#descmercancia").focus();
@@ -54,7 +54,7 @@ $(document).ready(function () {
         claseborrar(0);
         limpiar();
   });
-//********* AGREGAR ITEM DESCRIPCION MERCANCIAS**/
+//********* BOTON AGREGAR ITEM DESCRIPCION MERCANCIAS**/
     $("#agregar").click(function () {
         agregardescripcion(0);
     });
@@ -68,34 +68,91 @@ $(document).ready(function () {
     }
 });
 /* ######################################################### FUNCTIONS  #########################################################*/
-function modifica() {
-    tab=document.getElementById('tabla');
-    for (i=0; ele=tab.getElementsByTagName('input')[i]; i++) {
-      if (ele.checked) edita(ele);
-      ele.checked = false;
-    }
-  }
+     
+//         <!DOCTYPE html>
+// <html>
 
-  function edita(obj) {
-    padre = obj.parentNode.parentNode;
-    celda = padre.getElementsByTagName('td');
-    inicio = 2;//celda para comenzar
-    fin = 6;//celda para terminar
-    
-    for(i=inicio;i<fin;i++){
-    var celdaTmp = celda[i];
-      
-    txt = celdaTmp.innerHTML;
-    celdaTmp.innerHTML = '';
-    inp = celdaTmp.appendChild(document.createElement('input'));
-    inp.value=txt;
-    inp.onblur = function() { this.parentNode.innerHTML = this.value  }      
-        
-    }
-  }
+// <head>
+//     <meta charset="utf-8">
+//      <link rel="stylesheet" href="../css/estilos.css">
+
+//     <script src="../js/vendor/jquery.js"></script>
+// <script type="text/javascript">
+
+//     function modificando(){
+// 	fila = numero;
+// 	tabla = document.getElementById("IDTABLA");
+
+//        for (var i = 0; i < 3; i++) {
+//             tabla.rows[fila].cells[0].innerHTML = $("#COL1").val();
+//             tabla.rows[fila].cells[1].innerHTML = $("#COL2").val();
+//             tabla.rows[fila].cells[2].innerHTML = $("#COL3").val();
+//         }
+//     }
+
+// function agregar(numero){
+//    var fila= $("#variableModificando").val(numero);
+// }
+// </script>
+
+//     <style>
+//         td,
+//         input {
+//             padding: 5px;
+//         }
+
+//         .centrar {
+//             text-align: center;
+//         }
+
+//         #pdf tr td {
+//             border: 1px dotted black
+//         }
+
+//         .tabulado {
+//             text-indent: 5px;
+//         }
+//     </style>
+// </head>
+
+// <body>
+// <input type="text" id="variableModificando" ><hr>
+// <input type="text" id="COL1" value="111">
+// <input type="text" id="COL2" value="222">
+// <input type="text" id="COL3" value="333">
+// <button onclick="modificando()">Modificar</button><hr>
+// <table id="IDTABLA">
+//     <tr>
+//         <th>COL1</th>
+//         <th>COL2</th>
+//         <th>COL3</th>
+//         <th>BOTON</th>
+//     </tr>
+//     <tr>
+//         <td>X1</td>
+//         <td>X4</td>
+//         <td>X7</td>
+// 	<td><button onclick="modificando(1)">Actualizar</button></td>
+//     </tr>
+//     <tr>
+//         <td>X2</td>
+//         <td>X5</td>
+//         <td>X8</td>
+// 	<td><button onclick="modificando(2)">Actualizar</button></td>
+//     </tr>
+//     <tr>
+//         <td>X3</td>
+//         <td>X6</td>
+//         <td>X9</td>
+// 	<td><button onclick="modificando(3)">Actualizar</button></td>
+//     </tr>
+
+// </table></body>
+
+// </html>
 
 
-function  claseborrar(op){
+function claseborrar(op){
 if (op==1){
     $('.borrar, .editar').each(function () { 
         $(this).addClass("oculto");
@@ -113,7 +170,16 @@ if (op==1){
 }
 
 }
-
+/*  FUNCION REORDENAR*/
+function reordenaritems() {
+    var num = 1;
+        $("#descripcionmercancia tr").each(function(){
+            $(this).find("td").eq(0).text(num);
+        num++;
+});
+    
+}
+//   FUNCION AGREGAR
 function agregardescripcion(a) {    
         //var filas = $("#descripcionmercancia tbody tr").length;
                 if (a == 0){
@@ -125,7 +191,8 @@ function agregardescripcion(a) {
                     if ( descripcion =='' || clasiarancelaria=='' || nofactura=='' || valorfactura==''){
                         alert("Hace falta ingresar información")}
                         else{
-                            var nuevaFila = "<tr>"; //console.log('total filas ' + filas);        // nuevaFila += "<td>" + (filas + 1) + "</td>";//        
+                            var nuevaFila = "<tr>"; //console.log('total filas ' + filas);        // nuevaFila += "<td>" + (filas + 1) + "</td>";//
+                            
                             nuevaFila += "<td class=''>" + a + "</td>";
                             nuevaFila += "<td class='descripcion'>" + descripcion + "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + clasiarancelaria + "</td>";
@@ -136,6 +203,7 @@ function agregardescripcion(a) {
                             nuevaFila += "</tr>";
                             $("#descripcionmercancia").append(nuevaFila);
                             $("#descmercancia").focus();        //limpiar();
+                            reordenaritems();
                 }                        
             }else{
                 //console.log(detMercancias);
