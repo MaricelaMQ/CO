@@ -103,7 +103,7 @@ th{
 }
 
 .secc11  {
-   height: 404px!important; 
+   height: 409px!important; 
    /* height: 100%!important;  */
 }
 .seccionboton{
@@ -147,9 +147,9 @@ th{
 height: 25px!important;
 width: 130px!important;
 }
-/* .bortabla, th, td{
+.bortabla, th, td{
   border: 1px solid black!important;
-} */
+}
 
 input:not([type]), input[type=text], input[type=email], input[type=url], input[type=time], input[type=date], textarea{
   margin: 0px!important;

@@ -2,56 +2,53 @@ $(document).ready(function () {
         duplicarcert(id);         //  datos();//  listar();//  guardar(); //console.log(datos());
 
     $("#btenviarform").click(function () {
-        detallemerca();        //datos();     // console.log(detmercancia);
+       // detallemerca();        //datos();     // console.log(detmercancia);
     });
 //********* GUARDAR **/
-    $('#btguardar').click(function () {        
+    $('#btpublicar').click(function () {        
         validaform();       
     });
-//********* BORRAR ITEM DESCRIPCION MERCANCIAS **/
+//********* BOTON BORRAR ITEM DESCRIPCION MERCANCIAS **/
     $(document).on('click', '.borrar', function () {
-        //var re = confirm('Borrar esta linea?')
-        //if (re){
-            // if (id>0){
-                var ide = $(this).parents("tr").find('td').eq(0).html();
+        var re = confirm('                                             ¡¡ ATENCION!! \n Este cambio no se puede deshacer ¿Desea continuar?')
+        if (re){
+             if (id>0){
+                var ide = $(this).parents("tr").find('td').eq(1).html();
                 idUpdate.push(ide);
                 console.log(idUpdate);
-            //         }
-            //     else{
-            //     }
+                     }else{
+                    console.log("no se actualiza");
+                 }
             $(this).closest('tr').remove();
-          //  }else{
-            console.log("No borrar");
-        //}
+            }else{
+            console.log("No borrado");
+        }
     });
 /*********** BOTON EDITAR ITEMS TABLA DESCRIPCION MERCANCIAS************* */
     $(document).on('click', '.editar', function () {
-        var r = $(this).parents("tr").find('td').eq(0).html();
-        console.log(r);
-        claseborrar(1);
-        $("#descmercancia").val($(this).parents("tr").find('td').eq(1).html());
-        $("#clasiarancelaria").val($(this).parents("tr").find('td').eq(2).html());
-        $("#nofactura").val($(this).parents("tr").find('td').eq(3).html());
-        $("#valorfactura").val($(this).parents("tr").find('td').eq(4).html());        
-        $("#criterorigen").val($(this).parents("tr").find('td').eq(5).html());
-        claseborrar(1);            
-        $("#descmercancia").focus();
+        switchClase(1);
+        //var fila = $(this).parents("tr").find('td').eq(0).html();
+        $("#varmodificando").val($(this).parents("tr").find('td').eq(0).html());
+            $("#descmercancia").val($(this).parents("tr").find('td').eq(2).html());
+            $("#clasiarancelaria").val($(this).parents("tr").find('td').eq(3).html());
+            $("#nofactura").val($(this).parents("tr").find('td').eq(4).html());
+            $("#valorfactura").val($(this).parents("tr").find('td').eq(5).html());
+            $("#criterorigen").val($(this).parents("tr").find('td').eq(6).html());
+            $("#descmercancia").focus();
     });
-  /** MODIFICAR ITEMS TABLA DESCRIPCION MERCANCIAS */  
-  $("#modificar").click(function () {      //$('.borrar').each
-  
-            alert("mensaje");
 
-    
-        claseborrar(0);
-    $("#descmercancia").focus();
-
+  /** BOTON MODIFICAR ITEMS TABLA DESCRIPCION MERCANCIAS */  
+  $("#modificar").click(function () {      //$('.borrar').each  
+    modificando();
+    limpiar();
   });
+/******* BOTON CANCELAR ***/
   $("#cancelar").click(function () {
         $("#modificar").addClass("oculto");
         $("#cancelar").addClass("oculto");
         $("#agregar").removeClass("oculto");
-        claseborrar(0);
+        $("#varmodificando").val("");
+        switchClase(0);
         limpiar();
   });
 //********* BOTON AGREGAR ITEM DESCRIPCION MERCANCIAS**/
@@ -68,91 +65,25 @@ $(document).ready(function () {
     }
 });
 /* ######################################################### FUNCTIONS  #########################################################*/
-     
-//         <!DOCTYPE html>
-// <html>
+//  MODIFICA ITEMS TABLA DECRIPCION MERCANCIAS
+function modificando() {    
+    var fila = $("#varmodificando").val();
+    tabla = document.getElementById("descripcionmercancia");    
+    for (var i = 1; i < 6; i++) {      
+          tabla.rows[fila].cells[2].innerHTML = $("#descmercancia").val().toUpperCase();
+          tabla.rows[fila].cells[3].innerHTML = $("#clasiarancelaria").val();
+          tabla.rows[fila].cells[4].innerHTML = $("#nofactura").val();
+          tabla.rows[fila].cells[5].innerHTML = $("#valorfactura").val();
+          tabla.rows[fila].cells[6].innerHTML = $("#criterorigen").val();
+      }
+      switchClase(0);
+      //alert($("#varmodificando").val());
+          /**NUEVO CODIGO */
+          
+      $("#descmercancia").focus();}
 
-// <head>
-//     <meta charset="utf-8">
-//      <link rel="stylesheet" href="../css/estilos.css">
-
-//     <script src="../js/vendor/jquery.js"></script>
-// <script type="text/javascript">
-
-//     function modificando(){
-// 	fila = numero;
-// 	tabla = document.getElementById("IDTABLA");
-
-//        for (var i = 0; i < 3; i++) {
-//             tabla.rows[fila].cells[0].innerHTML = $("#COL1").val();
-//             tabla.rows[fila].cells[1].innerHTML = $("#COL2").val();
-//             tabla.rows[fila].cells[2].innerHTML = $("#COL3").val();
-//         }
-//     }
-
-// function agregar(numero){
-//    var fila= $("#variableModificando").val(numero);
-// }
-// </script>
-
-//     <style>
-//         td,
-//         input {
-//             padding: 5px;
-//         }
-
-//         .centrar {
-//             text-align: center;
-//         }
-
-//         #pdf tr td {
-//             border: 1px dotted black
-//         }
-
-//         .tabulado {
-//             text-indent: 5px;
-//         }
-//     </style>
-// </head>
-
-// <body>
-// <input type="text" id="variableModificando" ><hr>
-// <input type="text" id="COL1" value="111">
-// <input type="text" id="COL2" value="222">
-// <input type="text" id="COL3" value="333">
-// <button onclick="modificando()">Modificar</button><hr>
-// <table id="IDTABLA">
-//     <tr>
-//         <th>COL1</th>
-//         <th>COL2</th>
-//         <th>COL3</th>
-//         <th>BOTON</th>
-//     </tr>
-//     <tr>
-//         <td>X1</td>
-//         <td>X4</td>
-//         <td>X7</td>
-// 	<td><button onclick="modificando(1)">Actualizar</button></td>
-//     </tr>
-//     <tr>
-//         <td>X2</td>
-//         <td>X5</td>
-//         <td>X8</td>
-// 	<td><button onclick="modificando(2)">Actualizar</button></td>
-//     </tr>
-//     <tr>
-//         <td>X3</td>
-//         <td>X6</td>
-//         <td>X9</td>
-// 	<td><button onclick="modificando(3)">Actualizar</button></td>
-//     </tr>
-
-// </table></body>
-
-// </html>
-
-
-function claseborrar(op){
+/** AGREGA/ELIMINA CLASE OCULTAR  */
+function switchClase(op){
 if (op==1){
     $('.borrar, .editar').each(function () { 
         $(this).addClass("oculto");
@@ -170,29 +101,30 @@ if (op==1){
 }
 
 }
-/*  FUNCION REORDENAR*/
+/*  REORDENA ITEMS TABLA DESCRIPCIONES */
 function reordenaritems() {
-    var num = 1;
+    var num = 0;
         $("#descripcionmercancia tr").each(function(){
             $(this).find("td").eq(0).text(num);
         num++;
 });
     
 }
-//   FUNCION AGREGAR
+//  AGREGAR VALORES A TABLA DESCRIPCION MERCANCIAS
 function agregardescripcion(a) {    
-        //var filas = $("#descripcionmercancia tbody tr").length;
-                if (a == 0){
+        //var filas = $("#descripcionmercancia tbody tr").length;        
+                if (a == 0){  /****si a es 0, se agregan valores de campos a tabla DESCRIPCION MERCANCIAS **/
                     var descripcion = $("#descmercancia").val().toUpperCase();
                     var clasiarancelaria = $("#clasiarancelaria").val();
                     var nofactura = $("#nofactura").val();
                     var valorfactura = $("#valorfactura").val();
                     var criterorigen = $("#criterorigen").val();
+
                     if ( descripcion =='' || clasiarancelaria=='' || nofactura=='' || valorfactura==''){
                         alert("Hace falta ingresar información")}
                         else{
-                            var nuevaFila = "<tr>"; //console.log('total filas ' + filas);        // nuevaFila += "<td>" + (filas + 1) + "</td>";//
-                            
+                            var nuevaFila = "<tr>"; //console.log('total filas ' + filas);        // nuevaFila += "<td>" + (filas + 1) + "</td>";//                            
+                            nuevaFila += "<td class=''></td>";
                             nuevaFila += "<td class=''>" + a + "</td>";
                             nuevaFila += "<td class='descripcion'>" + descripcion + "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + clasiarancelaria + "</td>";
@@ -202,14 +134,14 @@ function agregardescripcion(a) {
                             nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";                            
                             nuevaFila += "</tr>";
                             $("#descripcionmercancia").append(nuevaFila);
-                            $("#descmercancia").focus();        //limpiar();
-                            reordenaritems();
+                            $("#descmercancia").focus();        //limpiar();                            
                 }                        
-            }else{
+            }else{ /****si a es 1, se agregan valores de BD a tabla DESCRIPCION MERCANCIAS **/
                 //console.log(detMercancias);
                 $.each(detMercancias, function(i, item) {                    //console.log(item["valorfactura"]);
-                    var nuevaFila = "<tr>";
-                    nuevaFila += "<td class=''>" + item["id"] + "</td>";
+                            var nuevaFila = "<tr>";
+                            nuevaFila += "<td class=''></td>";
+                            nuevaFila += "<td class=''>" + item["id"] + "</td>";
                             nuevaFila += "<td class='descripcion'>" + item["descmercancia"] + "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + item["clasiarancelaria"] +  "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + item["nofactura"] +  "</td>";
@@ -220,6 +152,7 @@ function agregardescripcion(a) {
                             $("#descripcionmercancia").append(nuevaFila);
                 });
             }
+            reordenaritems();
         
     
 }
@@ -256,11 +189,12 @@ function duplicarcert(id){
         agregardescripcion(1);        
     }    
 }
-
+//// VALORES DESCRIPCION MERCANCIAS EN ARREGLO _DETMERCANCIA_
 function detallemerca(){
     //alert('mensaje de muestra ');
     detmercancia = [];
         $('#descripcionmercancia tr').each(function () {
+
             var descripcion = $(this).find('td').eq(1).html();
             var clasiarancelaria = $(this).find('td').eq(2).html();
             var nofactura = $(this).find('td').eq(3).html();
@@ -268,13 +202,14 @@ function detallemerca(){
             var criterorigen = $(this).find('td').eq(5).html();
             var valor = {
                 descripcion, clasiarancelaria, nofactura, valorfactura, criterorigen};
-            detmercancia.push(valor);            
+            detmercancia.push(valor);
             //console.log(detmercancia);
         });
         var valores = {"tabladesc": detmercancia};
         //console.log(valores);
         return valores;
 }
+/// VALORES DE INPUTS FORMULARIO EN ARREGLO _DATOS_
 function datos(){
     var datos = [];
     var operacion = $("#operacion").val();
@@ -319,8 +254,7 @@ function datos(){
         lugarautocompe, fechaautocompe, direccionautocompe, telefonoautocompe, faxautocompe, correoautocompe
     };
     
-    datos.push(dato);
-    
+    datos.push(dato);    
     // console.log(JSON.stringify(datos));
       //console.log(datos);
     var valores = {"data": datos};
@@ -338,7 +272,7 @@ function datos(){
     // });
 
 }
-
+//  GUARDA EN BASE DE DATOS INFORMACIÓN DE FORMULARIO Y TABLA DESCRIPCION MERCANCIAS 
 function guardar() {
     var url = "libs/guardar.php";
     var descmerca = JSON.stringify(detallemerca())

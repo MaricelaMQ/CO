@@ -208,7 +208,8 @@
                             <tbody>
                                 <tr>
                                     <td class="descripcion">
-                                        <textarea id="descmercancia" maxlength="160"></textarea>
+                                    <input id="varmodificando" type="" class=""
+                                            maxlength="3" value="" style="width:20px!important;"/><textarea id="descmercancia" maxlength="160"></textarea>
                                     </td>
                                     <td class="center valorfactura"><input id="clasiarancelaria" type=""
                                             class="valorfactura" maxlength="6" value="" />
@@ -248,7 +249,7 @@
                         <table id="descripcionmercancia" class="highlight responsive-table striped bordered">
                             <!-- <thead>
                                     <tr>
-                                         <th>4. Item</th> 
+                                        <th>4. Item</th> 
                                         <th>5. Descripción de las mercancias</th>
                                         <th>6. Clasificación Arancelaria</th>
                                         <th>7. No. Factura</th>
@@ -367,6 +368,9 @@
                     </a>
                     <button class="btn waves-effect orange" type="submit" id="btguardar">Guardar
                         <i class="material-icons right">save</i>
+                    </button>
+                    <button class="btn light-blue darken-2" type="submit" id="btpublicar">Publicar
+                        <i class="material-icons right">send</i>
                     </button>
                 </div>
             </div>

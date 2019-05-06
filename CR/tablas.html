@@ -3,26 +3,53 @@
 
 <head>
     <meta charset="utf-8">
-     <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
 
     <script src="../js/vendor/jquery.js"></script>
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    function modificando(fila){
-	fila = numero;
-	tabla = document.getElementById("IDTABLA");
-
-       for (var i = 0; i < 3; i++) {
-            tabla.rows[fila].cells[0].innerHTML = $("#COL1").val();
-            tabla.rows[fila].cells[1].innerHTML = $("#COL2").val();
-            tabla.rows[fila].cells[2].innerHTML = $("#COL3").val();
+        function modificando() {
+            fila = $("#variableModificando").val();
+            tabla = document.getElementById("IDTABLA");
+            //tabla = $("#IDTABLA tbody").text();
+            for (var i = 0; i < 6; i++) {
+                console.log("columna " + i);
+                tabla.rows[fila].cells[2].innerHTML = $("#COL1").val();                
+                tabla.rows[fila].cells[3].innerHTML = $("#COL2").val();
+                tabla.rows[fila].cells[4].innerHTML = $("#COL3").val();
+                tabla.rows[fila].cells[5].innerHTML = $("#COL4").val();
+                tabla.rows[fila].cells[6].innerHTML = $("#COL5").val();
+            }
+            // $('#IDTABLA tr').each(function () {
+            //     var f = $(this).find('td').eq(0).html();
+            //     console.log("fila = " + fila + " f: " + f);
+            //     if (fila == f){
+            //     //    console.log("actualizando registro No: " +fila)
+            //         $(this).find('td').eq(1).html($("#COL1").val());
+            //         $(this).find('td').eq(2).html($("#COL2").val());
+            //         $(this).find('td').eq(3).html($("#COL3").val());
+            //     }            
+            // });
         }
-    }
 
-function agregar(numero){
-   var fila= $("#variableModificando").val(numero);
-}
-</script>
+        $(document).on('click', '.editar', function () {
+            //var fila= $("#variableModificando").val(numero);
+            var fila = $(this).parents("tr").find('td').eq(0).html();
+            $("#variableModificando").val(fila);
+            // var col1 = $(this).parents("tr").find('td').eq(1).html();
+            var col2 = $(this).parents("tr").find('td').eq(2).html();
+            var col3 = $(this).parents("tr").find('td').eq(3).html();
+            var col4 = $(this).parents("tr").find('td').eq(4).html();
+            var col5 = $(this).parents("tr").find('td').eq(5).html();
+            var col6 = $(this).parents("tr").find('td').eq(6).html();
+
+            $("#COL1").val(col2);
+            $("#COL2").val(col3);
+            $("#COL3").val(col4);
+            $("#COL4").val(col5);
+            $("#COL5").val(col6);
+        });
+    </script>
 
     <style>
         td,
@@ -45,37 +72,80 @@ function agregar(numero){
 </head>
 
 <body>
-<input type="text" id="variableModificando" ><hr>
-<input type="text" id="COL1" value="111">
-<input type="text" id="COL2" value="222">
-<input type="text" id="COL3" value="333">
-<button onclick="modificando(fila)">Modificar</button><hr>
-<table id="IDTABLA">
-    <tr>
-        <th>COL1</th>
-        <th>COL2</th>
-        <th>COL3</th>
-        <th>BOTON</th>
-    </tr>
-    <tr>
-        <td>X1</td>
-        <td>X4</td>
-        <td>X7</td>
-	<td><button onclick="agregar(1)">Actualizar</button></td>
-    </tr>
-    <tr>
-        <td>X2</td>
-        <td>X5</td>
-        <td>X8</td>
-	<td><button onclick="agregar(2)">Actualizar</button></td>
-    </tr>
-    <tr>
-        <td>X3</td>
-        <td>X6</td>
-        <td>X9</td>
-	<td><button onclick="agregar(3)">Actualizar</button></td>
-    </tr>
+    <input type="text" id="variableModificando">
+    <hr>
+    <input type="text" id="COL1" value="111">
+    <input type="text" id="COL2" value="222">
+    <input type="text" id="COL3" value="333">
+    <input type="text" id="COL4" value="4">
+    <input type="text" id="COL5" value="5">
+    <input type="text" id="COL6" value="6">
+    <button onclick="modificando()">Modificar</button>
+    <hr>
+    <table id="IDTABLA">
+        <tr>
+            <th>id</th>
+            <th>COL1</th>
+            <th>COL2</th>
+            <th>COL3</th>
+            <th>COL4</th>
+            <th>COL5</th>
+            <th>COL6</th>
+            <th>BOTON</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>num1</td>
+            <td>X4</td>
+            <td>X7</td>
+            <td>X7</td>
+            <td>X7</td>
+            <td>X7</td>
+            <td><button class="editar">Actualizar</button></td>
+            <!-- <td><button onclick="agregar(1)">Actualizar</button></td> -->
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>num2</td>
+            <td>X5</td>
+            <td>X8</td>
+            <td>X8</td>
+            <td>X8</td>
+            <td>X8</td>
+            <td><button class="editar">Actualizar</button></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>num3</td>
+            <td>X6</td>
+            <td>X9</td>
+            <td>X9</td>
+            <td>X9</td>
+            <td>X9</td>
+            <td><button class="editar">Actualizar</button></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>num4</td>
+            <td>X7</td>
+            <td>X10</td>
+            <td>X10</td>
+            <td>X10</td>
+            <td>X10</td>
+            <td><button class="editar">Actualizar</button></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>num5</td>
+            <td>X7</td>
+            <td>X10</td>
+            <td>X10</td>
+            <td>X10</td>
+            <td>X10</td>
+            <td><button class="editar">Actualizar</button></td>
+        </tr>
 
-</table></body>
+    </table>
+</body>
 
 </html>
