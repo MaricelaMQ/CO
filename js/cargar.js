@@ -35,7 +35,7 @@ function listar() {
                 html+= '<td>' + valores.data[i].fecha + '</td>';
                 html+= '<td style="text-align: left!important;">' + valores.data[i].nombreexp + '</td>';
                 html+= '<td><a href="verpdf.php?p='+ valores.data[i].id +'" target="_blank">Ver Pdf</a></td>';
-                html+= '<td><a href="costarica.php?p='+ valores.data[i].id +'" target="_blank">Duplicar</a></td>';
+                html+= '<td><a href="costarica.php?d='+ valores.data[i].id +'" target="_blank">Duplicar</a></td>';
                 html+= '</tr>';
             }
             html+= '</tbody>';

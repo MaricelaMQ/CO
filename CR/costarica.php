@@ -1,8 +1,8 @@
 <?php
-    if($_GET["p"]??''){
-          $id = $_GET["p"];
+    if($_GET["d"]??''){// verifica si variable 'd' esta definida.
+          $id = $_GET["d"];
           include "libs/consulta.php";
-//          var_dump($id);
+//        var_dump($id);
     }else{
           $id=0;
           $datos=0;

@@ -6,14 +6,17 @@ if(isset($id)){
         $stmt = $conn->prepare("SELECT * FROM detallecertificado WHERE id=?");
         $stmt->execute([$id]);
         $datos = $stmt->fetch();
+        $querydescmerca = $conn->prepare("SELECT id, item, descmercancia, clasiarancelaria, nofactura, valorfactura, criterorigen FROM descripcionmercancias WHERE id_certificados=?");
+        $querydescmerca->execute([$id]);
+        $descripcion = $querydescmerca->fetchAll();
 }else{
         $datos='';
 }
 //var_dump($datos);
 /*****CONSULTA DESCRIPCION MERCANCIAS FORMAT(valorfactura, 2) as */
-$querydescmerca = $conn->prepare("SELECT id, item, descmercancia, clasiarancelaria, nofactura, valorfactura, criterorigen FROM descripcionmercancias WHERE id_certificados=?");
-$querydescmerca->execute([$id]);
-$descripcion = $querydescmerca->fetchAll();
+// $querydescmerca = $conn->prepare("SELECT id, item, descmercancia, clasiarancelaria, nofactura, valorfactura, criterorigen FROM descripcionmercancias WHERE id_certificados=?");
+// $querydescmerca->execute([$id]);
+// $descripcion = $querydescmerca->fetchAll();
 //var_dump($desc);
         // 
                     // $content = '';     

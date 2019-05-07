@@ -1,13 +1,18 @@
 $(document).ready(function () {
         duplicarcert(id);         //  datos();//  listar();//  guardar(); //console.log(datos());
-
     $("#btenviarform").click(function () {
        // detallemerca();        //datos();     // console.log(detmercancia);
     });
-//********* GUARDAR **/
+//********* BOTON PUBLICAR  **/
     $('#btpublicar').click(function () {        
-        validaform();       
+        validaform();
     });
+/**********BOTON GUARDAR  */
+$("#btguardar").click(function () { 
+    //alert('boton guardar');
+    guardar('BORRADOR');
+    
+});
 //********* BOTON BORRAR ITEM DESCRIPCION MERCANCIAS **/
     $(document).on('click', '.borrar', function () {
         var re = confirm('                                             ¡¡ ATENCION!! \n Este cambio no se puede deshacer ¿Desea continuar?')
@@ -24,7 +29,7 @@ $(document).ready(function () {
             console.log("No borrado");
         }
     });
-/*********** BOTON EDITAR ITEMS TABLA DESCRIPCION MERCANCIAS************* */
+/********** BOTON EDITAR ITEMS TABLA DESCRIPCION MERCANCIAS************* */
     $(document).on('click', '.editar', function () {
         switchClase(1);
         //var fila = $(this).parents("tr").find('td').eq(0).html();
@@ -37,12 +42,12 @@ $(document).ready(function () {
             $("#descmercancia").focus();
     });
 
-  /** BOTON MODIFICAR ITEMS TABLA DESCRIPCION MERCANCIAS */  
+/********** BOTON MODIFICAR ITEMS TABLA DESCRIPCION MERCANCIAS */  
   $("#modificar").click(function () {      //$('.borrar').each  
     modificando();
     limpiar();
   });
-/******* BOTON CANCELAR ***/
+/********** BOTON CANCELAR ***/
   $("#cancelar").click(function () {
         $("#modificar").addClass("oculto");
         $("#cancelar").addClass("oculto");
@@ -61,7 +66,6 @@ $(document).ready(function () {
         $("#clasiarancelaria").val("")
         $("#nofactura").val("");
         $("#valorfactura").val("");
-        $("#criterorigen").val("");
     }
 });
 /* ######################################################### FUNCTIONS  #########################################################*/
@@ -92,7 +96,7 @@ if (op==1){
         $("#cancelar").removeClass("oculto");
         $("#agregar").addClass("oculto");
 }else{
-    $('.borrar, .editar').each(function () { 
+    $('.borrar, .editar').each(function () {
         $(this).removeClass("oculto");
     });
     $("#modificar").addClass("oculto");
@@ -153,8 +157,6 @@ function agregardescripcion(a) {
                 });
             }
             reordenaritems();
-        
-    
 }
 
 function duplicarcert(id){
@@ -195,11 +197,11 @@ function detallemerca(){
     detmercancia = [];
         $('#descripcionmercancia tr').each(function () {
 
-            var descripcion = $(this).find('td').eq(1).html();
-            var clasiarancelaria = $(this).find('td').eq(2).html();
-            var nofactura = $(this).find('td').eq(3).html();
-            var valorfactura = $(this).find('td').eq(4).html();
-            var criterorigen = $(this).find('td').eq(5).html();
+            var descripcion = $(this).find('td').eq(2).html();
+            var clasiarancelaria = $(this).find('td').eq(3).html();
+            var nofactura = $(this).find('td').eq(4).html();
+            var valorfactura = $(this).find('td').eq(5).html();
+            var criterorigen = $(this).find('td').eq(6).html();
             var valor = {
                 descripcion, clasiarancelaria, nofactura, valorfactura, criterorigen};
             detmercancia.push(valor);
@@ -273,16 +275,16 @@ function datos(){
 
 }
 //  GUARDA EN BASE DE DATOS INFORMACIÓN DE FORMULARIO Y TABLA DESCRIPCION MERCANCIAS 
-function guardar() {
+function guardar(estado) {
     var url = "libs/guardar.php";
+    //console.log(estado);
     var descmerca = JSON.stringify(detallemerca())
     var json = JSON.stringify(datos()); // convierte objeto a cadena JSON lo que devuelve funcion datos()
-    console.log('funcion guardar'+ descmerca);
-    __ajax(url, {"guardar": json, "items":descmerca}) //  , "desc": descmerca
+    //console.log('funcion guardar'+ descmerca);
+    __ajax(url, {"guardar": json, "items":descmerca,"estado":estado}) //  , "desc": descmerca
         .done(function ( info ){
              console.log( info );// Info: respuesta del servidor
-
-            if ( info ==1 ){
+            if ( info == 1 ){
                 alert('Se ha guardado certificado con exito');
                 location.href ="principal.php";
             }else{
