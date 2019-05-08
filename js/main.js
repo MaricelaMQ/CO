@@ -1,21 +1,16 @@
 $(document).ready(function () {
         duplicarcert(id);         //  datos();//  listar();//  guardar(); //console.log(datos());
-    $("#btenviarform").click(function () {
-       // detallemerca();        //datos();     // console.log(detmercancia);
-    });
-//********* BOTON PUBLICAR  **/
+/********* BOTON PUBLICAR  **/
     $('#btpublicar').click(function () {        
         validaform();
     });
-/**********BOTON GUARDAR  */
-$("#btguardar").click(function () { 
-    //alert('boton guardar');
-    guardar('BORRADOR');
-    
+/********* BOTON GUARDAR  **/
+    $("#btguardar").click(function () {        
+        guardar('BORRADOR', editar, id);
 });
-//********* BOTON BORRAR ITEM DESCRIPCION MERCANCIAS **/
+/********* BOTON BORRAR ITEM DESCRIPCION MERCANCIAS **/
     $(document).on('click', '.borrar', function () {
-        var re = confirm('                                             ¡¡ ATENCION!! \n Este cambio no se puede deshacer ¿Desea continuar?')
+        var re = confirm('                                              ADVERTENCIA! \n Este cambio no se puede deshacer ¿Desea continuar?')
         if (re){
              if (id>0){
                 var ide = $(this).parents("tr").find('td').eq(1).html();
@@ -69,8 +64,8 @@ $("#btguardar").click(function () {
     }
 });
 /* ######################################################### FUNCTIONS  #########################################################*/
-//  MODIFICA ITEMS TABLA DECRIPCION MERCANCIAS
-function modificando() {    
+//  MODIFICA ITEMS TABLA DECRIPCIONES
+function modificando() {
     var fila = $("#varmodificando").val();
     tabla = document.getElementById("descripcionmercancia");    
     for (var i = 1; i < 6; i++) {      
@@ -84,9 +79,9 @@ function modificando() {
       //alert($("#varmodificando").val());
           /**NUEVO CODIGO */
           
-      $("#descmercancia").focus();}
-
-/** AGREGA/ELIMINA CLASE OCULTAR  */
+      $("#descmercancia").focus();
+    }
+/** AGREGA/QUITA CLASE OCULTAR  */
 function switchClase(op){
 if (op==1){
     $('.borrar, .editar').each(function () { 
@@ -114,10 +109,10 @@ function reordenaritems() {
 });
     
 }
-//  AGREGAR VALORES A TABLA DESCRIPCION MERCANCIAS
-function agregardescripcion(a) {    
+//  AGREGAR VALORES A TABLA DESCRIPCIONES
+function agregardescripcion(a) {
         //var filas = $("#descripcionmercancia tbody tr").length;        
-                if (a == 0){  /****si a es 0, se agregan valores de campos a tabla DESCRIPCION MERCANCIAS **/
+                if (a == 0){  /****si a es 0, se agregan valores de inputs a tabla DESCRIPCION MERCANCIAS **/
                     var descripcion = $("#descmercancia").val().toUpperCase();
                     var clasiarancelaria = $("#clasiarancelaria").val();
                     var nofactura = $("#nofactura").val();
@@ -161,6 +156,7 @@ function agregardescripcion(a) {
 
 function duplicarcert(id){
     if (id>0){
+        $("#operacion").val(detCertificado.operacion);
         $("#nombreexp").val(detCertificado.NombreExp);
         $("#direccionexp").val(detCertificado.DireccionExp);
         $("#telefonoexp").val(detCertificado.TelefonoExp);
@@ -182,8 +178,8 @@ function duplicarcert(id){
         $("#observaciones").val(detCertificado.Observaciones);
         $("#lugarexp").val(detCertificado.LugarExp);
         $("#fechaexp").val(detCertificado.FechaExp);
-        $("#lugarautocompe").val(detCertificado.LugarAutoCompe);
-        $("#fechaautocompe").val(detCertificado.FechaAutoCompe);
+        //$("#lugarautocompe").val(detCertificado.LugarAutoCompe);
+        //$("#fechaautocompe").val(detCertificado.FechaAutoCompe);
         $("#direccionautocompe").val(detCertificado.DireccionAutoCompe);
         $("#telefonoautocompe").val(detCertificado.TelefonoAutoCompe);
         $("#faxautocompe").val(detCertificado.FaxAutoCompe);
@@ -275,13 +271,12 @@ function datos(){
 
 }
 //  GUARDA EN BASE DE DATOS INFORMACIÓN DE FORMULARIO Y TABLA DESCRIPCION MERCANCIAS 
-function guardar(estado) {
-    var url = "libs/guardar.php";
-    //console.log(estado);
+function guardar(estado, editar, id) {
+    var url = "libs/guardar.php";    
     var descmerca = JSON.stringify(detallemerca())
     var json = JSON.stringify(datos()); // convierte objeto a cadena JSON lo que devuelve funcion datos()
     //console.log('funcion guardar'+ descmerca);
-    __ajax(url, {"guardar": json, "items":descmerca,"estado":estado}) //  , "desc": descmerca
+    __ajax(url, {"guardar": json, "items":descmerca,"estado":estado,"editar":editar,"id":id}) //  , "desc": descmerca
         .done(function ( info ){
              console.log( info );// Info: respuesta del servidor
             if ( info == 1 ){

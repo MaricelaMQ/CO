@@ -1,5 +1,5 @@
-function validaform() {
-    guardar('TERMINADO');
+function validaform() {    
+    guardar('TERMINADO', editar, id);
     // var valido = 0;
     // var tbldesc = $("#descripcionmercancia tbody tr").length;
     // $("input").each(function () {

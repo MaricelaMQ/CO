@@ -1,17 +1,21 @@
+<!DOCTYPE html>
 <?php
-    if($_GET["d"]??''){// verifica si variable 'd' esta definida.
+    if($_GET["ed"]??''){ // verifica si variable 'd' esta definida.
+        $editar = $_GET["ed"];
+        include "libs/consulta.php";
+  }else{
+    $editar =0;
+  }
+    if($_GET["d"]??''){ // verifica si variable 'd' esta definida.
           $id = $_GET["d"];
           include "libs/consulta.php";
-//        var_dump($id);
     }else{
           $id=0;
           $datos=0;
-          $descripcion =0;
+          $descripcion=0;
     }
 ?>
-<!DOCTYPE html>
 <html lang="ES">
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,12 +25,13 @@
     <link rel="stylesheet" href="../css/materialize.min.css" />
     <link rel="stylesheet" href="../css/Estilos.css" />
     <link rel="icon" href="../assets/logo.ico">
-
+    
     <script src="../js/vendor/jquery.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/validaform.js"></script>
     <script type="text/javascript">
-    var id = <?php echo $id;?>;
+    var id = <?php echo $id;?>;    
+    var editar = <?php echo $editar;?>;
     var idUpdate = [];
     //console.log("valor id: "+ id);
     if (id != 0) {
@@ -50,8 +55,9 @@
                 </a>
                 <a href="principal.php" class="btn waves-effect waves-light pink darken-1">
                     Lista Certificados<i class=" material-icons left ">format_indent_increase</i>
-                </a>
+                </a>                
             </div>
+
         </div>
         <div class="row">
             <div class="col l12 m12 s12 light-blue lighten-1 center titulo">Certificado de Origen COSTA RICA</div>
@@ -208,8 +214,9 @@
                             <tbody>
                                 <tr>
                                     <td class="descripcion">
-                                    <input id="varmodificando" type="" class=""
-                                            maxlength="3" value="" style="width:20px!important;"/><textarea id="descmercancia" maxlength="160"></textarea>
+                                        <input id="varmodificando" type="" class="" maxlength="3" value=""
+                                            style="width:20px!important;" /><textarea id="descmercancia"
+                                            maxlength="160"></textarea>
                                     </td>
                                     <td class="center valorfactura"><input id="clasiarancelaria" type=""
                                             class="valorfactura" maxlength="6" value="" />
@@ -231,7 +238,8 @@
                                     <td>
                                         <div title="Agregar nuevo item" href="#" id="agregar"
                                             class="btn waves-effect waves-light"><i class="material-icons">add</i></div>
-                                        <div title="Aceptar cambios"href="#" id="modificar" class=" oculto btn blue waves-effect waves-light">
+                                        <div title="Aceptar cambios" href="#" id="modificar"
+                                            class=" oculto btn blue waves-effect waves-light">
                                             <i class="material-icons">check</i></div>
                                         <div title="Cancelar" href="#" id="cancelar"
                                             class=" oculto btn orange waves-effect waves-light"><i
@@ -378,7 +386,7 @@
         <!-- </form> -->
         <div id="resultado"></div>
         <div id="footer" class="cuadrado"></div>
-        <script src="../js/materialize.min.js"></script>
+        <script src="../js/materialize.min.js"></script> 
 </body>
 
 </html>

@@ -3,9 +3,10 @@ include "conecta.php";
 /*****CONSULTA DETALLE CERTIFICADO */
 //$id=4;
 if(isset($id)){
-        $stmt = $conn->prepare("SELECT * FROM detallecertificado WHERE id=?");
+        $stmt = $conn->prepare("SELECT * FROM vista_datoscertificado WHERE id=?");
         $stmt->execute([$id]);
         $datos = $stmt->fetch();
+        /**CONSULTA TABLA BD DESCRIPCION MERCANCIAS */
         $querydescmerca = $conn->prepare("SELECT id, item, descmercancia, clasiarancelaria, nofactura, valorfactura, criterorigen FROM descripcionmercancias WHERE id_certificados=?");
         $querydescmerca->execute([$id]);
         $descripcion = $querydescmerca->fetchAll();

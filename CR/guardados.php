@@ -1,34 +1,30 @@
-<!DOCTYPE html>
 <?php
-    if($_GET["op"]??''){// verifica si variable 'op' esta definida.
+    if($_GET["op"]??''){// verifica si variable 'd' esta definida.
         $op = $_GET["op"];
     }else{
         $op=0;
     }
 ?>
-
+<!DOCTYPE html>
 <html lang="ES">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/materialize.min.css" />
     <link rel="stylesheet" href="../css/estilos.css">
-    
     <link rel="icon" href="../assets/logo.ico">
     <script src="../js/vendor/jquery.js"></script>
     <!-- <script src="js/main.js"></script> -->
-    
     <script src="../js/cargar.js"></script>
     <script type="text/javascript">
-            var op = <?php echo $op;?>;
-            if (op == 0) {
-                var estado ='TERMINADO';
-            }
+    var op = <?php echo $op;?>;
+    if (op == 1) {
+        var estado ='BORRADOR';
+    }
     </script>
-    <title>CO- Lista certificados</title>
+    <title>CR- Guardados</title>
     
 </head>
 <body>
@@ -37,7 +33,6 @@
         </div>
     </div>
     <div id="contenedor">
-
     <div class="row">
                 <div class="l12 m12 s12">
                         <a href="../index.html" class="btn waves-effect waves-light pink darken-1" >
@@ -56,13 +51,14 @@
     </div> 
     <div class="row">
     <hr>
-        <div class="titulodos center" style="background-color: #7eb38e;">Certificados Terminados </div><hr>
+        <div class="titulodos center orange darken-2" >Certificados Guardados </div><hr>
     </div>
         <div class="row">
-            <div id="resultado" class=""></div>
+            <div id="resultado" class="center"></div>
         </div>        
     </div>
     <div id="footer" class="cuadrado"></div>
-    <script src="../js/materialize.min.js"></script>
 </body>
+<script src="../js/materialize.min.js"></script>
+
 </html>

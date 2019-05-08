@@ -90,7 +90,7 @@ th{
 }
 
 #tblresultado {
-  width: 80%!important;
+  /* width: 80%!important; */
 }
 
 .observaciones{
@@ -167,6 +167,10 @@ input:not([type]), input[type=text], input[type=email], input[type=url], input[t
 :-ms-input-placeholder { /* Internet Explorer 10+ */
   text-transform: none;
 }
-
+.titulodos{  
+  font-size: 22px;
+  color:white!important;
+  text-shadow:0 2px 3px 0 rgba(189, 15, 15, 0.2), 0 3px 8px 0 rgba(197, 20, 20, 0.19)!important;   
+}
 
 /*********************************/
