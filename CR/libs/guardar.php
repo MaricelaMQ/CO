@@ -2,8 +2,9 @@
 include "conecta.php";
 $estado = $_POST["estado"];
 $id = $_POST["id"];
-$editar = $_POST["editar"];
-//var_dump($id);
+$editar = $_POST["editar"];// variable determina si es esta editando formulario.
+$idborrar = $_POST["idborrar"];
+//var_dump($idborrar);
 $resp = false;
 if(isset($editar)){ // Verificar si variable '$id' esta definida
     // $stmt = $conn->prepare("SELECT * FROM certificados WHERE id=?");    
@@ -11,14 +12,14 @@ if(isset($editar)){ // Verificar si variable '$id' esta definida
     // $datos = $stmt->fetch();
     if ($editar==1){
         //echo "Editar registro id: ". $id;
-        $resp = actualizar($conn, $id, $estado);
+        $resp = actualizar($conn, $id, $estado, $idborrar);
     }else{
-        echo "Insertar nuevo registro";
+      //  echo "Insertar nuevo registro";
         $resp = insertar($estado, $conn);
     }
 }else{
     // Crear nuevo certificado
-    echo "ID no definido INSERTAR";
+    //echo "ID no definido INSERTAR";
     $resp = insertar($estado, $conn);
 }
 echo $resp;
@@ -31,7 +32,7 @@ function insertar($estado, $conn){
     $descmerca = json_decode( $_POST["items"]);  // decodificar cadena JSON en cadena de objetos (array)
     $operacion = $certificado->{"data"}[0]->{"operacion"};
     // INSERTAR EN TABLA >> DETALLECERTIFICADO
-    $stmt = $conn->prepare("INSERT INTO detallecertificado (NombreExp, DireccionExp, TelefonoExp, FaxExp, CorreoExp, NumRegFiscalExp, LugarExp, FechaExp, NombrePro, DireccionPro, TelefonoPro, FaxPro, CorreoPro, NumRegFiscalPro, NombreImp, DireccionImp, TelefonoImp, FaxImp, CorreoImp, NumRegFiscalImp,Observaciones, DireccionAutoCompe, TelefonoAutoCompe, FaxAutoCompe, CorreoAutoCompe, LugarautoCompe, FechaAutoCompe) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO detallecertificado (NombreExp, DireccionExp, TelefonoExp, FaxExp, CorreoExp, NumRegFiscalExp, LugarExp, FechaExp, NombrePro, DireccionPro, TelefonoPro, FaxPro, CorreoPro, NumRegFiscalPro, NombreImp, DireccionImp, TelefonoImp, FaxImp, CorreoImp, NumRegFiscalImp,Observaciones, DireccionAutoCompe, TelefonoAutoCompe, FaxAutoCompe, CorreoAutoCompe  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bindParam(1, $certificado->{"data"}[0]->{"nombreexp"});
     $stmt->bindParam(2, $certificado->{"data"}[0]->{"direccionexp"});
     $stmt->bindParam(3, $certificado->{"data"}[0]->{"telefonoexp"});
@@ -57,8 +58,8 @@ function insertar($estado, $conn){
     $stmt->bindParam(23, $certificado->{"data"}[0]->{"telefonoautocompe"});
     $stmt->bindParam(24, $certificado->{"data"}[0]->{"faxautocompe"});
     $stmt->bindParam(25, $certificado->{"data"}[0]->{"correoautocompe"});
-    $stmt->bindParam(26, $certificado->{"data"}[0]->{"lugarautocompe"});
-    $stmt->bindParam(27, $certificado->{"data"}[0]->{"fechaautocompe"});
+    //$stmt->bindParam(26, $certificado->{"data"}[0]->{"lugarautocompe"});
+    //$stmt->bindParam(27, $certificado->{"data"}[0]->{"fechaautocompe"});
     $respuesta1 = $stmt->execute();
     //****** INSERTAR EN TABLA >> CERTIFICADOS
     $insCert = $conn->prepare("INSERT INTO certificados (Operacion, Regional, fecha, Estado) VALUES (?, ?, ?,?)");
@@ -90,7 +91,7 @@ function insertar($estado, $conn){
     return $respuesta1;
 }
 // ACTUALIZAR DATOS EN TABLAS BD
-function actualizar($conn, $id, $estado){    
+function actualizar($conn, $id, $estado, $idborrar){    
     $certificado = json_decode( $_POST["guardar"]);  // decodificar cadena JSON en cadena de objetos (array)
     $descmerca = json_decode( $_POST["items"]);  // decodificar cadena JSON en cadena de objetos (array)
     $operacion = $certificado->{"data"}[0]->{"operacion"};
@@ -130,7 +131,17 @@ function actualizar($conn, $id, $estado){
     $stmt->bindParam(26, $id);
     $respuesta1 = $stmt->execute();
     
-    // UPDATE TABLA CERTIFICADOS
+    //******************* VERIFICAR SI HAY ITEMS ELIMINADOS DESCRIPCION MERCANCIAS TABLA HTML    
+    
+     if (isset($idborrar)){
+            if ($idborrar[0]!=-1){                
+//              echo "SI hay registros para para borrar ". $idborrar[0];
+                eliminaRegistro($conn, $idborrar);            
+//              echo "NO hay registros para borrar" . $idborrar[0];
+         }
+        }
+    //*********************** UPDATE TABLA CERTIFICADOS
+
     $updateCert = $conn->prepare("UPDATE certificados 
                                 SET Operacion=?, Estado=? 
                                 WHERE id=?");
@@ -138,25 +149,47 @@ function actualizar($conn, $id, $estado){
     $updateCert->bindParam(2, $estado);    
     $updateCert->bindParam(3, $id);
     $respuesta2 = $updateCert->execute();
-
-    /// UPDATE TABLA DESCRIPCION MERCANCIAS BD
     
-    // $updateDescmerca = $conn->prepare("UPDATE descripcionmercancias 
-    //                                 SET id_certificados, item, descmercancia, clasiarancelaria, nofactura, valorfactura, criterorigen
-    //                                 WHERE id=?");
-    // $it = 1;
-    // foreach($descmerca->{"tabladesc"} as $item){
-    //     $updateDescmerca->bindParam(1, $idcertificados);
-    //     $updateDescmerca->bindParam(2, $it);
-    //     $updateDescmerca->bindParam(3, $item->{"descripcion"});
-    //     $updateDescmerca->bindParam(4, $item->{"clasiarancelaria"});
-    //     $updateDescmerca->bindParam(5, $item->{"nofactura"});
-    //     $updateDescmerca->bindParam(6, $item->{"valorfactura"});
-    //     $updateDescmerca->bindParam(7, $item->{"criterorigen"});        
-    //     $respuesta3 = $updateDescmerca->execute();
-    //     $it++;        
-    // }
-
+        //* Sentencia preparada para INSERTAR
+        $insdescmerca = $conn->prepare("INSERT INTO descripcionmercancias 
+                                                    (id_certificados, item, descmercancia, clasiarancelaria, nofactura, valorfactura, criterorigen) 
+                                        VALUES (?, ?, ?, ?, ?, ?, ?)");
+        //* Sentencia preparada para ACTUALIZAR
+        $updateDescmerca = $conn->prepare("UPDATE descripcionmercancias 
+                                           SET item=?, descmercancia=?, clasiarancelaria=?, nofactura=?, valorfactura=?, criterorigen=?
+                                           WHERE id=?");
+    $it = 1;
+    foreach($descmerca->{"tabladesc"} as $item){
+                
+            if($item->{"idDescmercancia"}>0){// SI idDescmercancia >0 ACTUALIZA REGISTRO EN TABLA DESCIPCION MERCANCIAS
+                    $updateDescmerca->bindParam(1, $it);
+                    $updateDescmerca->bindParam(2, $item->{"descripcion"});
+                    $updateDescmerca->bindParam(3, $item->{"clasiarancelaria"});
+                    $updateDescmerca->bindParam(4, $item->{"nofactura"});
+                    $updateDescmerca->bindParam(5, $item->{"valorfactura"});
+                    $updateDescmerca->bindParam(6, $item->{"criterorigen"});
+                    $updateDescmerca->bindParam(7, $item->{"idDescmercancia"});
+                    $respuesta3 = $updateDescmerca->execute();
+                }else {
+                    $insdescmerca->bindParam(1, $id);
+                    $insdescmerca->bindParam(2, $it);
+                    $insdescmerca->bindParam(3, $item->{"descripcion"});
+                    $insdescmerca->bindParam(4, $item->{"clasiarancelaria"});
+                    $insdescmerca->bindParam(5, $item->{"nofactura"});
+                    $insdescmerca->bindParam(6, $item->{"valorfactura"});
+                    $insdescmerca->bindParam(7, $item->{"criterorigen"});        
+                    $respuesta4 = $insdescmerca->execute();
+                }
+    $it++;    
+    }
+    
     return $respuesta1;
+}
+
+function eliminaRegistro($conn, $idborrar){
+    $borrardescmerca = $conn->prepare("delete FROM descripcionmercancias where id=?");    
+        foreach ($idborrar as $numId) {
+            $borrardescmerca->execute([$numId]);
+        }
 }
 ?>

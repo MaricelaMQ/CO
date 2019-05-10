@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <?php
-    if($_GET["ed"]??''){ // verifica si variable 'd' esta definida.
-        $editar = $_GET["ed"];
-        include "libs/consulta.php";
-  }else{
-    $editar =0;
+    if($_GET["ed"]??''){ // verifica si variable 'ed: editar' esta definida.
+            $editar = $_GET["ed"];
+            //include "libs/consulta.php";
+        }else{
+            $editar =0;
   }
-    if($_GET["d"]??''){ // verifica si variable 'd' esta definida.
+    if($_GET["d"]??''){ // verifica si variable 'd: duplicar' esta definida.
           $id = $_GET["d"];
           include "libs/consulta.php";
     }else{
@@ -32,7 +32,7 @@
     <script type="text/javascript">
     var id = <?php echo $id;?>;    
     var editar = <?php echo $editar;?>;
-    var idUpdate = [];
+    var idDelete = [];
     //console.log("valor id: "+ id);
     if (id != 0) {
         var detCertificado = <?php echo json_encode($datos);?>;
@@ -42,7 +42,7 @@
 
 </head>
 
-<body>
+<body unload="javascript:alert('mensaje')">
     <div class="row">
         <div class="col l12 cuadrado">
         </div>
@@ -62,6 +62,9 @@
         <div class="row">
             <div class="col l12 m12 s12 light-blue lighten-1 center titulo">Certificado de Origen COSTA RICA</div>
         </div>
+        <!-- <div class="row "> -->
+            <div id="estado" class="col l12 m12 s12 center"></div>
+        <!-- </div> -->
         <!-- ****************** -->
         <!-- <form> -->
         <div>
@@ -214,7 +217,7 @@
                             <tbody>
                                 <tr>
                                     <td class="descripcion">
-                                        <input id="varmodificando" type="" class="" maxlength="3" value=""
+                                        <input id="varmodificando" type="" class="oculto" maxlength="3" value=""
                                             style="width:20px!important;" /><textarea id="descmercancia"
                                             maxlength="160"></textarea>
                                     </td>
@@ -308,7 +311,7 @@
                     <div class="row">
                         <div class=" col l4 s4">
                             <label for="">Lugar</label>
-                            <input id="lugarexp" type="text" class="validate" value="Bogota" required>
+                            <input id="lugarexp" type="text" class="validate" value="" required>
 
                         </div>
                         <div class="col l4 s4">
@@ -331,19 +334,19 @@
                         <p>Lugar y fecha, nombre y firma del funcionario y sello de la autoridad competente:</p>
                         <div class="row">
                             <div class=" col l4 s4">
-                                <label for="">Lugar</label>
-                                <input id="lugarautocompe" type="text" class="validate" value="Cali" required>
+                                <!-- <label for="">Lugar</label>
+                                <input id="lugarautocompe" type="text" class="validate" value="Cali" required> -->
 
                             </div>
                             <div class="col l4 s4">
-                                <label for="">Fecha</label>
-                                <input id="fechaautocompe" type="date" required>
+                                <!-- <label for="">Fecha</label>
+                                <input id="fechaautocompe" type="date" required> -->
                             </div>
                         </div>
                         <div class="row ">
                             <div class="">
                                 <label for="">Dirección</label>
-                                <input id="direccionautocompe" type="" class="validate" style="width:415px" value=""
+                                <input id="direccionautocompe" type="" class="autocompe validate" style="width:415px" value=""
                                     required>
                             </div>
                         </div>
@@ -361,7 +364,7 @@
                         <div class="row ">
                             <div class="">
                                 <label for="">Correo electrónico:</label>
-                                <input id="correoautocompe" type="" class="validate" value="" required>
+                                <input id="correoautocompe" type="" class="autocompe validate" value="" required>
                             </div>
                         </div>
                     </div>

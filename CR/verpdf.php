@@ -35,8 +35,11 @@ if ($nu=="dato2") {
 	$pdf->setPrintHeader(false);
 	$pdf->setPrintFooter(false);
 	$pdf->SetMargins(5, false, 5, false);
-	$pdf->SetAutoPageBreak(true, 10);
-    $pdf->SetFont('Times', '', 9);
+    $pdf->SetAutoPageBreak(true, 10);
+/** PREFERENCIAS*/
+
+/** PREFERENCIAS*/
+    $pdf->SetFont('Times', '', 8);
     $pdf->SetFillColor(255, 235, 235);
     //$pdf->MultiCell(false, false, false, 0, 'J', false, 1, '', '', true, 0, false, true, 0, 'M', false);    
     $pdf->addPage();
@@ -45,11 +48,11 @@ if ($nu=="dato2") {
 $k=0;
 $tablaUno = '<table>';
 $tablaDos = '<table>';
-$merca = $datos["NombreExp"];
 $conteo = 0;
+var_dump($descripcion);
             foreach($descripcion as $desc) {
                 $conteo += strlen($desc['descmercancia']);
-                if ($conteo<=630){                    
+                if ($conteo<=630){
                     $tablaUno .= '<tr>';
                     $tablaUno .= '<td style="width:30px" class="centrar">'. $desc['item'] . '</td>';
                     $tablaUno .= '<td colspan="7" style="width:260px; vertical-align: middle;"><p>'. $desc['descmercancia'] . '</p></td>';                                  
@@ -75,7 +78,7 @@ $conteo = 0;
 setlocale(LC_TIME, 'es_ES', 'esp_esp'); 
 
 $fechaexp = strftime("%d de %B de %Y", strtotime($datos["FechaExp"]));
-$FechaAutoCompe = strftime("%d de %B de %Y", strtotime($datos["FechaAutoCompe"]));
+//$FechaAutoCompe = strftime("%d de %B de %Y", strtotime($datos["FechaAutoCompe"]));
 
 
     $content = ''; 
@@ -85,6 +88,10 @@ $FechaAutoCompe = strftime("%d de %B de %Y", strtotime($datos["FechaAutoCompe"])
      <link rel="stylesheet" href="css/Estilos.css" />
      <link rel="icon" href="../assets/logo.ico">     
     <style>
+    viewer-pdf-toolbar{
+        display:none;
+        visibility:hidden!important;
+    }
         .centrar {
             text-align: center;
             vertical-align:middle!important;
@@ -186,7 +193,7 @@ $FechaAutoCompe = strftime("%d de %B de %Y", strtotime($datos["FechaAutoCompe"])
                 <p>Sobre la base del control efectuado, se certifica por este medio que la información aquí señalada es correcta y que las mercancías descritas cumplen con las disposiciones del Tratado de Libre Comercio entre la República de Colombia y la República de Costa Rica.</p>
                 <p></p>
                 <p>Lugar y fecha, nombre y firma del funcionario y sello de la autoridad competente:</p>
-                <p>'. $datos["LugarAutoCompe"]. ', '. $FechaAutoCompe . '  </p> 
+                <p> </p> 
                 <p></p>
                 <p>Dirección:  '. $datos["DireccionAutoCompe"]. '</p>
                 <p>Teléfono:   '. $datos["TelefonoAutoCompe"]. ' Fax:  '. $datos["FaxAutoCompe"]. '</p>
@@ -289,7 +296,7 @@ $paginaDos .= '
        <p>Sobre la base del control efectuado, se certifica por este medio que la información aquí señalada es correcta y que las mercancías descritas cumplen con las disposiciones del Tratado de Libre Comercio entre la República de Colombia y la República de Costa Rica.</p>
        <p></p>
        <p>Lugar y fecha, nombre y firma del funcionario y sello de la autoridad competente:</p>
-       <p>'. $datos["LugarAutoCompe"]. ', '. $FechaAutoCompe . '  </p> 
+       <p></p> 
        <p></p>
        <p>Dirección:  '. $datos["DireccionAutoCompe"]. '</p>
        <p>Teléfono:   '. $datos["TelefonoAutoCompe"]. ' Fax:  '. $datos["FaxAutoCompe"]. '</p>

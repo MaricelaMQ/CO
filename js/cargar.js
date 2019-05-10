@@ -3,7 +3,7 @@
     // });
 
 $(function () {
-    listar(estado);
+    listar(estado);    
 });
 
 function listar(estado) {
@@ -15,7 +15,7 @@ function listar(estado) {
                 html='<strong>No hay información</strong>'
             }else{
             var valores = JSON.parse( info ); //codifica cadena a objeto
-            html='<table id="tblresultado" class="class="highlight responsive-table striped bordered"">';
+            html='<table id="tblresultado" class="highlight responsive-table striped bordered">';
             html+= '<thead class="thead-dark"><tr>';            
             // html+= '<td style="text-align: center">Numero Certificado</td>';
             html+= '<th style="text-align: center">OPERACION</th>';

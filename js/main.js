@@ -1,28 +1,38 @@
-$(document).ready(function () {
-        duplicarcert(id);         //  datos();//  listar();//  guardar(); //console.log(datos());
+$(document).ready(function () {    
+     if (editar==0 && id==0){
+         $("#estado").html('NUEVO FORMULARIO');
+     }
+        else if(editar==0 && id>0){
+         $("#estado").html('DUPLICANDO FORMULARIO');
+     }
+        else if(editar==1 && id>0){
+        $("#estado").html('EDITANDO FORMULARIO');
+    }
+        duplicarcert(id);         
 /********* BOTON PUBLICAR  **/
     $('#btpublicar').click(function () {        
         validaform();
     });
 /********* BOTON GUARDAR  **/
     $("#btguardar").click(function () {        
-        guardar('BORRADOR', editar, id);
+        guardar('BORRADOR', editar, id, idDelete);
 });
 /********* BOTON BORRAR ITEM DESCRIPCION MERCANCIAS **/
     $(document).on('click', '.borrar', function () {
         var re = confirm('                                              ADVERTENCIA! \n Este cambio no se puede deshacer ¿Desea continuar?')
         if (re){
-             if (id>0){
-                var ide = $(this).parents("tr").find('td').eq(1).html();
-                idUpdate.push(ide);
-                console.log(idUpdate);
+            var ide = $(this).parents("tr").find('td').eq(1).html();    //$(this).parents("tr").find('td').eq(1).html("-1,"+ide);
+             if (ide>0 && editar>0){
+                idDelete.push(ide);                
+                console.log(idDelete);
                      }else{
-                    console.log("no se actualiza");
+                 console.log("no se actualiza");
                  }
             $(this).closest('tr').remove();
             }else{
             console.log("No borrado");
         }
+        reordenaritems();
     });
 /********** BOTON EDITAR ITEMS TABLA DESCRIPCION MERCANCIAS************* */
     $(document).on('click', '.editar', function () {
@@ -34,7 +44,7 @@ $(document).ready(function () {
             $("#nofactura").val($(this).parents("tr").find('td').eq(4).html());
             $("#valorfactura").val($(this).parents("tr").find('td').eq(5).html());
             $("#criterorigen").val($(this).parents("tr").find('td').eq(6).html());
-            $("#descmercancia").focus();
+        $("#descmercancia").focus();
     });
 
 /********** BOTON MODIFICAR ITEMS TABLA DESCRIPCION MERCANCIAS */  
@@ -52,9 +62,9 @@ $(document).ready(function () {
         limpiar();
   });
 //********* BOTON AGREGAR ITEM DESCRIPCION MERCANCIAS**/
-    $("#agregar").click(function () {
+  $("#agregar").click(function () {
         agregardescripcion(0);
-    });
+  });
 //********* LIMPIAR TABLA  DESCRIPCIÓN MERCANCIAS**/
     function limpiar() {
         $("#descmercancia").val("");
@@ -140,7 +150,7 @@ function agregardescripcion(a) {
                 $.each(detMercancias, function(i, item) {                    //console.log(item["valorfactura"]);
                             var nuevaFila = "<tr>";
                             nuevaFila += "<td class=''></td>";
-                            nuevaFila += "<td class=''>" + item["id"] + "</td>";
+                            nuevaFila += "<td class=''>" + item["id"] + "</td>"; //id tabla descripcion mercancias
                             nuevaFila += "<td class='descripcion'>" + item["descmercancia"] + "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + item["clasiarancelaria"] +  "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + item["nofactura"] +  "</td>";
@@ -192,13 +202,14 @@ function detallemerca(){
     //alert('mensaje de muestra ');
     detmercancia = [];
         $('#descripcionmercancia tr').each(function () {
-
+            var idDescmercancia = $(this).find('td').eq(1).html();// id tabla Descripcion mercancias.
             var descripcion = $(this).find('td').eq(2).html();
             var clasiarancelaria = $(this).find('td').eq(3).html();
             var nofactura = $(this).find('td').eq(4).html();
             var valorfactura = $(this).find('td').eq(5).html();
             var criterorigen = $(this).find('td').eq(6).html();
             var valor = {
+                idDescmercancia,
                 descripcion, clasiarancelaria, nofactura, valorfactura, criterorigen};
             detmercancia.push(valor);
             //console.log(detmercancia);
@@ -208,7 +219,7 @@ function detallemerca(){
         return valores;
 }
 /// VALORES DE INPUTS FORMULARIO EN ARREGLO _DATOS_
-function datos(){
+function datos(){ // dATOS FORMULARIO 
     var datos = [];
     var operacion = $("#operacion").val();
     var nombreexp = $("#nombreexp").val().toUpperCase();
@@ -236,12 +247,12 @@ function datos(){
     var observaciones = $("#observaciones").val().toUpperCase();
     var lugarexp = $("#lugarexp").val();
     var fechaexp = $("#fechaexp").val();
-    var lugarautocompe = $("#lugarautocompe").val().toUpperCase();
-    var fechaautocompe = $("#fechaautocompe").val();
+    //var lugarautocompe = $("#lugarautocompe").val().toUpperCase();
+    //var fechaautocompe = $("#fechaautocompe").val();
     var direccionautocompe = $("#direccionautocompe").val().toUpperCase();
     var telefonoautocompe = $("#telefonoautocompe").val().toUpperCase();
     var faxautocompe = $("#faxautocompe").val();
-    var correoautocompe = $("#correoautocompe").val();
+    var correoautocompe = $("#correoautocompe").val().toUpperCase();
 
     var dato = {
         operacion, nombreexp, direccionexp, telefonoexp, faxexp, correoexp, numregfiscalexp,
@@ -249,7 +260,8 @@ function datos(){
         nombreimp, direccionimp, telefonoimp, faximp, correoimp, numregfiscalimp,
         observaciones,
         lugarexp, fechaexp,
-        lugarautocompe, fechaautocompe, direccionautocompe, telefonoautocompe, faxautocompe, correoautocompe
+        //lugarautocompe, fechaautocompe, 
+        direccionautocompe, telefonoautocompe, faxautocompe, correoautocompe
     };
     
     datos.push(dato);    
@@ -271,12 +283,18 @@ function datos(){
 
 }
 //  GUARDA EN BASE DE DATOS INFORMACIÓN DE FORMULARIO Y TABLA DESCRIPCION MERCANCIAS 
-function guardar(estado, editar, id) {
+// FUNCION GUARDAR
+function guardar(estado, editar, id, idDelete) {
+//console.log(idDelete.length);
+if (idDelete.length==0){
+    idDelete.push(-1);
+    //console.log("valor "+idDelete.length);
+}
     var url = "libs/guardar.php";    
     var descmerca = JSON.stringify(detallemerca())
     var json = JSON.stringify(datos()); // convierte objeto a cadena JSON lo que devuelve funcion datos()
     //console.log('funcion guardar'+ descmerca);
-    __ajax(url, {"guardar": json, "items":descmerca,"estado":estado,"editar":editar,"id":id}) //  , "desc": descmerca
+    __ajax(url, {"guardar": json, "items":descmerca,"estado":estado,"editar":editar,"id":id,"idborrar":idDelete}) //  , "desc": descmerca
         .done(function ( info ){
              console.log( info );// Info: respuesta del servidor
             if ( info == 1 ){

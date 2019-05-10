@@ -1,5 +1,5 @@
 <?php
-$certificado = json_decode( $_POST["json"]);
+//$certificado = json_decode( $_POST["json"]);
 //============================================================+
 // File name   : example_048.php
 // Begin       : 2009-03-20

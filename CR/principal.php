@@ -59,7 +59,7 @@
         <div class="titulodos center" style="background-color: #7eb38e;">Certificados Terminados </div><hr>
     </div>
         <div class="row">
-            <div id="resultado" class=""></div>
+            <div id="resultado" class="center"></div>
         </div>        
     </div>
     <div id="footer" class="cuadrado"></div>
