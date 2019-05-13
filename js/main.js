@@ -146,17 +146,17 @@ function agregardescripcion(a) {
                             $("#descmercancia").focus();        //limpiar();                            
                 }                        
             }else{ /****si a es 1, se agregan valores de BD a tabla DESCRIPCION MERCANCIAS **/
-                //console.log(detMercancias);
+                console.log(detMercancias);
                 $.each(detMercancias, function(i, item) {                    //console.log(item["valorfactura"]);
                             var nuevaFila = "<tr>";
                             nuevaFila += "<td class=''></td>";
-                            nuevaFila += "<td class=''>" + item["id"] + "</td>"; //id tabla descripcion mercancias
-                            nuevaFila += "<td class='descripcion'>" + item["descmercancia"] + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["clasiarancelaria"] +  "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["nofactura"] +  "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["valorfactura"] + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["criterorigen"] + "</td>";
-                            nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";                            
+                            nuevaFila += "<td class=''>" + item["ID"] + "</td>"; //id tabla descripcion mercancias
+                            nuevaFila += "<td class='descripcion'>" + item["DescMercancia"] + "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + item["ClasiArancelaria"] +  "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + item["NoFactura"] +  "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + item["ValorFactura"] + "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + item["CriterOrigen"] + "</td>";
+                            nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";
                             nuevaFila += "</tr>";
                             $("#descripcionmercancia").append(nuevaFila);
                 });

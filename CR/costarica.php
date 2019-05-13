@@ -42,7 +42,7 @@
 
 </head>
 
-<body unload="javascript:alert('mensaje')">
+<body>
     <div class="row">
         <div class="col l12 cuadrado">
         </div>

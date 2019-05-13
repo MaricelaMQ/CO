@@ -63,6 +63,7 @@ function insertar($estado, $conn){
     $respuesta1 = $stmt->execute();
     //****** INSERTAR EN TABLA >> CERTIFICADOS
     $insCert = $conn->prepare("INSERT INTO certificados (Operacion, Regional, fecha, Estado) VALUES (?, ?, ?,?)");
+    //setlocale(LC_TIME, 'es_CO', 'esp_esp');
     $fecha = date("Y-m-d");
     $regional = "CR";
     $insCert->bindParam(1, $operacion);

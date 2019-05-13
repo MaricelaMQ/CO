@@ -45,48 +45,50 @@ if ($nu=="dato2") {
     $pdf->addPage();
         
 /******** GENERAR RESULTADO EN tablaUno *****/
+setlocale(LC_TIME, 'es_CO', 'esp_esp'); 
 $k=0;
 $tablaUno = '<table>';
 $tablaDos = '<table>';
 $conteo = 0;
-var_dump($descripcion);
+  //var_dump($descripcion);
+  if ($descripcion>0){
             foreach($descripcion as $desc) {
-                $conteo += strlen($desc['descmercancia']);
+                $conteo += strlen($desc["DescMercancia"]);
                 if ($conteo<=630){
                     $tablaUno .= '<tr>';
-                    $tablaUno .= '<td style="width:30px" class="centrar">'. $desc['item'] . '</td>';
-                    $tablaUno .= '<td colspan="7" style="width:260px; vertical-align: middle;"><p>'. $desc['descmercancia'] . '</p></td>';                                  
-                    $tablaUno .= '<td style="width:82px; "class="centrar"><p>'. $desc['clasiarancelaria'] . '</p></td>';
-                    $tablaUno .= '<td style="width:65px" class="centrar"><p>'. $desc['nofactura']  . '</p></td>';
-                    $tablaUno .= '<td style="width:75px" class="derecha"><p>'. number_format($desc['valorfactura'], 2, '.', ',')  . '</p></td>';
-                    $tablaUno .= '<td style="width:67px" class="centrar"><p>'. $desc['criterorigen']  . '</p></td>';                    
+                    $tablaUno .= '<td style="width:30px" class="centrar">'. $desc["Item"] . '</td>';
+                    $tablaUno .= '<td colspan="7" style="width:260px; vertical-align: middle;"><p>'. $desc['DescMercancia'] . '</p></td>';
+                    $tablaUno .= '<td style="width:82px; "class="centrar"><p>'. $desc['ClasiArancelaria'] . '</p></td>';
+                    $tablaUno .= '<td style="width:65px" class="centrar"><p>'. $desc['NoFactura']  . '</p></td>';
+                    $tablaUno .= '<td style="width:75px" class="derecha"><p>'. number_format($desc['ValorFactura'], 2, '.', ',')  . '</p></td>';
+                    $tablaUno .= '<td style="width:67px" class="centrar"><p>'. $desc['CriterOrigen']  . '</p></td>';
                     $tablaUno .= '</tr>';
-                    
                 }else{
                     $tablaDos .= '<tr>';
-                    $tablaDos .= '<td style="width:30px" class="centrar">'. $desc['item'] . '</td>';
-                    $tablaDos .= '<td colspan="3" style="width:260px; vertical-align: middle;"><p>'. strtoupper($desc['descmercancia'])  . '</p></td>';
-                    $tablaDos .= '<td style="width:82px; "class="centrar"><p>'. $desc['clasiarancelaria']  . '</p></td>';
-                    $tablaDos .= '<td style="width:65px" class="centrar"><p>'. $desc['nofactura']  . '</p></td>';
-                    $tablaDos .= '<td style="width:75px" class="derecha"><p>'. number_format($desc['valorfactura'], 2, '.', ',')  . '</p></td>';
-                    $tablaDos .= '<td style="width:67px" class="centrar"><p>'. $desc['criterorigen']  . '</p></td>';
+                    $tablaDos .= '<td style="width:30px" class="centrar">'. $desc['Item'] . '</td>';
+                    $tablaDos .= '<td colspan="3" style="width:260px; vertical-align: middle;"><p>'. strtoupper($desc['DescMercancia'])  . '</p></td>';
+                    $tablaDos .= '<td style="width:82px; "class="centrar"><p>'. $desc['ClasiArancelaria']  . '</p></td>';
+                    $tablaDos .= '<td style="width:65px" class="centrar"><p>'. $desc['NoFactura']  . '</p></td>';
+                    $tablaDos .= '<td style="width:75px" class="derecha"><p>'. number_format($desc['ValorFactura'], 2, '.', ',')  . '</p></td>';
+                    $tablaDos .= '<td style="width:67px" class="centrar"><p>'. $desc['CriterOrigen']  . '</p></td>';
                     $tablaDos .= '</tr>';
                 }
             }
+            $fechaexp = strftime("%d de %B de %Y", strtotime($datos["FechaExp"]));
+        }else{
+            $fechaexp = '';
+            $tablaUno.='<tr><td></td></tr>';
+            $tablaDos.='<tr><td></td></tr>';
+        }
             $tablaUno.='</table>';
             $tablaDos.='</table>';
-setlocale(LC_TIME, 'es_ES', 'esp_esp'); 
-
-$fechaexp = strftime("%d de %B de %Y", strtotime($datos["FechaExp"]));
 //$FechaAutoCompe = strftime("%d de %B de %Y", strtotime($datos["FechaAutoCompe"]));
-
-
-    $content = ''; 
+    $content = '';
      $content .= '
      <html>
      <head>
      <link rel="stylesheet" href="css/Estilos.css" />
-     <link rel="icon" href="../assets/logo.ico">     
+     <link rel="icon" href="../assets/logo.ico">
     <style>
     viewer-pdf-toolbar{
         display:none;
@@ -102,7 +104,7 @@ $fechaexp = strftime("%d de %B de %Y", strtotime($datos["FechaExp"]));
         }
 
         .borde {
-            border:1px dotted black!important;            
+            border:1px dotted black!important;
         } 
         
         .borderecho{
@@ -113,8 +115,7 @@ $fechaexp = strftime("%d de %B de %Y", strtotime($datos["FechaExp"]));
             border-left:1px dotted black!important;
         }       
             
-    </style>
-    
+    </style>    
     </head>
     <body>
     <div class="centrar"><strong>Anexo A<br>Certificado de Origen</strong></div>
@@ -200,8 +201,7 @@ $fechaexp = strftime("%d de %B de %Y", strtotime($datos["FechaExp"]));
                 <p>Correo electrónico:    '. $datos["CorreoAutoCompe"]. '</p>
             </td>
         </tr>
-            </table>';
-                    
+            </table>';                    
 
 $pdf->writeHTML($content, true, 0, true, 0);
 /*********************************************PAGINA DOS *******************/ 

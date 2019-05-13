@@ -1,15 +1,25 @@
 <?php
 include "conecta.php";
 /*****CONSULTA DETALLE CERTIFICADO */
-//$id=4;
+//  $id=1;
 if(isset($id)){
         $stmt = $conn->prepare("SELECT * FROM vista_datoscertificado WHERE id=?");
         $stmt->execute([$id]);
         $datos = $stmt->fetch();
+//        var_dump($datos);
         /**CONSULTA TABLA BD DESCRIPCION MERCANCIAS */
-        $querydescmerca = $conn->prepare("SELECT id, item, descmercancia, clasiarancelaria, nofactura, valorfactura, criterorigen FROM descripcionmercancias WHERE id_certificados=?");
+        // $querydescmerca = $conn->prepare("SELECT id, item, descmercancia, clasiarancelaria, nofactura, valorfactura, criterorigen FROM descripcionmercancias WHERE id_certificados=?");        
+         $querydescmerca = $conn->prepare("SELECT * FROM descripcionmercancias WHERE id_certificados=?");
         $querydescmerca->execute([$id]);
-        $descripcion = $querydescmerca->fetchAll();
+        // $descripcion = $querydescmerca->fetchAll();
+         $descripcion = $querydescmerca->fetchAll();
+        //$descripcion        
+        //var_dump(count($descripcion));
+        if(count($descripcion)==0){
+                $descripcion=0;
+                // var_dump($descripcion);
+        };
+        
 }else{
         $datos='';
 }
