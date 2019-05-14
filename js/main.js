@@ -10,11 +10,14 @@ $(document).ready(function () {
     }
         duplicarcert(id);         
 /********* BOTON PUBLICAR  **/
-    $('#btpublicar').click(function () {        
-        validaform();
+    $('#btpublicar').click(function () {
+        var respuesta = confirm('Al publicar el formulario no se podrán realizar más cambios. \n¿Desea continuar? ')
+        if (respuesta){
+            validaform();
+        }
     });
 /********* BOTON GUARDAR  **/
-    $("#btguardar").click(function () {        
+    $("#btguardar").click(function () {
         guardar('BORRADOR', editar, id, idDelete);
 });
 /********* BOTON BORRAR ITEM DESCRIPCION MERCANCIAS **/
@@ -146,7 +149,7 @@ function agregardescripcion(a) {
                             $("#descmercancia").focus();        //limpiar();                            
                 }                        
             }else{ /****si a es 1, se agregan valores de BD a tabla DESCRIPCION MERCANCIAS **/
-                console.log(detMercancias);
+                // console.log(detMercancias);
                 $.each(detMercancias, function(i, item) {                    //console.log(item["valorfactura"]);
                             var nuevaFila = "<tr>";
                             nuevaFila += "<td class=''></td>";
@@ -226,21 +229,21 @@ function datos(){ // dATOS FORMULARIO
     var direccionexp = $("#direccionexp").val().toUpperCase();
     var telefonoexp = $("#telefonoexp").val();
     var faxexp = $("#faxexp").val();
-    var correoexp = $("#correoexp").val().toUpperCase();
+    var correoexp = $("#correoexp").val().toLowerCase();
     var numregfiscalexp = $("#numregfiscalexp").val();
 
     var nombrepro = $("#nombrepro").val().toUpperCase();
     var direccionpro = $("#direccionpro").val().toUpperCase();
     var telefonopro = $("#telefonopro").val();
     var faxpro = $("#faxpro").val();
-    var correopro = $("#correopro").val();
+    var correopro = $("#correopro").val().toLowerCase();
     var numregfiscalpro = $("#numregfiscalpro").val();
 
     var nombreimp = $("#nombreimp").val().toUpperCase();
     var direccionimp = $("#direccionimp").val().toUpperCase();
     var telefonoimp = $("#telefonoimp").val();
     var faximp = $("#faximp").val();
-    var correoimp = $("#correoimp").val().toUpperCase();
+    var correoimp = $("#correoimp").val().toLowerCase();
     var numregfiscalimp = $("#numregfiscalimp").val();
     
     // DATOS TABLA DESCRIPCION MERCANCIAS
@@ -252,7 +255,7 @@ function datos(){ // dATOS FORMULARIO
     var direccionautocompe = $("#direccionautocompe").val().toUpperCase();
     var telefonoautocompe = $("#telefonoautocompe").val().toUpperCase();
     var faxautocompe = $("#faxautocompe").val();
-    var correoautocompe = $("#correoautocompe").val().toUpperCase();
+    var correoautocompe = $("#correoautocompe").val().toLowerCase();
 
     var dato = {
         operacion, nombreexp, direccionexp, telefonoexp, faxexp, correoexp, numregfiscalexp,
@@ -298,7 +301,11 @@ if (idDelete.length==0){
         .done(function ( info ){
              console.log( info );// Info: respuesta del servidor
             if ( info == 1 ){
-                alert('Se ha guardado certificado con exito');
+                if (estado=='BORRADOR'){
+                    alert('Se ha guardado certificado');
+                }else{
+                    alert('Se ha publicado certificado');
+                }                
                 location.href ="principal.php";
             }else{
                 alert('Error al guardar registro');

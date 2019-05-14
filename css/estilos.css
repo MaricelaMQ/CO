@@ -102,8 +102,9 @@ th{
   -o-border-radius: 5px;
 }
 
-.secc11  {
-   height: 409px!important; 
+.secc12  {   
+  
+  height: 385px!important; 
    /* height: 100%!important;  */
 }
 .seccionboton{
@@ -155,6 +156,10 @@ width: 130px!important;
 .autocompe, input:not([type]), input[type=text], input[type=email], input[type=url], input[type=time], input[type=date], textarea{
   margin: 0px!important;
   text-transform: uppercase;
+  
+}
+.minusc{
+  text-transform: lowercase!important;
 }
 #estado{
 font-size: 25px;

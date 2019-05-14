@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     if($_GET["p"]??''){
           $id = $_GET["p"];
           include "libs/consulta.php";
@@ -64,7 +64,7 @@
                             </p>
                             </div>
                             <div class="row">
-                                País Exportador: <input id="paisexp" disabled value="PAIS EXPORTADOR" type=""> País
+                                País Exportador: <input id="paisexp" disabled value="COLOMBIA" type=""> País
                                 importador:
                                 <input id="paisexp" value="" type="">
                             </div>

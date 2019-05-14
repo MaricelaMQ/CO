@@ -47,29 +47,30 @@ if ($nu=="dato2") {
 /******** GENERAR RESULTADO EN tablaUno *****/
 setlocale(LC_TIME, 'es_CO', 'esp_esp'); 
 $k=0;
-$tablaUno = '<table>';
-$tablaDos = '<table>';
+$tablaUno = '<table cellspacing="1" border="0">';
+$tablaDos = '<table cellspacing="1" border="0">';
 $conteo = 0;
+$tamanofila=683; // TAMAÑO FILA****
   //var_dump($descripcion);
   if ($descripcion>0){
             foreach($descripcion as $desc) {
                 $conteo += strlen($desc["DescMercancia"]);
-                if ($conteo<=630){
+                if ($conteo<=$tamanofila){
                     $tablaUno .= '<tr>';
-                    $tablaUno .= '<td style="width:30px" class="centrar">'. $desc["Item"] . '</td>';
-                    $tablaUno .= '<td colspan="7" style="width:260px; vertical-align: middle;"><p>'. $desc['DescMercancia'] . '</p></td>';
+                    $tablaUno .= '<td style="width:25px" class="centrar">'. $desc["Item"] . '</td>';
+                    $tablaUno .= '<td colspan="7" style="width:253px; vertical-align: middle;"><p>'. $desc['DescMercancia'] . '</p></td>';
                     $tablaUno .= '<td style="width:82px; "class="centrar"><p>'. $desc['ClasiArancelaria'] . '</p></td>';
-                    $tablaUno .= '<td style="width:65px" class="centrar"><p>'. $desc['NoFactura']  . '</p></td>';
+                    $tablaUno .= '<td style="width:62px" class="centrar"><p>'. $desc['NoFactura']  . '</p></td>';
                     $tablaUno .= '<td style="width:75px" class="derecha"><p>'. number_format($desc['ValorFactura'], 2, '.', ',')  . '</p></td>';
-                    $tablaUno .= '<td style="width:67px" class="centrar"><p>'. $desc['CriterOrigen']  . '</p></td>';
+                    $tablaUno .= '<td style="width:64px" class="centrar"><p>'. $desc['CriterOrigen']  . '</p></td>';
                     $tablaUno .= '</tr>';
                 }else{
                     $tablaDos .= '<tr>';
-                    $tablaDos .= '<td style="width:30px" class="centrar">'. $desc['Item'] . '</td>';
-                    $tablaDos .= '<td colspan="3" style="width:260px; vertical-align: middle;"><p>'. strtoupper($desc['DescMercancia'])  . '</p></td>';
-                    $tablaDos .= '<td style="width:82px; "class="centrar"><p>'. $desc['ClasiArancelaria']  . '</p></td>';
-                    $tablaDos .= '<td style="width:65px" class="centrar"><p>'. $desc['NoFactura']  . '</p></td>';
-                    $tablaDos .= '<td style="width:75px" class="derecha"><p>'. number_format($desc['ValorFactura'], 2, '.', ',')  . '</p></td>';
+                    $tablaDos .= '<td style="width:25px" class="centrar">'. $desc['Item'] . '</td>';
+                    $tablaDos .= '<td colspan="3" style="width:258px; vertical-align: middle;"><p>'. strtoupper($desc['DescMercancia'])  . '</p></td>';
+                    $tablaDos .= '<td style="width:81px; "class="centrar"><p>'. $desc['ClasiArancelaria']  . '</p></td>';
+                    $tablaDos .= '<td style="width:64px" class="centrar"><p>'. $desc['NoFactura']  . '</p></td>';
+                    $tablaDos .= '<td style="width:73px" class="derecha"><p>'. number_format($desc['ValorFactura'], 2, '.', ',')  . '</p></td>';
                     $tablaDos .= '<td style="width:67px" class="centrar"><p>'. $desc['CriterOrigen']  . '</p></td>';
                     $tablaDos .= '</tr>';
                 }
@@ -87,8 +88,8 @@ $conteo = 0;
      $content .= '
      <html>
      <head>
-     <link rel="stylesheet" href="css/Estilos.css" />
-     <link rel="icon" href="../assets/logo.ico">
+     
+     <link rel="shortcut icon" href="../assets/logo.ico">
     <style>
     viewer-pdf-toolbar{
         display:none;
@@ -127,12 +128,12 @@ $conteo = 0;
                     <td colspan="6" class="borde">1. Nombre y Dirección del Exportador: '. $datos["NombreExp"]. ' / '. $datos["DireccionExp"]. '
                     <p>Teléfono: '. $datos["TelefonoExp"]. ' Fax:  '. $datos["FaxExp"]. '</p>
                         <p>Correo electrónico:    '. $datos["CorreoExp"]. ' </p>
-                        Número de Registro Fiscal:    '. $datos["NumRegFiscalExp"]. '
-                        <p></p>
+                        Número de Registro Fiscal:    '. $datos["NumRegFiscalExp"]. '                        
                     </td>
                     <td colspan="6" class="borde">Certificado N°:
                         <p class="centrar"><strong>CERTIFICADO DE ORIGEN</strong></p>
-                        <p class="centrar">Tratado de Libre Comercio entre Colombia y Costa Rica</p>
+                        <p class="centrar">Tratado de Libre Comercio entre Colombia y Costa Rica
+                        <br>(Ver Instrucciones al reverso)</p>
         
                     </td>
                 </tr>
@@ -145,7 +146,7 @@ $conteo = 0;
                         
                     </td>
                     <td colspan="6" class="borde">1. Nombre y Dirección del Importador: '. $datos["NombreImp"]. ' /  '. $datos["DireccionImp"]. ' 
-                        <p>Teléfono: '. $datos["TelefonoImp"]. '  Fax:  '. $datos["FaxImp"]. ' </p>
+                        <br>Teléfono: '. $datos["TelefonoImp"]. '  Fax:  '. $datos["FaxImp"]. ' 
                         <p>Correo electrónico:  '. $datos["CorreoImp"]. ' </p>
                         <p>Número de Registro Fiscal:    '. $datos["NumRegFiscalImp"]. ' </p>
                     </td>
@@ -160,10 +161,10 @@ $conteo = 0;
                     <td style="width:75px;"class="borde"><p>8. Valor en Factura</p></td>
                     <td style="width:67px;"class="borde"><p>9. Criterio de Origen</p></td>                    
              </tr>
-            <!-- DETALLE Mercancias -->
+            <!-- DESCRIPCION MERCANCIAS -->
             <!-- tablaUno INSERTADA --> 
             <tr>
-                <td  colspan="12" class="bordeizq borderecho" height="210px">';
+                <td colspan="12" class="bordeizq borderecho" height="190px">';
                 $content .= $tablaUno;
                 $content .= '
                 </td>
@@ -171,41 +172,42 @@ $conteo = 0;
                 <!--<tr><td colspan="12" style="" class="bordeizq borderecho"><p></p></td></tr>-->            
                 <!-- OBSERVACIONES -->
             <tr>
-            <td colspan="12" style="" class="borde"><p>10. Observaciones<br> '. $datos["Observaciones"]. ' </p></td>
+            <td colspan="12" style="height:20px" class="borde"><p>10. Observaciones:  '. $datos["Observaciones"]. ' </p></td>
             </tr>
             <!-- SECCION ONCE -->
-            <tr>            
-            <td colspan="6" style="width:50%" class="borde">11. Declaración del exportador
+            <tr>             
+            <td colspan="6" width="50%" class="borde">11. Declaración del exportador
                 <p>El abajo firmante declara bajo juramento que la información consignada en este certificado de origen es correcta y verdadera y que las mercancías fueron producidas en:</p>
-                <p class="centrar"><u>   COLOMBIA   </u><br/>
+                <p class=""><u>   COLOMBIA   </u><br/>
                 (pais)</p>
                 <p>y cumplen con las disposiciones del Capitulo 3 (Reglas de Origen y Procedimientos de
                 Origen)
                 establecidas en el Tratado de Libre Comercio entre la República de Colombia y la
                 República                de
                 Costa Rica y exportadas a:</p>
-                <p class="centrar"><u>   COSTA RICA   </u><br/>
+                <p class=""><u>   COSTA RICA   </u><br/>
                 (pais de importación)</p>
                 <p>Lugar y fecha, firma del exportador</p>
                 <p> '. $datos["LugarExp"]. ', '. $fechaexp . '  </p>                
             </td>
             <!-- SECCION DOCE -->
             <td colspan="6" style="width:50%" class="borde">12. Nombre y Dirección del Importador:
-                <p>Sobre la base del control efectuado, se certifica por este medio que la información aquí señalada es correcta y que las mercancías descritas cumplen con las disposiciones del Tratado de Libre Comercio entre la República de Colombia y la República de Costa Rica.</p>
+                <p>Sobre la base del control efectuado, se certifica por este medio que la información aquí señalada es correcta y que las mercancías descritas cumplen con las disposiciones del Tratado de Libre Comercio entre la República de Colombia y la República de Costa Rica.</p>                
+                <p>Lugar y fecha, nombre y firma del funcionario y sello de la autoridad competente:</p>                
+                    <p> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p> 
+                
                 <p></p>
-                <p>Lugar y fecha, nombre y firma del funcionario y sello de la autoridad competente:</p>
-                <p> </p> 
-                <p></p>
-                <p>Dirección:  '. $datos["DireccionAutoCompe"]. '</p>
-                <p>Teléfono:   '. $datos["TelefonoAutoCompe"]. ' Fax:  '. $datos["FaxAutoCompe"]. '</p>
-                <p>Correo electrónico:    '. $datos["CorreoAutoCompe"]. '</p>
+                <br>Dirección:  '. $datos["DireccionAutoCompe"]. '
+                <br>Teléfono:   '. $datos["TelefonoAutoCompe"]. ' Fax:  '. $datos["FaxAutoCompe"]. '
+                <br>Correo electrónico:    '. $datos["CorreoAutoCompe"]. '
+                <br>
             </td>
         </tr>
             </table>';                    
 
 $pdf->writeHTML($content, true, 0, true, 0);
 /*********************************************PAGINA DOS *******************/ 
-if ($conteo>630){
+if ($conteo>$tamanofila){
     $pdf->addPage();
     $paginaDos = '';
 $paginaDos .= '
@@ -272,7 +274,7 @@ $paginaDos .= '
        </tr>
            <!-- OBSERVACIONES DOS-->           
        <tr>
-            <td colspan="12" style="" class="borde"><p>10. Observaciones<br><br></p></td>
+            <td colspan="12" style="" class="borde"><p>10. Observaciones<br></p></td>
        </tr>
        <!-- SECCION ONCE -->
        <tr>       
@@ -296,11 +298,12 @@ $paginaDos .= '
        <p>Sobre la base del control efectuado, se certifica por este medio que la información aquí señalada es correcta y que las mercancías descritas cumplen con las disposiciones del Tratado de Libre Comercio entre la República de Colombia y la República de Costa Rica.</p>
        <p></p>
        <p>Lugar y fecha, nombre y firma del funcionario y sello de la autoridad competente:</p>
-       <p></p> 
+       <p> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p> 
        <p></p>
-       <p>Dirección:  '. $datos["DireccionAutoCompe"]. '</p>
-       <p>Teléfono:   '. $datos["TelefonoAutoCompe"]. ' Fax:  '. $datos["FaxAutoCompe"]. '</p>
-       <p>Correo electrónico:    '. $datos["CorreoAutoCompe"]. '</p>
+       <br>Dirección:  '. $datos["DireccionAutoCompe"]. '
+       <br>Teléfono:   '. $datos["TelefonoAutoCompe"]. ' Fax:  '. $datos["FaxAutoCompe"]. '
+       <br>Correo electrónico:    '. $datos["CorreoAutoCompe"]. '<br>
+       
        </td>
    </tr>            
        </table>';

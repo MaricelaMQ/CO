@@ -1,5 +1,6 @@
 function validaform() {    
     guardar('TERMINADO', editar, id, idDelete);
+    
     // var valido = 0;
     // var tbldesc = $("#descripcionmercancia tbody tr").length;
     // $("input").each(function () {
@@ -27,6 +28,7 @@ function validaform() {
     //     //$("#descmercancia").focus();
     //     }
 }
+
 // function format2(n, currency) {
 //     return currency + n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 //   }

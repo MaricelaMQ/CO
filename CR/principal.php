@@ -28,7 +28,7 @@
                 var estado ='TERMINADO';
             }
     </script>
-    <title>CO- Lista certificados</title>
+    <title>CR- Terminados</title>
     
 </head>
 <body>

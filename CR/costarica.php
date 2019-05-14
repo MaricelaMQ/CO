@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/materialize.min.css" />
     <link rel="stylesheet" href="../css/Estilos.css" />
-    <link rel="icon" href="../assets/logo.ico">
+    <link rel="shortcut icon" href="../assets/logo.ico">
     
     <script src="../js/vendor/jquery.js"></script>
     <script src="../js/main.js"></script>
@@ -70,7 +70,7 @@
         <div>
             <!-- FORMULARIO -->
             <div class="row">
-                <div class="">
+                <div class="">                
                     <label for="">DO:</label>
                     <input id="operacion" type="" value="" style="width=:50px;" maxlength="20" required>
                 </div>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="row ">
                         <div class="input-field">
-                            <input id="direccionexp" class="validate" type="text" value="" required>
+                            <input id="direccionexp" class="validate" type="text" value="" maxlength="60" required>
                             <label for="">Dirección</label>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                     </div>
                     <div class="row ">
                         <div class="input-field col l6 s6">
-                            <input id="correoexp" type="text" class="validate" value="" required>
+                            <input id="correoexp" type="text" class="minusc validate" value="" required>
                             <label for="">Correo electrónico:</label>
                         </div>
 
@@ -150,7 +150,7 @@
                     </div>
                     <div class="row ">
                         <div class="input-field col l6 s6">
-                            <input id="correopro" type="text" class="validate" value="" required>
+                            <input id="correopro" type="text" class="minusc validate" value="" required>
                             <label for="">Correo electrónico:</label>
                         </div>
 
@@ -187,7 +187,7 @@
                     </div>
                     <div class="row ">
                         <div class="input-field col l6 s6">
-                            <input id="correoimp" type="text" class="validate" value="" required>
+                            <input id="correoimp" type="text" class="minusc validate" value="" required>
                             <label for="">Correo electrónico:</label>
                         </div>
 
@@ -222,7 +222,7 @@
                                             maxlength="160"></textarea>
                                     </td>
                                     <td class="center valorfactura"><input id="clasiarancelaria" type=""
-                                            class="valorfactura" maxlength="6" value="" />
+                                            class="valorfactura" maxlength="8" value="" />
                                     </td>
                                     <td class="center valorfactura"><input id="nofactura" type="" class="valorfactura"
                                             maxlength="10" value="" />
@@ -364,7 +364,7 @@
                         <div class="row ">
                             <div class="">
                                 <label for="">Correo electrónico:</label>
-                                <input id="correoautocompe" type="" class="autocompe validate" value="" required>
+                                <input id="correoautocompe" type="" class="minusc validate" value="" required>
                             </div>
                         </div>
                     </div>
@@ -374,7 +374,7 @@
             </div>
             <div class="row">
                 <div class="col l12 center seccionboton">
-                    <a href="../index.html" class="btn waves-effect waves-light">Volver
+                    <a href="../principal.php" class="btn waves-effect waves-light">Volver
                         <i class="material-icons right">arrow_back</i>
                     </a>
                     <button class="btn waves-effect orange" type="submit" id="btguardar">Guardar
