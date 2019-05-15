@@ -22,13 +22,13 @@
     <title>CO - Costa Rica</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../css/materialize.min.css" />
-    <link rel="stylesheet" href="../css/Estilos.css" />
+    <link rel="stylesheet" href="../assets/css/materialize.min.css" />
+    <link rel="stylesheet" href="../assets/css/Estilos.css" />
     <link rel="shortcut icon" href="../assets/logo.ico">
     
-    <script src="../js/vendor/jquery.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/validaform.js"></script>
+    <script src="../assets/js/vendor/jquery.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/validaform.js"></script>
     <script type="text/javascript">
     var id = <?php echo $id;?>;    
     var editar = <?php echo $editar;?>;
@@ -389,7 +389,7 @@
         <!-- </form> -->
         <div id="resultado"></div>
         <div id="footer" class="cuadrado"></div>
-        <script src="../js/materialize.min.js"></script> 
+        <script src="../assets/js/materialize.min.js"></script> 
 </body>
 
 </html>

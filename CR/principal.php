@@ -14,14 +14,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../css/materialize.min.css" />
-    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../assets/css/materialize.min.css" />
+    <link rel="stylesheet" href="../assets/css/estilos.css">
     
     <link rel="icon" href="../assets/logo.ico">
-    <script src="../js/vendor/jquery.js"></script>
+    <script src="../assets/js/vendor/jquery.js"></script>
     <!-- <script src="js/main.js"></script> -->
     
-    <script src="../js/cargar.js"></script>
+    <script src="js/cargar.js"></script>
     <script type="text/javascript">
             var op = <?php echo $op;?>;
             if (op == 0) {
@@ -63,6 +63,6 @@
         </div>        
     </div>
     <div id="footer" class="cuadrado"></div>
-    <script src="../js/materialize.min.js"></script>
+    <script src="../assets/js/materialize.min.js"></script>
 </body>
 </html>
