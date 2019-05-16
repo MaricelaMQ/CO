@@ -26,12 +26,14 @@
   font-size: 30px; 
   height: 50px;  
 }
-select {
-  display: inline-block!important;
+.criterorigen {  
   /* height: 30px!important; */
   width: 50px!important;  
 }
 
+select{
+  display: inline-block!important;
+}
 .cajas{
   /* /width: 100%; */
   margin-top: 12px;
@@ -89,6 +91,19 @@ th{
   text-align: left!important;
 }
 
+.denoMerca {
+  width: 320px!important;
+  text-align: left!important;
+}
+.texto-izq{
+  text-align: left!important;
+}
+.anchoDeno{
+  width:450px;
+}
+.anchoNormas{
+  width:25%;  
+}
 /* #tblresultado {
    width: 80%!important; 
 } */
@@ -112,7 +127,7 @@ th{
 }
 
 .valorfactura{
-  text-align: right!important;
+  text-align: right;
   width: 100px!important;
 }
 .btagregar{
@@ -146,14 +161,14 @@ th{
 }
 
 .fechams{
-height: 25px!important;
-width: 130px!important;
+/* height: 25px!important; */
+width: 136px!important;
 }
 /* .bortabla, th, td{
   border: 1px solid black!important;
 } */
 
-.autocompe, input:not([type]), input[type=text], input[type=email], input[type=url], input[type=time], input[type=date], textarea{
+.mayusc, input:not([type]), input[type=text], input[type=email], input[type=url], input[type=time], input[type=date], textarea{
   margin: 0px!important;
   text-transform: uppercase;
   

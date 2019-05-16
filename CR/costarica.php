@@ -230,7 +230,7 @@
                                     <td class="center valorfactura"><input id="valorfactura" type=""
                                             class="valorfactura" value="" /></td>
                                     <td class="center">
-                                        <select id="criterorigen" name="" class="validate">
+                                        <select id="criterorigen" name="" class="criterorigen validate">
                                             <option value="A" selected>A</option>
                                             <option value="B">B</option>
                                             <option value="C">C</option>
@@ -346,7 +346,7 @@
                         <div class="row ">
                             <div class="">
                                 <label for="">Dirección</label>
-                                <input id="direccionautocompe" type="" class="autocompe validate" style="width:415px" value=""
+                                <input id="direccionautocompe" type="" class="mayusc validate" style="width:415px" value=""
                                     required>
                             </div>
                         </div>
