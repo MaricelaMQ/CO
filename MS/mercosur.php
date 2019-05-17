@@ -59,6 +59,7 @@
         <div class="row">
             <div class="col l12 m12 s12 green darken-3  center titulo">Certificado de Origen MERCOSUR</div>
         </div>
+        <div id="estado" class="col l12 m12 s12 center"></div>
         <!-- ****************** -->
         <!-- <form> -->
         <div>
@@ -301,8 +302,8 @@
                     <button class="btn waves-effect orange" type="submit" id="btguardar">Guardar
                         <i class="material-icons right">save</i>
                     </button>
-                    <button class="btn waves-effect orange" type="submit" id="btprueba">Prueba
-                        <i class="material-icons right">priority_high</i>
+                    <button class="btn light-blue darken-2" type="submit" id="btpublicar">Publicar
+                        <i class="material-icons right">send</i>
                     </button>
                 </div>
             </div>

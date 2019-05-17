@@ -317,4 +317,5 @@ $pdf->lastPage();
 
 $pdf->output('Reportecertificado.pdf', 'I');
 }
+ob_flush();
 ?>

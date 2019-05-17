@@ -39,9 +39,9 @@ function listar(estado) {
                 html+= '<td style="text-align: left!important;">' + valores.data[i].RazonSocial + '</td>';
                 if (estado=='TERMINADO'){
                     html+= '<td><a href="verpdf.php?p='+ valores.data[i].id +'" target="_blank">Ver Pdf</a></td>';
-                    html+= '<td><a href="costarica.php?d='+ valores.data[i].id +'" >Duplicar</a></td>';
+                    html+= '<td><a href="mercosur.php?d='+ valores.data[i].id +'" >Duplicar</a></td>';
                 }else{
-                    html+= '<td><a href="costarica.php?ed=1&d='+ valores.data[i].id +'" >Editar</a></td>';
+                    html+= '<td><a href="mercosur.php?ed=1&d='+ valores.data[i].id +'" >Editar</a></td>';
                 }
                 // html+= '<td></td>';
                 html+= '</tr>';

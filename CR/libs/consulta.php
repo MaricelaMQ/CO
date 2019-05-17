@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include "conecta.php";
 /*****CONSULTA DETALLE CERTIFICADO */
 //  $id=1;
@@ -82,4 +83,5 @@ if(isset($id)){
 // echo "Se han creado las entradas exitosamente";
 // // Cerrar conexiones
  $conn = null;
+ ob_flush();
 ?>

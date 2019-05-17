@@ -8,19 +8,14 @@ $(document).ready(function () {
         else if(editar==1 && id>0){
         $("#estado").html('EDITANDO FORMULARIO');
     }
-        duplicarcert(id);         
+        duplicarcert(id);
 /********* BOTON PUBLICAR  **/
     $('#btpublicar').click(function () {
         var respuesta = confirm('Al publicar el formulario no se podrán realizar más cambios. \n¿Desea continuar? ')
         if (respuesta){
             validaform();
         }
-    });
-    /**BOTON PRUEBA */
-    $("#btprueba").click(function () { 
-        /*console.log(datos());
-        console.log(descripcionmerca());*/
-    });
+    });    
 /********* BOTON GUARDAR  **/
     $("#btguardar").click(function () {
         guardar('BORRADOR', editar, id, idDelete);
@@ -51,8 +46,7 @@ $(document).ready(function () {
             $("#descmercancia").val($(this).parents("tr").find('td').eq(3).html());
             $("#pesocantidad").val($(this).parents("tr").find('td').eq(4).html());
             $("#valorfob").val($(this).parents("tr").find('td').eq(5).html());
-            $("#normas").val($(this).parents("tr").find('td').eq(6).html());
-            
+            $("#normas").val($(this).parents("tr").find('td').eq(6).html());            
         $("#naladisa").focus();
     });
 
@@ -73,7 +67,7 @@ $(document).ready(function () {
 //********* BOTON AGREGAR ITEM DESCRIPCION MERCANCIAS**/
   $("#agregar").click(function () {
         agregardescripcion(0);
-        limpiar();
+        //limpiar();
   });
 
 //********* LIMPIAR TABLA  DESCRIPCIÓN MERCANCIAS**/
@@ -124,8 +118,7 @@ function switchClase(op){
 function reordenaritems() {
     var num = 1;
         $("#tbldescripcionmercancia tr").each(function(){
-            $(this).find("td").eq(0).text(num);
-            ///$(this).find("td").eq(2).text(num+1);
+            $(this).find("td").eq(0).text(num);            
         num++;
 });
     
@@ -144,8 +137,8 @@ function agregardescripcion(a) {
                         alert("Hace falta ingresar información")}
                         else{
                             var nuevaFila = "<tr>"; //console.log('total filas ' + filas);        // nuevaFila += "<td>" + (filas + 1) + "</td>";//                            
-                            nuevaFila += "<td class='oculto'></td>"; //index tabla
-                            nuevaFila += "<td class='oculto'>" + a + "</td>";
+                            nuevaFila += "<td class=''></td>"; //index tabla
+                            nuevaFila += "<td class=''>" + a + "</td>";
                             nuevaFila += "<td class='valorfactura'>" + naladisa + "</td>";
                             nuevaFila += "<td class='center texto-izq anchoDeno'>" + descmercancia + "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + pesocantidad + "</td>";
@@ -162,11 +155,11 @@ function agregardescripcion(a) {
                             var nuevaFila = "<tr>";
                             nuevaFila += "<td class=''></td>";
                             nuevaFila += "<td class=''>" + item["ID"] + "</td>"; //id tabla descripcion mercancias
-                            nuevaFila += "<td class='descripcion'>" + item["DescMercancia"] + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["ClasiArancelaria"] +  "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["NoFactura"] +  "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["ValorFactura"] + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["CriterOrigen"] + "</td>";
+                            nuevaFila += "<td class='valorfactura'>" + item["Naladisa"] + "</td>";
+                            nuevaFila += "<td class='texto-izq anchoDeno'>" + item["DescMercancia"] +  "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + item["PesoCantidad"] +  "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + item["ValorFob"] + "</td>";
+                            nuevaFila += "<td class='center valorfactura'>" + item["Normas"] + "</td>";
                             nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";
                             nuevaFila += "</tr>";
                             $("#tbldescripcionmercancia").append(nuevaFila);
@@ -174,37 +167,22 @@ function agregardescripcion(a) {
             }
             reordenaritems();
 }
-
+/* AGREGAR DATOS A FORMULARIO DESDE CONSULTA.PHP*/
 function duplicarcert(id){
     if (id>0){
         $("#operacion").val(detCertificado.operacion);
-        $("#nombreexp").val(detCertificado.NombreExp);
-        $("#direccionexp").val(detCertificado.DireccionExp);
-        $("#telefonoexp").val(detCertificado.TelefonoExp);
-        $("#faxexp").val(detCertificado.FaxExp);
-        $("#correoexp").val(detCertificado.CorreoExp);
-        $("#numregfiscalexp").val(detCertificado.NumRegFiscalExp);
-        $("#nombrepro").val(detCertificado.NombrePro);
-        $("#direccionpro").val(detCertificado.DireccionPro);
-        $("#telefonopro").val(detCertificado.TelefonoPro);
-        $("#faxpro").val(detCertificado.FaxPro);
-        $("#correopro").val(detCertificado.CorreoPro);
-        $("#numregfiscalpro").val(detCertificado.NumRegFiscalPro);
-        $("#nombreimp").val(detCertificado.NombreImp);
+        $("#paisimp").val(detCertificado.PaisImp);
+        $("#nofacturacomercial").val(detCertificado.NoFacturaComercial);
+        $("#fechadeclaorigen").val(detCertificado.FechaDeclaOrigen);
+        $("#razonsocialexpopro").val(detCertificado.RazonSocialExpoPro);
+        $("#nit").val(detCertificado.NIT);
+        $("#direccionexpopro").val(detCertificado.DireccionExpoPro);
+        $("#fechaexpopro").val(detCertificado.FechaExpoPro);
+        $("#razonsocialimp").val(detCertificado.RazonSocialImp);
         $("#direccionimp").val(detCertificado.DireccionImp);
-        $("#telefonoimp").val(detCertificado.TelefonoImp);
-        $("#faximp").val(detCertificado.FaxImp);
-        $("#correoimp").val(detCertificado.CorreoImp);
-        $("#numregfiscalimp").val(detCertificado.NumRegFiscalImp);
+        $("#mediotransporte").val(detCertificado.MedioTransporte);
+        $("#puertoembarque").val(detCertificado.PuertoEmbarque);
         $("#observaciones").val(detCertificado.Observaciones);
-        $("#lugarexp").val(detCertificado.LugarExp);
-        $("#fechaexp").val(detCertificado.FechaExp);
-        //$("#lugarautocompe").val(detCertificado.LugarAutoCompe);
-        //$("#fechaautocompe").val(detCertificado.FechaAutoCompe);
-        $("#direccionautocompe").val(detCertificado.DireccionAutoCompe);
-        $("#telefonoautocompe").val(detCertificado.TelefonoAutoCompe);
-        $("#faxautocompe").val(detCertificado.FaxAutoCompe);
-        $("#correoautocompe").val(detCertificado.CorreoAutoCompe);
         agregardescripcion(1);        
     }    
 }
@@ -237,15 +215,13 @@ function datos(){ // dATOS FORMULARIO
             var nofacturacomercial = $("#nofacturacomercial").val().toUpperCase();
             var fechadeclaorigen = $("#fechadeclaorigen").val();
             var razonsocialexpopro = $("#razonsocialexpopro").val().toUpperCase();
-            var nit = $("#nit").val().toUpperCase();
-
+            var nit = $("#nit").val()
             var direccionexpopro = $("#direccionexpopro").val().toUpperCase();//toLowerCase();
             var fechaexpopro = $("#fechaexpopro").val();
-
             var razonsocialimp = $("#razonsocialimp").val().toUpperCase();
             var direccionimp = $("#direccionimp").val().toUpperCase();
-            var mediotransporte = $("#mediotransporte").val();
-            var puertoembarque = $("#puertoembarque").val();
+            var mediotransporte = $("#mediotransporte").val().toUpperCase();
+            var puertoembarque = $("#puertoembarque").val().toUpperCase();
             var observaciones = $("#observaciones").val().toUpperCase();
             
     var dato = {

@@ -1,9 +1,10 @@
 <?php
+ob_start();
 include "conecta.php";
 /*****CONSULTA DETALLE CERTIFICADO */
 //  $id=1;
 if(isset($id)){
-        $stmt = $conn->prepare("SELECT * FROM vista_ms_certificados WHERE id=?");
+        $stmt = $conn->prepare("SELECT * FROM vista_ms_datoscertificados WHERE id=?");
         $stmt->execute([$id]);
         $datos = $stmt->fetch();
         /**CONSULTA TABLA BD DESCRIPCION MERCANCIAS */
@@ -20,4 +21,5 @@ if(isset($id)){
         $datos='';
 }
  $conn = null;
+ ob_flush();
 ?>
