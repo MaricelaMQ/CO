@@ -170,8 +170,7 @@ width: 136px!important;
 
 .mayusc, input:not([type]), input[type=text], input[type=email], input[type=url], input[type=time], input[type=date], textarea{
   margin: 0px!important;
-  text-transform: uppercase;
-  
+  text-transform: uppercase;  
 }
 .minusc{
   text-transform: lowercase!important;
@@ -185,6 +184,9 @@ color: midnightblue;
   font-size: 22px;
   color:white!important;
   text-shadow:0 2px 3px 0 rgba(189, 15, 15, 0.2), 0 3px 8px 0 rgba(197, 20, 20, 0.19)!important;   
+}
+.editando{
+  background-color:yellow!important;
 }
 
 /*********************************/

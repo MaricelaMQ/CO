@@ -89,7 +89,7 @@ $tamanofila=683; // TAMAÑO FILA****
      <html>
      <head>
      
-     <link rel="shortcut icon" href="../assets/logo.ico">
+     <link rel="shortcut icon" href="../assets/logo.ico" type="image/x-icon">
     <style>
     viewer-pdf-toolbar{
         display:none;

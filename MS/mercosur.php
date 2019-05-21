@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/materialize.min.css" />
     <link rel="stylesheet" href="../assets/css/Estilos.css" />
-    <link rel="icon" href="../assets/logo.ico">
+    <link rel="shortcut icon" href="../assets/logo.ico">
     <script src="../assets/js/vendor/jquery.js"></script>
     <script src="js/main_ms.js"></script>
     <script src="js/validaform.js"></script>
@@ -125,7 +125,7 @@
                                                 <option value="A.C.E. No. 72. Anexo IV, articulo 2°, literal c">A.C.E.
                                                     No. 72. Anexo IV, articulo 2°, literal c</option>
                                                 <option value="Norma 3">Norma 3</option>
-                                                <option value="Norma4">Norma 4</option>
+                                                <option value="Norma 4">Norma 4</option>
                                                 <option value="Norma N">Norma ...</option>
                                             </select>
                                         </td>
@@ -296,7 +296,7 @@
             <!-- ######################################################################################################## -->
             <div class="row">
                 <div class="col l12 center seccionboton">
-                    <a href="../index.html" class="btn waves-effect waves-light">Volver
+                    <a href="principal.php" class="btn waves-effect waves-light">Volver
                         <i class="material-icons right">arrow_back</i>
                     </a>
                     <button class="btn waves-effect orange" type="submit" id="btguardar">Guardar

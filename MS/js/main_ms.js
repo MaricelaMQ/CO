@@ -138,13 +138,13 @@ function agregardescripcion(a) {
                         else{
                             var nuevaFila = "<tr>"; //console.log('total filas ' + filas);        // nuevaFila += "<td>" + (filas + 1) + "</td>";//                            
                             nuevaFila += "<td class=''></td>"; //index tabla
-                            nuevaFila += "<td class=''>" + a + "</td>";
+                            nuevaFila += "<td class='oculto'>" + a + "</td>";
                             nuevaFila += "<td class='valorfactura'>" + naladisa + "</td>";
                             nuevaFila += "<td class='center texto-izq anchoDeno'>" + descmercancia + "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + pesocantidad + "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + valorfob + "</td>";
                             nuevaFila += "<td class='texto-izq anchoNormas'>" + normas + "</td>";
-                            nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";                            
+                            nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";
                             nuevaFila += "</tr>";
                             $("#tbldescripcionmercancia").append(nuevaFila);
                             $("#descmercancia").focus();        //limpiar();                            
@@ -154,7 +154,7 @@ function agregardescripcion(a) {
                 $.each(detMercancias, function(i, item) {                    //console.log(item["valorfactura"]);
                             var nuevaFila = "<tr>";
                             nuevaFila += "<td class=''></td>";
-                            nuevaFila += "<td class=''>" + item["ID"] + "</td>"; //id tabla descripcion mercancias
+                            nuevaFila += "<td class='oculto'>" + item["ID"] + "</td>"; //id tabla descripcion mercancias
                             nuevaFila += "<td class='valorfactura'>" + item["Naladisa"] + "</td>";
                             nuevaFila += "<td class='texto-izq anchoDeno'>" + item["DescMercancia"] +  "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + item["PesoCantidad"] +  "</td>";
