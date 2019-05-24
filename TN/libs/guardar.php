@@ -36,7 +36,7 @@ function insertar($estado, $conn){
     $stmt->bindParam(1, $certificado->{"datosform"}[0]->{"NombreExp_"});
     $stmt->bindParam(2, $certificado->{"datosform"}[0]->{"TelefonoExp_"});
     $stmt->bindParam(3, $certificado->{"datosform"}[0]->{"FaxExp_"});
-    $stmt->bindParam(4, $certificado->{"datosform"}[0]->{"DireccionExp"});
+    $stmt->bindParam(4, $certificado->{"datosform"}[0]->{"DireccionExp_"});
     $stmt->bindParam(5, $certificado->{"datosform"}[0]->{"NumRegFiscalExp_"});
     $stmt->bindParam(6, $certificado->{"datosform"}[0]->{"FechaDesde_"});
     $stmt->bindParam(7, $certificado->{"datosform"}[0]->{"FechaHasta_"});
@@ -93,7 +93,7 @@ function insertar($estado, $conn){
 function actualizar($conn, $id, $estado, $idborrar){    
     $certificado = json_decode( $_POST["guardar"]);  // decodificar cadena JSON en cadena de objetos (array)
     $descmerca = json_decode( $_POST["items"]);  // decodificar cadena JSON en cadena de objetos (array)
-    $operacion = $certificado->{"datosform"}[0]->{"operacion"};
+    $operacion = $certificado->{"datosform"}[0]->{"Operacion_"};
     // UPDATE  EN TABLA >> DETALLECERTIFICADO
     $stmt = $conn->prepare("UPDATE tn_detallecertificado 
                             SET NombreExp=?, TelefonoExp=?, FaxExp=?, DireccionExp=?, NumRegFiscalExp=?, 
@@ -160,7 +160,7 @@ function actualizar($conn, $id, $estado, $idborrar){
     $it = 1;
     foreach($descmerca->{"tabladesc"} as $item){
                 
-            if($item->{"idDescmercancia"}>0){// SI idDescmercancia >0 ACTUALIZA REGISTRO EN TABLA DESCIPCION MERCANCIAS
+            if($item->{"idDescmercancia_"}>0){// SI idDescmercancia >0 ACTUALIZA REGISTRO EN TABLA DESCIPCION MERCANCIAS
                     $updateDescmerca->bindParam(1, $it);
                     $updateDescmerca->bindParam(2, $item->{"DescMercancia_"});
                     $updateDescmerca->bindParam(3, $item->{"ClasiArancelaria_"});
@@ -168,7 +168,7 @@ function actualizar($conn, $id, $estado, $idborrar){
                     $updateDescmerca->bindParam(5, $item->{"OtrosCriterios_"});
                     $updateDescmerca->bindParam(6, $item->{"Productor_"});
                     $updateDescmerca->bindParam(7, $item->{"PaisdeOrigen_"});
-                    $updateDescmerca->bindParam(8, $item->{"idDescmercancia"});
+                    $updateDescmerca->bindParam(8, $item->{"idDescmercancia_"});
                     $respuesta3 = $updateDescmerca->execute();
                 }else {
                     $insdescmerca->bindParam(1, $id);

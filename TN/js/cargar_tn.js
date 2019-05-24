@@ -9,7 +9,7 @@ $(function () {
 function listar(estado) {
     var url = "libs/listar.php";    
     __ajax(url, {"est":estado})    
-        .done(function ( info ){            
+        .done(function ( info ){
              //console.log('INFO '+ info); //info información obtenida en formato JSON
             if(info=='N'){
                 html='<strong>No hay información</strong>'

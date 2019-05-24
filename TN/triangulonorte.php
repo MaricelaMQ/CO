@@ -1,4 +1,5 @@
 <?php
+ob_start();
     if($_GET["ed"]??''){  // verifica si variable 'ed: editar' esta definida.
             $editar = $_GET["ed"];
         }else{
@@ -12,6 +13,7 @@
           $datos=0;
           $descripcion=0;
     }
+ob_flush();
 ?>
 <!DOCTYPE html>
 <html lang="ES">
@@ -28,7 +30,7 @@
 
     <script src="../assets/js/vendor/jquery.js"></script>
     <script src="js/main_tn.js"></script>
-    <script src="js/validaform.js"></script>
+    <script src="js/validaform_tn.js"></script>
     <script type="text/javascript">
     var id = <?php echo $id;?>;
     var editar = <?php echo $editar;?>;
@@ -80,25 +82,29 @@
                         <div class="row">
                             <div class="input-field">
                                 <input id="NombreExp" class="validate" type="text" value="" required>
-                                <label for="">1. Nombre del Exportador</label>
+                                <label for="">1. Nombre del Exportador:</label>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col l6 s12">
-                                <input id="TelefonoExp" type="text" class="validate" value="" required>
-                                <label for="">Teléfono </label>
-                            </div>
-                            <div class="input-field col l6 s12">
-                                <input id="FaxExp" type="text" class="validate" value="" required>
-                                <label for="">Fax:</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col l6 s12">
+                            <div class="input-field col l6 s6">
                                 <input id="DireccionExp" type="text" class="validate" value="" required>
-                                <label for="">Dirección</label>
+                                <label for="">Dirección:</label>
                             </div>
-                            <div class="input-field col l6 s12">
+                            <div class="input-field col l3 m3 s6">
+                                <input id="FaxExp" type="text" class="validate" value="" required>
+                                <label for="">Ciudad:</label>
+                            </div>
+                            <div class="input-field col l3 m3 s6">
+                                <input id="PaisExp" type="text" class="validate" value="" required>
+                                <label for="">Pais:</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col l6 s6">
+                                <input id="TelefonoExp" type="text" class="validate" value="" required>
+                                <label for="">Teléfono</label>
+                            </div>
+                            <div class="input-field col l6 s6">
                                 <input id="NumRegFiscalExp" type="text" class="validate" value="" required>
                                 <label for="">Número de Registro Fiscal:</label>
                             </div>
@@ -223,8 +229,8 @@
                                         <td class="center"><input id="Productor" type="" class="valorfactura mayusc"
                                                 value="" /></td>
                                         <td class="center">
-                                            <input id="PaisdeOrigen" disabled class="valorfactura" type="" maxlength="1"                                            
-                                                value="CO" />                                                
+                                            <input id="PaisdeOrigen" disabled class="valorfactura" type="" maxlength="1"
+                                                value="CO" />
                                             <!-- <select id="criterorigen" name="" class="validate">
                                                     <option value="A" selected>A</option>
                                                     <option value="B">B</option>
@@ -270,7 +276,7 @@
             </section>
             <!-- SECCION PERSONA QUE AUTORIZA-->
             <div class="row">
-                <div class="cuadro col l12">
+                <div class="cuadro col l12 m12 s12">
                     <div class="row">
                         <div class="col l12 s12">
                             <p>
@@ -284,26 +290,26 @@
                             <input id="NombreAutoriza" class="validate" type="text" value="" required>
                             <label for="">Nombre persona que autoriza</label>
                         </div>
-                        <div class="input-field col l4 m12 s4">
+                        <div class="input-field col l4 m6 s6">
                             <input id="CargoPersonAutoriza" type="text" class="validate" value="" required>
                             <label for="">Cargo</label>
                         </div>
-                        <div class="input-field col l4 m12 s4">
+                        <div class="input-field col l4 m6 s6">
                             <input id="EmpresaAutoriza" type="text" class="validate" value="" required>
                             <label for="">Empresa</label>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col l2 m6 s6">
+                            <input id="TelPersonAutoriza" type="text" class="validate" value="" required>
+                            <label for="">Telefono</label>
                         </div>
-                        <div class="row">
-                            <div class="input-field col l2 m12 s2">
-                                <input id="TelPersonAutoriza" type="text" class="validate" value="" required>
-                                <label for="">Telefono</label>
-                            </div>
-                            <div class="input-field col l2 s2">
-                                <input id="FaxPersonAutoriza" type="text" class="validate" value="" required>
-                                <label for="">Fax:</label>
-                            </div>
+                        <div class="input-field col l2 m6 s6">
+                            <input id="FaxPersonAutoriza" type="text" class="validate" value="" required>
+                            <label for="">Fax:</label>
                         </div>
-                    
+                    </div>
+
                 </div>
             </div>
             <!-- SECCION FINAL - BUTTONS -->
@@ -322,9 +328,55 @@
                     </div>
                 </div>
             </section>
+
         </div>
         <!-- </form> -->
-        <div id="resultado"></div>
+        <div id="resultado">
+            <table class="bortabla">
+                <thead>
+                    <tr>
+                        <th class="bortabla" width="58.1%"></th>
+                        <th class="bortabla" width="18.6%"></th>
+                        <th class="bortabla" width="11.6%"></th>
+                        <th class="bortabla" width="11.6%"></th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td colspan="5" height="300px" style="vertical-align:top;">
+                        <table class="bortabla" cellspadding="" height="100%" style="vertical-align:top;">
+                                <thead>
+                                    <tr>
+                                        <td class="bortabla" width="58.2%">a</td>
+                                        <td class="bortabla" width="18.7%">a</td>
+                                        <td class="bortabla" width="11.7%">a</td>
+                                        <td class="bortabla" width="11.6%">a</td>
+                                    </tr>                                
+                                    <tr>
+                                        <td>a</td>
+                                        <td>a</td>
+                                        <td>a</td>
+                                        <td>a</td>
+                                    </tr>
+                                    </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>a</td>
+                                        <td>a</td>
+                                        <td>a</td>
+                                        <td>a</td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bortabla">f</td>
+                    <td class="bortabla">f</td>
+                    <td class="bortabla">f</td>
+                    <td class="bortabla">f</td>
+                </tr>
+            </table>
+        </div>
         <div id="footer" class="cuadrado"></div>
         <script src="../assets/js/materialize.min.js"></script>
 </body>

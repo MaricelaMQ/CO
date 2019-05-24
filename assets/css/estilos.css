@@ -1,5 +1,5 @@
 .oculto{
-  display:none;
+  display:none!important;
 }
 
 #contenedor{
@@ -164,9 +164,10 @@ th{
 /* height: 25px!important; */
 width: 136px!important;
 }
-/* .bortabla, th, td{
+
+.bortabla,th,td {
   border: 1px solid black!important;
-} */
+}
 
 .mayusc, input:not([type]), input[type=text], input[type=email], input[type=url], input[type=time], input[type=date], textarea{
   margin: 0px!important;
@@ -179,6 +180,7 @@ width: 136px!important;
 font-size: 25px;
 font-weight: bold;
 color: midnightblue;
+
 }
 .titulodos{  
   font-size: 22px;

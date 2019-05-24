@@ -70,7 +70,7 @@ $(document).ready(function () {
 //********* BOTON AGREGAR ITEM DESCRIPCION MERCANCIAS**/
   $("#agregar").click(function () {
         agregardescripcion(0);
-        limpiar();
+        //limpiar();
   });
 //********* LIMPIAR TABLA  DESCRIPCIÓN MERCANCIAS**/
     function limpiar() {
@@ -187,32 +187,34 @@ function agregardescripcion(a) {
 
 function duplicarcert(id){
     if (id>0){
-        $("#operacion").val(detCertificado.operacion);
-        $("#nombreexp").val(detCertificado.NombreExp);
-        $("#direccionexp").val(detCertificado.DireccionExp);
-        $("#telefonoexp").val(detCertificado.TelefonoExp);
-        $("#faxexp").val(detCertificado.FaxExp);
-        $("#correoexp").val(detCertificado.CorreoExp);
-        $("#numregfiscalexp").val(detCertificado.NumRegFiscalExp);
-        $("#nombrepro").val(detCertificado.NombrePro);
-        $("#direccionpro").val(detCertificado.DireccionPro);
-        $("#telefonopro").val(detCertificado.TelefonoPro);
-        $("#faxpro").val(detCertificado.FaxPro);
-        $("#correopro").val(detCertificado.CorreoPro);
-        $("#numregfiscalpro").val(detCertificado.NumRegFiscalPro);
-        $("#nombreimp").val(detCertificado.NombreImp);
-        $("#direccionimp").val(detCertificado.DireccionImp);
-        $("#telefonoimp").val(detCertificado.TelefonoImp);
-        $("#faximp").val(detCertificado.FaxImp);
-        $("#correoimp").val(detCertificado.CorreoImp);
-        $("#numregfiscalimp").val(detCertificado.NumRegFiscalImp);
-        $("#observaciones").val(detCertificado.Observaciones);
-        $("#lugarexp").val(detCertificado.LugarExp);
-        $("#fechaexp").val(detCertificado.FechaExp);        
-        $("#direccionautocompe").val(detCertificado.DireccionAutoCompe);
-        $("#telefonoautocompe").val(detCertificado.TelefonoAutoCompe);
-        $("#faxautocompe").val(detCertificado.FaxAutoCompe);
-        $("#correoautocompe").val(detCertificado.CorreoAutoCompe);
+        $("#Operacion").val(detCertificado.operacion);
+            $("#NombreExp").val(detCertificado.NombreExp);
+            $("#TelefonoExp").val(detCertificado.TelefonoExp);
+            $("#FaxExp").val(detCertificado.FaxExp);
+            $("#DireccionExp").val(detCertificado.DireccionExp);
+            $("#NumRegFiscalExp").val(detCertificado.NumRegFiscalExp);
+
+            $("#FechaDesde").val(detCertificado.FechaDesde);
+            $("#FechaHasta").val(detCertificado.FechaHasta);
+            $("#NumFacturaComercial").val(detCertificado.NumFacturaComercial);
+            $("#NombrePro").val(detCertificado.NombrePro);
+            $("#TelefonoPro").val(detCertificado.TelefonoPro);
+            $("#FaxPro").val(detCertificado.FaxPro);
+            $("#DireccionPro").val(detCertificado.DireccionPro);
+            $("#NumRegFiscalPro").val(detCertificado.NumRegFiscalPro);
+
+            $("#NombreImp").val(detCertificado.NombreImp);
+            $("#TelefonoImp").val(detCertificado.TelefonoImp);
+            $("#DireccionImp").val(detCertificado.DireccionImp);
+            $("#NumRegFiscalImp").val(detCertificado.NumRegFiscalImp);
+
+            $("#Observaciones").val(detCertificado.Observaciones);
+            $("#FechaElabora").val(detCertificado.FechaElabora);
+            $("#NombreAutoriza").val(detCertificado.NombreAutoriza);
+            $("#CargoPersonAutoriza").val(detCertificado.CargoPersonAutoriza);
+            $("#EmpresaAutoriza").val(detCertificado.EmpresaAutoriza);
+            $("#TelPersonAutoriza").val(detCertificado.TelPersonAutoriza);
+            $("#FaxPersonAutoriza").val(detCertificado.FaxPersonAutoriza);
         agregardescripcion(1);        
     }    
 }
@@ -270,14 +272,14 @@ function datos(){ // dATOS FORMULARIO
         var NombreAutoriza_ = $("#NombreAutoriza").val().toUpperCase();
         var CargoPersonAutoriza_ = $("#CargoPersonAutoriza").val().toUpperCase();
         var EmpresaAutoriza_ = $("#EmpresaAutoriza").val().toUpperCase();
-        var TelPersonAutoriza = $("#TelPersonAutoriza").val().toUpperCase();
+        var TelPersonAutoriza_ = $("#TelPersonAutoriza").val().toUpperCase();
         var FaxPersonAutoriza_ = $("#FaxPersonAutoriza").val();    
 
     var dato = {
         Operacion_, NombreExp_, TelefonoExp_, FaxExp_, DireccionExp_, NumRegFiscalExp_, FechaDesde_,
         FechaHasta_, NumFacturaComercial_, NombrePro_, TelefonoPro_, FaxPro_, DireccionPro_,
         NumRegFiscalPro_, NombreImp_, TelefonoImp_, DireccionImp_, NumRegFiscalImp_, Observaciones_,
-        FechaElabora_, NombreAutoriza_, CargoPersonAutoriza_, EmpresaAutoriza_, TelPersonAutoriza, FaxPersonAutoriza_
+        FechaElabora_, NombreAutoriza_, CargoPersonAutoriza_, EmpresaAutoriza_, TelPersonAutoriza_, FaxPersonAutoriza_
     };
     
     datos.push(dato);    

@@ -44,7 +44,7 @@
                         <a href="guardados.php?op=1" class="btn waves-effect orange darken-2" >
                         Guardados<i class=" material-icons left ">collections_bookmark</i>
                         </a>
-                        <a href="costarica.php" class="btn waves-effect waves-light light-green darken-2" >
+                        <a href="triangulonorte.php" class="btn waves-effect waves-light light-green darken-2" >
                          Nuevo certificado<i class=" material-icons left ">open_in_new</i>
                         </a>
                 </div>
