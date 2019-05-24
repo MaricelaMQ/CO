@@ -63,7 +63,7 @@ $alto = 280; //Fijo 280
                     $tablaDos .= '</tr>';
                 }
             }
-            $alto = altofila($conteo);
+            $alto = altofila($conteo, $totFilas);
         }else{
             // $tablaUno.='<tr><td colspan="22" class="centrar bordeizq borderecho"></td></tr>';
             // $tablaDos.='<tr><td colspan="22" class="centrar bordeizq borderecho"></td></tr>';
@@ -481,11 +481,11 @@ $pdf->lastPage();
 $pdf->output('Reportecertificado.pdf', 'I');
 }
 
-function altofila($conteo){
+function altofila($conteo, $totFilas){
         if ($conteo > 0 &&$conteo <=72 || $totFilas ==1){
             $alto = 245; //267
         }elseif ($conteo > 72 &&$conteo <=144 || $totFilas ==2){
-            $alto = 254;
+            $alto = 248;
         }elseif ($conteo > 144 && $conteo <= 216 || $totFilas ==3){
             $alto = 241;
         }elseif ($conteo > 216 && $conteo <= 288 || $totFilas ==4){
