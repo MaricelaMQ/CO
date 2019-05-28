@@ -67,6 +67,7 @@ $(document).ready(function () {
 //********* BOTON AGREGAR ITEM DESCRIPCION MERCANCIAS**/
   $("#agregar").click(function () {
         agregardescripcion(0);
+        limpiar();
   });
 //********* LIMPIAR TABLA  DESCRIPCIÓN MERCANCIAS**/
     function limpiar() {

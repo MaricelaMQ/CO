@@ -332,7 +332,7 @@ ob_flush();
         </div>
         <!-- </form> -->
         <div id="resultado">
-            <table class="bortabla">
+            <!-- <table class="bortabla">
                 <thead>
                     <tr>
                         <th class="bortabla" width="58.1%"></th>
@@ -375,7 +375,7 @@ ob_flush();
                     <td class="bortabla">f</td>
                     <td class="bortabla">f</td>
                 </tr>
-            </table>
+            </table> -->
         </div>
         <div id="footer" class="cuadrado"></div>
         <script src="../assets/js/materialize.min.js"></script>
