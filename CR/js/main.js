@@ -8,7 +8,7 @@ $(document).ready(function () {
         else if(editar==1 && id>0){
         $("#estado").html('EDITANDO FORMULARIO');
     }
-        duplicarcert(id);         
+        duplicarcert(id);
 /********* BOTON PUBLICAR  **/
     $('#btpublicar').click(function () {
         var respuesta = confirm('Al publicar el formulario no se podrán realizar más cambios. \n¿Desea continuar? ')
@@ -114,6 +114,27 @@ if (op==1){
 }
 
 }
+/** AGREGA DATOS CIUDAD SECCION DOCE */
+function ciudadSeccDoce() {
+    var ciudad = $("#selectlCiudad").val();
+       if (ciudad =='NINGUNA'){
+            $("#direccionautocompe").val("");
+            $("#telefonoautocompe").val("");
+            $("#faxautocompe").val("");
+            $("#correoautocompe").val("");
+        }else{
+            var url = "libs/ciudad.php"
+            __ajax(url, {"Ciudad": ciudad}) 
+                    .done(function ( info ){
+                        var valores = JSON.parse( info ); 
+                        //console.log( valores );// Info: respuesta del servidor
+                        $("#direccionautocompe").val(valores.Direccion);
+                        $("#telefonoautocompe").val(valores.Telefono);
+                        $("#faxautocompe").val(valores.Fax);
+                        $("#correoautocompe").val(valores.Correo);
+   });
+}
+}
 /*  REORDENA ITEMS TABLA DESCRIPCIONES */
 function reordenaritems() {
     var num = 0;
@@ -144,7 +165,7 @@ function agregardescripcion(a) {
                             nuevaFila += "<td class='center valorfactura'>" + nofactura + "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + valorfactura + "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + criterorigen + "</td>";
-                            nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";                            
+                            nuevaFila += "<td class='center'><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";                            
                             nuevaFila += "</tr>";
                             $("#descripcionmercancia").append(nuevaFila);
                             $("#descmercancia").focus();        //limpiar();                            
@@ -295,7 +316,7 @@ if (idDelete.length==0){
     //console.log("valor "+idDelete.length);
 }
     var url = "libs/guardar.php";    
-    var descmerca = JSON.stringify(detallemerca())
+    var descmerca = JSON.stringify(detallemerca());
     var json = JSON.stringify(datos()); // convierte objeto a cadena JSON lo que devuelve funcion datos()
     //console.log('funcion guardar'+ descmerca);
     __ajax(url, {"guardar": json, "items":descmerca,"estado":estado,"editar":editar,"id":id,"idborrar":idDelete}) //  , "desc": descmerca

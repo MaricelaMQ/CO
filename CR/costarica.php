@@ -24,6 +24,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/materialize.min.css" />
     <link rel="stylesheet" href="../assets/css/Estilos.css" />
+    
+    
     <link rel="shortcut icon" href="../assets/logo.ico">
     
     <script src="../assets/js/vendor/jquery.js"></script>
@@ -334,8 +336,13 @@
                         <p>Lugar y fecha, nombre y firma del funcionario y sello de la autoridad competente:</p>
                         <div class="row">
                             <div class=" col l4 s4">
-                                <!-- <label for="">Lugar</label>
-                                <input id="lugarautocompe" type="text" class="validate" value="Cali" required> -->
+                                <select name="" id="selectlCiudad" onchange="ciudadSeccDoce()">
+                                <option value="NINGUNA" SELECTED>NINGUNA</option>
+                                    <option value="BARRANQUILLA">BARRANQUILLA</option>
+                                    <option value="BOGOTA">BOGOTA</option>
+                                    <option value="CALI">CALI</option>
+                                    <option value="MEDELLIN">MEDELLIN</option>
+                                </select>
 
                             </div>
                             <div class="col l4 s4">
@@ -364,7 +371,7 @@
                         <div class="row ">
                             <div class="">
                                 <label for="">Correo electrónico:</label>
-                                <input id="correoautocompe" type="" class="minusc validate" value="" required>
+                                <input id="correoautocompe" type="" style="width:40%" class="minusc validate" value="" required>
                             </div>
                         </div>
                     </div>
@@ -389,7 +396,9 @@
         <!-- </form> -->
         <div id="resultado"></div>
         <div id="footer" class="cuadrado"></div>
-        <script src="../assets/js/materialize.min.js"></script> 
+        <script src="../assets/js/materialize.min.js"></script>
+        
+
 </body>
 
 </html>
