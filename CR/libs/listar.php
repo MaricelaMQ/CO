@@ -12,6 +12,7 @@ $estado = $_POST["est"];
     if ($resp <1){
             $respuesta = 'N';
             echo $respuesta;
+            
     } else {
          $resp = $conn->query($sql, PDO::FETCH_ASSOC);
              foreach ($resp as $row) {

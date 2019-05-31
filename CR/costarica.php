@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <?php
+ob_start();
+//header("Cache-Control: no-cache, must-revalidate"); 
+//header("Expires: Sat, 1 Jul 2000 05:00:00 GMT");
     if($_GET["ed"]??''){ // verifica si variable 'ed: editar' esta definida.
             $editar = $_GET["ed"];
             //include "libs/consulta.php";
@@ -14,11 +17,13 @@
           $datos=0;
           $descripcion=0;
     }
+    ob_flush();
 ?>
 <html lang="ES">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <title>CO - Costa Rica</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -381,7 +386,7 @@
             </div>
             <div class="row">
                 <div class="col l12 center seccionboton">
-                    <a href="../principal.php" class="btn waves-effect waves-light">Volver
+                    <a href="../CR/principal.php" class="btn waves-effect waves-light">Volver
                         <i class="material-icons right">arrow_back</i>
                     </a>
                     <button class="btn waves-effect orange" type="submit" id="btguardar">Guardar

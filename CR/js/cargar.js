@@ -48,7 +48,12 @@ $(function () {
             "ajax" :{
                     "method": "POST",
                     "url": "libs/listar.php",
-                    "data": {"est":estado}
+                    "data": {"est":estado},
+                     error: function (xhr, error, thrown) {
+                        sLoadingRecords = "aa";
+                                $("#tblresultado").addClass("oculto");
+                                $("#resultado").html('<div class="center"><strong>No existe información</strong></div>');                                
+                                }
                     },
             "columns":[
                     {"data":"Operacion"},

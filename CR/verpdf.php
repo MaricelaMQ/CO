@@ -96,7 +96,7 @@ $alto= 26;
         } 
         
         .borderecho{
-        border-right:1px dotted black!important;
+            border-right:1px dotted black!important;
         }
 
         .bordeizq{            
@@ -134,15 +134,16 @@ $alto= 26;
                         <br> Número de Registro Fiscal:   '. $datos["NumRegFiscalPro"]. '
                     </td>
     <!-- IMPORTADOR -->                    
-                    <td colspan="11" class="borde" height="75px">3. Nombre y Dirección del Importador: '. $datos["NombreImp"]. ' /  '. $datos["DireccionImp"]. ' 
-                        
-                        <br>Teléfono: '. $datos["TelefonoImp"]. '  Fax:  '. $datos["FaxImp"]. '
-                        <br>Correo electrónico:  '. $datos["CorreoImp"]. '
-                        <br>Número de Registro Fiscal:    '. $datos["NumRegFiscalImp"]. '
+                    <td colspan="11" class="borde" >                        
+                        <table width="100%">
+                            <tr><td height="40px">3. Nombre y Dirección del Importador: '. $datos["NombreImp"]. ' /  '. $datos["DireccionImp"]. ' </td></tr>
+                            <tr><td>Teléfono: '. $datos["TelefonoImp"]. '  Fax:  '. $datos["FaxImp"]. '</td></tr>
+                            <tr><td>Correo electrónico:  '. $datos["CorreoImp"]. '</td></tr>
+                            <tr><td>Número de Registro Fiscal:    '. $datos["NumRegFiscalImp"]. '</td></tr>
+                        </table>
                     </td>
                 </tr>
-                <!-- DESCRIPCION MERCANCIAS -->                
-                
+    <!-- DESCRIPCION MERCANCIAS -->                
                 <tr class="centrar">
                     <td colspan="1" class="bordeizq borderecho">4. Item:</td>
                     <td colspan="10" class="borderecho">5. Descripción de las Mercancías:</td>
@@ -158,8 +159,7 @@ $alto= 26;
                 
     <!-- OBSERVACIONES -->
             <tr>
-                <td colspan="22" style="height:40px" class="borde">10. Observaciones:
-                <br>'. $datos["Observaciones"]. '</td>
+                <td colspan="22" style="height:40px" class="borde">10. Observaciones:<br>'.$datos["Observaciones"].'</td>
             </tr>
     <!-- SECCION ONCE -->
             <tr>             

@@ -165,7 +165,7 @@ function agregardescripcion(a) {
                             nuevaFila += "<td class='center valorfactura'>" + nofactura + "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + valorfactura + "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + criterorigen + "</td>";
-                            nuevaFila += "<td class='center'><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";                            
+                            nuevaFila += "<td class='center'><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";
                             nuevaFila += "</tr>";
                             $("#descripcionmercancia").append(nuevaFila);
                             $("#descmercancia").focus();        //limpiar();                            
@@ -181,7 +181,7 @@ function agregardescripcion(a) {
                             nuevaFila += "<td class='center valorfactura'>" + item["NoFactura"] +  "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + item["ValorFactura"] + "</td>";
                             nuevaFila += "<td class='center valorfactura'>" + item["CriterOrigen"] + "</td>";
-                            nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";
+                            nuevaFila += "<td class='center'><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";
                             nuevaFila += "</tr>";
                             $("#descripcionmercancia").append(nuevaFila);
                 });

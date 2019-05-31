@@ -66,7 +66,7 @@
             <hr>
         </div>
         <div class="row">
-            <div id="resultado" class=""></div>
+            <div id="resultado" class="">
             <table id="tblresultado" class="highlight responsive-table striped bordered">
                 <thead class="">
                     <tr>
@@ -80,6 +80,7 @@
                     </tr>
                 </thead>
             </table>
+            </div>
         </div>
     </div>
     <div id="footer" class="cuadrado"></div>
