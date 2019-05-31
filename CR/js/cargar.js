@@ -65,7 +65,7 @@ $(function () {
                                             if (estado=='TERMINADO'){
                                                     return ('<a href="costarica.php?d='+ row.id+ '" >Duplicar</a>');
                                             }else{
-                                                    return ('<a href="costarica.php?ed=1&d=' + row.id+ '" >Editar</a>');
+                                                    return ('<a href="costarica.php?ed=1&d=' + row.id+ '" >Editar</a>');//<button class="editar btn blue"><i class="material-icons">visibility</i></button>
                                             }
                                 }},
                     {"render":           function ( data, type, row ) {

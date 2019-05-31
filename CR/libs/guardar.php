@@ -31,8 +31,25 @@ function insertar($estado, $conn){
     $certificado = json_decode( $_POST["guardar"]);  // decodificar cadena JSON en cadena de objetos (array)
     $descmerca = json_decode( $_POST["items"]);  // decodificar cadena JSON en cadena de objetos (array)
     $operacion = $certificado->{"data"}[0]->{"operacion"};
+
+    //****** INSERTAR EN TABLA >> CERTIFICADOS
+    try {
+                $conn->beginTransaction();
+    $insCert = $conn->prepare("INSERT INTO certificados (Operacion, Regional, fecha, Estado) VALUES (?, ?, ?, ?)");
+    //setlocale(LC_TIME, 'es_CO', 'esp_esp');
+    $fecha = date("Y-m-d");
+    $regional = "CR";
+    $insCert->bindParam(1, $operacion);
+    $insCert->bindParam(2, $regional);
+    $insCert->bindParam(3, $fecha);
+    $insCert->bindParam(4, $estado);
+    $respInsCertificado = $insCert->execute();
+        
+    /**CONSULTA ULTIMO ID CERTIFICADO*/
+    $idcertificados = $conn->query("select max(id) from certificados")->fetchColumn();
+
     // INSERTAR EN TABLA >> DETALLECERTIFICADO
-    $stmt = $conn->prepare("INSERT INTO detallecertificado (NombreExp, DireccionExp, TelefonoExp, FaxExp, CorreoExp, NumRegFiscalExp, LugarExp, FechaExp, NombrePro, DireccionPro, TelefonoPro, FaxPro, CorreoPro, NumRegFiscalPro, NombreImp, DireccionImp, TelefonoImp, FaxImp, CorreoImp, NumRegFiscalImp,Observaciones, DireccionAutoCompe, TelefonoAutoCompe, FaxAutoCompe, CorreoAutoCompe  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO detallecertificado (NombreExp, DireccionExp, TelefonoExp, FaxExp, CorreoExp, NumRegFiscalExp, LugarExp, FechaExp, NombrePro, DireccionPro, TelefonoPro, FaxPro, CorreoPro, NumRegFiscalPro, NombreImp, DireccionImp, TelefonoImp, FaxImp, CorreoImp, NumRegFiscalImp,Observaciones, DireccionAutoCompe, TelefonoAutoCompe, FaxAutoCompe, CorreoAutoCompe, id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bindParam(1, $certificado->{"data"}[0]->{"nombreexp"});
     $stmt->bindParam(2, $certificado->{"data"}[0]->{"direccionexp"});
     $stmt->bindParam(3, $certificado->{"data"}[0]->{"telefonoexp"});
@@ -58,22 +75,9 @@ function insertar($estado, $conn){
     $stmt->bindParam(23, $certificado->{"data"}[0]->{"telefonoautocompe"});
     $stmt->bindParam(24, $certificado->{"data"}[0]->{"faxautocompe"});
     $stmt->bindParam(25, $certificado->{"data"}[0]->{"correoautocompe"});
-    //$stmt->bindParam(26, $certificado->{"data"}[0]->{"lugarautocompe"});
-    //$stmt->bindParam(27, $certificado->{"data"}[0]->{"fechaautocompe"});
-    $respuesta1 = $stmt->execute();
-    //****** INSERTAR EN TABLA >> CERTIFICADOS
-    $insCert = $conn->prepare("INSERT INTO certificados (Operacion, Regional, fecha, Estado) VALUES (?, ?, ?,?)");
-    //setlocale(LC_TIME, 'es_CO', 'esp_esp');
-    $fecha = date("Y-m-d");
-    $regional = "CR";
-    $insCert->bindParam(1, $operacion);
-    $insCert->bindParam(2, $regional);
-    $insCert->bindParam(3, $fecha);
-    $insCert->bindParam(4, $estado);
-    $respuesta2 = $insCert->execute();
-
-    /**CONSULTA ULTIMO ID CERTIFICADO*/
-    $idcertificados = $conn->query("select max(id) from certificados")->fetchColumn();
+    $stmt->bindParam(26, $idcertificados);
+    $respuesta2 = $stmt->execute();
+    
     /****** INSERTAR EN TABLA DESCRIPCION MERCANCIAS* */
     $insdescmerca = $conn->prepare("INSERT INTO descripcionmercancias (id_certificados, item, descmercancia, clasiarancelaria, nofactura, valorfactura, criterorigen) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $it = 1;
@@ -89,14 +93,22 @@ function insertar($estado, $conn){
         $it++;        
     }
 
-    return $respuesta1;
+                $conn->commit();
+    }catch (PDOException $exception) {
+                $conn->rollBack();
+                echo 'ERROR:' .$exception->getMessage();
+                $respuesta2 = 0;
+    }
+    return $respuesta2;
 }
 // ACTUALIZAR DATOS EN TABLAS BD
-function actualizar($conn, $id, $estado, $idborrar){    
+function actualizar($conn, $id, $estado, $idborrar){
     $certificado = json_decode( $_POST["guardar"]);  // decodificar cadena JSON en cadena de objetos (array)
     $descmerca = json_decode( $_POST["items"]);  // decodificar cadena JSON en cadena de objetos (array)
     $operacion = $certificado->{"data"}[0]->{"operacion"};
     // UPDATE  EN TABLA >> DETALLECERTIFICADO
+    try {
+            $conn->beginTransaction();
     $stmt = $conn->prepare("UPDATE detallecertificado 
                             SET NombreExp=?,
                                 DireccionExp=?, TelefonoExp=?, FaxExp=?, CorreoExp=?, NumRegFiscalExp=?, LugarExp=?, FechaExp=?, 
@@ -183,7 +195,13 @@ function actualizar($conn, $id, $estado, $idborrar){
                 }
     $it++;    
     }
-    
+            $conn->commit();
+        }catch (PDOException $exception) {
+            $conn->rollBack();
+            echo 'ERROR:' .$exception->getMessage();
+            $respuesta1 = 0;
+        }
+
     return $respuesta1;
 }
 

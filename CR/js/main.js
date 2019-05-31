@@ -31,9 +31,9 @@ $(document).ready(function () {
                      }else{
                  console.log("no se actualiza");
                  }
-            $(this).closest('tr').remove();
+                $(this).closest('tr').remove();
             }else{
-            console.log("No borrado");
+                console.log("No borrado");
         }
         reordenaritems();
     });
@@ -69,15 +69,17 @@ $(document).ready(function () {
         agregardescripcion(0);
         limpiar();
   });
-//********* LIMPIAR TABLA  DESCRIPCIÓN MERCANCIAS**/
-    function limpiar() {
-        $("#descmercancia").val("");
-        $("#clasiarancelaria").val("")
-        $("#nofactura").val("");
-        $("#valorfactura").val("");
-    }
+
 });
 /* ######################################################### FUNCTIONS  #########################################################*/
+//********* LIMPIAR TABLA  DESCRIPCIÓN MERCANCIAS**/
+function limpiar() {
+    $("#descmercancia").val("");
+    $("#clasiarancelaria").val("")
+    $("#nofactura").val("");
+    $("#valorfactura").val("");
+}
+
 //  MODIFICA ITEMS TABLA DECRIPCIONES
 function modificando() {
     var fila = $("#varmodificando").val();
@@ -98,7 +100,7 @@ function modificando() {
 /** AGREGA/QUITA CLASE OCULTAR  */
 function switchClase(op){
 if (op==1){
-    $('.borrar, .editar').each(function () { 
+    $('.borrar, .editar').each(function () {
         $(this).addClass("oculto");
     });
     $("#modificar").removeClass("oculto");
@@ -124,9 +126,9 @@ function ciudadSeccDoce() {
             $("#correoautocompe").val("");
         }else{
             var url = "libs/ciudad.php"
-            __ajax(url, {"Ciudad": ciudad}) 
+            __ajax(url, {"Ciudad": ciudad})
                     .done(function ( info ){
-                        var valores = JSON.parse( info ); 
+                        var valores = JSON.parse( info );
                         //console.log( valores );// Info: respuesta del servidor
                         $("#direccionautocompe").val(valores.Direccion);
                         $("#telefonoautocompe").val(valores.Telefono);
@@ -168,7 +170,8 @@ function agregardescripcion(a) {
                             nuevaFila += "<td class='center'><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";
                             nuevaFila += "</tr>";
                             $("#descripcionmercancia").append(nuevaFila);
-                            $("#descmercancia").focus();        //limpiar();                            
+                            $("#descmercancia").focus();
+                            limpiar();
                 }                        
             }else{ /****si a es 1, se agregan valores de BD a tabla DESCRIPCION MERCANCIAS **/
                 // console.log(detMercancias);
@@ -311,11 +314,11 @@ function datos(){ // dATOS FORMULARIO
 // FUNCION GUARDAR
 function guardar(estado, editar, id, idDelete) {
 //console.log(idDelete.length);
-if (idDelete.length==0){
-    idDelete.push(-1);
+    if (idDelete.length==0){
+        idDelete.push(-1);
     //console.log("valor "+idDelete.length);
-}
-    var url = "libs/guardar.php";    
+    }
+    var url = "libs/guardar.php";
     var descmerca = JSON.stringify(detallemerca());
     var json = JSON.stringify(datos()); // convierte objeto a cadena JSON lo que devuelve funcion datos()
     //console.log('funcion guardar'+ descmerca);

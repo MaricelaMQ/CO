@@ -26,7 +26,7 @@ ob_start();
 
     <title>CO - Costa Rica</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
     <link rel="stylesheet" href="../assets/css/materialize.min.css" />
     <link rel="stylesheet" href="../assets/css/Estilos.css" />
     
@@ -246,8 +246,8 @@ ob_start();
                                         <!-- <input id="ccriterorigen" class="item" type="" maxlength="1" value="A" /> -->
                                     </td>
                                     <td>
-                                        <div title="Agregar nuevo item" href="#" id="agregar"
-                                            class="btn waves-effect waves-light"><i class="material-icons">add</i></div>
+                                        <button title="Agregar nuevo item" href="#" id="agregar"
+                                            class="btn waves-effect waves-light"><i class="material-icons">add</i></button>
                                         <div title="Aceptar cambios" href="#" id="modificar"
                                             class=" oculto btn blue waves-effect waves-light">
                                             <i class="material-icons">check</i></div>
