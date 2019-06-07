@@ -46,16 +46,16 @@ $alto= 26;
                     }
                     $tablaUno .= '<tr>';
                     $tablaUno .= '<td colspan="1" class="bordeizq borderecho centrar" height="'. $alto. 'px">'. $desc["Item"] . '</td>';
-                    $tablaUno .= '<td colspan="10" class="borderecho"><p>'. $desc['DescMercancia'] . '</p></td>';
+                    $tablaUno .= '<td colspan="10" class="letra borderecho"><p>'. $desc['DescMercancia'] . '</p></td>';
                     $tablaUno .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['ClasiArancelaria'] . '</p></td>';
                     $tablaUno .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['NoFactura']  . '</p></td>';
-                    $tablaUno .= '<td colspan="3" class="centrar borderecho"><p>'. number_format($desc['ValorFactura'], 2, '.', ',')  . '</p></td>';
-                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['CriterOrigen']  . '</p></td>';
+                    $tablaUno .= '<td colspan="3" class=" centrar borderecho"><p>'. number_format($desc['ValorFactura'], 2, '.', ',')  . '</p></td>';
+                    $tablaUno .= '<td colspan="2" class=" centrar borderecho"><p>'. $desc['CriterOrigen']  . '</p></td>';
                     $tablaUno .= '</tr>';
                 }else{
                     $tablaDos .= '<tr>';
                     $tablaDos .= '<td colspan="1" class="bordeizq borderecho centrar" height="'. $alto. 'px">'. $desc["Item"] . '</td>';
-                    $tablaDos .= '<td colspan="10" class="borderecho"><p>'. $desc['DescMercancia'] . '</p></td>';
+                    $tablaDos .= '<td colspan="10" class="letra borderecho"><p>'. $desc['DescMercancia'] . '</p></td>';
                     $tablaDos .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['ClasiArancelaria'] . '</p></td>';
                     $tablaDos .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['NoFactura']  . '</p></td>';
                     $tablaDos .= '<td colspan="3" class="centrar borderecho"><p>'. number_format($desc['ValorFactura'], 2, '.', ',')  . '</p></td>';
@@ -81,6 +81,10 @@ $alto= 26;
     viewer-pdf-toolbar{
         display:none;
         visibility:hidden!important;
+    }
+
+    .letra{
+        font-size:6.5;
     }
         .centrar {
             text-align: center;
@@ -159,7 +163,7 @@ $alto= 26;
                 
     <!-- OBSERVACIONES -->
             <tr>
-                <td colspan="22" style="height:40px" class="borde">10. Observaciones:<br>'.$datos["Observaciones"].'</td>
+                <td colspan="22" style="height:40px" class=" letra borde">10. Observaciones:<br>'.$datos["Observaciones"].'</td>
             </tr>
     <!-- SECCION ONCE -->
             <tr>             
@@ -343,6 +347,10 @@ if ($k>$nfilas){
        text-align: center;
        vertical-align:middle!important;
    }
+   
+   .letra{
+    font-size:6.5;
+}
    .derecha {
     text-align: right;
     vertical-align:middle!important;
