@@ -165,9 +165,9 @@ th{
 width: 136px!important;
 }
 
-/* .bortabla,th,td {
+.bortabla,th,td {
   border: 1px solid black!important;
-} */
+}
 
 .mayusc, input:not([type]), input[type=text], input[type=email], input[type=url], input[type=time], input[type=date], textarea{
   margin: 0px!important;

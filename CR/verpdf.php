@@ -78,35 +78,35 @@ $alto= 26;
      
      <link rel="shortcut icon" href="../assets/logo.ico" type="image/x-icon">
     <style>
-    viewer-pdf-toolbar{
-        display:none;
-        visibility:hidden!important;
-    }
-
-    .letra{
-        font-size:6.5;
-    }
-        .centrar {
-            text-align: center;
-            vertical-align:middle!important;
-        }
-        .derecha {
-            text-align: right;
-            vertical-align:middle!important;
+        viewer-pdf-toolbar{
+            display:none;
+            visibility:hidden!important;
         }
 
-        .borde {
-            border:1px dotted black!important;
-        } 
-        
-        .borderecho{
-            border-right:1px dotted black!important;
+        .letra{
+            font-size:6.5;
         }
+            .centrar {
+                text-align: center;
+                vertical-align:middle!important;
+            }
+            .derecha {
+                text-align: right;
+                vertical-align:middle!important;
+            }
 
-        .bordeizq{            
-            border-left:1px dotted black!important;
-        }       
+            .borde {
+                border:1px dotted black!important;
+            } 
             
+            .borderecho{
+                border-right:1px dotted black!important;
+            }
+
+            .bordeizq{            
+                border-left:1px dotted black!important;
+            }       
+                
     </style>
     </head>
     <body>
@@ -114,9 +114,9 @@ $alto= 26;
       
         <div id="contenedorpdf">
             <table id="paginauno" style="width:100%" cellpadding="2">
-    <!-- EXPORTADOR  style="width:250px" -->
+    <!-- SECCION UNO EXPORTADOR  style="width:250px" -->
                 <tr>
-                    <td colspan="11" class="borde" height="75px">1. Nombre y Dirección del Exportador: '. $datos["NombreExp"]. ' '. $datos["DireccionExp"]. '
+                    <td colspan="11" class="borde" height="75px"> 1. Nombre y Dirección del Exportador: '. $datos["NombreExp"]. ' '. $datos["DireccionExp"]. '
                         <br><br>
                         <br> Teléfono: '. $datos["TelefonoExp"]. ' Fax:  '. $datos["FaxExp"]. '
                         <br> Correo electrónico:    '. $datos["CorreoExp"]. '
@@ -129,18 +129,18 @@ $alto= 26;
                         <br>(Ver Instrucciones al reverso)</p>        
                     </td>
                 </tr>
-    <!-- PRODUCTOR -->
+    <!-- SECCION DOS PRODUCTOR -->
                 <tr>
-                    <td colspan="11" class="borde" height="75px">2. Nombre y Dirección del Productor: '. $datos["NombrePro"]. ' /  '. $datos["DireccionPro"]. ' 
+                    <td colspan="11" class="borde" height="75px"> 2. Nombre y Dirección del Productor: '. $datos["NombrePro"]. '  '. $datos["DireccionPro"]. ' 
                         <br><br>
                         <br> Teléfono:  '. $datos["TelefonoPro"]. ' Fax:  '. $datos["FaxPro"]. '
                         <br> Correo electrónico: '. $datos["CorreoPro"]. '
                         <br> Número de Registro Fiscal:   '. $datos["NumRegFiscalPro"]. '
                     </td>
-    <!-- IMPORTADOR -->                    
+    <!--SECCION TRES IMPORTADOR -->                    
                     <td colspan="11" class="borde" >                        
                         <table width="100%">
-                            <tr><td height="40px">3. Nombre y Dirección del Importador: '. $datos["NombreImp"]. ' /  '. $datos["DireccionImp"]. ' </td></tr>
+                            <tr><td height="40px">3. Nombre y Dirección del Importador: '. $datos["NombreImp"]. '  '. $datos["DireccionImp"]. ' </td></tr>
                             <tr><td>Teléfono: '. $datos["TelefonoImp"]. '  Fax:  '. $datos["FaxImp"]. '</td></tr>
                             <tr><td>Correo electrónico:  '. $datos["CorreoImp"]. '</td></tr>
                             <tr><td>Número de Registro Fiscal:    '. $datos["NumRegFiscalImp"]. '</td></tr>
@@ -148,28 +148,27 @@ $alto= 26;
                     </td>
                 </tr>
     <!-- DESCRIPCION MERCANCIAS -->                
-                <tr class="centrar">
-                    <td colspan="1" class="bordeizq borderecho">4. Item:</td>
+                <tr>
+                    <td colspan="1" class="bordeizq borderecho centrar">4. Item:</td>
                     <td colspan="10" class="borderecho">5. Descripción de las Mercancías:</td>
-                    <td colspan="3" class="borderecho">6. Clasificación Arancelaria SA <br>(6 Digitos):</td>
-                    <td colspan="3" class="borderecho">7. Número <br> de la <br>Factura:</td>
-                    <td colspan="3" class="borderecho">8. Valor en<br>Factura:</td>
-                    <td colspan="2" class="borderecho">9. Criterio <br>de Origen:</td>
+                    <td colspan="3" class="borderecho centrar">6. Clasificación Arancelaria SA <br>(6 Digitos):</td>
+                    <td colspan="3" class="borderecho centrar">7. Número <br> de la <br>Factura:</td>
+                    <td colspan="3" class="borderecho centrar">8. Valor en<br>Factura:</td>
+                    <td colspan="2" class="borderecho centrar">9. Criterio <br>de Origen:</td>
              </tr>
     <!-- DESCRIPCION MERCANCIAS -->
     <!-- tablaUno TABLA UNO INSERTADA --> 
 
                 '. $tablaUno.'
                 
-    <!-- OBSERVACIONES -->
+    <!-- SECCION DIEZ OBSERVACIONES DOS -->
             <tr>
-                <td colspan="22" style="height:40px" class=" letra borde">10. Observaciones:<br>'.$datos["Observaciones"].'</td>
+                <td colspan="22" style="height:40px" class="borde">10. Observaciones:<br><span class="letra">'.$datos["Observaciones"].'</span></td>
             </tr>
     <!-- SECCION ONCE -->
-            <tr>             
-                <td colspan="11" class="borde">
-                    11. Declaración del exportador
-                    <p>El abajo firmante declara bajo juramento que la información consignada en este certificado de origen es correcta y verdadera y que las mercancías fueron producidas en:</p>
+            <tr>
+                <td colspan="11" class="borde"><p>11. Declaración del exportador</p>
+                    <p style="text-align:justify;">El abajo firmante declara bajo juramento que la información consignada en este certificado de origen es correcta y verdadera y que las mercancías fueron producidas en:</p>
                     <table>
                         <tr>
                             <td style="border-bottom:0.1px dotted black;" width="180px" >  COLOMBIA                                    
@@ -181,7 +180,7 @@ $alto= 26;
                             </td>
                         </tr>    
                     </table>
-                    <p>y cumplen con las disposiciones del Capitulo 3 (Reglas de Origen y Procedimientos de Origen) establecidas en el Tratado de Libre Comercio entre la República de Colombia y la
+                    <p style="text-align:justify;">y cumplen con las disposiciones del Capitulo 3 (Reglas de Origen y Procedimientos de Origen) establecidas en el Tratado de Libre Comercio entre la República de Colombia y la
                     República de Costa Rica y exportadas a:</p>
                     <table>
                         <tr>
@@ -199,10 +198,9 @@ $alto= 26;
                     <br>'. $datos["LugarExp"]. ', '. $fechaexp . '
             </td>
     <!-- SECCION DOCE -->
-            <td colspan="11" class="borde">
-                12. Certificación de la autoridad competente:
-                <p>Sobre la base del control efectuado, se certifica por este medio que la información aquí señalada es correcta y que las mercancías descritas cumplen con las disposiciones del Tratado de Libre Comercio entre la República de Colombia y la República de Costa Rica.</p>                
-                <p>Lugar y fecha, nombre y firma del funcionario y sello de la autoridad competente:</p>                
+            <td colspan="11" class="borde"><p>12. Certificación de la autoridad competente:</p>
+                <p style="text-align:justify;">Sobre la base del control efectuado, se certifica por este medio que la información aquí señalada es correcta y que las mercancías descritas cumplen con las disposiciones del Tratado de Libre Comercio entre la República de Colombia y la República de Costa Rica.</p>                
+                <p style="text-align:justify;">Lugar y fecha, nombre y firma del funcionario y sello de la autoridad competente:</p>                
                     <p> <br> <br> <br> <br> <br> <br> <br>  <br> <br> <br> <br> <br><br></p>                 
                 <p></p>
                 <br>Dirección:  '. $datos["DireccionAutoCompe"]. '
@@ -388,28 +386,27 @@ if ($k>$nfilas){
             
 <!-- DESCRIPCION MERCANCIAS -->
    
-            <tr class="centrar">
-            <td colspan="1" class="bordeizq borderecho">4. Item:</td>
-            <td colspan="10" class="borderecho">5. Descripción de las Mercancías:</td>
-            <td colspan="3" class="borderecho">6. Clasificación Arancelaria SA <br>(6 Digitos):</td>
-            <td colspan="3" class="borderecho">7. Número <br> de la <br>Factura:</td>
-            <td colspan="3" class="borderecho">8. Valor en<br>Factura:</td>
-            <td colspan="2" class="borderecho">9. Criterio <br>de Origen:</td>
+            <tr>
+                <td colspan="1" class="bordeizq borderecho centrar">4. Item:</td>
+                <td colspan="10" class="borderecho">5. Descripción de las Mercancías:</td>
+                <td colspan="3" class="borderecho centrar">6. Clasificación Arancelaria SA <br>(6 Digitos):</td>
+                <td colspan="3" class="borderecho centrar">7. Número <br> de la <br>Factura:</td>
+                <td colspan="3" class="borderecho centrar">8. Valor en<br>Factura:</td>
+                <td colspan="2" class="borderecho centrar">9. Criterio <br>de Origen:</td>
             </tr>
     <!-- DESCRIPCION MERCANCIAS -->
     <!-- tablaUno TABLA UNO INSERTADA --> 
 
             '. $tablaDos.'
    
-    <!-- OBSERVACIONES -->
+    <!-- SECCION DIEZ OBSERVACIONES -->
             <tr>
-                <td colspan="22" style="height:40px" class="borde">10. Observaciones:<br>'. $datos["Observaciones"]. '</td>
+                <td colspan="22" style="height:40px" class="borde">10. Observaciones:<br><span class="letra">'.$datos["Observaciones"]. '</span></td>
             </tr>
     <!-- SECCION ONCE -->
             <tr>             
-                <td colspan="11" class="borde">
-                    11. Declaración del exportador
-                    <p>El abajo firmante declara bajo juramento que la información consignada en este certificado de origen es correcta y verdadera y que las mercancías fueron producidas en:</p>
+                <td colspan="11" class="borde"><p>11. Declaración del exportador</p>
+                    <p style="text-align:justify;">El abajo firmante declara bajo juramento que la información consignada en este certificado de origen es correcta y verdadera y que las mercancías fueron producidas en:</p>
                     <table>
                         <tr>
                             <td style="border-bottom:0.1px dotted black;" width="180px" >  COLOMBIA
@@ -420,7 +417,7 @@ if ($k>$nfilas){
                             </td>
                         </tr>    
                     </table>
-                    <p>y cumplen con las disposiciones del Capitulo 3 (Reglas de Origen y Procedimientos de Origen) establecidas en el Tratado de Libre Comercio entre la República de Colombia y la
+                    <p style="text-align:justify;">y cumplen con las disposiciones del Capitulo 3 (Reglas de Origen y Procedimientos de Origen) establecidas en el Tratado de Libre Comercio entre la República de Colombia y la
                     República de Costa Rica y exportadas a:</p>
                     <table>
                     <tr>
@@ -435,13 +432,12 @@ if ($k>$nfilas){
                 </table>
                     <p> <br><br>  <br> <br><br> <br> <br> <br> </p> 
                     <br>Lugar y fecha, firma del exportador
-                    <br> '. $datos["LugarExp"]. ', '. $fechaexp . '
+                    <br>'. $datos["LugarExp"]. ', '. $fechaexp . '
                 </td>
     <!-- SECCION DOCE -->
-                <td colspan="11" class="borde">
-                    12. Certificación de la autoridad competente:
-                    <p>Sobre la base del control efectuado, se certifica por este medio que la información aquí señalada es correcta y que las mercancías descritas cumplen con las disposiciones del Tratado de Libre Comercio entre la República de Colombia y la República de Costa Rica.</p>                
-                    <p>Lugar y fecha, nombre y firma del funcionario y sello de la autoridad competente:</p>                
+                <td colspan="11" class="borde"><p>12. Certificación de la autoridad competente:</p>
+                    <p style="text-align:justify;">Sobre la base del control efectuado, se certifica por este medio que la información aquí señalada es correcta y que las mercancías descritas cumplen con las disposiciones del Tratado de Libre Comercio entre la República de Colombia y la República de Costa Rica.</p>                
+                    <p style="text-align:justify;">Lugar y fecha, nombre y firma del funcionario y sello de la autoridad competente:</p>                
                     <p> <br> <br><br> <br> <br> <br> <br> <br> <br><br></p>                 
                     <p></p>
                     <br>Dirección:  '. $datos["DireccionAutoCompe"]. '
