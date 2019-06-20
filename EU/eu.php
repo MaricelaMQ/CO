@@ -29,11 +29,11 @@ ob_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/materialize.min.css" />
-    <link rel="stylesheet" href="../assets/css/Estilos.css" />
+    <link rel="stylesheet" href="../assets/css/Estilos.css" />    
     <link rel="icon" href="../assets/logo.ico">
 
     <script src="../assets/js/vendor/jquery.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main_eu.js"></script>
     <script src="js/validaform.js"></script>
     <script type="text/javascript">
     var id = <?php echo $id;?>;
@@ -70,7 +70,7 @@ ob_start();
             </div>
         </div>
         <!-- ****************** -->
-        <form>
+        <!-- <form> -->
             <div>
                 <!-- FORMULARIO -->
                 <div class="row">
@@ -195,7 +195,7 @@ ob_start();
                                             <th class="valorfactura">6. Clasificación Arancelaria</th>
                                             <th class="valorfactura">7. Criterio preferencial</th>
                                             <th class="valorfactura">8. Valor Contenido Regional</th>
-                                            <th class="valorfactura" colspan="2">9. Factura No. / Fecha</th>
+                                            <th class="" style="width: 20%;">9. Factura No. / Fecha</th>
                                             <th class="valorfactura">10. País de origen</th>
                                         </tr>
                                     </thead>
@@ -206,11 +206,11 @@ ob_start();
                                                     style="width:20px!important;" />
                                                 <textarea id="DescMercancia" maxlength="160"></textarea>
                                             </td>
-                                            <td class="center valorfactura"><input id="ClasiArancelaria" type=""
+                                            <td class="center valorfactura mayusc"><input id="ClasiArancelaria" type=""
                                                     class="valorfactura" maxlength="6" value="" />
                                             </td>
                                             <td class="center">
-                                                <select id="CritPreferencial" class="criterorigen">
+                                                <select id="CritPreferencial" class="">
                                                     <option value="A" selected>A</option>
                                                     <option value="B(i)">B(i)</option>
                                                     <option value="B(ii)">B(ii)</option>
@@ -218,10 +218,10 @@ ob_start();
                                                 </select>
                                             </td>
                                             <td class="center valorfactura"><input id="ValConRegional" type=""
-                                                    class="valorfactura" value="" /></td>
-                                            <td class="center"><input id="FacturaNoDesc" type="" class="valorfactura"
-                                                    value="" /></td>
-                                            <td class="center "><input id="FechaDesc" type="date" class="fechams"
+                                                    class="valorfactura mayusc" value="" /></td>
+                                            <td class="center "><input id="FacturaNoDesc" type="" class="valorfactura mayusc"
+                                                    value="" />
+                                            <input id="FechaDesc" type="date" class="fechams"
                                                     value="" /></td>
 
                                             <td class="center">
@@ -314,10 +314,10 @@ ob_start();
                     </div>
                 </section>
             </div>
-        </form>
+        <!-- </form> -->
         <div id="resultado"></div>
         <div id="footer" class="cuadrado"></div>
-        <script src="../js/materialize.min.js"></script>
+        <script src="../assets/js/materialize.min.js"></script>
 </body>
 
 </html>
