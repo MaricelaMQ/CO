@@ -162,12 +162,14 @@ function agregardescripcion(a) {
                 $.each(detMercancias, function(i, item) {                    //console.log(item["valorfactura"]);
                             var nuevaFila = "<tr>";
                             nuevaFila += "<td class=''></td>";
-                            nuevaFila += "<td class='oculto'>" + item["ID"] + "</td>"; //id tabla descripcion mercancias
-                            nuevaFila += "<td class='valorfactura'>" + item["Naladisa"] + "</td>";
-                            nuevaFila += "<td class='texto-izq anchoDeno'>" + item["DescMercancia"] +  "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["PesoCantidad"] +  "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["ValorFob"] + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["Normas"] + "</td>";
+                            nuevaFila += "<td class=''>" + item["ID"] + "</td>"; //id tabla descripcion mercancias
+                            nuevaFila += "<td class='descripcion'>" + item["DescMercancia"] + "</td>";
+                            nuevaFila += "<td class='center'>" + item["ClasiArancelaria"] +  "</td>";
+                            nuevaFila += "<td class='center'>" + item["CritPreferencial"] +  "</td>";
+                            nuevaFila += "<td class='center'>" + item["ValConRegional"] + "</td>";
+                            nuevaFila += "<td class='center facfecha'>" + item["FacturaNoDesc"] + "</td>";
+                            nuevaFila += "<td class='center facfecha'>" + item["FechaDesc"] + "</td>";
+                            nuevaFila += "<td class='center'>" + item["PaisdeOrigen"] + "</td>";
                             nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";
                             nuevaFila += "</tr>";
                             $("#tbldescripcionmercancia").append(nuevaFila);
@@ -179,17 +181,17 @@ function agregardescripcion(a) {
 function duplicarcert(id){
     if (id>0){
         $("#operacion").val(detCertificado.operacion);
-        $("#paisimp").val(detCertificado.PaisImp);
-        $("#nofacturacomercial").val(detCertificado.NoFacturaComercial);
-        $("#fechadeclaorigen").val(detCertificado.FechaDeclaOrigen);
-        $("#razonsocialexpopro").val(detCertificado.RazonSocialExpoPro);
-        $("#nit").val(detCertificado.NIT);
-        $("#direccionexpopro").val(detCertificado.DireccionExpoPro);
-        $("#fechaexpopro").val(detCertificado.FechaExpoPro);
-        $("#razonsocialimp").val(detCertificado.RazonSocialImp);
-        $("#direccionimp").val(detCertificado.DireccionImp);
-        $("#mediotransporte").val(detCertificado.MedioTransporte);
-        $("#puertoembarque").val(detCertificado.PuertoEmbarque);
+        $("#NombreExp").val(detCertificado.NombreExp);
+        $("#DireccionExp").val(detCertificado.DireccionExp);
+        $("#TelefonoExp").val(detCertificado.TelefonoExp);
+        $("#CorreoExp").val(detCertificado.CorreoExp);
+        $("#FechaDesde").val(detCertificado.FechaDesde);
+        $("#FechaHasta").val(detCertificado.FechaHasta);
+        $("#NombrePro").val(detCertificado.NombrePro);
+        $("#DireccionPro").val(detCertificado.DireccionPro);
+        $("#TelefonoPro").val(detCertificado.TelefonoPro);
+        $("#NombreImp").val(detCertificado.NombreImp);
+        $("#CorreoPro").val(detCertificado.CorreoPro);
         $("#observaciones").val(detCertificado.Observaciones);
         agregardescripcion(1);        
     }    
@@ -200,14 +202,16 @@ function descripcionmerca(){
     detmercancia = [];
         $('#tbldescripcionmercancia tr').each(function () {
             var idDescmercancia = $(this).find('td').eq(1).html();// id tabla Descripcion mercancias.
-            var naladisa = $(this).find('td').eq(2).html();
-            var descripcion = $(this).find('td').eq(3).html();
-            var pesocantidad = $(this).find('td').eq(4).html();
-            var valorfob = $(this).find('td').eq(5).html();
-            var normas = $(this).find('td').eq(6).html();
+            var DescMercancia = $(this).find('td').eq(2).html();
+            var ClasiArancelaria = $(this).find('td').eq(3).html();
+            var CritPreferencial = $(this).find('td').eq(4).html();
+            var ValConRegional = $(this).find('td').eq(5).html();
+            var FacturaNoDesc = $(this).find('td').eq(6).html();
+            var FechaDesc = $(this).find('td').eq(7).html();
+            var PaisdeOrigen = $(this).find('td').eq(8).html();
             var valor = {
                 idDescmercancia,
-                naladisa, descripcion, pesocantidad, valorfob, normas};
+                DescMercancia, ClasiArancelaria, CritPreferencial, ValConRegional, FacturaNoDesc, FechaDesc, PaisdeOrigen};
             detmercancia.push(valor);
             //console.log(detmercancia);
         });
@@ -218,24 +222,32 @@ function descripcionmerca(){
 // _DATOS FORMULARIO EN ARREGLO DATOS FORM_
 function datos(){ // dATOS FORMULARIO 
     var datosform = [];
-        var operacion = $("#operacion").val();
-            var paisimp = $("#paisimp").val().toUpperCase();
-            var nofacturacomercial = $("#nofacturacomercial").val().toUpperCase();
-            var fechadeclaorigen = $("#fechadeclaorigen").val();
-            var razonsocialexpopro = $("#razonsocialexpopro").val().toUpperCase();
-            var nit = $("#nit").val()
-            var direccionexpopro = $("#direccionexpopro").val().toUpperCase();//toLowerCase();
-            var fechaexpopro = $("#fechaexpopro").val();
-            var razonsocialimp = $("#razonsocialimp").val().toUpperCase();
-            var direccionimp = $("#direccionimp").val().toUpperCase();
-            var mediotransporte = $("#mediotransporte").val().toUpperCase();
-            var puertoembarque = $("#puertoembarque").val().toUpperCase();
-            var observaciones = $("#observaciones").val().toUpperCase();
+        var Operacion = $("#Operacion").val();
+            var NombreExp = $("#NombreExp").val().toUpperCase();
+            var DireccionExp = $("#DireccionExp").val().toUpperCase();
+            var TelefonoExp = $("#TelefonoExp").val();
+            var CorreoExp = $("#CorreoExp").val().toLowerCase();
+            var FechaDesde = $("#FechaDesde").val();
+            var FechaHasta = $("#FechaHasta").val();//toLowerCase();
+            var NombrePro = $("#NombrePro").val();
+            var DireccionPro = $("#DireccionPro").val().toUpperCase();
+            var TelefonoPro = $("#TelefonoPro").val();
+            var CorreoPro = $("#CorreoPro").val().toLowerCase();
+            var NombreImp = $("#NombreImp").val().toUpperCase();
+            var DireccionImp = $("#DireccionImp").val().toUpperCase();
+            var TelefonoImp = $("#TelefonoImp").val();
+            var CorreoImp = $("#CorreoImp").val().toLowerCase();
+            var FechaElabora = $("#FechaElabora").val();
+            var NombreAutoriza = $("#NombreAutoriza").val();
+            var CargoPersonAutoriza = $("#CargoPersonAutoriza").val();
+            var TelPersonAutoriza = $("#TelPersonAutoriza").val();
+            var FaxPersonAutoriza = $("#FaxPersonAutoriza").val();
+            var Observaciones = $("#Observaciones").val().toUpperCase();
             
     var dato = {
-        operacion, paisimp, nofacturacomercial, fechadeclaorigen, razonsocialexpopro, nit,
-        direccionexpopro, fechaexpopro, razonsocialimp, direccionimp, 
-        mediotransporte, puertoembarque, observaciones
+        Operacion, NombreExp, DireccionExp, TelefonoExp, CorreoExp, FechaDesde, FechaHasta, 
+        NombrePro, DireccionPro, TelefonoPro, CorreoPro, NombreImp, DireccionImp, TelefonoImp, CorreoImp, FechaElabora,
+        NombreAutoriza, CargoPersonAutoriza, TelPersonAutoriza, FaxPersonAutoriza, Observaciones
         };
     
     datosform.push(dato);    

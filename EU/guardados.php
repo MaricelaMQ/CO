@@ -14,10 +14,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/materialize.min.css" />
     <link rel="stylesheet" href="../assets/css/estilos.css">
-    <link rel="icon" href="../assets/assets/logo.ico">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
+    <link rel="shortcut icon" href="../assets/assets/logo.ico">
     <script src="../assets/js/vendor/jquery.js"></script>
     <!-- <script src="js/main.js"></script> -->
-    <script src="js/cargar_ms.js"></script>
+    <script src="js/cargar_eu.js"></script>
     <script type="text/javascript">
     var op = <?php echo $op;?>;
     if (op == 1) {
@@ -44,7 +45,7 @@
                         <a href="guardados.php?op=1" class="btn waves-effect orange darken-2" >
                         Guardados<i class=" material-icons left ">collections_bookmark</i>
                         </a>
-                        <a href="mercosur.php" class="btn waves-effect waves-light light-green darken-2" >
+                        <a href="eu.php" class="btn waves-effect waves-light light-green darken-2" >
                          Nuevo certificado<i class=" material-icons left ">open_in_new</i>
                         </a>
                 </div>
@@ -54,11 +55,26 @@
         <div class="titulodos center orange darken-2" >Certificados Guardados </div><hr>
     </div>
         <div class="row">
-            <div id="resultado" class="center"></div>
+            <div id="resultado" class="center">
+            <table id="tblresultado" class="highlight responsive-table striped bordered">
+                <thead >
+                    <tr>
+                        <th>OPERACION</th>
+                        <th>FORMATO</th>
+                        <th>FECHA CREACION</th>
+                        <th>EXPORTADOR</th>
+                        <th>IMPORTADOR</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+            </div>
         </div>        
     </div>
     <div id="footer" class="cuadrado"></div>
 </body>
 <script src="../assets/js/materialize.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 
 </html>

@@ -102,7 +102,7 @@ ob_start();
                                     <label for="">Teléfono</label>
                                 </div>
                                 <div class="input-field col l6 s12">
-                                    <input id="CorreoExp" type="text" class="validate" value="" required>
+                                    <input id="CorreoExp" type="text" class="validate minusc" value="" required>
                                     <label for="">Correo electrónico:</label>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@ ob_start();
                                     <label for="">Teléfono</label>
                                 </div>
                                 <div class="input-field col l6 s6">
-                                    <input id="CorreoPro" type="text" class="validate" value="" required>
+                                    <input id="CorreoPro" type="text" class="validate minusc" value="" required>
                                     <label for="">Correo electrónico:</label>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@ ob_start();
                                 <label for="">Teléfono</label>
                             </div>
                             <div class="input-field col l6 s6">
-                                <input id="CorreoImp" type="text" class="validate" value="" required>
+                                <input id="CorreoImp" type="text" class="validate minusc" value="" required>
                                 <label for="">Correo electrónico:</label>
                             </div>
                         </div>
