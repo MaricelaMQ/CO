@@ -36,14 +36,14 @@ ob_start();
     <script src="js/main_eu.js"></script>
     <script src="js/validaform.js"></script>
     <script type="text/javascript">
-    var id = <?php echo $id;?>;
-    var editar = <?php echo $editar;?>;
-    var idDelete = [];
-    //console.log("valor id: "+ id);
-    if (id != 0) {
-        var detCertificado = <?php echo json_encode($datos);?>;
-        var detMercancias = <?php echo json_encode($descripcion);?>;
-    }
+            var id = <?php echo $id;?>;
+            var editar = <?php echo $editar;?>;
+            var idDelete = [];
+            //console.log("valor id: "+ id);
+            if (id != 0) {
+                var detCertificado = <?php echo json_encode($datos);?>;
+                var detMercancias = <?php echo json_encode($descripcion);?>;
+            }
     </script>
 
 </head>

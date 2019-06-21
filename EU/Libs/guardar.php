@@ -184,8 +184,9 @@ function actualizar($conn, $id, $estado, $idborrar){
                     $insdescmerca->bindParam(3, $item->{"ClasiArancelaria"});
                     $insdescmerca->bindParam(4, $item->{"CritPreferencial"});
                     $insdescmerca->bindParam(5, $item->{"ValConRegional"});
-                    $insdescmerca->bindParam(6, $item->{"FechaDesc"});
-                    $insdescmerca->bindParam(7, $item->{"PaisdeOrigen"});
+                    $insdescmerca->bindParam(6, $item->{"FacturaNoDesc"});
+                    $insdescmerca->bindParam(7, $item->{"FechaDesc"});
+                    $insdescmerca->bindParam(8, $item->{"PaisdeOrigen"});
                     $respuesta4 = $insdescmerca->execute();
                 }
     //$it++;    

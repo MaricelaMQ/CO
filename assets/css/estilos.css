@@ -33,6 +33,7 @@
 
 select{
   display: inline-block!important;
+  height: 100%!important;
 }
 .cajas{
   /* /width: 100%; */

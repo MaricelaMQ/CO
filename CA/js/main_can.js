@@ -45,9 +45,8 @@ $(document).ready(function () {
             $("#DescMercancia").val($(this).parents("tr").find('td').eq(2).html());
             $("#ClasiArancelaria").val($(this).parents("tr").find('td').eq(3).html());
             $("#CritPreferencial").val($(this).parents("tr").find('td').eq(4).html());
-            $("#ValConRegional").val($(this).parents("tr").find('td').eq(5).html());
-            $("#FacturaNoDesc").val($(this).parents("tr").find('td').eq(6).html());
-            $("#FechaDesc").val($(this).parents("tr").find('td').eq(7).html());
+            $("#Productor").val($(this).parents("tr").find('td').eq(5).html());
+            $("#PruebadeValor").val($(this).parents("tr").find('td').eq(6).html());            
         $("#DescMercancia").focus();
     });
 
@@ -61,23 +60,25 @@ $(document).ready(function () {
         $("#modificar").addClass("oculto");
         $("#cancelar").addClass("oculto");
         $("#agregar").removeClass("oculto");
-        $("#varmodificando").val("");
+        $("#varmodificando").val("");        
         switchClase(0);
         limpiar();
+        $("#DescMercancia").focus();
+        
   });
 //********* BOTON AGREGAR ITEM DESCRIPCION MERCANCIAS**/
   $("#agregar").click(function () {
         agregardescripcion(0);
-        //limpiar();
+        limpiar();
   });
 
 //********* LIMPIAR TABLA  DESCRIPCIÓN MERCANCIAS**/
     function limpiar() {
         $("#DescMercancia").val("");
         $("#ClasiArancelaria").val("");
-        $("#ValConRegional").val("");
-        $("#FacturaNoDesc").val("");
-        $("#FechaDesc").val("");
+        $("#CritPreferencial").val("");
+        $("#Productor").val("");
+        $("#PruebadeValor").val("");        
     }
 });
 /* ######################################################### FUNCTIONS  #########################################################*/
@@ -89,9 +90,9 @@ function modificando() {
           tabla.rows[fila].cells[2].innerHTML = $("#DescMercancia").val().toUpperCase();
           tabla.rows[fila].cells[3].innerHTML = $("#ClasiArancelaria").val().toUpperCase();
           tabla.rows[fila].cells[4].innerHTML = $("#CritPreferencial").val();
-          tabla.rows[fila].cells[5].innerHTML = $("#ValConRegional").val().toUpperCase();
-          tabla.rows[fila].cells[6].innerHTML = $("#FacturaNoDesc").val().toUpperCase();
-          tabla.rows[fila].cells[7].innerHTML = $("#FechaDesc").val();
+          tabla.rows[fila].cells[5].innerHTML = $("#Productor").val().toUpperCase();
+          tabla.rows[fila].cells[6].innerHTML = $("#PruebadeValor").val().toUpperCase();
+          tabla.rows[fila].cells[7].innerHTML = $("#PaisdeOrigen").val();
       }
       switchClase(0);
       $("#DescMercancia").focus();
@@ -132,41 +133,38 @@ function agregardescripcion(a) {
                     var DescMercancia = $("#DescMercancia").val().toUpperCase();
                     var ClasiArancelaria = $("#ClasiArancelaria").val().toUpperCase();
                     var CritPreferencial = $("#CritPreferencial").val();
-                    var ValConRegional = $("#ValConRegional").val().toUpperCase();
-                    var FacturaNoDesc = $("#FacturaNoDesc").val().toUpperCase();
-                    var FechaDesc = $("#FechaDesc").val();
-                    var PaisdeOrigen = $("#PaisdeOrigen").val();                    
+                    var Productor = $("#Productor").val();
+                    var PruebadeValor = $("#PruebadeValor").val();
+                    var PaisdeOrigen = $("#PaisdeOrigen").val();
 
-                    if ( DescMercancia =='' || ClasiArancelaria =='' || CritPreferencial=='' || ValConRegional==''|| FacturaNoDesc==''|| FechaDesc==''){
+                    if ( DescMercancia =='' || ClasiArancelaria =='' || CritPreferencial =='' || Productor ==''|| PruebadeValor ==''){
                         alert("Hace falta ingresar información")}
                         else{
-                            var nuevaFila = "<tr>"; //console.log('total filas ' + filas);        // nuevaFila += "<td>" + (filas + 1) + "</td>";//                            
-                            nuevaFila += "<td class=''></td>"; //index tabla
-                            nuevaFila += "<td class=''>" + a + "</td>";
+                            var nuevaFila = "<tr>"; //console.log('total filas ' + filas);        // nuevaFila += "<td>" + (filas + 1) + "</td>";//
+                            nuevaFila += "<td class='oculto'></td>"; //index tabla
+                            nuevaFila += "<td class='oculto'>" + a + "</td>";
                             nuevaFila += "<td class='descripcion'>" + DescMercancia + "</td>";
                             nuevaFila += "<td class='center '>" + ClasiArancelaria + "</td>";
                             nuevaFila += "<td class='center '>" + CritPreferencial + "</td>";
-                            nuevaFila += "<td class='center '>" + ValConRegional + "</td>";
-                            nuevaFila += "<td class='center facfecha'>" + FacturaNoDesc + "</td>";
-                            nuevaFila += "<td class='center facfecha'>" + FechaDesc + "</td>";
+                            nuevaFila += "<td class='center '>" + Productor + "</td>";
+                            nuevaFila += "<td class='center facfecha'>" + PruebadeValor + "</td>";
                             nuevaFila += "<td class='center '>" + PaisdeOrigen + "</td>";
                             nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";
                             nuevaFila += "</tr>";
                             $("#tbldescripcionmercancia").append(nuevaFila);
-                            $("#DescMercancia").focus();        //limpiar();                            
-                }                        
+                            $("#DescMercancia").focus();        //limpiar();
+                }
             }else{ /****si a es 1, se agregan valores de BD a tabla DESCRIPCION MERCANCIAS **/
                 // console.log(detMercancias);
                 $.each(detMercancias, function(i, item) {                    //console.log(item["valorfactura"]);
                             var nuevaFila = "<tr>";
-                            nuevaFila += "<td class=''></td>";
-                            nuevaFila += "<td class=''>" + item["ID"] + "</td>"; //id tabla descripcion mercancias
+                            nuevaFila += "<td class='oculto'></td>";
+                            nuevaFila += "<td class='oculto'>" + item["ID"] + "</td>"; //id tabla descripcion mercancias
                             nuevaFila += "<td class='descripcion'>" + item["DescMercancia"] + "</td>";
                             nuevaFila += "<td class='center'>" + item["ClasiArancelaria"] +  "</td>";
                             nuevaFila += "<td class='center'>" + item["CritPreferencial"] +  "</td>";
-                            nuevaFila += "<td class='center'>" + item["ValConRegional"] + "</td>";
-                            nuevaFila += "<td class='center facfecha'>" + item["FacturaNoDesc"] + "</td>";
-                            nuevaFila += "<td class='center facfecha'>" + item["FechaDesc"] + "</td>";
+                            nuevaFila += "<td class='center'>" + item["Productor"] + "</td>";
+                            nuevaFila += "<td class='center facfecha'>" + item["PruebadeValor"] + "</td>";                            
                             nuevaFila += "<td class='center'>" + item["PaisdeOrigen"] + "</td>";
                             nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";
                             nuevaFila += "</tr>";
@@ -178,26 +176,30 @@ function agregardescripcion(a) {
 /* AGREGAR DATOS A FORMULARIO DESDE CONSULTA.PHP*/
 function duplicarcert(id){
     if (id>0){
-        $("#Operacion").val(detCertificado.Operacion);
         $("#NombreExp").val(detCertificado.NombreExp);
         $("#DireccionExp").val(detCertificado.DireccionExp);
         $("#TelefonoExp").val(detCertificado.TelefonoExp);
+        $("#FaxExp").val(detCertificado.FaxExp);
         $("#CorreoExp").val(detCertificado.CorreoExp);
         $("#FechaDesde").val(detCertificado.FechaDesde);
         $("#FechaHasta").val(detCertificado.FechaHasta);
         $("#NombrePro").val(detCertificado.NombrePro);
         $("#DireccionPro").val(detCertificado.DireccionPro);
         $("#TelefonoPro").val(detCertificado.TelefonoPro);
+        $("#FaxPro").val(detCertificado.FaxPro);
         $("#CorreoPro").val(detCertificado.CorreoPro);
         $("#NombreImp").val(detCertificado.NombreImp);
         $("#DireccionImp").val(detCertificado.DireccionImp);
         $("#TelefonoImp").val(detCertificado.TelefonoImp);
+        $("#FaxImp").val(detCertificado.FaxImp);
         $("#CorreoImp").val(detCertificado.CorreoImp);
         $("#FechaElabora").val(detCertificado.FechaElabora);
         $("#NombreAutoriza").val(detCertificado.NombreAutoriza);
+        $("#EmpresaAutoriza").val(detCertificado.EmpresaAutoriza);
         $("#CargoPersonAutoriza").val(detCertificado.CargoPersonAutoriza);
         $("#TelPersonAutoriza").val(detCertificado.TelPersonAutoriza);
         $("#FaxPersonAutoriza").val(detCertificado.FaxPersonAutoriza);
+        $("#CorreoPersonAutoriza").val(detCertificado.CorreoPersonAutoriza);
         $("#Observaciones").val(detCertificado.Observaciones);
         agregardescripcion(1);
     }    
@@ -211,13 +213,12 @@ function descripcionmerca(){
             var DescMercancia = $(this).find('td').eq(2).html();
             var ClasiArancelaria = $(this).find('td').eq(3).html();
             var CritPreferencial = $(this).find('td').eq(4).html();
-            var ValConRegional = $(this).find('td').eq(5).html();
-            var FacturaNoDesc = $(this).find('td').eq(6).html();
-            var FechaDesc = $(this).find('td').eq(7).html();
-            var PaisdeOrigen = $(this).find('td').eq(8).html();
+            var Productor = $(this).find('td').eq(5).html();
+            var PruebadeValor = $(this).find('td').eq(6).html();
+            var PaisdeOrigen = $(this).find('td').eq(7).html();
             var valor = {
                 idDescmercancia,
-                DescMercancia, ClasiArancelaria, CritPreferencial, ValConRegional, FacturaNoDesc, FechaDesc, PaisdeOrigen};
+                DescMercancia, ClasiArancelaria, CritPreferencial, Productor, PruebadeValor, PaisdeOrigen};
             detmercancia.push(valor);
             //console.log(detmercancia);
         });
@@ -232,28 +233,34 @@ function datos(){ // dATOS FORMULARIO
             var NombreExp = $("#NombreExp").val().toUpperCase();
             var DireccionExp = $("#DireccionExp").val().toUpperCase();
             var TelefonoExp = $("#TelefonoExp").val();
+            var FaxExp = $("#FaxExp").val();
             var CorreoExp = $("#CorreoExp").val().toLowerCase();
             var FechaDesde = $("#FechaDesde").val();
             var FechaHasta = $("#FechaHasta").val();//toLowerCase();
-            var NombrePro = $("#NombrePro").val();
+            var NombrePro = $("#NombrePro").val().toUpperCase();;
             var DireccionPro = $("#DireccionPro").val().toUpperCase();
             var TelefonoPro = $("#TelefonoPro").val();
+            var FaxPro = $("#FaxPro").val();
             var CorreoPro = $("#CorreoPro").val().toLowerCase();
             var NombreImp = $("#NombreImp").val().toUpperCase();
             var DireccionImp = $("#DireccionImp").val().toUpperCase();
             var TelefonoImp = $("#TelefonoImp").val();
+            var FaxImp = $("#FaxImp").val();
             var CorreoImp = $("#CorreoImp").val().toLowerCase();
             var FechaElabora = $("#FechaElabora").val();
-            var NombreAutoriza = $("#NombreAutoriza").val();
-            var CargoPersonAutoriza = $("#CargoPersonAutoriza").val();
+            var NombreAutoriza = $("#NombreAutoriza").val().toUpperCase();
+            var EmpresaAutoriza = $("#EmpresaAutoriza").val().toUpperCase();
+            var CargoPersonAutoriza = $("#CargoPersonAutoriza").val().toUpperCase();
             var TelPersonAutoriza = $("#TelPersonAutoriza").val();
             var FaxPersonAutoriza = $("#FaxPersonAutoriza").val();
+            var CorreoPersonAutoriza = $("#CorreoPersonAutoriza").val().toLowerCase();
             var Observaciones = $("#Observaciones").val().toUpperCase();
             
     var dato = {
-        Operacion, NombreExp, DireccionExp, TelefonoExp, CorreoExp, FechaDesde, FechaHasta, 
-        NombrePro, DireccionPro, TelefonoPro, CorreoPro, NombreImp, DireccionImp, TelefonoImp, CorreoImp, FechaElabora,
-        NombreAutoriza, CargoPersonAutoriza, TelPersonAutoriza, FaxPersonAutoriza, Observaciones
+        Operacion, NombreExp, DireccionExp, TelefonoExp, FaxExp, CorreoExp, FechaDesde, FechaHasta, 
+        NombrePro, DireccionPro, TelefonoPro, FaxPro, CorreoPro, 
+        NombreImp, DireccionImp, TelefonoImp, FaxImp, CorreoImp, FechaElabora,
+        NombreAutoriza, EmpresaAutoriza, CargoPersonAutoriza, TelPersonAutoriza, FaxPersonAutoriza, CorreoPersonAutoriza, Observaciones
         };
     
     datosform.push(dato);    
