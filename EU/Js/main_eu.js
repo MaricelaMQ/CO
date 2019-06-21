@@ -195,6 +195,7 @@ function duplicarcert(id){
         $("#CorreoImp").val(detCertificado.CorreoImp);
         $("#FechaElabora").val(detCertificado.FechaElabora);
         $("#NombreAutoriza").val(detCertificado.NombreAutoriza);
+        $("#EmpresaAutoriza").val(detCertificado.EmpresaAutoriza);
         $("#CargoPersonAutoriza").val(detCertificado.CargoPersonAutoriza);
         $("#TelPersonAutoriza").val(detCertificado.TelPersonAutoriza);
         $("#FaxPersonAutoriza").val(detCertificado.FaxPersonAutoriza);
@@ -244,8 +245,9 @@ function datos(){ // dATOS FORMULARIO
             var TelefonoImp = $("#TelefonoImp").val();
             var CorreoImp = $("#CorreoImp").val().toLowerCase();
             var FechaElabora = $("#FechaElabora").val();
-            var NombreAutoriza = $("#NombreAutoriza").val();
-            var CargoPersonAutoriza = $("#CargoPersonAutoriza").val();
+            var NombreAutoriza = $("#NombreAutoriza").val().toUpperCase();
+            var EmpresaAutoriza = $("#EmpresaAutoriza").val().toUpperCase();
+            var CargoPersonAutoriza = $("#CargoPersonAutoriza").val().toUpperCase();
             var TelPersonAutoriza = $("#TelPersonAutoriza").val();
             var FaxPersonAutoriza = $("#FaxPersonAutoriza").val();
             var Observaciones = $("#Observaciones").val().toUpperCase();
@@ -253,7 +255,7 @@ function datos(){ // dATOS FORMULARIO
     var dato = {
         Operacion, NombreExp, DireccionExp, TelefonoExp, CorreoExp, FechaDesde, FechaHasta, 
         NombrePro, DireccionPro, TelefonoPro, CorreoPro, NombreImp, DireccionImp, TelefonoImp, CorreoImp, FechaElabora,
-        NombreAutoriza, CargoPersonAutoriza, TelPersonAutoriza, FaxPersonAutoriza, Observaciones
+        NombreAutoriza, EmpresaAutoriza, CargoPersonAutoriza, TelPersonAutoriza, FaxPersonAutoriza, Observaciones
         };
     
     datosform.push(dato);    

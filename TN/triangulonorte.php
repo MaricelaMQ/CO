@@ -221,21 +221,34 @@ ob_flush();
                                         <td class="center valorfactura"><input id="ClasiArancelaria" type=""
                                                 class="valorfactura" maxlength="10" value="" />
                                         </td>
-                                        <td class="center valorfactura"><input id="CritePreferencial" type=""
-                                                class="valorfactura mayusc" maxlength="10" value="" />
+                                        <td class="center valorfactura">
+                                            <select id="CritePreferencial" class="">
+                                                <option value="A" selected>A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                            </select>
                                         </td>
-                                        <td class="center valorfactura"><input id="OtrosCriterios" type=""
-                                                class="valorfactura mayusc" value="" /></td>
-                                        <td class="center"><input id="Productor" type="" class="valorfactura mayusc"
-                                                value="" /></td>
+                                        <td class="center valorfactura">
+                                            <select id="OtrosCriterios" class="">
+                                                <option value="CCA" selected>CCA</option>
+                                                <option value="VCR(1)">VCR (1)</option>
+                                                <option value="VCR(2)">VCR (2)</option>
+                                                <option value="DM">DM</option>
+                                                <option value="MF">MF</option>
+                                                <option value="JM">JM</option>
+                                                <option value="OR">OR</option>
+                                            </select>
+                                        </td>
                                         <td class="center">
-                                            <input id="PaisdeOrigen" disabled class="valorfactura" type="" maxlength="1"
+                                            <select id="Productor" class="">
+                                                <option value="SI" selected>SI</option>
+                                                <option value="NO (1)">NO(1)</option>
+                                                <option value="NO (2)">NO(2)</option>
+                                            </select>
+                                        </td>
+                                        <td class="center">
+                                            <input id="PaisdeOrigen" disabled class="center" type="" style="width:50px;"
                                                 value="CO" />
-                                            <!-- <select id="criterorigen" name="" class="validate">
-                                                    <option value="A" selected>A</option>
-                                                    <option value="B">B</option>
-                                                    <option value="C">C</option>
-                                                </select> -->
                                         </td>
                                         <td>
                                             <div href="#" id="agregar" class="waves-effect waves-light btn"><i

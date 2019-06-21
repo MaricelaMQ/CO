@@ -238,9 +238,9 @@ ob_start();
                                         <td class="center valorfactura">
                                             <select id="Productor" class="">
                                                 <option value="SI" selected>SI</option>
-                                                <option value="NO(1)">NO(1)</option>
-                                                <option value="NO(2)">NO(2)</option>
-                                                <option value="NO(3)">NO(3)</option>
+                                                <option value="NO (1)">NO(1)</option>
+                                                <option value="NO (2)">NO(2)</option>
+                                                <option value="NO (3)">NO(3)</option>
                                             </select></td>
                                         <td class="center">
                                             <select id="PruebadeValor" class="">

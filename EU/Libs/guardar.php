@@ -52,7 +52,7 @@ function insertar($estado, $conn){
 
     // INSERTAR EN TABLA >> DETALLECERTIFICADO
     $stmt = $conn->prepare("INSERT INTO eu_detallecertificado 
-                                        (NombreExp, DireccionExp, TelefonoExp, CorreoExp, FechaDesde, FechaHasta, NombrePro, DireccionPro, TelefonoPro, CorreoPro, NombreImp, DireccionImp, TelefonoImp, CorreoImp, FechaElabora, NombreAutoriza, CargoPersonAutoriza, TelPersonAutoriza, FaxPersonAutoriza, Observaciones, id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                        (NombreExp, DireccionExp, TelefonoExp, CorreoExp, FechaDesde, FechaHasta, NombrePro, DireccionPro, TelefonoPro, CorreoPro, NombreImp, DireccionImp, TelefonoImp, CorreoImp, FechaElabora, NombreAutoriza, EmpresaAutoriza, CargoPersonAutoriza, TelPersonAutoriza, FaxPersonAutoriza, Observaciones, id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bindParam(1, $certificado->{"datosform"}[0]->{"NombreExp"});
     $stmt->bindParam(2, $certificado->{"datosform"}[0]->{"DireccionExp"});
     $stmt->bindParam(3, $certificado->{"datosform"}[0]->{"TelefonoExp"});
@@ -70,11 +70,12 @@ function insertar($estado, $conn){
     $stmt->bindParam(14, $certificado->{"datosform"}[0]->{"CorreoImp"});
     $stmt->bindParam(15, $certificado->{"datosform"}[0]->{"FechaElabora"});
     $stmt->bindParam(16, $certificado->{"datosform"}[0]->{"NombreAutoriza"});
-    $stmt->bindParam(17, $certificado->{"datosform"}[0]->{"CargoPersonAutoriza"});
-    $stmt->bindParam(18, $certificado->{"datosform"}[0]->{"TelPersonAutoriza"});
-    $stmt->bindParam(19, $certificado->{"datosform"}[0]->{"FaxPersonAutoriza"});
-    $stmt->bindParam(20, $certificado->{"datosform"}[0]->{"Observaciones"});
-    $stmt->bindParam(21, $idcertificados);
+    $stmt->bindParam(17, $certificado->{"datosform"}[0]->{"EmpresaAutoriza"});
+    $stmt->bindParam(18, $certificado->{"datosform"}[0]->{"CargoPersonAutoriza"});
+    $stmt->bindParam(19, $certificado->{"datosform"}[0]->{"TelPersonAutoriza"});
+    $stmt->bindParam(20, $certificado->{"datosform"}[0]->{"FaxPersonAutoriza"});
+    $stmt->bindParam(21, $certificado->{"datosform"}[0]->{"Observaciones"});
+    $stmt->bindParam(22, $idcertificados);
     $respuesta1 = $stmt->execute();
 
     
@@ -112,7 +113,7 @@ function actualizar($conn, $id, $estado, $idborrar){
     $stmt = $conn->prepare("UPDATE eu_detallecertificado 
                             SET NombreExp=?, DireccionExp=?, TelefonoExp=?, CorreoExp=?, FechaDesde=?, FechaHasta=?,
                                 NombrePro=?, DireccionPro=?, TelefonoPro=?, CorreoPro=?, NombreImp=?, DireccionImp=?, TelefonoImp=?, CorreoImp=?, 
-                                FechaElabora=?, NombreAutoriza=?, CargoPersonAutoriza=?, TelPersonAutoriza=?, FaxPersonAutoriza=?,Observaciones=?
+                                FechaElabora=?, NombreAutoriza=?, EmpresaAutoriza=?, CargoPersonAutoriza=?, TelPersonAutoriza=?, FaxPersonAutoriza=?,Observaciones=?
                             WHERE id=?");
     $stmt->bindParam(1, $certificado->{"datosform"}[0]->{"NombreExp"});
     $stmt->bindParam(2, $certificado->{"datosform"}[0]->{"DireccionExp"});
@@ -129,12 +130,13 @@ function actualizar($conn, $id, $estado, $idborrar){
     $stmt->bindParam(13, $certificado->{"datosform"}[0]->{"TelefonoImp"});
     $stmt->bindParam(14, $certificado->{"datosform"}[0]->{"CorreoImp"});
     $stmt->bindParam(15, $certificado->{"datosform"}[0]->{"FechaElabora"});
-    $stmt->bindParam(16, $certificado->{"datosform"}[0]->{"NombreAutoriza"});
-    $stmt->bindParam(17, $certificado->{"datosform"}[0]->{"CargoPersonAutoriza"});
-    $stmt->bindParam(18, $certificado->{"datosform"}[0]->{"TelPersonAutoriza"});
-    $stmt->bindParam(19, $certificado->{"datosform"}[0]->{"FaxPersonAutoriza"});
-    $stmt->bindParam(20, $certificado->{"datosform"}[0]->{"Observaciones"});
-    $stmt->bindParam(21, $id);
+    $stmt->bindParam(16, $certificado->{"datosform"}[0]->{"NombreAutoriza"});    
+    $stmt->bindParam(17, $certificado->{"datosform"}[0]->{"EmpresaAutoriza"});
+    $stmt->bindParam(18, $certificado->{"datosform"}[0]->{"CargoPersonAutoriza"});
+    $stmt->bindParam(19, $certificado->{"datosform"}[0]->{"TelPersonAutoriza"});
+    $stmt->bindParam(20, $certificado->{"datosform"}[0]->{"FaxPersonAutoriza"});
+    $stmt->bindParam(21, $certificado->{"datosform"}[0]->{"Observaciones"});
+    $stmt->bindParam(22, $id);
     $respuesta1 = $stmt->execute();
     
     //******************* VERIFICAR SI HAY ITEMS ELIMINADOS DESCRIPCION MERCANCIAS TABLA HTML    
