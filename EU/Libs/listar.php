@@ -1,5 +1,6 @@
 <?php
 include "conecta.php";
+//$estado = 'BORRADOR';
 $estado = $_POST["est"];
     $sql = "select * from vista_eu_certificados where estado='".$estado."'" ;
     // $nume = $conn->query("select max(id) from certificados")->fetchColumn();    

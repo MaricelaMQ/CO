@@ -114,26 +114,26 @@ function actualizar($conn, $id, $estado, $idborrar){
                                 NombrePro=?, DireccionPro=?, TelefonoPro=?, CorreoPro=?, NombreImp=?, DireccionImp=?, TelefonoImp=?, CorreoImp=?, 
                                 FechaElabora=?, NombreAutoriza=?, CargoPersonAutoriza=?, TelPersonAutoriza=?, FaxPersonAutoriza=?,Observaciones=?
                             WHERE id=?");
-    $stmt->bindParam(1, $certificado->{"data"}[0]->{"NombreExp"});
-    $stmt->bindParam(2, $certificado->{"data"}[0]->{"DireccionExp"});
-    $stmt->bindParam(3, $certificado->{"data"}[0]->{"TelefonoExp"});
-    $stmt->bindParam(4, $certificado->{"data"}[0]->{"CorreoExp"});
-    $stmt->bindParam(5, $certificado->{"data"}[0]->{"FechaDesde"});
-    $stmt->bindParam(6, $certificado->{"data"}[0]->{"FechaHasta"});
-    $stmt->bindParam(7, $certificado->{"data"}[0]->{"NombrePro"});
-    $stmt->bindParam(8, $certificado->{"data"}[0]->{"DireccionPro"});
-    $stmt->bindParam(9, $certificado->{"data"}[0]->{"TelefonoPro"});
-    $stmt->bindParam(10, $certificado->{"data"}[0]->{"CorreoPro"});
-    $stmt->bindParam(11, $certificado->{"data"}[0]->{"NombreImp"});
-    $stmt->bindParam(12, $certificado->{"data"}[0]->{"DireccionImp"});
-    $stmt->bindParam(13, $certificado->{"data"}[0]->{"TelefonoImp"});
-    $stmt->bindParam(14, $certificado->{"data"}[0]->{"CorreoImp"});
-    $stmt->bindParam(15, $certificado->{"data"}[0]->{"FechaElabora"});
-    $stmt->bindParam(16, $certificado->{"data"}[0]->{"NombreAutoriza"});
-    $stmt->bindParam(17, $certificado->{"data"}[0]->{"CargoPersonAutoriza"});
-    $stmt->bindParam(18, $certificado->{"data"}[0]->{"TelPersonAutoriza"});
-    $stmt->bindParam(19, $certificado->{"data"}[0]->{"FaxPersonAutoriza"});
-    $stmt->bindParam(20, $certificado->{"data"}[0]->{"Observaciones"});
+    $stmt->bindParam(1, $certificado->{"datosform"}[0]->{"NombreExp"});
+    $stmt->bindParam(2, $certificado->{"datosform"}[0]->{"DireccionExp"});
+    $stmt->bindParam(3, $certificado->{"datosform"}[0]->{"TelefonoExp"});
+    $stmt->bindParam(4, $certificado->{"datosform"}[0]->{"CorreoExp"});
+    $stmt->bindParam(5, $certificado->{"datosform"}[0]->{"FechaDesde"});
+    $stmt->bindParam(6, $certificado->{"datosform"}[0]->{"FechaHasta"});
+    $stmt->bindParam(7, $certificado->{"datosform"}[0]->{"NombrePro"});
+    $stmt->bindParam(8, $certificado->{"datosform"}[0]->{"DireccionPro"});
+    $stmt->bindParam(9, $certificado->{"datosform"}[0]->{"TelefonoPro"});
+    $stmt->bindParam(10, $certificado->{"datosform"}[0]->{"CorreoPro"});
+    $stmt->bindParam(11, $certificado->{"datosform"}[0]->{"NombreImp"});
+    $stmt->bindParam(12, $certificado->{"datosform"}[0]->{"DireccionImp"});
+    $stmt->bindParam(13, $certificado->{"datosform"}[0]->{"TelefonoImp"});
+    $stmt->bindParam(14, $certificado->{"datosform"}[0]->{"CorreoImp"});
+    $stmt->bindParam(15, $certificado->{"datosform"}[0]->{"FechaElabora"});
+    $stmt->bindParam(16, $certificado->{"datosform"}[0]->{"NombreAutoriza"});
+    $stmt->bindParam(17, $certificado->{"datosform"}[0]->{"CargoPersonAutoriza"});
+    $stmt->bindParam(18, $certificado->{"datosform"}[0]->{"TelPersonAutoriza"});
+    $stmt->bindParam(19, $certificado->{"datosform"}[0]->{"FaxPersonAutoriza"});
+    $stmt->bindParam(20, $certificado->{"datosform"}[0]->{"Observaciones"});
     $stmt->bindParam(21, $id);
     $respuesta1 = $stmt->execute();
     

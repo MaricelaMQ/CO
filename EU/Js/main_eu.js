@@ -73,12 +73,11 @@ $(document).ready(function () {
 
 //********* LIMPIAR TABLA  DESCRIPCIÓN MERCANCIAS**/
     function limpiar() {
-        $("#naladisa").val("");
-        $("#descmercancia").val("")
-        $("#pesocantidad").val("");
-        $("#valorfob").val("");
-        $("#varmodificando").val("");
-        $("#normas").val("Normas");
+        $("#DescMercancia").val("");
+        $("#ClasiArancelaria").val("");
+        $("#ValConRegional").val("");
+        $("#FacturaNoDesc").val("");
+        $("#FechaDesc").val("");
     }
 });
 /* ######################################################### FUNCTIONS  #########################################################*/
@@ -136,8 +135,7 @@ function agregardescripcion(a) {
                     var ValConRegional = $("#ValConRegional").val().toUpperCase();
                     var FacturaNoDesc = $("#FacturaNoDesc").val().toUpperCase();
                     var FechaDesc = $("#FechaDesc").val();
-                    var PaisdeOrigen = $("#PaisdeOrigen").val();
-                    
+                    var PaisdeOrigen = $("#PaisdeOrigen").val();                    
 
                     if ( DescMercancia =='' || ClasiArancelaria =='' || CritPreferencial=='' || ValConRegional==''|| FacturaNoDesc==''|| FechaDesc==''){
                         alert("Hace falta ingresar información")}
@@ -180,7 +178,7 @@ function agregardescripcion(a) {
 /* AGREGAR DATOS A FORMULARIO DESDE CONSULTA.PHP*/
 function duplicarcert(id){
     if (id>0){
-        $("#operacion").val(detCertificado.operacion);
+        $("#Operacion").val(detCertificado.Operacion);
         $("#NombreExp").val(detCertificado.NombreExp);
         $("#DireccionExp").val(detCertificado.DireccionExp);
         $("#TelefonoExp").val(detCertificado.TelefonoExp);
@@ -190,10 +188,18 @@ function duplicarcert(id){
         $("#NombrePro").val(detCertificado.NombrePro);
         $("#DireccionPro").val(detCertificado.DireccionPro);
         $("#TelefonoPro").val(detCertificado.TelefonoPro);
-        $("#NombreImp").val(detCertificado.NombreImp);
         $("#CorreoPro").val(detCertificado.CorreoPro);
-        $("#observaciones").val(detCertificado.Observaciones);
-        agregardescripcion(1);        
+        $("#NombreImp").val(detCertificado.NombreImp);
+        $("#DireccionImp").val(detCertificado.DireccionImp);
+        $("#TelefonoImp").val(detCertificado.TelefonoImp);
+        $("#CorreoImp").val(detCertificado.CorreoImp);
+        $("#FechaElabora").val(detCertificado.FechaElabora);
+        $("#NombreAutoriza").val(detCertificado.NombreAutoriza);
+        $("#CargoPersonAutoriza").val(detCertificado.CargoPersonAutoriza);
+        $("#TelPersonAutoriza").val(detCertificado.TelPersonAutoriza);
+        $("#FaxPersonAutoriza").val(detCertificado.FaxPersonAutoriza);
+        $("#Observaciones").val(detCertificado.Observaciones);
+        agregardescripcion(1);
     }    
 }
 // _DATOS TABLA DESCRIPCION MERCANCIAS EN ARREGLO _DETMERCANCIA_
@@ -254,7 +260,7 @@ function datos(){ // dATOS FORMULARIO
     // console.log(JSON.stringify(datos));
       //console.log(datos);
     var valores = {"datosform": datosform};
-     //console.log("valores >" + valores);
+     //console.log(valores);
     return valores;
 }
 //  GUARDA EN BASE DE DATOS INFORMACIÓN DE FORMULARIO Y TABLA DESCRIPCION MERCANCIAS 
@@ -265,7 +271,7 @@ if (idDelete.length==0){
     idDelete.push(-1);
     //console.log("valor "+idDelete.length);
 }
-    var url = "libs/guardar.php";    
+    var url = "libs/guardar.php";
     var descmerca = JSON.stringify(descripcionmerca())
     var json = JSON.stringify(datos()); // convierte objeto a cadena JSON lo que devuelve funcion datos()
     //console.log('funcion guardar'+ descmerca);
@@ -278,7 +284,7 @@ if (idDelete.length==0){
                 }else{
                     alert('Se ha publicado certificado');
                 }                
-                location.href ="principal.php";
+                //location.href ="principal.php";
             }else{
                 alert('Error al guardar registro');
             }

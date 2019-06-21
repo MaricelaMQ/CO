@@ -28,7 +28,7 @@
                 var estado ='TERMINADO';
             }
     </script>
-    <title>CR- Terminados</title>
+    <title>MS- Terminados</title>
     
 </head>
 <body>

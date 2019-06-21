@@ -69,6 +69,7 @@ ob_start();
                 Certificado de Origen EEUU
             </div>
         </div>
+        <div id="estado" class="col l12 m12 s12 center"></div>
         <!-- ****************** -->
         <!-- <form> -->
             <div>

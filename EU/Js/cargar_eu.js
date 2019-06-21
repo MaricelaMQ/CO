@@ -63,13 +63,13 @@ $(function () {
                     {"data":"NombreImp"},
                     {"render":           function ( data, type, row ) {
                                             if (estado=='TERMINADO'){
-                                                    return ('<a href="eu.php?d='+ row.id+ '" >Duplicar</a>');
+                                                    return ('<a href="eu.php?d='+ row.ID + '" >Duplicar</a>');
                                             }else{
-                                                    return ('<a href="eu.php?ed=1&d=' + row.id+ '" >Editar</a>');//<button class="editar btn blue"><i class="material-icons">visibility</i></button>
+                                                    return ('<a href="eu.php?ed=1&d=' + row.ID+ '" >Editar</a>');//<button class="editar btn blue"><i class="material-icons">visibility</i></button>
                                             }
                                 }},
                     {"render":           function ( data, type, row ) {
-                                            return ('<a href="verpdf.php?p='+ row.id+ '" target="_blank">Ver Pdf</a>');
+                                            return ('<a href="verpdf.php?p='+ row.ID+ '" target="_blank">Ver Pdf</a>');
                                 }}
                     ]
             });      

@@ -24,7 +24,7 @@
         var estado ='BORRADOR';
     }
     </script>
-    <title>CR- Guardados</title>
+    <title>MS- Guardados</title>
     
 </head>
 <body>

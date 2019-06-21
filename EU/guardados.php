@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../assets/css/materialize.min.css" />
     <link rel="stylesheet" href="../assets/css/estilos.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
-    <link rel="shortcut icon" href="../assets/assets/logo.ico">
+    <link rel="shortcut icon" href="../assets/logo.ico">
     <script src="../assets/js/vendor/jquery.js"></script>
     <!-- <script src="js/main.js"></script> -->
     <script src="js/cargar_eu.js"></script>
@@ -25,7 +25,7 @@
         var estado ='BORRADOR';
     }
     </script>
-    <title>CR- Guardados</title>
+    <title>EU- Guardados</title>
     
 </head>
 <body>

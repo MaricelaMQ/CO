@@ -33,7 +33,7 @@
         var estado = 'TERMINADO';
     }
     </script>
-    <title>CR- Terminados</title>
+    <title>EU- Terminados</title>
 
 </head>
 
