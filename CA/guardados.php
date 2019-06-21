@@ -18,14 +18,14 @@
     <link rel="shortcut icon" href="../assets/logo.ico">
     <script src="../assets/js/vendor/jquery.js"></script>
     <!-- <script src="js/main.js"></script> -->
-    <script src="js/cargar_eu.js"></script>
+    <script src="js/cargar_can.js"></script>
     <script type="text/javascript">
     var op = <?php echo $op;?>;
     if (op == 1) {
         var estado ='BORRADOR';
     }
     </script>
-    <title>EU- Guardados</title>
+    <title>CA- Guardados</title>
     
 </head>
 <body>
@@ -45,7 +45,7 @@
                         <a href="guardados.php?op=1" class="btn waves-effect orange darken-2" >
                         Guardados<i class=" material-icons left ">collections_bookmark</i>
                         </a>
-                        <a href="eu.php" class="btn waves-effect waves-light light-green darken-2" >
+                        <a href="canada.php" class="btn waves-effect waves-light light-green darken-2" >
                          Nuevo certificado<i class=" material-icons left ">open_in_new</i>
                         </a>
                 </div>

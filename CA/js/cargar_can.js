@@ -63,9 +63,9 @@ $(function () {
                     {"data":"NombreImp"},
                     {"render":           function ( data, type, row ) {
                                             if (estado=='TERMINADO'){
-                                                    return ('<a href="eu.php?d='+ row.ID + '" >Duplicar</a>');
+                                                    return ('<a href="canada.php?d='+ row.ID + '" >Duplicar</a>');
                                             }else{
-                                                    return ('<a href="eu.php?ed=1&d=' + row.ID+ '" >Editar</a>');//<button class="editar btn blue"><i class="material-icons">visibility</i></button>
+                                                    return ('<a href="canada.php?ed=1&d=' + row.ID+ '" >Editar</a>');//<button class="editar btn blue"><i class="material-icons">visibility</i></button>
                                             }
                                 }},
                     {"render":           function ( data, type, row ) {

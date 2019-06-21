@@ -2,7 +2,7 @@
 include "conecta.php";
 //$estado = 'BORRADOR';
 $estado = $_POST["est"];
-    $sql = "select * from vista_eu_certificados where estado='".$estado."'" ;
+    $sql = "select * from vista_can_certificados where estado='".$estado."'" ;
     // $nume = $conn->query("select max(id) from certificados")->fetchColumn();    
     //$resp = $conn->query($sql, PDO::FETCH_ASSOC);
     //$resp = $conn->query("select id, Operacion, Regional, Fecha, estado from vista_certificados")->fetchColumn();

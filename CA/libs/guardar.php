@@ -117,7 +117,7 @@ function actualizar($conn, $id, $estado, $idborrar){
                             SET NombreExp=?, DireccionExp=?, TelefonoExp=?, FaxExp=?, CorreoExp=?, FechaDesde=?, FechaHasta=?, 
                                 NombrePro=?, DireccionPro=?, TelefonoPro=?, FaxPro=?, CorreoPro=?, 
                                 NombreImp=?, DireccionImp=?, TelefonoImp=?, FaxImp=?, CorreoImp=?, 
-                                FechaElabora=?, NombreAutoriza=?, EmpresaAutoriza=?, CargoPersonAutoriza=?, TelPersonAutoriza=?, FaxPersonAutoriza=?, CorreoPersonAutoriza=?, Observaciones
+                                FechaElabora=?, NombreAutoriza=?, EmpresaAutoriza=?, CargoPersonAutoriza=?, TelPersonAutoriza=?, FaxPersonAutoriza=?, CorreoPersonAutoriza=?, Observaciones=?
                             WHERE id=?");
         $stmt->bindParam(1, $certificado->{"datosform"}[0]->{"NombreExp"});
         $stmt->bindParam(2, $certificado->{"datosform"}[0]->{"DireccionExp"});
@@ -175,7 +175,7 @@ function actualizar($conn, $id, $estado, $idborrar){
                                            SET DescMercancia=?, ClasiArancelaria=?, CritPreferencial=?, Productor=?, PruebadeValor=?, PaisdeOrigen=?
                                            WHERE id=?");
     //$it = 1;
-    foreach($descmerca->{"tabladesc"} as $item){                
+    foreach($descmerca->{"tabladesc"} as $item){
             if($item->{"idDescmercancia"}>0){// SI idDescmercancia >0 ACTUALIZA REGISTRO EN TABLA DESCIPCION MERCANCIAS
                     //$updateDescmerca->bindParam(1, $it);
                     $updateDescmerca->bindParam(1, $item->{"DescMercancia"});

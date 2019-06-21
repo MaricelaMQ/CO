@@ -176,6 +176,7 @@ function agregardescripcion(a) {
 /* AGREGAR DATOS A FORMULARIO DESDE CONSULTA.PHP*/
 function duplicarcert(id){
     if (id>0){
+    $("#Operacion").val(detCertificado.Operacion);
         $("#NombreExp").val(detCertificado.NombreExp);
         $("#DireccionExp").val(detCertificado.DireccionExp);
         $("#TelefonoExp").val(detCertificado.TelefonoExp);
