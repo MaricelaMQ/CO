@@ -91,7 +91,7 @@ ob_flush();
                                 <label for="">Dirección:</label>
                             </div>
                             <div class="input-field col l3 m3 s6">
-                                <input id="FaxExp" type="text" class="validate" value="" required>
+                                <input id="CiudadExp" type="text" class="validate" value="" required>
                                 <label for="">Ciudad:</label>
                             </div>
                             <div class="input-field col l3 m3 s6">
@@ -136,38 +136,58 @@ ob_flush();
             </div>
             <div class="row ">
                 <!-- SECCION 3 PRODUCTOR -->
+
                 <section>
-                    <div class=" col l6 s12 m12 cajas">
+                    <div class=" col l6 s12 m12 cajas" style="height: 17.5em;">
+                        <div class="row">
+                            <div class="col l6 s6 m6 ">
+                                <!-- <select id="selecProductor" onchange="opcionProductor()"> -->
+                                <select id="selecProductor" >
+                                    <option value="1" selected>-</option>
+                                    <option value="2">IGUAL</option>
+                                    <option value="3">VARIOS</option>
+                                    <option value="4">DISPONIBLE A SOLICITUD DE LA AUTORIDAD COMPETENTE</option>
+                                    <option value="5">DESCONOCIDO</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="input-field">
                                 <input id="NombrePro" type="text" class="validate" value="" required>
-                                <label for="">3. Nombre del Productor</label>
+                                <label for="" class="ocultarProd">3. Nombre del Productor</label>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col l6 s6">
-                                <input id="TelefonoPro" type="text" class="validate" value="" required>
-                                <label for="">Teléfono</label>
+                        <!-- OCULTAR CAMPOS PRODUDCTOR -->
+                        <div class="ocultarProd">
+                            <div class="row">
+                                <div class="input-field col l6 s6">
+                                    <input id="DireccionPro" type="text" class="validate" value="" required>
+                                    <label for="">Dirección</label>
+                                </div>
+                                <div class="input-field col l3 m3 s6">
+                                    <input id="CiudadProd" type="text" class="validate" value="" required>
+                                    <label for="">Ciudad:</label>
+                                </div>
+                                <div class="input-field col l3 m3 s6">
+                                    <input id="PaisProd" type="text" class="validate" value="" required>
+                                    <label for="">Pais:</label>
+                                </div>
                             </div>
-                            <div class="input-field col l6 s6">
-                                <input id="FaxPro" type="text" class="validate" value="" required>
-                                <label for="">Fax:</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col l6 s6">
-                                <input id="DireccionPro" type="text" class="validate" value="" required>
-                                <label for="">Dirección</label>
-                            </div>
-                            <div class="input-field col l6 s6">
-                                <input id="NumRegFiscalPro" type="text" class="validate" value="" required>
-                                <label for="">Número de Registro Fiscal:</label>
+                            <div class="row">
+                                <div class="input-field col l6 s6">
+                                    <input id="TelefonoPro" type="text" class="validate" value="" required>
+                                    <label for="">Teléfono</label>
+                                </div>
+                                <div class="input-field col l6 s6">
+                                    <input id="NumRegFiscalPro" type="text" class="validate" value="" required>
+                                    <label for="">Número de Registro Fiscal:</label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <div class="cuadro col l6 m12 s12">
+                <div class="cajas col l6 m12 s12" style="height: 17.5em;">
                     <div class="row">
                         <!-- SECCION 4 IMPORTADOR -->
                         <section>
@@ -178,15 +198,23 @@ ob_flush();
                     </div>
                     <div class="row">
                         <div class="input-field col l6 s6">
-                            <input id="TelefonoImp" type="text" class="validate" value="" required>
-                            <label for="">Teléfono</label>
-                        </div>
-                        <div class="input-field col l6 s6">
                             <input id="DireccionImp" type="text" class="validate" value="" required>
                             <label for="">Dirección:</label>
                         </div>
+                        <div class="input-field col l3 m3 s6">
+                            <input id="CiudadImp" type="text" class="validate" value="" required>
+                            <label for="">Ciudad:</label>
+                        </div>
+                        <div class="input-field col l3 m3 s6">
+                            <input id="PaisImp" type="text" class="validate" value="" required>
+                            <label for="">Pais:</label>
+                        </div>
                     </div>
                     <div class="row">
+                        <div class="input-field col l6 s6">
+                            <input id="TelefonoImp" type="text" class="validate" value="" required>
+                            <label for="">Teléfono</label>
+                        </div>
                         <div class="input-field col l6 s6">
                             <input id="NumRegFiscalImp" type="text" class="validate" value="" required>
                             <label for="">Número de Registro Fiscal:</label>
@@ -222,15 +250,18 @@ ob_flush();
                                                 class="valorfactura" maxlength="10" value="" />
                                         </td>
                                         <td class="center valorfactura">
+                                            <!-- <select id="CritePreferencial" class="" onchange="criterPreferencial()"> -->
                                             <select id="CritePreferencial" class="">
-                                                <option value="A" selected>A</option>
+                                                <option value="" selected>-</option>
+                                                <option value="A">A</option>
                                                 <option value="B">B</option>
                                                 <option value="C">C</option>
                                             </select>
                                         </td>
                                         <td class="center valorfactura">
-                                            <select id="OtrosCriterios" class="">
-                                                <option value="CCA" selected>CCA</option>
+                                            <select id="OtrosCriterios" class="" disabled>
+                                                <option value="" selected>-</option>
+                                                <option value="CCA">CCA</option>
                                                 <option value="VCR(1)">VCR (1)</option>
                                                 <option value="VCR(2)">VCR (2)</option>
                                                 <option value="DM">DM</option>
@@ -241,7 +272,8 @@ ob_flush();
                                         </td>
                                         <td class="center">
                                             <select id="Productor" class="">
-                                                <option value="SI" selected>SI</option>
+                                            <option value="" selected>-</option>
+                                                <option value="SI">SI</option>
                                                 <option value="NO (1)">NO(1)</option>
                                                 <option value="NO (2)">NO(2)</option>
                                             </select>

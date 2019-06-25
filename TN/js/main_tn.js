@@ -49,6 +49,8 @@ $(document).ready(function () {
             $("#Productor").val($(this).parents("tr").find('td').eq(6).html());
             // $("#Productor").val($(this).parents("tr").find('td').eq(7).html());
         $("#DescMercancia").focus();
+        // limpiar();
+        criterPreferencial();
     });
 
 /********** BOTON MODIFICAR ITEMS TABLA DESCRIPCION MERCANCIAS */  
@@ -64,24 +66,34 @@ $(document).ready(function () {
         $("#agregar").removeClass("oculto");
         $("#varmodificando").val("");
         editando();                
-        switchClase(0);
+        switchClase(0);        
         limpiar();
+        criterPreferencial();
   });
 //********* BOTON AGREGAR ITEM DESCRIPCION MERCANCIAS**/
   $("#agregar").click(function () {
         agregardescripcion(0);
-        //limpiar();
+     //   limpiar();
+  });
+
+  $("#selecProductor").change(function () { 
+        opcionProductor();      
+  });
+
+  $("#CritePreferencial").change(function () {     
+        criterPreferencial();      
   });
 //********* LIMPIAR TABLA  DESCRIPCIÓN MERCANCIAS**/
-    function limpiar() {
-        $("#DescMercancia").val("");
-        $("#ClasiArancelaria").val("")
-        $("#CritePreferencial").val("");
-        $("#OtrosCriterios").val("");
-        $("#Productor").val("");
-    }
+    
 });
 /* ######################################################### FUNCTIONS  #########################################################*/
+function limpiar() {
+    $("#DescMercancia").val("");
+    $("#ClasiArancelaria").val("")
+    $("#CritePreferencial").val("");
+    $("#OtrosCriterios").val("");
+    $("#Productor").val("");
+}
 //  MODIFICA ITEMS TABLA DECRIPCIONES
 function modificando() {
     var fila = $("#varmodificando").val();
@@ -148,23 +160,30 @@ function agregardescripcion(a) {
                     var Productor_ = $("#Productor").val().toUpperCase();
                     var PaisdeOrigen_ = $("#PaisdeOrigen").val().toUpperCase();
 
-                    if ( DescMercancia_ =='' || ClasiArancelaria_=='' || CritePreferencial_=='' || OtrosCriterios_==''){
+                    if ( DescMercancia_ =='' || ClasiArancelaria_=='' || Productor_=='' || CritePreferencial_==''){
                         alert("Hace falta ingresar información")}
                         else{
+                            // if(CritePreferencial_=='C' && OtrosCriterios_==''){
+                            if(criterPreferencial()==0){
+                                alert("Hace falta ingresar información")
+                            }else{
                             var nuevaFila = "<tr>"; //console.log('total filas ' + filas);        // nuevaFila += "<td>" + (filas + 1) + "</td>";//                            
                             nuevaFila += "<td class='oculto'></td>";
                             nuevaFila += "<td class='oculto'>" + a + "</td>";
                             nuevaFila += "<td class='descripcion'>" + DescMercancia_ + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + ClasiArancelaria_ + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + CritePreferencial_ + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + OtrosCriterios_ + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + Productor_ + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + PaisdeOrigen_ + "</td>";
+                            nuevaFila += "<td class='center'>" + ClasiArancelaria_ + "</td>";
+                            nuevaFila += "<td class='center'>" + CritePreferencial_ + "</td>";
+                            nuevaFila += "<td class='center'>" + OtrosCriterios_ + "</td>";
+                            nuevaFila += "<td class='center'>" + Productor_ + "</td>";
+                            nuevaFila += "<td class='center'>" + PaisdeOrigen_ + "</td>";
                             nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";                            
                             nuevaFila += "</tr>";
                             $("#tbldescripcionmercancia").append(nuevaFila);
-                            $("#descmercancia").focus();        //limpiar();                            
-                }                        
+                            $("#DescMercancia").focus();        
+                            limpiar();
+                            criterPreferencial();
+                            }
+                        }
             }else{ /****si a es 1, se agregan valores de BD a tabla DESCRIPCION MERCANCIAS **/
                 // console.log(detMercancias);
                 $.each(detMercancias, function(i, item) {                    //console.log(item["valorfactura"]);
@@ -172,11 +191,11 @@ function agregardescripcion(a) {
                             nuevaFila += "<td class='oculto'></td>";
                             nuevaFila += "<td class='oculto'>" + item["ID"] + "</td>"; //id tabla descripcion mercancias
                             nuevaFila += "<td class='descripcion'>" + item["DescMercancia"] + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["ClasiArancelaria"] +  "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["CritePreferencial"] +  "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["OtrosCriterios"] + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["Productor"] + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["PaisdeOrigen"] + "</td>";
+                            nuevaFila += "<td class='center'>" + item["ClasiArancelaria"] +  "</td>";
+                            nuevaFila += "<td class='center'>" + item["CritePreferencial"] +  "</td>";
+                            nuevaFila += "<td class='center'>" + item["OtrosCriterios"] + "</td>";
+                            nuevaFila += "<td class='center'>" + item["Productor"] + "</td>";
+                            nuevaFila += "<td class='center'>" + item["PaisdeOrigen"] + "</td>";
                             nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";
                             nuevaFila += "</tr>";
                             $("#tbldescripcionmercancia").append(nuevaFila);
@@ -319,6 +338,54 @@ if (idDelete.length==0){
             alert('error al guardar');
         });
 }
+
+function opcionProductor() {
+        var op = $("#selecProductor").val();
+    switch(op) {
+        case '1':     // '-'
+            $('.ocultarProd').removeClass("oculto");
+            $("#NombrePro").val('');
+            break;
+        case '2':     // 'IGUAL'
+            $('.ocultarProd').addClass("oculto");
+            $('#NombrePro').val('IGUAL');            
+            break;
+        case '3':     // 'VARIOS'
+            $('.ocultarProd').addClass("oculto");
+            $("#NombrePro").val("VARIOS");
+            break;
+        case '4':     // 'DISPONIBLE A SOLICITUD DE LA AUTORIDAD COMPETENTE'
+            $('.ocultarProd').addClass("oculto");
+            $("#NombrePro").val("DISPONIBLE A SOLICITUD DE LA AUTORIDAD COMPETENTE");
+            break;
+        case '5':     // 'DESCONOCIDO'
+            $('.ocultarProd').addClass("oculto");
+            $("#NombrePro").val("DESCONOCIDO");
+            break;
+        default:
+          // code block
+      }
+}
+
+function criterPreferencial(){
+    var cp = $("#CritePreferencial").val();    
+    var oc = $("#OtrosCriterios").val();
+    
+    if (cp=='C'){
+        if (oc==''){
+        $("#OtrosCriterios").prop('disabled', false);
+        $("#OtrosCriterios").val("");
+        return 1;
+    }
+    }else if(cp=='C' && oc==''){
+        $("#OtrosCriterios").prop('disabled', false);
+        return 0;
+    }else if(cp=='C'){
+        $("#OtrosCriterios").prop('disabled', false);
+        return 1;
+    }
+}
+
 
 function __ajax(url, data) {
     var ajax = $.ajax({
