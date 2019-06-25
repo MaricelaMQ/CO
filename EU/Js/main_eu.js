@@ -262,7 +262,7 @@ function datos(){ // dATOS FORMULARIO
     // console.log(JSON.stringify(datos));
       //console.log(datos);
     var valores = {"datosform": datosform};
-     //console.log(valores);
+     console.log(valores);
     return valores;
 }
 //  GUARDA EN BASE DE DATOS INFORMACIÓN DE FORMULARIO Y TABLA DESCRIPCION MERCANCIAS 
@@ -286,7 +286,7 @@ if (idDelete.length==0){
                 }else{
                     alert('Se ha publicado certificado');
                 }                
-                location.href ="principal.php";
+                //location.href ="principal.php";
             }else{
                 alert('Error al guardar registro');
             }

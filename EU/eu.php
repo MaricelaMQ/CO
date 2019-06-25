@@ -279,6 +279,8 @@ ob_start();
                             <input id="CargoPersonAutoriza" type="text" class="validate" value="" required>
                             <label for="">Cargo</label>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="input-field col l2 m12 s2">
                             <input id="TelPersonAutoriza" type="text" class="validate" value="" required>
                             <label for="">Telefono</label>
@@ -288,6 +290,7 @@ ob_start();
                             <label for="">Fax:</label>
                         </div>
                     </div>
+
                 </div>
             </div>
             <!--  OBSERVACIONES -->
