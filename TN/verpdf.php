@@ -50,7 +50,7 @@ $alto = 26; //Fijo 280
                     }
                     $tablaUno .= '<tr>';
                     // $tablaUno .= '<td style="width:25px" class="centrar">'. $desc["Item"] . '</td>';
-                    $tablaUno .= '<td colspan="11" class="bordeizq borderecho" height="'. $alto. 'px">'. $desc['DescMercancia'] . '</td>';
+                    $tablaUno .= '<td colspan="11" class="letra bordeizq borderecho" height="'. $alto. 'px">'. $desc['DescMercancia'] . '</td>';
                     $tablaUno .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['ClasiArancelaria'] . '</p></td>';
                     $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['CritePreferencial']  . '</p></td>';
                     $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['OtrosCriterios'] . '</p></td>';
@@ -61,7 +61,7 @@ $alto = 26; //Fijo 280
                     $paginas = 2;
                     $tablaDos .= '<tr>';
                     // $tablaDos .= '<td style="width:25px" class="centrar">'. $desc['Item'] . '</td>';
-                    $tablaDos .= '<td colspan="11" class="bordeizq borderecho" height="'. $alto. 'px">'. $desc['DescMercancia'] . '</td>';
+                    $tablaDos .= '<td colspan="11" class="letra bordeizq borderecho" height="'. $alto. 'px">'. $desc['DescMercancia'] . '</td>';
                     $tablaDos .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['ClasiArancelaria'] . '</p></td>';
                     $tablaDos .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['CritePreferencial']  . '</p></td>';
                     $tablaDos .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['OtrosCriterios'] . '</p></td>';
@@ -90,6 +90,13 @@ $alto = 26; //Fijo 280
             $AnioElabora = strftime("%Y", strtotime($datos["FechaElabora"]));
 
     $NomPro = $datos["NombrePro"];
+    if ($NomPro == 'IGUAL' || $NomPro == 'VARIOS' || $NomPro == 'DISPONIBLE A SOLICITUD DE LA AUTORIDAD COMPETENTE' || $NomPro == 'DESCONOCIDO')
+	{
+        $Resul = '';
+    }else{        
+        $Resul = '<br>TEL: '. $datos['TelefonoPro']. '';
+        $Resul .= '<br>RUT O NIT: ' . $datos['NumRegFiscalPro']. '';        
+    }   
 
     $content = '';
     $content .= '
@@ -97,6 +104,9 @@ $alto = 26; //Fijo 280
      <head>
      <link rel="shortcut icon" href="../assets/logo.ico" type="image/x-icon">
     <style>
+        .letra{
+            font-size:6.5;
+        } 
         .clasedelafila { 
             empty-cells: show; 
             min-height: 300px; //cambiar al alto necesario
@@ -217,10 +227,7 @@ $alto = 26; //Fijo 280
                     <td colspan="11" class="borde" height="75px">3. Nombre, dirección y número de registro fiscal del productor:
                         <br>'. $NomPro. '
                         <br>'. $datos["DireccionPro"]. '
-                        <br>
-                        
-                        <br>TEL: '. $datos["TelefonoPro"]. '
-                        <br>RUT O NIT: '. $datos["NumRegFiscalPro"]. '
+                        <br>'. $Resul. '
                         <br>'. $datos["CiudadPro"]. ' '. $datos["PaisPro"]. '<br>
                     </td>
     <!-- SECCION 4 IMPORTADOR -->
@@ -282,7 +289,7 @@ $alto = 26; //Fijo 280
                 --> 
                 <!-- OBSERVACIONES -->
             <tr>
-                <td colspan="22" style="height:40px" class="borde"><p>11. Observaciones:<br>'. $datos["Observaciones"]. ' </p></td>
+                <td colspan="22" style="height:40px" class="borde">11. Observaciones:<br><span class="letra">'.$datos["Observaciones"].'</span></td>
             </tr>
 
     <!-- SECCION ONCE -->
@@ -290,8 +297,8 @@ $alto = 26; //Fijo 280
                 <td colspan="22" class="bordeizq borderecho">12. Declaro bajo juramento que :</td>
             </tr>
             <tr>
-                <td colspan="1" width="3%" class="bordeizq "></td>
-                <td colspan="21" width="97%" class="borderecho">
+                <td colspan="1" width="2%" class="bordeizq "></td>
+                <td colspan="21" width="98%" class="borderecho">
                     <br>- Las mercancías son originarias del territorio de una Parte y cumplen con todos los requisitos de origen que les son aplicables conforme al Tratado de Libre Comercio entre las
                     Repúblicas de Colombia, El Salvador, Guatemala y Honduras y que no han sido objeto de procesamiento ulterior o de cualquier otra operación fuera de los territorios de las Partes;
                     salvo en los casos permitidos en el Artículo 4.14 o en el Anexo 4.3
@@ -304,15 +311,15 @@ $alto = 26; //Fijo 280
                 </td>
             </tr>
             <tr>
-                <td colspan="11" class="borde">Firma Autorizada<br><br></td>
+                <td colspan="11" class="borde">     Firma Autorizada<br><br></td>
                 <td colspan="11" class="borde">Empresa<br><br>'. $datos["EmpresaAutoriza"].'</td>
             </tr>
             <tr>
-                <td colspan="11" class="borde">Nombre<br><br>'. $datos["NombreAutoriza"].'</td>
+                <td colspan="11" class="borde">     Nombre<br><br>     '. $datos["NombreAutoriza"].'</td>
                 <td colspan="11" class="borde">Cargo<br><br>'. $datos["CargoPersonAutoriza"].'</td>
             </tr>
             <tr>
-                <td colspan="2" class="bordeizq bordesuperior">Fecha</td>
+                <td colspan="2" class="bordeizq bordesuperior">     Fecha</td>
                 <td colspan="1" class="centrar">D</td>
                 <td colspan="1" class="centrar">M</td>
                 <td colspan="1" class="centrar">A</td>
@@ -342,6 +349,9 @@ if ($k>11){
 <head>
      <link rel="shortcut icon" href="../assets/logo.ico" type="image/x-icon">
     <style>
+    .letra{
+        font-size:6.5;
+    } 
         .clasedelatabla { empty-cells: show; 
         min-height: 130px; //cambiar al alto necesario
         }
@@ -430,7 +440,7 @@ if ($k>11){
                 </tr> 
                 <!-- OBSERVACIONES PAGINA DOS -->
             <tr>
-                <td colspan="22" style="height:40px" class="borde"><p>11. Observaciones:<br></p></td>
+                <td colspan="22" style="height:40px" class="borde">11. Observaciones:<br><span class="letra">'.$datos["Observaciones"].'</span></td>
             </tr>
 
         <!-- SECCION ONCE -->
@@ -438,8 +448,8 @@ if ($k>11){
                 <td colspan="22" class="bordeizq borderecho">12. Declaro bajo juramento que :</td>
             </tr>
             <tr>
-                <td colspan="1" width="3%" class="bordeizq "></td>
-                <td colspan="21" width="97%" class="borderecho">
+                <td colspan="1" width="2%" class="bordeizq "></td>
+                <td colspan="21" width="98%" class="borderecho">
                     <br>- Las mercancías son originarias del territorio de una Parte y cumplen con todos los requisitos de origen que les son aplicables conforme al Tratado de Libre Comercio entre las
                     Repúblicas de Colombia, El Salvador, Guatemala y Honduras y que no han sido objeto de procesamiento ulterior o de cualquier otra operación fuera de los territorios de las Partes;
                     salvo en los casos permitidos en el Artículo 4.14 o en el Anexo 4.3
@@ -452,15 +462,15 @@ if ($k>11){
                 </td>
             </tr>
             <tr>
-                <td colspan="11" class="borde">Firma Autorizada<br><br></td>
+                <td colspan="11" class="borde">     Firma Autorizada<br><br></td>
                 <td colspan="11" class="borde">Empresa<br><br>'. $datos["EmpresaAutoriza"].'</td>
             </tr>
             <tr>
-                <td colspan="11" class="borde">Nombre<br><br>'. $datos["NombreAutoriza"].'</td>
+                <td colspan="11" class="borde">     Nombre<br><br>     '. $datos["NombreAutoriza"].'</td>
                 <td colspan="11" class="borde">Cargo<br><br>'. $datos["CargoPersonAutoriza"].'</td>
             </tr>
             <tr>
-                <td colspan="2" class="bordeizq bordesuperior">Fecha</td>
+                <td colspan="2" class="bordeizq bordesuperior">     Fecha</td>
                 <td colspan="1" class="centrar">D</td>
                 <td colspan="1" class="centrar">M</td>
                 <td colspan="1" class="centrar">A</td>
