@@ -165,11 +165,11 @@ ob_flush();
                                     <label for="">Dirección</label>
                                 </div>
                                 <div class="input-field col l3 m3 s6">
-                                    <input id="CiudadProd" type="text" class="validate" value="" required>
+                                    <input id="CiudadPro" type="text" class="validate" value="" required>
                                     <label for="">Ciudad:</label>
                                 </div>
                                 <div class="input-field col l3 m3 s6">
-                                    <input id="PaisProd" type="text" class="validate" value="" required>
+                                    <input id="PaisPro" type="text" class="validate" value="" required>
                                     <label for="">Pais:</label>
                                 </div>
                             </div>

@@ -89,6 +89,8 @@ $alto = 26; //Fijo 280
             $mesElabora = strftime("%m", strtotime($datos["FechaElabora"]));
             $AnioElabora = strftime("%Y", strtotime($datos["FechaElabora"]));
 
+    $NomPro = $datos["NombrePro"];
+
     $content = '';
     $content .= '
      <html>
@@ -173,6 +175,7 @@ $alto = 26; //Fijo 280
                         <br>
                         <br>TEL:'. $datos["TelefonoExp"]. '
                         <br>RUT O NIT: '. $datos["NumRegFiscalExp"]. '
+                        <br>'. $datos["CiudadExp"]. ' '. $datos["PaisExp"]. '<br>
                     </td>
     <!-- SECCION 2 PERIODO QUE CUBRE -->
                     <td colspan="11" class="borde">2. Periodo que cubre
@@ -212,20 +215,21 @@ $alto = 26; //Fijo 280
     <!-- SECCION 3 PRODUCTOR -->
                 <tr>
                     <td colspan="11" class="borde" height="75px">3. Nombre, dirección y número de registro fiscal del productor:
-                        <br>'. $datos["NombrePro"]. '
+                        <br>'. $NomPro. '
                         <br>'. $datos["DireccionPro"]. '
                         <br>
+                        
                         <br>TEL: '. $datos["TelefonoPro"]. '
-                        <br>RUT O NIT: '. $datos["NumRegFiscalPro"]. '<br>
+                        <br>RUT O NIT: '. $datos["NumRegFiscalPro"]. '
+                        <br>'. $datos["CiudadPro"]. ' '. $datos["PaisPro"]. '<br>
                     </td>
     <!-- SECCION 4 IMPORTADOR -->
                     <td colspan="11" class="borde">4. Nombre, dirección y número de registro fiscal del importador: 
                         <br>'. $datos["NombreImp"]. '
                         <br>'. $datos["DireccionImp"]. '
-                        <br>
+                        <br>'. $datos["CiudadImp"]. ' '. $datos["PaisImp"]. '<br>
                         <br>TEL: '. $datos["TelefonoImp"]. '
-                        <br>RUT O NIT: '. $datos["NumRegFiscalImp"]. '
-                        <br>
+                        <br>RUT O NIT: '. $datos["NumRegFiscalImp"]. '                        
                     </td>
                 </tr>
 

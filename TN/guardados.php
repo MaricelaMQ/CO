@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/materialize.min.css" />
     <link rel="stylesheet" href="../assets/css/estilos.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
     <link rel="shortcut icon" href="../assets/logo.ico">
     <script src="../assets/js/vendor/jquery.js"></script>
     <!-- <script src="js/main.js"></script> -->
@@ -53,12 +54,27 @@
     <hr>
         <div class="titulodos center orange darken-2" >Certificados Guardados </div><hr>
     </div>
-        <div class="row">
-            <div id="resultado" class="center"></div>
+    <div class="row">
+            <div id="resultado" >
+            <table id="tblresultado" class="highlight responsive-table striped bordered">
+                <thead >
+                    <tr>
+                        <th>OPERACION</th>
+                        <th>FORMATO</th>
+                        <th>FECHA CREACION</th>
+                        <th>EXPORTADOR</th>
+                        <th>IMPORTADOR</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+            </div>
         </div>        
     </div>
     <div id="footer" class="cuadrado"></div>
 </body>
 <script src="../assets/js/materialize.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 
 </html>

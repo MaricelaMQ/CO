@@ -55,9 +55,7 @@ $(document).ready(function () {
 
 /********** BOTON MODIFICAR ITEMS TABLA DESCRIPCION MERCANCIAS */  
   $("#modificar").click(function () {      //$('.borrar').each 
-    modificando();
-    editando()
-    limpiar();
+    modificando();        
   });
 /********** BOTON CANCELAR ***/
   $("#cancelar").click(function () {        
@@ -97,19 +95,24 @@ function limpiar() {
 //  MODIFICA ITEMS TABLA DECRIPCIONES
 function modificando() {
     var fila = $("#varmodificando").val();
-    tabla = document.getElementById("tbldescripcionmercancia");    
-    for (var i = 1; i < 6; i++) {      
+    tabla = document.getElementById("tbldescripcionmercancia");
+    if(criterPreferencial()==0){
+        alert("Hace falta ingresar información")
+    }else{
+    for (var i = 1; i < 6; i++) {
           tabla.rows[fila].cells[2].innerHTML = $("#DescMercancia").val().toUpperCase();
           tabla.rows[fila].cells[3].innerHTML = $("#ClasiArancelaria").val();
           tabla.rows[fila].cells[4].innerHTML = $("#CritePreferencial").val();
           tabla.rows[fila].cells[5].innerHTML = $("#OtrosCriterios").val();
           tabla.rows[fila].cells[6].innerHTML = $("#Productor").val();
       }
-      switchClase(0);
+          switchClase(0);
+        $("#descmercancia").focus();
+        editando();
+        limpiar();
+    }
       //alert($("#varmodificando").val());
           /**NUEVO CODIGO */
-          
-      $("#descmercancia").focus();
     }
 /** AGREGA/QUITA CLASE OCULTAR  */
 function switchClase(op){
@@ -211,6 +214,8 @@ function duplicarcert(id){
             $("#TelefonoExp").val(detCertificado.TelefonoExp);
             $("#FaxExp").val(detCertificado.FaxExp);
             $("#DireccionExp").val(detCertificado.DireccionExp);
+            $("#CiudadExp").val(detCertificado.CiudadExp);
+            $("#PaisExp").val(detCertificado.PaisExp);
             $("#NumRegFiscalExp").val(detCertificado.NumRegFiscalExp);
 
             $("#FechaDesde").val(detCertificado.FechaDesde);
@@ -220,11 +225,15 @@ function duplicarcert(id){
             $("#TelefonoPro").val(detCertificado.TelefonoPro);
             $("#FaxPro").val(detCertificado.FaxPro);
             $("#DireccionPro").val(detCertificado.DireccionPro);
+            $("#CiudadPro").val(detCertificado.CiudadPro);
+            $("#PaisPro").val(detCertificado.PaisPro);
             $("#NumRegFiscalPro").val(detCertificado.NumRegFiscalPro);
 
             $("#NombreImp").val(detCertificado.NombreImp);
             $("#TelefonoImp").val(detCertificado.TelefonoImp);
             $("#DireccionImp").val(detCertificado.DireccionImp);
+            $("#CiudadImp").val(detCertificado.CiudadImp);
+            $("#PaisImp").val(detCertificado.PaisImp);
             $("#NumRegFiscalImp").val(detCertificado.NumRegFiscalImp);
 
             $("#Observaciones").val(detCertificado.Observaciones);
@@ -234,6 +243,11 @@ function duplicarcert(id){
             $("#EmpresaAutoriza").val(detCertificado.EmpresaAutoriza);
             $("#TelPersonAutoriza").val(detCertificado.TelPersonAutoriza);
             $("#FaxPersonAutoriza").val(detCertificado.FaxPersonAutoriza);
+                var ne = $("#NombrePro").val();
+                console.log(ne);
+                    if (ne == 'IGUAL' || ne == 'VARIOS' || ne == 'DISPONIBLE A SOLICITUD DE LA AUTORIDAD COMPETENTE' || ne == 'DESCONOCIDO'){
+                        $('.ocultarProd').addClass("oculto");
+                };
         agregardescripcion(1);        
     }    
 }
@@ -268,6 +282,8 @@ function datos(){ // dATOS FORMULARIO
         var TelefonoExp_ = $("#TelefonoExp").val().toUpperCase();
         var FaxExp_ = $("#FaxExp").val();
         var DireccionExp_ = $("#DireccionExp").val().toUpperCase();
+        var CiudadExp_ = $("#CiudadExp").val().toUpperCase();
+        var PaisExp_ = $("#PaisExp").val().toUpperCase();
         var NumRegFiscalExp_ = $("#NumRegFiscalExp").val();
 
         var FechaDesde_ = $("#FechaDesde").val();
@@ -277,12 +293,16 @@ function datos(){ // dATOS FORMULARIO
         var NombrePro_ = $("#NombrePro").val().toUpperCase();
         var TelefonoPro_ = $("#TelefonoPro").val();
         var FaxPro_ = $("#FaxPro").val();
-        var DireccionPro_ = $("#DireccionPro").val();
+        var DireccionPro_ = $("#DireccionPro").val().toUpperCase();
+        var CiudadPro_ = $("#CiudadPro").val().toUpperCase();
+        var PaisPro_ = $("#PaisPro").val().toUpperCase();
         var NumRegFiscalPro_ = $("#NumRegFiscalPro").val();
 
         var NombreImp_ = $("#NombreImp").val().toUpperCase();
         var TelefonoImp_ = $("#TelefonoImp").val();
         var DireccionImp_ = $("#DireccionImp").val().toUpperCase();
+        var CiudadImp_ = $("#CiudadImp").val().toUpperCase();
+        var PaisImp_ = $("#PaisImp").val().toUpperCase();
         var NumRegFiscalImp_ = $("#NumRegFiscalImp").val();
 
         var Observaciones_ = $("#Observaciones").val().toUpperCase();
@@ -295,16 +315,17 @@ function datos(){ // dATOS FORMULARIO
         var FaxPersonAutoriza_ = $("#FaxPersonAutoriza").val();    
 
     var dato = {
-        Operacion_, NombreExp_, TelefonoExp_, FaxExp_, DireccionExp_, NumRegFiscalExp_, FechaDesde_,
-        FechaHasta_, NumFacturaComercial_, NombrePro_, TelefonoPro_, FaxPro_, DireccionPro_,
-        NumRegFiscalPro_, NombreImp_, TelefonoImp_, DireccionImp_, NumRegFiscalImp_, Observaciones_,
+        Operacion_, NombreExp_, TelefonoExp_, FaxExp_, DireccionExp_, CiudadExp_, PaisExp_, NumRegFiscalExp_, 
+        FechaDesde_, FechaHasta_, NumFacturaComercial_, 
+        NombrePro_, TelefonoPro_, FaxPro_, DireccionPro_, CiudadPro_, PaisPro_, NumRegFiscalPro_, 
+        NombreImp_, TelefonoImp_, DireccionImp_, CiudadImp_, PaisImp_, NumRegFiscalImp_, Observaciones_,
         FechaElabora_, NombreAutoriza_, CargoPersonAutoriza_, EmpresaAutoriza_, TelPersonAutoriza_, FaxPersonAutoriza_
     };
     
     datos.push(dato);    
       //console.log(datos);
     var valores = {"datosform": datos};
-     console.log( valores);
+     //console.log( valores);
     return valores;
 }
 //  GUARDA EN BASE DE DATOS INFORMACIÓN DE FORMULARIO Y TABLA DESCRIPCION MERCANCIAS 
@@ -365,23 +386,25 @@ function opcionProductor() {
         default:
           // code block
       }
+    //   limpiaProd();
+      $('.ocultarProd input').each(function () {
+        $(this).val("");
+      });
 }
 
 function criterPreferencial(){
     var cp = $("#CritePreferencial").val();    
     var oc = $("#OtrosCriterios").val();
     
-    if (cp=='C'){
-        if (oc==''){
+    if (cp=='C'&& oc==''){        
         $("#OtrosCriterios").prop('disabled', false);
-        $("#OtrosCriterios").val("");
+        return 0;    
+    }else if(cp=='C' && oc!=''){
+        $("#OtrosCriterios").prop('disabled', false);
         return 1;
-    }
-    }else if(cp=='C' && oc==''){
-        $("#OtrosCriterios").prop('disabled', false);
-        return 0;
-    }else if(cp=='C'){
-        $("#OtrosCriterios").prop('disabled', false);
+    }else if(cp!='C'){
+        $("#OtrosCriterios").prop('disabled', true);
+        $("#OtrosCriterios").val("");
         return 1;
     }
 }

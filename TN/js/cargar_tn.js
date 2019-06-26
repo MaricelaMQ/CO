@@ -3,7 +3,77 @@
     // });
 
 $(function () {
-    listar(estado);    
+
+    $('#tblresultado').DataTable({
+        columnDefs: [
+            {
+                targets: 0,
+                className: "dt-body-center",
+            },
+            {
+                targets: 1,
+                className: "dt-body-center",
+            },
+            {
+                targets: 2,
+                className: "dt-body-center",
+            }
+          ],
+        "order": [[ 2, "asc" ]],
+        "lengthMenu": [ 25, 50, 75, 100 ],
+        "language": {
+                      "sProcessing":     "Procesando...",
+                      "sLengthMenu":     "Mostrar _MENU_ registros",
+                      "sZeroRecords":    "No se encontraron resultados",
+                      "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                      "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                      "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                      "sInfoPostFix":    "",
+                      "sSearch":         "Buscar:",
+                      "sUrl":            "",
+                      "sInfoThousands":  ",",
+                      "sLoadingRecords": "Cargando...",
+                      "oPaginate": {
+                          "sFirst":    "Primero",
+                          "sLast":     "Último",
+                          "sNext":     "Siguiente",
+                          "sPrevious": "Anterior"
+                      },
+                      "oAria": {
+                          "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                          "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                      }
+                  },
+            "ajax" :{
+                    "method": "POST",
+                    "url": "libs/listar.php",
+                    "data": {"est":estado},
+                     error: function (xhr, error, thrown) {
+                        sLoadingRecords = "aa";
+                                $("#tblresultado").addClass("oculto");
+                                $("#resultado").html('<div class="center"><strong>No existe información</strong></div>');                                
+                                }
+                    },
+            "columns":[
+                    {"data":"Operacion"},
+                    {"data":"Formato"},
+                    {"data":"Fecha"},
+                    {"data":"NombreExp"},
+                    {"data":"NombreImp"},
+                    {"render":           function ( data, type, row ) {
+                                            if (estado=='TERMINADO'){
+                                                    return ('<a href="triangulonorte.php?d='+ row.ID+ '" >Duplicar</a>');
+                                            }else{
+                                                    return ('<a href="triangulonorte.php?ed=1&d=' + row.ID+ '" >Editar</a>');//<button class="editar btn blue"><i class="material-icons">visibility</i></button>
+                                            }
+                                }},
+                    {"render":           function ( data, type, row ) {
+                                            return ('<a href="verpdf.php?p='+ row.ID+ '" target="_blank">Ver Pdf</a>');
+                                }}
+                    ]
+            });
+    //listar(estado);    
 });
 
 function listar(estado) {
