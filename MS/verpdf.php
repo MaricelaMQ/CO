@@ -32,6 +32,9 @@ $k=0;
 $paginas = 1;
 $tablaUno = '';
 $tablaDos = '';
+$normasUno = '';
+$normasDos = '';
+$nfilas = 1;
 // $tablaDos = '<table cellspacing="1">';
 $conteo = 0;
 $tamanofila=1500; // TAMAÑO FILA****
@@ -44,50 +47,50 @@ $alto = 26; //Fijo 280
             foreach($descripcion as $desc) {
                 $k++;
                 //$conteo += strlen($desc["DescMercancia"]);
-                if ($k <= 11 ){
+                if ($k <= $nfilas ){
                     if ($k == $totFilas){
                         $alto = $altoFila;
                     }
                     $tablaUno .= '<tr>';
-                    // $tablaUno .= '<td style="width:25px" class="centrar">'. $desc["Item"] . '</td>';
                     $tablaUno .= '<td colspan="2" class="bordeizq borderecho centrar" height="'. $alto. 'px">'. $desc['NoOrden'] . '</td>';
-                    $tablaUno .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['Naladisa'] . '</p></td>';
-                    $tablaUno .= '<td colspan="13" class="letra justificar borderecho"><p>'. $desc['DescMercancia']  . '</p></td>';
-                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['PesoCantidad'] . '</p></td>';
-                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['ValorFob']  . '</p></td>';
-                    //$tablaUno .= '<td colspan="2" class="centrar bordeizq borderecho"><p>'. $desc['Normas']  . '</p></td>';
+                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['Naladisa'] . '</p></td>';
+                    $tablaUno .= '<td colspan="12" class="letra justificar borderecho"><p>'. $desc['DescMercancia']  . '</p></td>';
+                    $tablaUno .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['PesoCantidad'] . '</p></td>';
+                    $tablaUno .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['ValorFob']  . '</p></td>';
                     $tablaUno .= '</tr>';
+                               /********************* NORMAS UNO ************** */
+                    $normasUno .= '<tr>';
+                    $normasUno .= '<td colspan="2" class="centrar bordeizq">'. $desc["NoOrden"] . '</td>';
+                    $normasUno .= '<td colspan="20" class="justificar bordeizq borderecho">'. $desc["Normas"] . '</td>';
+                    $normasUno .= '</tr>';
+
                 }else{
                     $paginas = 2;
                     $tablaDos .= '<tr>';
-                    // $tablaDos .= '<td style="width:25px" class="centrar">'. $desc['Item'] . '</td>';
                     $tablaDos .= '<td colspan="2" class="bordeizq borderecho centrar" height="'. $alto. 'px">'. $desc['NoOrden'] . '</td>';
-                    $tablaDos .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['Naladisa'] . '</p></td>';
-                    $tablaDos .= '<td colspan="13" class="letra centrar borderecho"><p>'. $desc['DescMercancia'] . '</p></td>';
-                    $tablaDos .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['PesoCantidad'] . '</p></td>';
-                    $tablaDos .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['ValorFob'] . '</p></td>';
-                    //$tablaDos .= '<td colspan="2" class="centrar bordeizq borderecho"><p>'. $desc['PaisdeOrigen']  . '</p></td>';
+                    $tablaDos .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['Naladisa'] . '</p></td>';
+                    $tablaDos .= '<td colspan="12" class="letra justificar borderecho"><p>'. $desc['DescMercancia'] . '</p></td>';
+                    $tablaDos .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['PesoCantidad'] . '</p></td>';
+                    $tablaDos .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['ValorFob'] . '</p></td>';
                     $tablaDos .= '</tr>';
+                               /********************* NORMAS DOS ************** */
+                    $normasDos .= '<tr>';
+                    $normasDos .= '<td colspan="2" class="centrar bordeizq">'. $desc["NoOrden"] . '</td>';
+                    $normasDos .= '<td colspan="20" class="justificar bordeizq borderecho">'. $desc["Normas"] . '</td>';
+                    $normasDos .= '</tr>';
                 }                
             }
         }else{
-             $tablaUno.='<tr><td colspan="22" class="centrar bordeizq borderecho " height="280px"></td></tr>';
-             $tablaDos.='<tr><td colspan="22" class="centrar bordeizq borderecho " height="280px"></td></tr>';
+              $tablaUno.='<tr><td colspan="22" class="centrar bordeizq borderecho " height="170px"></td></tr>';
+              $tablaDos.='<tr><td colspan="22" class="centrar bordeizq borderecho " height="170px"></td></tr>';
+              $normasUno.='<tr><td colspan="22" class="centrar bordeizq borderecho " height="170px"></td></tr>';
+              $normasDos.='<tr><td colspan="22" class="centrar bordeizq borderecho " height="170px"></td></tr>';
         }
             //$tablaUno.='</thead>';
             //$tablaDos.='</table>';
             //$FechaAutoCompe = strftime("%d de %B de %Y", strtotime($datos["FechaAutoCompe"]));            
             // $diaDesde = strftime("%d", strtotime($datos["FechaDesde"]));
-            // $mesDesde = strftime("%m", strtotime($datos["FechaDesde"]));
-            // $AnioDesde = strftime("%Y", strtotime($datos["FechaDesde"]));
 
-            // $diaHasta = strftime("%d", strtotime($datos["FechaHasta"]));
-            // $mesHasta = strftime("%m", strtotime($datos["FechaHasta"]));
-            // $AnioHasta = strftime("%Y", strtotime($datos["FechaHasta"]));
-
-            // $diaElabora = strftime("%d", strtotime($datos["FechaElabora"]));
-            // $mesElabora = strftime("%m", strtotime($datos["FechaElabora"]));
-            // $AnioElabora = strftime("%Y", strtotime($datos["FechaElabora"]));
 
     // $NomPro = $datos["NombrePro"];
     // if ($NomPro == 'IGUAL' || $NomPro == 'VARIOS' || $NomPro == 'DISPONIBLE A SOLICITUD DE LA AUTORIDAD COMPETENTE' || $NomPro == 'DESCONOCIDO')
@@ -96,7 +99,7 @@ $alto = 26; //Fijo 280
     // }else{
     //     $Resul = '<br>TEL: '. $datos['TelefonoPro']. '';
     //     $Resul .= '<br>RUT O NIT: ' . $datos['NumRegFiscalPro']. '';        
-    // }
+    // }    
 
     $content = '';
     $content .= '
@@ -200,16 +203,17 @@ $alto = 26; //Fijo 280
                 </tr>
     <!-- SECCION DESCRIPCION DE LAS MERCANCIAS -->                
                 <tr>
-                    <td colspan="2" class="borde centrar">N° de Orden (1)</td>
-                    <td colspan="3" class="borde centrar">NALADISA</td>
-                    <td colspan="13" class="borde centrar">DENOMINACION DE LAS MERCANCÍAS</td>
-                    <td colspan="2" class="borde centrar">Peso o Cantidad</td>
-                    <td colspan="2" class="borde centrar">Valor FOB en (U$S)</td>
+                    <td colspan="2" class="borde centrar">N° de <br>Orden (1)</td>
+                    <td colspan="2" class="borde centrar">NALADISA</td>
+                    <td colspan="12" class="borde centrar">DENOMINACION DE LAS MERCANCÍAS</td>
+                    <td colspan="3" class="borde centrar">Peso o Cantidad</td>
+                    <td colspan="3" class="borde centrar">Valor FOB en (U$S)</td>
                 </tr>
             
     <!-- TABLA UNO INSERTADA //  . $TABLAUNO . -->
     
-                        ' . $tablaUno .'
+                ' . $tablaUno .'
+
     <!-- SECCION DECLARACION DE ORIGEN -->
                 <tr>
                     <td colspan="22" style="height:40px" class="borde"><p class="centrar"><strong>DECLARACION DE ORIGEN</strong></p><p class="justificar">DECLARAMOS que las mercancías indicadas en el presente formulario, correspondientes a la Factura(s) Comercial(es) No. '.$datos["NoFacturaComercial"].' de
@@ -228,170 +232,313 @@ $alto = 26; //Fijo 280
 
     <!-- SECCION NORMAS -->
                 <tr>
-                    <td colspan="2" class="borde centrar"><strong>N° de Orden (1)</strong></td>                    
+                    <td colspan="2" class="borde centrar"><strong>N° de <br>Orden</strong></td>                    
                     <td colspan="20" class="borde centrar"><strong>NORMAS (2)</strong></td>
                 </tr>
+    <!-- TABLA NORMAS UNO -->
 
-                <!-- OBSERVACIONES -->
+                    ' . $normasUno. '
+
+    <!-- EXPORTADOR/PRODUCTOR  -->
+
+                <tr>                    
+                    <td colspan="16" height="80px" class="borde"><strong>EXPORTADOR O PRODUCTOR</strong>
+                        <br><br>Razon social: '.$datos["RazonSocialExpoPro"].'
+                        <br>Dirección: '.$datos["DireccionExpoPro"].'
+                        <br>Fecha: '.$datos["FechaExpoPro"].'
+                    </td>
+                    <td colspan="6" class="borde centrar">
+                        Sello y firma del Exportador o Productor
+                    </td>
+                </tr>
+    <!-- IMPORTADOR  -->
+                <tr>
+                    <td colspan="22" class="borde"><strong>IMPORTADOR</strong>
+                        <br><br>Razon social: '.$datos["RazonSocialImp"].'
+                        <br>Dirección: '.$datos["DireccionImp"].'
+                    </td>
+                </tr>
+                <tr>
+    <!-- MEDIO DE TRANSPORTE/PUERTO  -->
+                <td colspan="22" class="borde"><div style="font-size:2">&nbsp;</div>Medio de Transporte: '.$datos["MedioTransporte"].'
+                    <br>Puerto o lugar de embarque: '.$datos["PuertoEmbarque"].'
+                    <div style="font-size:2">&nbsp;</div>
+                </td>
+            </tr>
+        
+    <!-- OBSERVACIONES -->
             <tr>
-                <td colspan="22" style="height:40px" class="borde">11. Observaciones:<br><span class="letra">'.$datos["Observaciones"].'</span></td>
+                <td colspan="22" style="height:40px" class="borde">Observaciones:<br><span class="letra">'.$datos["Observaciones"].'</span></td>
             </tr>
 
+    <!-- ENTIDAD CERTIFICADORA  -->
+
+            <tr>                    
+                <td colspan="16" height="80px" class="borde"><strong class="centrar">CERTIFICACIÓN DE ORIGEN</strong>
+                    <br><br>Certifico la veracidad de la presente declaración, en la ciudad de:
+                    <p class="centrar"></p>
+                    <br>A los: 
+                    <br><br>Nombre de la Entidad Certificadora: 
+                </td>
+                <td colspan="6" class="borde centrar">
+                    Sello y firma del Exportador o Productor
+                </td>
+            </tr>
 
             </table>
     </div>
     </html>';
-
+    
 $pdf->writeHTML($content, true, 0, true, 0);
-/*********************************************PAGINA DOS *******************/
-/*********************************************PAGINA DOS *******************/
-if ($k>11){
-    $pdf->addPage();
-    $paginaDos = '';
-    $paginaDos .= '
+/****************************************** INSTRUCCIONES DE LLENADO ***************************/
+$pdf->addPage();
+$instrucciones = '';
+$instrucciones .= '
+
 <html>
 <head>
-     <link rel="shortcut icon" href="../assets/logo.ico" type="image/x-icon">
-    <style>
-    .letra{
-        font-size:6.5;
-    } 
-        .clasedelatabla { empty-cells: show; 
-        min-height: 130px; //cambiar al alto necesario
-        }
-        .numfactura{
-            width:160px;
-        }
-        .anchocol{
-            width:20px;
-        }
-
-        .anchocoly{
-            width:25px;
-        }
-        .centrar {
-            text-align: center;
-            vertical-align:middle!important;
-        }
-        .derecha {
-            text-align: right;
-            vertical-align:middle!important;
-        }
-        .underline{
-            width:20px!important;
-            text-decoration: none;
-            border-bottom: 0.4px dotted black;            
-        }
-
-        .borde {
-            border:1px dotted black!important;
-        }
-
-        .bordesuperior {
-            border-top:1px dotted black!important;
-        } 
-
-        .bordeinferior {
-            border-bottom:1px dotted black!important;
-        }
-        
-        .borderecho{
-            border-right:1px dotted black!important;
-        }
-
-        .bordeizq{
-            margin-right: 25px;
-            border-left:1px dotted black!important;
-        }       
-                    
-    </style>    
-    </head>
-        <div class="centrar anchocol" >
-        <strong>
-        <br><br><br>Tratado de Libre Comercio entre las Repúblicas de Colombia, El Salvador, Guatemala y Honduras
-        <br>CERTIFICADO DE ORIGEN
-        <br>HOJA ANEXA
-        </strong>
-        </div>     
-
-        <div id="contenedorpdf">            
-        <!-- SECCION 1 EXPORTADOR  style="width:250px" -->
-            <table height="800px" style="width:100%;" class="">
-                <tr>
-                    <td colspan="16"></td>
-                    <td colspan="6"class="borde izquierda">Número de Certificado:</td>
-                </tr>
-        <!-- DESCRIPCION MERCANCIAS -->
-                <tr>
-                        <td colspan="11" valign="middle" class="borde"><p>5. Descripción de la(s) mercancía(s)</p></td>
-                        <td colspan="3" class="borde centrar">6. Clasificación <br>Arancelaria</td>
-                        <td colspan="2" class="borde centrar">7. Criterio para trato preferencial</td>
-                        <td colspan="2" class="borde centrar">8. Otros criterios</td>
-                        <td colspan="2" class="borde centrar">9. Productor</td>
-                        <td colspan="2" class="centrar borde">10. País de Origen</td>                        
-                </tr>
-            </table>
-    <!-- TABLA DOS INSERTADA //  . $TABLADOS . -->
-            <table cellspacing="0" cellpadding="2">
-                ' . $tablaDos .'
-                <tr>
-                        <td colspan="11" class="bordeizq" height="250px"></td>
-                        <td colspan="3" class="bordeizq centrar"></td>
-                        <td colspan="2" class="bordeizq centrar"></td>
-                        <td colspan="2" class="bordeizq centrar"></td>
-                        <td colspan="2" class="bordeizq centrar"></td>
-                        <td colspan="2" class="centrar bordeizq borderecho"></td>                        
-                </tr> 
-                <!-- OBSERVACIONES PAGINA DOS -->
+<style>
+    .justificar{
+        text-align:justify;
+}
+    .centrar {
+        text-align: center;
+        vertical-align:middle!important;
+}
+    .derecha {
+        text-align: right;
+        vertical-align:middle!important;
+}
+    .borde {
+    border:1px dotted black!important;
+}
+</style>
+</head>
+<div></div>
+    <table width="80%" cellspacing="5">
             <tr>
-                <td colspan="22" style="height:40px" class="borde">11. Observaciones:<br><span class="letra"></span></td>
-            </tr>
-
-        <!-- SECCION ONCE -->
-            <tr>
-                <td colspan="22" class="bordeizq borderecho">12. Declaro bajo juramento que :</td>
-            </tr>
-            <tr>
-                <td colspan="1" width="2%" class="bordeizq "></td>
-                <td colspan="21" width="98%" class="borderecho">
-                    <br>- Las mercancías son originarias del territorio de una Parte y cumplen con todos los requisitos de origen que les son aplicables conforme al Tratado de Libre Comercio entre las
-                    Repúblicas de Colombia, El Salvador, Guatemala y Honduras y que no han sido objeto de procesamiento ulterior o de cualquier otra operación fuera de los territorios de las Partes;
-                    salvo en los casos permitidos en el Artículo 4.14 o en el Anexo 4.3
-                    <p>- La información contenida en este documento es verdadera y exacta y me hago responsable de comprobar lo aquí certificado. Estoy consciente que soy responsable por cualquier
-                    declaración falsa u omisión material hecha en o relacionada con el presente documento.</p>
-                    <p>- Me comprometo a conservar y presentar, en caso de ser requerido, los documentos necesarios que respalden el contenido del presente certificado, así como a notificar por escrito a
-                    todas las personas a quienes se ha entregado el presente certificado, de cualquier cambio que pudiera afectar la exactitud o validez del mismo.</p>
-                    
-                    
+                <td colspan="4" height="80px">
                 </td>
             </tr>
             <tr>
-                <td colspan="11" class="borde">     Firma Autorizada<br><br></td>
-                <td colspan="11" class="borde">Empresa<br><br></td>
+                <td width="15%"></td>
+                <td width="10%">Referencias:</td>
+                <td width="5%" class="centrar">(1)</td>
+                <td width="70%"><p class="justificar">Esta columna indica el orden en que se individualizan las mercancías comprendidas en el presente certificado. En caso de ser insuficiente el espacio, se continuará la numeración de las mercancías en otro ejemplar.
+                </p></td>
             </tr>
             <tr>
-                <td colspan="11" class="borde">     Nombre<br><br>     </td>
-                <td colspan="11" class="borde">Cargo<br><br></td>
+                <td width="15%"></td>
+                <td width="10%"></td>
+                <td width="5%" class="centrar">(2)</td>
+                <td width="70%"><p class="justificar">En esta columna se identificará la norma de origen con que cumple cada mercancía individualizada por su número de orden.
+                </p></td>
             </tr>
             <tr>
-                <td colspan="2" class="bordeizq bordesuperior">     Fecha</td>
-                <td colspan="1" class="centrar">D</td>
-                <td colspan="1" class="centrar">M</td>
-                <td colspan="1" class="centrar">A</td>
-                <td colspan="8" class="bordeizq">Teléfono</td>
-                <td colspan="9" class="bordeizq borderecho">Fax</td>
+                <td width="15%"></td>
+                <td width="10%">Notas:</td>
+                <td width="5%" class="centrar">(a)</td>
+                <td width="70%"><p class="justificar">El formulario no podrá presentar raspaduras, tachaduras o enmiendas.
+                </p></td>
             </tr>
             <tr>
-                <td colspan="2" class="bordeizq bordeinferior"></td>
-                <td colspan="1" class="bordeizq centrar bordeinferior"><br><br></td>
-                <td colspan="1" class="bordeizq centrar bordeinferior"><br><br></td>
-                <td colspan="1" class="bordeizq centrar bordeinferior"><br><br></td>
-                <td colspan="8" class="bordeizq bordeinferior"><br><br>Teléfono: </td>
-                <td colspan="9" class="bordeizq bordeinferior borderecho"><br><br>Fax: </td>
+                <td width="15%"></td>
+                <td width="10%"></td>
+                <td width="5%" class="centrar">(b)</td>
+                <td width="70%"><p class="justificar">El formulario sólo será válido si todos sus campos, excepto el de “Observaciones”, estuvieron debidamente llenos.
+                </p></td>
             </tr>
-            </table>
-        </div>
+            <tr>
+                <td width="15%"></td>
+                <td width="10%"></td>
+                <td width="5%" class="centrar">(c)</td>
+                <td width="70%"><p class="justificar">Podrá aceptarse la intervención de terceros operadores, siempre que sean atendidas todas las disposiciones previstas en el Art. 13 del Anexo IV.
+                </p></td>
+            </tr>
+    </table>
 </html>';
+$pdf->writeHTML($instrucciones, true, 0, true, 0);
+/*********************************************PAGINA DOS *******************/
+if ($k>$nfilas){
+    $pdf->addPage();
+    $paginaDos = '';
+    $paginaDos .= '
+    <html>
+    <head>
+    <link rel="shortcut icon" href="../assets/logo.ico" type="image/x-icon">
+   <style>
+       .justificar{
+           text-align:justify;
+       }
+       .letra{
+           font-size:6.5;
+       } 
+       .clasedelafila { 
+           empty-cells: show; 
+           min-height: 300px; //cambiar al alto necesario
+       }
+       .numfactura{
+           width:160px;
+       }
+       
+       .anchocol{
+           width:20px;
+       }
+       
+       .anchocoly{
+           width:25px;
+       }
+       .centrar {
+           text-align: center;
+           vertical-align:middle!important;
+       }
+
+       .derecha {
+           text-align: right;
+           vertical-align:middle!important;
+       }
+       .underline{
+           width:20px!important;
+           text-decoration: none;
+           border-bottom: 0.4px dotted black;            
+       }
+
+       .borde {
+           border:1px dotted black!important;
+       }
+
+       .bordesuperior {
+           border-top:1px dotted black!important;
+       } 
+
+       .bordeinferior {
+           border-bottom:1px dotted black!important;
+       }
+       
+       .borderecho{
+           border-right:1px dotted black!important;
+       }
+
+       .bordeizq{
+           margin-right: 25px;
+           border-left:1px dotted black!important;
+       }
+
+       .altotabla{
+           max-height:300px;            
+       }
+                   
+   </style>    
+   </head>
+   <body>
+   <div class="centrar anchocol" >
+       
+   </div>     
+   
+   <div id="contenedorpdf">            
+   <!-- SECCION 1 EXPORTADOR  style="width:250px" -->
+           <table height="800px" style="width:100%;" class="">
+               <tr>
+                   <td colspan="19" class="centrar borderecho bordeizq bordesuperior"><strong>
+                       <br>CERTIFICADO DE ORIGEN
+                       <br>Acuerdo Colombia - Mercosur
+                       </strong>
+                   </td>
+                   <td colspan="3" class="centrar borde" ><strong>
+                       N° del Certificado
+                       </strong>
+                   </td>
+               </tr>
+               <tr>
+                   <td colspan="19" class="bordeizq" >
+                   </td>
+                   <td colspan="3" class="centrar borde" >
+                   </td>
+               </tr>
+               <tr>
+                   <td colspan="11" class=" bordeinferior bordeizq" height="15px">PAÍS EXPORTADOR:    COLOMBIA                        
+                   </td>
+                   <td colspan="11" class="bordeinferior borderecho">PAÍS IMPORTADOR:    '. $datos["PaisImp"] .'                        
+                   </td>
+               </tr>
+   <!-- SECCION DESCRIPCION DE LAS MERCANCIAS -->                
+               <tr>
+                   <td colspan="2" class="borde centrar">N° de <br>Orden (1)</td>
+                   <td colspan="2" class="borde centrar">NALADISA</td>
+                   <td colspan="12" class="borde centrar">DENOMINACION DE LAS MERCANCÍAS</td>
+                   <td colspan="3" class="borde centrar">Peso o Cantidad</td>
+                   <td colspan="3" class="borde centrar">Valor FOB en (U$S)</td>
+               </tr>
+           
+   <!-- TABLA UNO INSERTADA //  . $TABLAUNO . -->
+   
+               ' . $tablaDos .'
+
+   <!-- SECCION DECLARACION DE ORIGEN -->
+               <tr>
+                   <td colspan="22" style="height:40px" class="borde"><p class="centrar"><strong>DECLARACION DE ORIGEN</strong></p><p class="justificar">DECLARAMOS que las mercancías indicadas en el presente formulario, correspondientes a la Factura(s) Comercial(es) No. '.$datos["NoFacturaComercial"].' de
+                       fecha(s) respectivamente '.$datos["FechaDeclaOrigen"].', cumplen con lo establecido en las normas de origen del presente Acuerdo A.C.E. No. 72 de conformidad con
+                       el siguiente desglose.
+                   </p></td>
+               </tr>
+   <!-- SECCION NORMAS -->
+               <tr>
+                   <td colspan="2" class="borde centrar"><strong>N° de <br>Orden</strong></td>                    
+                   <td colspan="20" class="borde centrar"><strong>NORMAS (2)</strong></td>
+               </tr>
+   <!-- TABLA NORMAS UNO -->
+
+                   ' . $normasDos. '
+
+   <!-- EXPORTADOR/PRODUCTOR  -->
+
+               <tr>                    
+                   <td colspan="16" height="80px" class="borde"><strong>EXPORTADOR O PRODUCTOR</strong>
+                       <br><br>Razon social: '.$datos["RazonSocialExpoPro"].'
+                       <br>Dirección: '.$datos["DireccionExpoPro"].'
+                       <br>Fecha: '.$datos["FechaExpoPro"].'
+                   </td>
+                   <td colspan="6" class="borde centrar">
+                       Sello y firma del Exportador o Productor
+                   </td>
+               </tr>
+   <!-- IMPORTADOR  -->
+               <tr>
+                   <td colspan="22" class="borde"><strong>IMPORTADOR</strong>
+                       <br><br>Razon social: '.$datos["RazonSocialImp"].'
+                       <br>Dirección: '.$datos["DireccionImp"].'
+                   </td>
+               </tr>
+               <tr>
+   <!-- MEDIO DE TRANSPORTE/PUERTO  -->
+               <td colspan="22" class="borde"><div style="font-size:2">&nbsp;</div>Medio de Transporte: '.$datos["MedioTransporte"].'
+                   <br>Puerto o lugar de embarque: '.$datos["PuertoEmbarque"].'
+                   <div style="font-size:2">&nbsp;</div>
+               </td>
+           </tr>
+       
+   <!-- OBSERVACIONES -->
+           <tr>
+               <td colspan="22" style="height:40px" class="borde">Observaciones:<br><span class="letra">'.$datos["Observaciones"].'</span></td>
+           </tr>
+
+   <!-- ENTIDAD CERTIFICADORA  -->
+
+           <tr>                    
+               <td colspan="16" height="80px" class="borde"><strong class="centrar">CERTIFICACIÓN DE ORIGEN</strong>
+                   <br><br>Certifico la veracidad de la presente declaración, en la ciudad de:
+                   <p class="centrar"></p>
+                   <br>A los: 
+                   <br><br>Nombre de la Entidad Certificadora: 
+               </td>
+               <td colspan="6" class="borde centrar">
+                   Sello y firma del Exportador o Productor
+               </td>
+           </tr>
+
+           </table>
+   </div>
+   </html>';
     $pdf->writeHTML($paginaDos, true, 0, true, 0);
    }
 /**fin nueva pagina */

@@ -68,7 +68,7 @@ $(document).ready(function () {
 //********* BOTON AGREGAR ITEM DESCRIPCION MERCANCIAS**/
   $("#agregar").click(function () {
         agregardescripcion(0);
-        //limpiar();
+        limpiar();
   });
 
 //********* LIMPIAR TABLA  DESCRIPCIÓN MERCANCIAS**/
@@ -141,8 +141,8 @@ function agregardescripcion(a) {
                         alert("Hace falta ingresar información")}
                         else{
                             var nuevaFila = "<tr>"; //console.log('total filas ' + filas);        // nuevaFila += "<td>" + (filas + 1) + "</td>";//                            
-                            nuevaFila += "<td class=''></td>"; //index tabla
-                            nuevaFila += "<td class=''>" + a + "</td>";
+                            nuevaFila += "<td class='oculto'></td>"; //index tabla
+                            nuevaFila += "<td class='oculto'>" + a + "</td>";
                             nuevaFila += "<td class='descripcion'>" + DescMercancia + "</td>";
                             nuevaFila += "<td class='center '>" + ClasiArancelaria + "</td>";
                             nuevaFila += "<td class='center '>" + CritPreferencial + "</td>";
@@ -159,8 +159,8 @@ function agregardescripcion(a) {
                 // console.log(detMercancias);
                 $.each(detMercancias, function(i, item) {                    //console.log(item["valorfactura"]);
                             var nuevaFila = "<tr>";
-                            nuevaFila += "<td class=''></td>";
-                            nuevaFila += "<td class=''>" + item["ID"] + "</td>"; //id tabla descripcion mercancias
+                            nuevaFila += "<td class='oculto'></td>";
+                            nuevaFila += "<td class='oculto'>" + item["ID"] + "</td>"; //id tabla descripcion mercancias
                             nuevaFila += "<td class='descripcion'>" + item["DescMercancia"] + "</td>";
                             nuevaFila += "<td class='center'>" + item["ClasiArancelaria"] +  "</td>";
                             nuevaFila += "<td class='center'>" + item["CritPreferencial"] +  "</td>";

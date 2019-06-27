@@ -137,7 +137,7 @@ function agregardescripcion(a) {
                         alert("Hace falta ingresar información")}
                         else{
                             var nuevaFila = "<tr>"; //console.log('total filas ' + filas);        // nuevaFila += "<td>" + (filas + 1) + "</td>";//                            
-                            nuevaFila += "<td class=''></td>"; //index tabla
+                            nuevaFila += "<td class='oculto'></td>"; //index tabla
                             nuevaFila += "<td class='oculto'>" + a + "</td>";
                             nuevaFila += "<td class='valorfactura'>" + naladisa + "</td>";
                             nuevaFila += "<td class='center texto-izq anchoDeno'>" + descmercancia + "</td>";
@@ -153,7 +153,7 @@ function agregardescripcion(a) {
                 // console.log(detMercancias);
                 $.each(detMercancias, function(i, item) {                    //console.log(item["valorfactura"]);
                             var nuevaFila = "<tr>";
-                            nuevaFila += "<td class=''></td>";
+                            nuevaFila += "<td class='oculto'></td>";
                             nuevaFila += "<td class='oculto'>" + item["ID"] + "</td>"; //id tabla descripcion mercancias
                             nuevaFila += "<td class='valorfactura'>" + item["Naladisa"] + "</td>";
                             nuevaFila += "<td class='texto-izq anchoDeno'>" + item["DescMercancia"] +  "</td>";
