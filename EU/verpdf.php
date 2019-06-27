@@ -51,22 +51,24 @@ $alto = 26; //Fijo 280
                     $tablaUno .= '<tr>';
                     // $tablaUno .= '<td style="width:25px" class="centrar">'. $desc["Item"] . '</td>';
                     $tablaUno .= '<td colspan="11" class="letra bordeizq borderecho" height="'. $alto. 'px">'. $desc['DescMercancia'] . '</td>';
-                    $tablaUno .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['ClasiArancelaria'] . '</p></td>';
-                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['CritePreferencial']  . '</p></td>';
-                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['OtrosCriterios'] . '</p></td>';
-                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['Productor']  . '</p></td>';
-                    $tablaUno .= '<td colspan="2" class="centrar bordeizq borderecho"><p>'. $desc['PaisdeOrigen']  . '</p></td>';
+                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['ClasiArancelaria'] . '</p></td>';
+                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['CritPreferencial']  . '</p></td>';
+                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['ValConRegional'] . '</p></td>';
+                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['FacturaNoDesc']  . '</p></td>';
+                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['FechaDesc']  . '</p></td>';
+                    $tablaUno .= '<td colspan="1" class="centrar bordeizq borderecho"><p>'. $desc['PaisdeOrigen']  . '</p></td>';
                     $tablaUno .= '</tr>';
                 }else{
                     $paginas = 2;
                     $tablaDos .= '<tr>';
                     // $tablaDos .= '<td style="width:25px" class="centrar">'. $desc['Item'] . '</td>';
-                    $tablaDos .= '<td colspan="11" class="letra bordeizq borderecho" height="'. $alto. 'px">'. $desc['DescMercancia'] . '</td>';
-                    $tablaDos .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['ClasiArancelaria'] . '</p></td>';
-                    $tablaDos .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['CritePreferencial']  . '</p></td>';
-                    $tablaDos .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['OtrosCriterios'] . '</p></td>';
-                    $tablaDos .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['Productor']  . '</p></td>';
-                    $tablaDos .= '<td colspan="2" class="centrar bordeizq borderecho"><p>'. $desc['PaisdeOrigen']  . '</p></td>';
+                    $tablaUno .= '<td colspan="11" class="letra bordeizq borderecho" height="'. $alto. 'px">'. $desc['DescMercancia'] . '</td>';
+                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['ClasiArancelaria'] . '</p></td>';
+                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['CritPreferencial']  . '</p></td>';
+                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['ValConRegional'] . '</p></td>';
+                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['FacturaNoDesc']  . '</p></td>';
+                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['FechaDesc']  . '</p></td>';
+                    $tablaUno .= '<td colspan="1" class="centrar bordeizq borderecho"><p>'. $desc['PaisdeOrigen']  . '</p></td>';
                     $tablaDos .= '</tr>';
                 }                
             }
@@ -85,18 +87,18 @@ $alto = 26; //Fijo 280
             $mesHasta = strftime("%m", strtotime($datos["FechaHasta"]));
             $AnioHasta = strftime("%Y", strtotime($datos["FechaHasta"]));
 
-            $diaElabora = strftime("%d", strtotime($datos["FechaElabora"]));
-            $mesElabora = strftime("%m", strtotime($datos["FechaElabora"]));
-            $AnioElabora = strftime("%Y", strtotime($datos["FechaElabora"]));
+             $diaElabora = strftime("%d", strtotime($datos["FechaElabora"]));
+             $mesElabora = strftime("%m", strtotime($datos["FechaElabora"]));
+             $AnioElabora = strftime("%Y", strtotime($datos["FechaElabora"]));
 
-    $NomPro = $datos["NombrePro"];
-    if ($NomPro == 'IGUAL' || $NomPro == 'VARIOS' || $NomPro == 'DISPONIBLE A SOLICITUD DE LA AUTORIDAD COMPETENTE' || $NomPro == 'DESCONOCIDO')
-	{
-        $Resul = '';
-    }else{        
-        $Resul = '<br>TEL: '. $datos['TelefonoPro']. '';
-        $Resul .= '<br>RUT O NIT: ' . $datos['NumRegFiscalPro']. '';        
-    }   
+    // $NomPro = $datos["NombrePro"];
+    // if ($NomPro == 'IGUAL' || $NomPro == 'VARIOS' || $NomPro == 'DISPONIBLE A SOLICITUD DE LA AUTORIDAD COMPETENTE' || $NomPro == 'DESCONOCIDO')
+	// {
+    //     $Resul = '';
+    // }else{        
+    //     $Resul = 0;
+    //     // $Resul .= '<br>RUT O NIT: ' . $datos['NumRegFiscalPro']. '';
+    // }   
 
     $content = '';
     $content .= '
@@ -163,80 +165,66 @@ $alto = 26; //Fijo 280
     </style>    
     </head>
     <body>
-    <div class="centrar anchocol" >
-        <strong>
-        <br>Tratado de Libre Comercio entre las Repúblicas de Colombia, El Salvador, Guatemala y Honduras
-        <br>CERTIFICADO DE ORIGEN
-        <br>INSTRUCCIONES DE LLENADO AL REVERSO
-        </strong>
-    </div>     
+    <div class="centrar" >
+        
+    </div>
     
     <div id="contenedorpdf">            
     <!-- SECCION 1 EXPORTADOR  style="width:250px" -->
             <table height="800px" style="width:100%;" class="">
+            <tr>
+                <td colspan="22" class="centrar " style="line-height:5px;">
+                    <strong>
+                    <br>ACUERDO DE PROMOCIÓN COMERCIAL COLOMBIA – ESTADOS UNIDOS
+                    <br>UNITED STATES – COLOMBIA TRADE PROMOTION AGREEMENT
+                    <br>ACUERDO FIRMADO /AGREEMENT SIGNED: 15/05/2012
+                    <br><span style="font-size:25px;">CERTIFICADO DE ORIGEN / CERTIFICATE OF ORIGIN</span>
+                    </strong>
+                </td>
+            </tr>
                 <tr>
-                    <td colspan="16"></td>
-                    <td colspan="6"class="borde izquierda">Número de Certificado:</td>
-                </tr>
-                <tr>
-                    <td colspan="11" class="borde" height="75px">1. Nombre, dirección y número de registro fiscal del exportador:
-                        <br>'. $datos["NombreExp"]. '
-                        <br>'. $datos["DireccionExp"]. '
-                        <br>
+                    <td colspan="11" class="borde" height="75px">1. Razón social, dirección, teléfono y correo electrónico del exportador:
+                    <br>   Exporter´s legal name, address, telephone and e-mail
+                        <br><br>'. $datos["NombreExp"]. '
+                        <br>'. $datos["DireccionExp"]. '                        
                         <br>TEL:'. $datos["TelefonoExp"]. '
-                        <br>RUT O NIT: '. $datos["NumRegFiscalExp"]. '
-                        <br>'. $datos["CiudadExp"]. ' '. $datos["PaisExp"]. '<br>
+                        <br>E-MAIL: '. $datos["CorreoExp"]. '                        
                     </td>
     <!-- SECCION 2 PERIODO QUE CUBRE -->
-                    <td colspan="11" class="borde">2. Periodo que cubre
+                    <td colspan="11" class="borde">2. Periodo cubierto / Blanket period:
                         <br><br>
-                                <table class="centrar">
-                                    <tr>
-                                        <td></td>
-                                        <td class="anchocol">D</td>
-                                        <td class="anchocol">M</td>
-                                        <td class="anchocoly">A</td>
-                                        <td></td>
-                                        <td class="anchocol">D</td>
-                                        <td class="anchocol">M</td>
-                                        <td class="anchocoly">A</td>
+                                <table class="">
+                                    <tr>                                        
+                                        <td class="">DESDE (DD/MM/AA) / FROM (MM/DD/AA)</td>                                        
                                     </tr>
                                     <tr>
-                                        <td>De:</td>
-                                        <td class="borde">'. $diaDesde . '</td>
-                                        <td class="borde">'. $mesDesde . '</td>
-                                        <td class="borde">'. $AnioDesde .'</td>
-                                        <td class="derecha">A:</td>
-                                        <td class="borde">'. $diaHasta .'</td>
-                                        <td class="borde">'. $mesHasta .'</td>
-                                        <td class="borde">'. $AnioHasta .'</td>
+                                        <td class="" height="15px">'. $diaDesde . '/'.$mesDesde.'/'. $AnioDesde .' / '. $mesDesde . '/'.$diaDesde.'/'. $AnioDesde .'</td><br><br>
                                     </tr>
-                                </table>
-                        <br>
-                        <table>
-                            <tr>
-                                <td width="95px">Número de Factura Comercial:</td>
-                                <td class="numfactura borde centrar">'.$datos["NumFacturaComercial"].'</td>
-                            </tr>
-                        </table>
-                        <br>
+                                    <tr>                                        
+                                        <td class="">DESDE (DD/MM/AA) / FROM (MM/DD/AA)</td>
+                                    </tr>
+                                    <tr>                                        
+                                        <td class="">'. $diaHasta . '/'.$mesHasta.'/'. $AnioHasta .' / '. $mesHasta . '/'.$diaHasta.'/'. $AnioHasta .'</td>
+                                    </tr>
+                                </table>                        
                     </td>
                 </tr>
     <!-- SECCION 3 PRODUCTOR -->
                 <tr>
                     <td colspan="11" class="borde" height="75px">3. Nombre, dirección y número de registro fiscal del productor:
-                        <br>'. $NomPro. '
+                        <br>'. $datos["NombrePro"].  '
                         <br>'. $datos["DireccionPro"]. '
-                        <br>'. $Resul. '
-                        <br>'. $datos["CiudadPro"]. ' '. $datos["PaisPro"]. '<br>
+                        <br>TEL: '. $datos['TelefonoPro']. '
+                        <br>E-MAIL'. $datos["CorreoPro"]. '<br>
+                        
                     </td>
     <!-- SECCION 4 IMPORTADOR -->
                     <td colspan="11" class="borde">4. Nombre, dirección y número de registro fiscal del importador: 
                         <br>'. $datos["NombreImp"]. '
-                        <br>'. $datos["DireccionImp"]. '
-                        <br>'. $datos["CiudadImp"]. ' '. $datos["PaisImp"]. '<br>
+                        <br>'. $datos["DireccionImp"]. '                        
                         <br>TEL: '. $datos["TelefonoImp"]. '
-                        <br>RUT O NIT: '. $datos["NumRegFiscalImp"]. '                        
+                        <br>E-MAIL: '. $datos["CorreoImp"]. '
+                        <br>IDENTIFICACION TRIBUTARIA:'. $datos["TelefonoImp"]. '<br>
                     </td>
                 </tr>
 
@@ -264,7 +252,7 @@ $alto = 26; //Fijo 280
                         <td class="borde">20</td>
                         <td class="borde">21</td>
                         <td class="borde">22</td>
-                </tr>-->                
+                </tr>-->
                     <tr>
                             <td colspan="11" valign="middle" class="borde"><p>5. Descripción de la(s) mercancía(s)</p></td>
                             <td colspan="3" class="borde centrar">6. Clasificación <br>Arancelaria</td>
@@ -278,19 +266,15 @@ $alto = 26; //Fijo 280
     
                         ' . $tablaUno .'
                 <!-- 
-                <tr>
+                  <tr>
                         <td colspan="11" class="bordeizq" ></td>
                         <td colspan="3" class="bordeizq centrar"></td>
                         <td colspan="2" class="bordeizq centrar"></td>
                         <td colspan="2" class="bordeizq centrar"></td>
                         <td colspan="2" class="bordeizq centrar"></td>
                         <td colspan="2" class="centrar bordeizq borderecho"></td>
-                </tr> 
-                --> 
-                <!-- OBSERVACIONES -->
-            <tr>
-                <td colspan="22" style="height:40px" class="borde">11. Observaciones:<br><span class="letra">'.$datos["Observaciones"].'</span></td>
-            </tr>
+                   </tr> 
+                -->     
 
     <!-- SECCION ONCE -->
             <tr>
@@ -332,7 +316,11 @@ $alto = 26; //Fijo 280
                 <td colspan="1" class="bordeizq centrar bordeinferior"><br><br>'. $mesElabora. '</td>
                 <td colspan="1" class="bordeizq centrar bordeinferior"><br><br>'. $AnioElabora. '</td>
                 <td colspan="8" class="bordeizq bordeinferior"><br><br>Teléfono: '. $datos["TelPersonAutoriza"].'</td>
-                <td colspan="9" class="bordeizq bordeinferior borderecho"><br><br>Fax: '. $datos["TelPersonAutoriza"].'</td>
+                <td colspan="9" class="bordeizq bordeinferior borderecho"><br><br>Fax: '. $datos["FaxPersonAutoriza"].'</td>
+            </tr>
+    <!-- OBSERVACIONES -->
+            <tr>
+                <td colspan="22" style="height:40px" class="borde">12. Observaciones / Remarks:<br><span class="letra">'.$datos["Observaciones"].'</span></td>
             </tr>
             </table>
     </div>

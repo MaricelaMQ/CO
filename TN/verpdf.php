@@ -332,7 +332,7 @@ $alto = 26; //Fijo 280
                 <td colspan="1" class="bordeizq centrar bordeinferior"><br><br>'. $mesElabora. '</td>
                 <td colspan="1" class="bordeizq centrar bordeinferior"><br><br>'. $AnioElabora. '</td>
                 <td colspan="8" class="bordeizq bordeinferior"><br><br>Teléfono: '. $datos["TelPersonAutoriza"].'</td>
-                <td colspan="9" class="bordeizq bordeinferior borderecho"><br><br>Fax: '. $datos["TelPersonAutoriza"].'</td>
+                <td colspan="9" class="bordeizq bordeinferior borderecho"><br><br>Fax: '. $datos["FaxPersonAutoriza"].'</td>
             </tr>
             </table>
     </div>
@@ -483,7 +483,7 @@ if ($k>11){
                 <td colspan="1" class="bordeizq centrar bordeinferior"><br><br>'. $mesElabora. '</td>
                 <td colspan="1" class="bordeizq centrar bordeinferior"><br><br>'. $AnioElabora. '</td>
                 <td colspan="8" class="bordeizq bordeinferior"><br><br>Teléfono: '. $datos["TelPersonAutoriza"].'</td>
-                <td colspan="9" class="bordeizq bordeinferior borderecho"><br><br>Fax: '. $datos["TelPersonAutoriza"].'</td>
+                <td colspan="9" class="bordeizq bordeinferior borderecho"><br><br>Fax: '. $datos["FaxPersonAutoriza"].'</td>
             </tr>
             </table>
         </div>
