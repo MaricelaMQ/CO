@@ -236,7 +236,7 @@ function datos(){ // dATOS FORMULARIO
             var CorreoExp = $("#CorreoExp").val().toLowerCase();
             var FechaDesde = $("#FechaDesde").val();
             var FechaHasta = $("#FechaHasta").val();//toLowerCase();
-            var NombrePro = $("#NombrePro").val();
+            var NombrePro = $("#NombrePro").val().toUpperCase();
             var DireccionPro = $("#DireccionPro").val().toUpperCase();
             var TelefonoPro = $("#TelefonoPro").val();
             var CorreoPro = $("#CorreoPro").val().toLowerCase();
