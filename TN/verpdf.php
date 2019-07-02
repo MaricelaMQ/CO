@@ -13,7 +13,7 @@ if ($nu=="dato2") {
     $pdf = new TCPDF('P', 'mm', 'LETTER', true, 'UTF-8', false);
     $pdf->SetCreator(PDF_CREATOR);
 	$pdf->SetAuthor('Adia SAS');
-	$pdf->SetTitle("Certificado de Origen");
+	$pdf->SetTitle("CO - Triangulo Norte");
 	$pdf->setPrintHeader(false);
 	$pdf->setPrintFooter(false);
 	$pdf->SetMargins(12, false, 12, false);
@@ -32,6 +32,7 @@ $k=0;
 $paginas = 1;
 $tablaUno = '';
 $tablaDos = '';
+$nfilas = 7;
 // $tablaDos = '<table cellspacing="1">';
 $conteo = 0;
 $tamanofila=1500; // TAMAÑO FILA****
@@ -44,7 +45,7 @@ $alto = 26; //Fijo 280
             foreach($descripcion as $desc) {
                 $k++;
                 //$conteo += strlen($desc["DescMercancia"]);
-                if ($k <= 11 ){
+                if ($k <= $nfilas ){
                     if ($k == $totFilas){
                         $alto = $altoFila;
                     }
@@ -341,7 +342,7 @@ $alto = 26; //Fijo 280
 $pdf->writeHTML($content, true, 0, true, 0);
 /*********************************************PAGINA DOS *******************/
 /*********************************************PAGINA DOS *******************/
-if ($k>11){
+if ($k>$nfilas){
     $pdf->addPage();
     $paginaDos = '';
     $paginaDos .= '

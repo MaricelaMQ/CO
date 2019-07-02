@@ -13,7 +13,7 @@ if ($nu=="dato2") {
     $pdf = new TCPDF('P', 'mm', 'LETTER', true, 'UTF-8', false);
     $pdf->SetCreator(PDF_CREATOR);
 	$pdf->SetAuthor('Adia SAS');
-	$pdf->SetTitle("Certificado de Origen");
+	$pdf->SetTitle("CO - Mercosur");
 	$pdf->setPrintHeader(false);
 	$pdf->setPrintFooter(false);
 	$pdf->SetMargins(12, false, 12, false);
@@ -34,7 +34,7 @@ $tablaUno = '';
 $tablaDos = '';
 $normasUno = '';
 $normasDos = '';
-$nfilas = 1;
+$nfilas = 7;
 // $tablaDos = '<table cellspacing="1">';
 $conteo = 0;
 $tamanofila=1500; // TAMAÑO FILA****

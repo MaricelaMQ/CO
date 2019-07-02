@@ -226,7 +226,7 @@ ob_start();
                                     <td class="descripcion">
                                         <input id="varmodificando" type="" class="oculto" maxlength="3" value=""
                                             style="width:20px!important;" /><textarea id="descmercancia"
-                                            maxlength="160"></textarea>
+                                            maxlength="200"></textarea>
                                     </td>
                                     <td class="center valorfactura"><input id="clasiarancelaria" type=""
                                             class="valorfactura" maxlength="8" value="" />

@@ -13,7 +13,7 @@ if ($nu=="dato2") {
     $pdf = new TCPDF('P', 'mm', 'LETTER', true, 'UTF-8', false);
     $pdf->SetCreator(PDF_CREATOR);
 	$pdf->SetAuthor('Adia SAS');
-	$pdf->SetTitle("Certificado de Origen");
+	$pdf->SetTitle("CO - EEUU");
 	$pdf->setPrintHeader(false);
 	$pdf->setPrintFooter(false);
 	$pdf->SetMargins(12, false, 12, false);
