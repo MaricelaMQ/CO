@@ -66,19 +66,19 @@ $nfilas = 1;
                         $AlturaDatos = 0;
                     }
                 if ($k== $totItems){
-                        $AlturaFinal = ($AlturaMax - $AlturaDatos) + ($TotFilas * $AlturaFila);
+                        $AlturaFinal = ($AlturaMax - $AlturaDatos);// + ($TotFilas * $AlturaFila);
                     }
 
                 //$conteo += strlen($desc["DescMercancia"]);
                 if ($tbl==1){
                 
                     $tablaUno .= '<tr>';
-                    // $tablaUno .= '<td colspan="2" class=" borderecho centrar" >'. $desc['NoOrden'] . '</td>';
-                    $tablaUno .= '<td colspan="2" class="bordeizq borderecho centrar" height="'. $AlturaFinal. 'px">'. $desc['NoOrden'] . '</td>';
-                    $tablaUno .= '<td colspan="2" class="centrar borderecho">'. $desc['Naladisa'] . '</p></td>';
-                    $tablaUno .= '<td colspan="12" class="letra justificar borderecho"><p>'. $desc['DescMercancia']  . '</p></td>';
-                    $tablaUno .= '<td colspan="3"  class="centrar borderecho">'. $desc['PesoCantidad'] . '</td>';
-                    $tablaUno .= '<td colspan="3"  class="centrar borderecho">'. $desc['ValorFob']  . '</td>';
+                    $tablaUno .= '<td colspan="2" width="44.8" class=" borderecho centrar" >'. $desc['NoOrden'] . '</td>';
+                    // $tablaUno .= '<td colspan="2" class="borde bordeizq borderecho centrar" height="'. $AlturaFinal. 'px">'. $desc['NoOrden'] . '</td>';
+                    $tablaUno .= '<td colspan="2" width="49" class="centrar borderecho"><p>'. $desc['Naladisa'] . '</p></td>';
+                    $tablaUno .= '<td colspan="12" width="294.8"  class="letra justificar borderecho"><p>'. $desc['DescMercancia']  . '</p></td>';
+                    $tablaUno .= '<td colspan="3" width="73.7" class="centrar borderecho"><p>'. $desc['PesoCantidad'] . '</p></td>';
+                    $tablaUno .= '<td colspan="3" width="73.8" class="centrar borderecho"><p>'. $desc['ValorFob']  . '</p></td>';
                     $tablaUno .= '</tr>';
                                /********************* NORMAS UNO ************** */
                     $normasUno .= '<tr>';
@@ -90,10 +90,10 @@ $nfilas = 1;
                 }else{
 //                    $paginas = 2;
                     $tablaDos .= '<tr>';
-                    // $tablaDos .= '<td colspan="2" class="bordeizq borderecho centrar">'. $desc['NoOrden'] . '</td>';
-                    $tablaDos .= '<td colspan="2" class="bordeizq borderecho centrar" height="'. $AlturaFinal. 'px">'. $desc['NoOrden'] . '</td>';
+                    $tablaDos .= '<td colspan="2" class="bordeizq borderecho centrar">'. $desc['NoOrden'] . '</td>';
+                    // $tablaDos .= '<td colspan="2" class="bordeizq borderecho centrar" height="'. $AlturaFinal. 'px">'. $desc['NoOrden'] . '</td>';
                     $tablaDos .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['Naladisa'] . '</p></td>';
-                    $tablaDos .= '<td colspan="12" class="letra justificar borderecho"><p>'. $desc['DescMercancia'] . '</p></td>';
+                    $tablaDos .= '<td colspan="12" class="letra justificar borderecho"><p> '. $desc['DescMercancia'] . '</p></td>';
                     $tablaDos .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['PesoCantidad'] . '</p></td>';
                     $tablaDos .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['ValorFob'] . '</p></td>';
                     $tablaDos .= '</tr>';
@@ -107,8 +107,6 @@ $nfilas = 1;
                 
        //echo $k. ' Filas: ' . $TotFilas .' - Largo: '. $LargoItems. ' - Altura datos: ' .$AlturaDatos .' >> Altura final  '. $AlturaFinal .'<br>';
             }
-
-
             // $tablaUno.='<tr><td colspan="22" class="centrar " height="' .$AlturaFinal .'"></td></tr>';
             // $tablaDos.='<tr><td colspan="22" class="centrar bordeizq borderecho " height="' .$AlturaFinal .'"></td></tr>';
             // $normasUno.='<tr><td colspan="22" class="centrar bordeizq borderecho "></td></tr>';
@@ -214,7 +212,7 @@ $nfilas = 1;
         
     </div>     
     
-    <div id="contenedorpdf2">     
+    <div id="contenedorpdf">     
                           <!--     <table class="borde">
                                         <tr>
                                             <th class="bordeizq">Company</th>
@@ -292,15 +290,15 @@ $nfilas = 1;
     <!-- TABLA UNO INSERTADA //  . $TABLAUNO . -->
     
 
-                <!--    <tr>
-                        <td colspan="22" class="borde" style="height:190px">
-                            <table class=""> -->
+            <tr>
+                <td colspan="22" class="borde" style="height:190px">
+                    <table class="">
 
-                        ' . $tablaUno .'
-                            
-                <!--            </table>
-                        </td>
-                    </tr> -->
+                ' . $tablaUno .'
+                    
+                    </table>
+                </td>
+            </tr>
 
 
     <!-- SECCION DECLARACION DE ORIGEN -->
@@ -524,7 +522,7 @@ if ($tbl==2){
        
    </div>     
    
-   <div id="contenedorpdf1">            
+   <div id="contenedorpdf">            
    <!-- SECCION 1 EXPORTADOR  style="width:250px" -->
            <table id="idpaginados" height="800px" style="width:100%;" class="">
                <tr>
@@ -559,7 +557,7 @@ if ($tbl==2){
                    <td colspan="3" class="borde centrar">Valor FOB en (U$S)</td>
                </tr>
            
-   <!-- TABLA DOS INSERTADA //  . $TABLAUNO . -->
+   <!-- TABLA UNO INSERTADA //  . $TABLAUNO . -->
    
                ' . $tablaDos .'
 
@@ -632,20 +630,7 @@ if ($tbl==2){
    }
 /**fin nueva pagina */
 $pdf->lastPage();
-$js = <<<EOD
-var test = document.getElementById("Test");
-test.style.fontSize = fontSize;
-var height = (test.clientHeight + 1) + "px";
-var width = (test.clientWidth + 1) + "px";
-app.alert('JavaScript Popup Example', 3, 0, 'Welcome');
 
-EOD;
-
-// force print dialog
-
-
-// set javascript
-$pdf->IncludeJS($js);   
 // $pdf->addPage();
 // $pdf->writeHTML("<h1>nuevo contenido siguiente pagina</h1>", true, 0, true, 0);
 

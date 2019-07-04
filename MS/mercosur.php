@@ -111,28 +111,26 @@
                                         <td class="center denoMerca">
                                             <textarea id="descmercancia" maxlength="300"></textarea>
                                         </td>
-                                        <td class="valorfactura">
+                                        <td class="center valorfactura">
                                             <input id="pesocantidad" type="" class="valorfactura" value="" />
                                         </td>
-                                        <td class="valorfactura">
+                                        <td class="center valorfactura">
                                             <input id="valorfob" type="" class="valorfactura" value="" />
                                         </td>
                                         <td class="valorfactura">
                                             <select id="normas" name="" class="validate">
-                                                <option value="Normas" disabled selected>Normas</option>
-                                                <option value="Anexo IV, artículo 5º, Apéndice 3.1">Anexo IV, artículo
-                                                    5º, Apéndice 3.1 </option>
-                                                <option value="A.C.E. No. 72. Anexo IV, articulo 2°, literal c">A.C.E.
-                                                    No. 72. Anexo IV, articulo 2°, literal c</option>
+                                                <option value="" selected>-</option>
+                                                <option value="Anexo IV, artículo 5º, Apéndice 3.1">Anexo IV, artículo 5º, Apéndice 3.1 </option>
+                                                <option value="A.C.E. No. 72. Anexo IV, articulo 2°, literal c">A.C.E. No. 72. Anexo IV, articulo 2°, literal c</option>
                                                 <option value="Norma 3">Norma 3</option>
                                                 <option value="Norma 4">Norma 4</option>
                                                 <option value="Norma N">Norma ...</option>
                                             </select>
                                         </td>
                                         <td>
-                                            <div title="Agregar nuevo item" href="#" id="agregar"
+                                            <button title="Agregar nuevo item" href="#" id="agregar"
                                                 class="btn waves-effect waves-light"><i class="material-icons">add</i>
-                                            </div>
+                                            </button>
                                             <div title="Aceptar cambios" href="#" id="modificar"
                                                 class=" oculto btn blue waves-effect waves-light">
                                                 <i class="material-icons">check</i></div>

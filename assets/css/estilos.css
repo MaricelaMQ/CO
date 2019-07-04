@@ -128,7 +128,7 @@ th{
 }
 
 .valorfactura{
-  text-align: right;
+  /* text-align: right; */
   width: 100px!important;
 }
 .btagregar{

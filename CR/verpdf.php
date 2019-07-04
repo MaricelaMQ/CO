@@ -40,9 +40,7 @@ $k=0;
 
 $tablaUno = '';
 $tablaDos = '';
-//$nfilas=7;
-// TAMAÑO FILA****
-//$alto= 9;
+
   //var_dump($descripcion);
   if ($descripcion>0){
             $totItems = count($descripcion);
@@ -135,7 +133,7 @@ $tablaDos = '';
     <div class="centrar" ><strong>Anexo A<br>Certificado de Origen</strong></div>
       
         <div id="contenedorpdf">
-            <table id="paginauno" style="width:100%" cellpadding="1">
+            <table id="idpaginauno" style="width:100%" cellpadding="1">
     <!-- SECCION UNO EXPORTADOR  style="width:250px" -->
                 <tr>
                     <td colspan="11" class="borde" height="75px"> 1. Nombre y Dirección del Exportador: '. $datos["NombreExp"]. ' '. $datos["DireccionExp"]. '
@@ -396,7 +394,7 @@ if ($tbl==2){
 <div class="centrar"><strong>HOJA ANEXA</strong></div>
  
    <div id="contenedorpdfpagina2">
-   <table  id="paginados" style="width:100%" cellpadding="1">
+   <table  id="idpaginados" style="width:100%" cellpadding="1">
    
            <tr>
                 <td colspan="22" class="borde">
@@ -478,6 +476,7 @@ $pdf->lastPage();
 
 $pdf->output('Reportecertificado.pdf', 'I');
 }
+
 function altofila($totItems){
     $alto = 28;
         if ($totItems == 0){

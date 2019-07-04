@@ -29,69 +29,46 @@ if ($nu=="dato2") {
 /******** GENERAR RESULTADO EN tablaUno *****/
 setlocale(LC_TIME, 'es_CO', 'esp_esp'); 
 
-$AlturaDatos=0;
-$EspacioItems = 3;
-$LargoMaxFila = 74;
-$AlturaMax = 215; // Costa Rica
-$AlturaFila = 10;
-$AlturaMaxDos=190;
-$AlturaFinal= 0;
-$tbl = 1;
 $k=0;
-
 $paginas = 1;
 $tablaUno = '';
 $tablaDos = '';
 $normasUno = '';
 $normasDos = '';
-$nfilas = 1;
-
-//$conteo = 0;
-//$tamanofila=1500; // TAMAÑO FILA****
-//$alto = 26; //Fijo 280
+$nfilas = 7;
+// $tablaDos = '<table cellspacing="1">';
+$conteo = 0;
+$tamanofila=1500; // TAMAÑO FILA****
+$alto = 26; //Fijo 280
   //var_dump(count($descripcion));
   //var_dump($descripcion);
   if ($descripcion>0){
-        $totItems = count($descripcion);
-        //    $altoFila = altofila($totFilas);
+        $totFilas=count($descripcion);
+            $altoFila = altofila($totFilas);
             foreach($descripcion as $desc) {
                 $k++;
-                $LargoItems = strlen($desc['DescMercancia']);
-                $TotFilas =  ceil($LargoItems / $LargoMaxFila);
-                $AlturaDatos =  $AlturaDatos + ($TotFilas * $AlturaFila) + $EspacioItems;
-                      //var_dump($TotFilas);
-                if ($AlturaDatos>=$AlturaMax){
-                        $tbl = 2;
-                        $AlturaMax = $AlturaMaxDos;
-                        $AlturaDatos = 0;
-                    }
-                if ($k== $totItems){
-                        $AlturaFinal = ($AlturaMax - $AlturaDatos) + ($TotFilas * $AlturaFila);
-                    }
-
                 //$conteo += strlen($desc["DescMercancia"]);
-                if ($tbl==1){
-                
+                if ($k <= $nfilas ){
+                    if ($k == $totFilas){
+                        $alto = $altoFila;
+                    }
                     $tablaUno .= '<tr>';
-                    // $tablaUno .= '<td colspan="2" class=" borderecho centrar" >'. $desc['NoOrden'] . '</td>';
-                    $tablaUno .= '<td colspan="2" class="bordeizq borderecho centrar" height="'. $AlturaFinal. 'px">'. $desc['NoOrden'] . '</td>';
-                    $tablaUno .= '<td colspan="2" class="centrar borderecho">'. $desc['Naladisa'] . '</p></td>';
+                    $tablaUno .= '<td colspan="2" class="bordeizq borderecho centrar" height="'. $alto. 'px">'. $desc['NoOrden'] . '</td>';
+                    $tablaUno .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['Naladisa'] . '</p></td>';
                     $tablaUno .= '<td colspan="12" class="letra justificar borderecho"><p>'. $desc['DescMercancia']  . '</p></td>';
-                    $tablaUno .= '<td colspan="3"  class="centrar borderecho">'. $desc['PesoCantidad'] . '</td>';
-                    $tablaUno .= '<td colspan="3"  class="centrar borderecho">'. $desc['ValorFob']  . '</td>';
+                    $tablaUno .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['PesoCantidad'] . '</p></td>';
+                    $tablaUno .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['ValorFob']  . '</p></td>';
                     $tablaUno .= '</tr>';
                                /********************* NORMAS UNO ************** */
                     $normasUno .= '<tr>';
-                    $normasUno .= '<td colspan="2" class="centrar bordeizq" >'. $desc["NoOrden"] . '</td>';
-                    // $normasUno .= '<td colspan="2" class="centrar bordeizq" height="'. $AlturaFinal. 'px">'. $desc["NoOrden"] . '</td>';
+                    $normasUno .= '<td colspan="2" class="centrar bordeizq">'. $desc["NoOrden"] . '</td>';
                     $normasUno .= '<td colspan="20" class="justificar bordeizq borderecho">'. $desc["Normas"] . '</td>';
                     $normasUno .= '</tr>';
 
                 }else{
-//                    $paginas = 2;
+                    $paginas = 2;
                     $tablaDos .= '<tr>';
-                    // $tablaDos .= '<td colspan="2" class="bordeizq borderecho centrar">'. $desc['NoOrden'] . '</td>';
-                    $tablaDos .= '<td colspan="2" class="bordeizq borderecho centrar" height="'. $AlturaFinal. 'px">'. $desc['NoOrden'] . '</td>';
+                    $tablaDos .= '<td colspan="2" class="bordeizq borderecho centrar" height="'. $alto. 'px">'. $desc['NoOrden'] . '</td>';
                     $tablaDos .= '<td colspan="2" class="centrar borderecho"><p>'. $desc['Naladisa'] . '</p></td>';
                     $tablaDos .= '<td colspan="12" class="letra justificar borderecho"><p>'. $desc['DescMercancia'] . '</p></td>';
                     $tablaDos .= '<td colspan="3" class="centrar borderecho"><p>'. $desc['PesoCantidad'] . '</p></td>';
@@ -100,23 +77,12 @@ $nfilas = 1;
                                /********************* NORMAS DOS ************** */
                     $normasDos .= '<tr>';
                     $normasDos .= '<td colspan="2" class="centrar bordeizq">'. $desc["NoOrden"] . '</td>';
-                    // $normasDos .= '<td colspan="2" class="centrar bordeizq" height="'. $AlturaFinal. 'px">'. $desc["NoOrden"] . '</td>';
                     $normasDos .= '<td colspan="20" class="justificar bordeizq borderecho">'. $desc["Normas"] . '</td>';
                     $normasDos .= '</tr>';
-                }
-                
-       //echo $k. ' Filas: ' . $TotFilas .' - Largo: '. $LargoItems. ' - Altura datos: ' .$AlturaDatos .' >> Altura final  '. $AlturaFinal .'<br>';
+                }                
             }
-
-
-            // $tablaUno.='<tr><td colspan="22" class="centrar " height="' .$AlturaFinal .'"></td></tr>';
-            // $tablaDos.='<tr><td colspan="22" class="centrar bordeizq borderecho " height="' .$AlturaFinal .'"></td></tr>';
-            // $normasUno.='<tr><td colspan="22" class="centrar bordeizq borderecho "></td></tr>';
-            // $normasDos.='<tr><td colspan="22" class="centrar bordeizq borderecho " height="' .$AlturaFinal .'"></td></tr>';
-
-
         }else{
-              $tablaUno.='<tr><td colspan="22" class="borde centrar bordeizq borderecho " height="170px"></td></tr>';
+              $tablaUno.='<tr><td colspan="22" class="centrar bordeizq borderecho " height="170px"></td></tr>';
               $tablaDos.='<tr><td colspan="22" class="centrar bordeizq borderecho " height="170px"></td></tr>';
               $normasUno.='<tr><td colspan="22" class="centrar bordeizq borderecho " height="170px"></td></tr>';
               $normasDos.='<tr><td colspan="22" class="centrar bordeizq borderecho " height="170px"></td></tr>';
@@ -203,60 +169,16 @@ $nfilas = 1;
             max-height:300px;            
         }
                     
-    </style>
-    
-    <script>
-        alert("aaa");
-    </script>
+    </style>    
     </head>
     <body>
     <div class="centrar anchocol" >
         
     </div>     
     
-    <div id="contenedorpdf2">     
-                          <!--     <table class="borde">
-                                        <tr>
-                                            <th class="bordeizq">Company</th>
-                                            <th class="bordeizq">Contact</th>
-                                            <th class="bordeizq">Country</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="bordeizq">Alfreds Futterkiste</td>
-                                            <td class="bordeizq">Maria Anders</td>
-                                            <td class="bordeizq">Germany</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bordeizq">Centro comercial Moctezuma</td>
-                                            <td class="bordeizq">Francisco Chang</td>
-                                            <td class="bordeizq">Mexico</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bordeizq">Ernst Handel</td>
-                                            <td class="bordeizq">Roland Mendel</td>
-                                            <td class="bordeizq">Austria</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" style="height:20px">
-                                                <table class="">
-                                                    <tr>
-                                                        <td width="173.8" class="">asdf asdf asdfa sdfassdf sdf dsf sdfg sdfg sdfg sdfg sdfg sdfg sdg sdfg sdg sdfgdsfgdfgs sdgf a</td>
-                                                        <td width="180.1" class="bordeizq"> a</td>
-                                                        <td width="120" class="bordeizq"> a</td>
-                                                    </tr>
-                                                </table>
-                                            </td>                                            
-                                        </tr>
-                                        <tr>
-                                            <td>Laughing Bacchus Winecellars</td>
-                                            <td>Yoshi Tannamuri</td>
-                                            <td>Canada</td>
-                                        </tr>
-                                        
-                                        </table> -->
-       
+    <div id="contenedorpdf">            
     <!-- SECCION 1 EXPORTADOR  style="width:250px" -->
-            <table id="idpaginauno" height="800" style="width:100%;" cellpadding="1">
+            <table height="800px" style="width:100%;" class="">
                 <tr>
                     <td colspan="19" class="centrar borderecho bordeizq bordesuperior"><strong>
                         <br>CERTIFICADO DE ORIGEN
@@ -291,17 +213,7 @@ $nfilas = 1;
             
     <!-- TABLA UNO INSERTADA //  . $TABLAUNO . -->
     
-
-                <!--    <tr>
-                        <td colspan="22" class="borde" style="height:190px">
-                            <table class=""> -->
-
-                        ' . $tablaUno .'
-                            
-                <!--            </table>
-                        </td>
-                    </tr> -->
-
+                ' . $tablaUno .'
 
     <!-- SECCION DECLARACION DE ORIGEN -->
                 <tr>
@@ -331,7 +243,7 @@ $nfilas = 1;
     <!-- EXPORTADOR/PRODUCTOR  -->
 
                 <tr>                    
-                    <td colspan="16" height="80px" class="borde"><strong>EXPORTADOR O PRODUCTOR </strong> '.$AlturaFinal.'
+                    <td colspan="16" height="80px" class="borde"><strong>EXPORTADOR O PRODUCTOR</strong>
                         <br><br>Razon social: '.$datos["RazonSocialExpoPro"].'
                         <br>Dirección: '.$datos["DireccionExpoPro"].'
                         <br>Fecha: '.$datos["FechaExpoPro"].'
@@ -404,7 +316,7 @@ $instrucciones .= '
 </style>
 </head>
 <div></div>
-    <table id="idinstrucciones" width="80%" cellspacing="5">
+    <table width="80%" cellspacing="5">
             <tr>
                 <td colspan="4" height="80px">
                 </td>
@@ -448,7 +360,7 @@ $instrucciones .= '
 </html>';
 $pdf->writeHTML($instrucciones, true, 0, true, 0);
 /*********************************************PAGINA DOS *******************/
-if ($tbl==2){
+if ($k>$nfilas){
     $pdf->addPage();
     $paginaDos = '';
     $paginaDos .= '
@@ -524,9 +436,9 @@ if ($tbl==2){
        
    </div>     
    
-   <div id="contenedorpdf1">            
+   <div id="contenedorpdf">            
    <!-- SECCION 1 EXPORTADOR  style="width:250px" -->
-           <table id="idpaginados" height="800px" style="width:100%;" class="">
+           <table height="800px" style="width:100%;" class="">
                <tr>
                    <td colspan="19" class="centrar borderecho bordeizq bordesuperior"><strong>
                        <br>CERTIFICADO DE ORIGEN
@@ -559,7 +471,7 @@ if ($tbl==2){
                    <td colspan="3" class="borde centrar">Valor FOB en (U$S)</td>
                </tr>
            
-   <!-- TABLA DOS INSERTADA //  . $TABLAUNO . -->
+   <!-- TABLA UNO INSERTADA //  . $TABLAUNO . -->
    
                ' . $tablaDos .'
 
@@ -632,20 +544,7 @@ if ($tbl==2){
    }
 /**fin nueva pagina */
 $pdf->lastPage();
-$js = <<<EOD
-var test = document.getElementById("Test");
-test.style.fontSize = fontSize;
-var height = (test.clientHeight + 1) + "px";
-var width = (test.clientWidth + 1) + "px";
-app.alert('JavaScript Popup Example', 3, 0, 'Welcome');
 
-EOD;
-
-// force print dialog
-
-
-// set javascript
-$pdf->IncludeJS($js);   
 // $pdf->addPage();
 // $pdf->writeHTML("<h1>nuevo contenido siguiente pagina</h1>", true, 0, true, 0);
 

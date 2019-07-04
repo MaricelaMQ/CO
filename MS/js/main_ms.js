@@ -71,17 +71,20 @@ $(document).ready(function () {
   });
 
 //********* LIMPIAR TABLA  DESCRIPCIÓN MERCANCIAS**/
-    function limpiar() {
-        $("#naladisa").val("");
-        $("#descmercancia").val("")
-        $("#pesocantidad").val("");
-        $("#valorfob").val("");
-        $("#varmodificando").val("");
-        $("#normas").val("Normas");
-    }
+
 });
 /* ######################################################### FUNCTIONS  #########################################################*/
 //  MODIFICA ITEMS TABLA DECRIPCIONES
+
+function limpiar() {
+    $("#naladisa").val("");
+    $("#descmercancia").val("")
+    $("#pesocantidad").val("");
+    $("#valorfob").val("");
+    $("#varmodificando").val("");
+    $("#normas").val("");
+}
+
 function modificando() {
     var fila = $("#varmodificando").val();
     tabla = document.getElementById("tbldescripcionmercancia");    
@@ -133,21 +136,22 @@ function agregardescripcion(a) {
                     var valorfob = $("#valorfob").val();
                     var normas = $("#normas").val();
 
-                    if ( naladisa =='' || descmercancia =='' || pesocantidad=='' || valorfob==''){
+                    if ( naladisa =='' || descmercancia =='' || pesocantidad=='' || valorfob=='' || normas==''){
                         alert("Hace falta ingresar información")}
                         else{
                             var nuevaFila = "<tr>"; //console.log('total filas ' + filas);        // nuevaFila += "<td>" + (filas + 1) + "</td>";//                            
                             nuevaFila += "<td class='oculto'></td>"; //index tabla
                             nuevaFila += "<td class='oculto'>" + a + "</td>";
-                            nuevaFila += "<td class='valorfactura'>" + naladisa + "</td>";
-                            nuevaFila += "<td class='center texto-izq anchoDeno'>" + descmercancia + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + pesocantidad + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + valorfob + "</td>";
+                            nuevaFila += "<td class='texto-izq'>" + naladisa + "</td>";
+                            nuevaFila += "<td class='texto-izq anchoDeno'>" + descmercancia + "</td>";
+                            nuevaFila += "<td class='center'>" + pesocantidad + "</td>";
+                            nuevaFila += "<td class='center'>" + valorfob + "</td>";
                             nuevaFila += "<td class='texto-izq anchoNormas'>" + normas + "</td>";
                             nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";
                             nuevaFila += "</tr>";
                             $("#tbldescripcionmercancia").append(nuevaFila);
-                            $("#descmercancia").focus();        //limpiar();                            
+                            $("#descmercancia").focus();        
+                            limpiar();                            
                 }                        
             }else{ /****si a es 1, se agregan valores de BD a tabla DESCRIPCION MERCANCIAS **/
                 // console.log(detMercancias);
@@ -155,11 +159,11 @@ function agregardescripcion(a) {
                             var nuevaFila = "<tr>";
                             nuevaFila += "<td class='oculto'></td>";
                             nuevaFila += "<td class='oculto'>" + item["ID"] + "</td>"; //id tabla descripcion mercancias
-                            nuevaFila += "<td class='valorfactura'>" + item["Naladisa"] + "</td>";
+                            nuevaFila += "<td class='texto-izq'>" + item["Naladisa"] + "</td>";
                             nuevaFila += "<td class='texto-izq anchoDeno'>" + item["DescMercancia"] +  "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["PesoCantidad"] +  "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["ValorFob"] + "</td>";
-                            nuevaFila += "<td class='center valorfactura'>" + item["Normas"] + "</td>";
+                            nuevaFila += "<td class='center'>" + item["PesoCantidad"] +  "</td>";
+                            nuevaFila += "<td class='center'>" + item["ValorFob"] + "</td>";
+                            nuevaFila += "<td class='texto-izq anchoNormas'>" + item["Normas"] + "</td>";
                             nuevaFila += "<td><button class='borrar btn red'><i class='material-icons'>delete</i></button> <button class='editar btn blue'><i class='material-icons'>edit</i></button></td>";
                             nuevaFila += "</tr>";
                             $("#tbldescripcionmercancia").append(nuevaFila);
